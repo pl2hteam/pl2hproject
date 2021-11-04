@@ -18,6 +18,10 @@ const App = () => {
         <Route path="/profile">
           <Profile />
         </Route>
+        <Route path="/Home">
+          <Home />
+        </Route>
+        
       </Switch>
     </ThemeProvider>
   );
