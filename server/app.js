@@ -10,7 +10,7 @@ const { sequelize } = require("./models");
 dotenv.config();
 
 /* DB 라우터 */
-const mysqlRouter = require('./mysql/routes/index'); 
+const mysqlRouter = require('./mysql/routes/index');
 const mongoRouter = require('./mongo/routes/index');
 
 const app = express();
@@ -21,7 +21,7 @@ app.set('port', process.env.PORT || 5000);
 sequelize
   .sync({ focus: false })
   .then(() => {
-    console.log("db 연결 성공");
+    console.log("mysql db 연결 성공");
   })
   .catch((err) => {
     console.error(err);
@@ -70,7 +70,7 @@ if (process.env.NODE_ENV === "production") {
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
-  next(error); 
+  next(error);
 });
 
 /* error 처리 */
