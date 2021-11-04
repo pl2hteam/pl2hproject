@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 리액트로 만든 미니홈피:: 미니포트폴리
 
-## Available Scripts
+![badge resume](https://img.shields.io/badge/for-📜resume-238db3)
+![badge coverletter](https://img.shields.io/badge/for-📨coverletter-238db3)
+![badge portfolio](https://img.shields.io/badge/for-🤹‍portfolio-ff6b6b)
 
-In the project directory, you can run:
 
-### `npm start`
+- **Concept**: 싸이월드 미니홈피의 레이아웃, 디자인 및 감성을 담았습니다. 
+- **Contents**: 실제 미니홈피처럼 개인적인 정보(TMI😅)들을 담았습니다. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![main](./docs/img/main.gif)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Table of Contents
+- [Technologies](#technologies)  
+- [Features](#features) 
+  - [BGM](#bgm)
+  - [배경 바꾸기](#배경-바꾸기)
+  - [스크롤 상단 초기화](#스크롤-상단-초기화)
+  - [D3.js](#d3js)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Technologies
+> ❕ 크로스 브라우징 및 반응형은 고려하지 않았습니다.  
+> 
+![badge react](https://img.shields.io/badge/os-window-ff6b6b?logo=windows)
+![badge react](https://img.shields.io/badge/browser-chrome-ff6b6b?logo=google-chrome&logoColor=FFFFFF)
+![badge react](https://img.shields.io/badge/editor-vsCode-ff6b6b?logo=visual-studio-code)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![badge react](https://img.shields.io/badge/code-react-238db3?logo=react&logoColor=FFFFFF)
+![badge redux](https://img.shields.io/badge/code-redux-238db3?logo=redux)
+![badge styledComponents](https://img.shields.io/badge/code-styledComponents-238db3?logo=styled-components&logoColor=FFFFFF)
+![badge d3](https://img.shields.io/badge/code-d3-238db3?logo=d3.js&logoColor=FFFFFF)
 
-### `npm run eject`
+![badge ghPages](https://img.shields.io/badge/build-ghPages-20c997)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Features
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### ◽BGM 
+사이트에 접속해 있는 동안 BGM이 끊기지 않고 자동재생 됩니다.
 
-## Learn More
+> 아래 이미지를 클릭하면 상세 코드를 확인할 수 있습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[![playlist](./docs/img/playlist.gif)](./docs/features/bgm.md)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### ◽배경 바꾸기
+사이트의 배경 및 레이아웃 요소들의 컬러를 변경할 수 있는 기능입니다. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+> 아래 이미지를 클릭하면 상세 코드를 확인할 수 있습니다.
 
-### Analyzing the Bundle Size
+[![changeSkin](./docs/img/changeSkin.gif)](./docs/features/changeSkin.md)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+### ◽스크롤 상단 초기화
+리액트에서 페이지를 이동하는 경우 이전 페이지의 스크롤 위치가 그대로 남아있게 됩니다. 이를 위해 페이지 이동 시 스크롤을 상단으로 초기화해주는 컴포넌트를 만들어 사용했습니다. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[코드 확인하기](./docs/features/scrollToTop.md)
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### ◽D3.js
 
-### Deployment
+D3.js 라이브러리를 이용해 기술과 히스토리 페이지에 차트를 추가했습니다. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### 스킬
+> 아래 이미지를 클릭하면 상세 코드를 확인할 수 있습니다.
 
-### `npm run build` fails to minify
+[![chart-skill](./docs/img/chart-skill.gif)](./docs/features/chart-skill.md)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### 히스토리
+> 아래 이미지를 클릭하면 상세 코드를 확인할 수 있습니다.
+
+[![chart-his](./docs/img/chart-his.gif)](./docs/features/chart-his.md)
+

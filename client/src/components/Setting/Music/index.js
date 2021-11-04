@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Audio } from '../../../utils/utils';
 import { setCurSong } from '../../../module/playlist';
-import Modal from '../../Modal/Modal';
+
 
 const Wrapper = styled.div`
   background: #eee;
@@ -197,9 +197,7 @@ const MusicPlayer = () => {
 
   return (
     <Wrapper>
-      <Modal isOpen={isOpenModal} width={100} height={100} bg="lightblue">
-        <PlayButton onClick={handleUserInteraction}>🎶</PlayButton>
-      </Modal>
+  
       <TitleWrapper>
         🎶 <Title>{curSong.title}</Title>
       </TitleWrapper>
