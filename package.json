@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.16.13",
+    "axios": "^0.24.0",
+    "formik": "^2.2.9",
+    "react-dropzone": "^11.4.2",
+    "react-redux": "^7.2.6",
+    "yup": "^0.32.11"
+  }
+}
