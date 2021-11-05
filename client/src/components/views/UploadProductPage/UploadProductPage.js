@@ -6,26 +6,30 @@ import Axios from "axios";
 const { Title } = Typography;
 const { TextArea } = Input;
 
-const Continents = [
-  { key: 1, value: "Africa" },
-  { key: 2, value: "Europe" },
-  { key: 3, value: "Asia" },
-  { key: 4, value: "North America" },
-  { key: 5, value: "South America" },
-  { key: 6, value: "Australia" },
-  { key: 7, value: "Antarctica" },
-];
+// const Continents = [
+//   { key: 1, value: "Africa" },
+//   { key: 2, value: "Europe" },
+//   { key: 3, value: "Asia" },
+//   { key: 4, value: "North America" },
+//   { key: 5, value: "South America" },
+//   { key: 6, value: "Australia" },
+//   { key: 7, value: "Antarctica" },
+// ];
 
 function UploadProductPage(props) {
-  const [TitleValue, setTitleValue] = useState("");
+  const [PdNameValue, setPdNameValue] = useState("");
+  const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
-  const [ContinentValue, setContinentValue] = useState(1);
+  const [QuantityValue, setQuantityValue] = useState(1);
 
   const [Images, setImages] = useState([]);
 
-  const onTitleChange = (event) => {
-    setTitleValue(event.currentTarget.value);
+  const onPdNameChange = (event) => {
+    setPdNameValue(event.currentTarget.value);
+  };
+  const onBrandChange = (event) => {
+    setBrandValue(event.currentTarget.value);
   };
 
   const onDescriptionChange = (event) => {
@@ -36,8 +40,8 @@ function UploadProductPage(props) {
     setPriceValue(event.currentTarget.value);
   };
 
-  const onContinentsSelectChange = (event) => {
-    setContinentValue(event.currentTarget.value);
+  const onQuantityChange = (event) => {
+    setQuantityValue(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
@@ -47,22 +51,23 @@ function UploadProductPage(props) {
     event.preventDefault();
 
     if (
-      !TitleValue ||
+      !PdNameValue ||
+      !BrandValue ||
       !DescriptionValue ||
       !PriceValue ||
-      !ContinentValue ||
+      !QuantityValue ||
       !Images
     ) {
       return alert("fill all the fields first!");
     }
 
     const variables = {
-      writer: props.user.userData._id,
-      title: TitleValue,
+      seller: props.user.userData._id,
+      pdName: PdNameValue,
       description: DescriptionValue,
       price: PriceValue,
       images: Images,
-      continents: ContinentValue,
+      continents: QuantityValue,
     };
 
     Axios.post("/api/product/uploadProduct", variables).then((response) => {
@@ -87,25 +92,35 @@ function UploadProductPage(props) {
 
         <br />
         <br />
-        <label>Title</label>
-        <Input onChange={onTitleChange} value={TitleValue} />
+        <label>물품명</label>
+        <Input onChange={onPdNameChange} value={PdNameValue} />
         <br />
         <br />
-        <label>Description</label>
+        <label>상세정보</label>
         <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
         <br />
         <br />
-        <label>Price($)</label>
+        <label>가격</label>
         <Input onChange={onPriceChange} value={PriceValue} type="number" />
         <br />
         <br />
-        <select onChange={onContinentsSelectChange} value={ContinentValue}>
+        <label>수량</label>
+        <Input
+          onChange={onQuantityChange}
+          value={QuantityValue}
+          type="number"
+        />
+        <br />
+        <br />
+        <label>브랜드</label>
+        <Input onChange={onBrandChange} value={BrandValue} />
+        {/* <select onChange={onContinentsSelectChange} value={QuantityValue}>
           {Continents.map((item) => (
             <option key={item.key} value={item.key}>
               {item.value}{" "}
             </option>
           ))}
-        </select>
+        </select> */}
         <br />
         <br />
 

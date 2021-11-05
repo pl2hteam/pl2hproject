@@ -12,7 +12,7 @@ function FileUpload(props) {
     };
     formData.append("file", files[0]);
     //save the Image we chose inside the Node Server
-    Axios.post("/api/product/uploadImage", formData, config).then(
+    Axios.post("/api/mongo/product/uploadImage", formData, config).then(
       (response) => {
         if (response.data.success) {
           setImages([...Images, response.data.image]);
@@ -24,12 +24,16 @@ function FileUpload(props) {
     );
   };
 
+  // 업로드 대기중인 상품이미지 클릭 시 삭제 함수
   const onDelete = (image) => {
+    //     현재인덱스   = 선택한 이미지의 인덱스 번호 ex) 3장 중 2번째 이미지는 인덱스1
     const currentIndex = Images.indexOf(image);
-
+    // newImages에 대기중인 이미지들을 담고
     let newImages = [...Images];
+    // 선택한 인덱스번호의 이미지 한장을 날려버리기
     newImages.splice(currentIndex, 1);
 
+    // 날리고 남은 이미지들을 useState로 갱신
     setImages(newImages);
     props.refreshFunction(newImages);
   };
