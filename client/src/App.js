@@ -1,21 +1,30 @@
-import React from "react";
-import { HashRouter, Route } from "react-router-dom";
-import Home from "./routes/Home";
-import Login from "./routes/Login";
-import Join from "./routes/join";
-import Navigation from "./components/Navigation";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
 
-import "./App.css";
+const App = () => {
+  const { palette } = useSelector(state => state);
 
-function App() {
   return (
-    <HashRouter>
-      <Navigation />
-      <Route path="/" exact={true} component={Home} />
-      <Route path="/join" component={Join} />
-      {/* <Route path="/movie/:id" component={join} /> */}
-    </HashRouter>
+    <ThemeProvider theme={palette}>
+      <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/Home">
+          <Home />
+        </Route>
+        
+      </Switch>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
