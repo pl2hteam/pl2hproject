@@ -5,7 +5,7 @@ const path = require("path");
 const session = require('express-session');
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
-const { sequelize } = require("./models");
+const { sequelize } = require("./mysql/models");
 
 dotenv.config();
 
