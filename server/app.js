@@ -6,7 +6,9 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
 const { sequelize } = require("./mysql/models");
-
+const User = require('./mysql/models/user');
+const bcrypt = require('bcrypt');
+const passportConfig = require('./mysql/passport')
 dotenv.config();
 
 /* DB 라우터 */
@@ -14,6 +16,7 @@ const mysqlRouter = require('./mysql/routes/index');
 const mongoRouter = require('./mongo/routes/index');
 
 const app = express();
+passportConfig();
 const cors = require('cors');
 app.set('port', process.env.PORT || 5000);
 
@@ -29,6 +32,7 @@ sequelize
 
 /* 몽고 DB 연결 */
 const config = require("./mongo/configmongo/key");
+const passport = require("passport");
 
 mongoose.connect(config.mongoURI,
   {
@@ -53,6 +57,8 @@ app.use(session({
     secure: false,
   },
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* DB 라우터 */
 app.use('/api/mysql', mysqlRouter);
