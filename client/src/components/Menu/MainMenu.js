@@ -32,13 +32,38 @@ function MainMenu() {
     <Nav>
       <ul>
         <li>
-          <NavLink exact to="/" activeClassName="selected">
+          <NavLink exact to="/home" activeClassName="selected">
             홈
           </NavLink>
         </li>
         <li>
           <NavLink to="/profile" activeClassName="selected">
-            프로필
+           SNS
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Jam" activeClassName="selected">
+            놀거리
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Latter" activeClassName="selected">
+            편지
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Mind" activeClassName="selected">
+            심리
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Pic" activeClassName="selected">
+            사진첩
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Calendar" activeClassName="selected">
+            캘린더
           </NavLink>
         </li>
       </ul>

@@ -23,6 +23,7 @@ class Login extends Component{
             <button className="btn btn-lg btn-primary btn-block" type="button" onClick={this.handleOnClick}> 로그인 </button> 
             </form> 
             <Link to={"/home"} >홈</Link>
+            <Link to={"/Join"} >회원가입</Link>
             </div>
             ); 
           };
