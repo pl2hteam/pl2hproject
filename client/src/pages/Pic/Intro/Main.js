@@ -1,58 +1,64 @@
-import React from 'react';
-import styled from 'styled-components';
-import { publicUrl } from '../../../utils/utils';
+import React, { useState } from "react";
+import axios from "axios";
+import "antd/dist/antd.css";
+import { Card, Col, Row, Button } from "antd";
+import AxiosMockAdapter from "axios-mock-adapter";
+import faker from "faker";
 
-const Wrapper = styled.div`
-  padding: 10px 0;
-  font-family: serif;
-  font-weight: bold;
-  img {
-    width: 100%;
-    margin: 5px 0;
-  }
-  h2 {
-    color: #a7a7a7;
-    font-size: 1.2rem;
-  }
-  .at {
-    color: #cec6a0;
-    font-size: 0.9rem;
-  }
-  .warn {
-    text-align: right;
-    color: #d9d9d9;
-    text-decoration: line-through;
-    font-weight: bold;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-`;
+let mock = new AxiosMockAdapter(axios);
 
-const TxtWrapper = styled.div`
-  padding: 40px;
-  text-align: center;
-  .txt {
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: normal;
-  }
-`;
+let posts = [...Array(23)].map((_, index) => {
+  const setIndex = index + 1;
+  return {
+    id: `postId-${setIndex}`,
+    title: faker.lorem.words(),
+    content: faker.lorem.lines(2),
+    image: `${faker.image.animals()}?random=${Math.round(Math.random() * 1000)}`
+  };
+});
 
-const Main = () => {
+mock.onGet("/posts").reply(() => {
+  try {
+    const results = posts;
+    return [200, results];
+  } catch (error) {
+    console.error(error);
+    return [500, { message: "Internal server error" }];
+  }
+});
+
+function Main() {
+  const [posts, setPosts] = useState([]);
+  //console.log(posts);
+
+  const onClick = async (e) => {
+    e.preventDefault();
+    const mockData = await axios.get("/posts");
+    setPosts(mockData.data);
+  };
   return (
-    <Wrapper>
-      <h2>danbilee::</h2>
-      <p className="at">2020.10.30_Bumgye_DarakBang::</p>
-      <img src={publicUrl + '/resources/img/aboutMe.JPG'} alt="selfie" />
-      <p className="warn">눈뽕주의::감성주의::</p>
-      <TxtWrapper>
-        <p className="txt">"이런."</p>
-        <p className="txt">"그게 뭔데."</p>
-        <p className="txt">"내 눈을 바라 봐."</p>
-        <p className="txt">"그거 어떻게 하는 건데."</p>
-      </TxtWrapper>
-    </Wrapper>
+    <>
+      <Button onClick={onClick} style={{ margin: "2rem" }}>
+        버튼
+      </Button>
+      <Row>
+        {posts?.map((post) => (
+          <Col key={post.id}>
+            <Card
+              title={post.title}
+              style={{
+                margin: "2rem",
+                width: "20rem"
+              }}
+            >
+              <p>{post.content}</p>
+              <img src={post.image} alt="a" style={{ width: "100%" }} />
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </>
   );
-};
+}
 
 export default Main;
