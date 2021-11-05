@@ -6,7 +6,7 @@ const { User } = require("../models");
 
 module.exports = () => {
   //LocalStrategy 생성자의 첫 번째 인수로 주어진 객체는 전략에 관한 설정을 하는 곳
-  console.log(1);
+  //console.log(1);
   passport.use(
     new LocalStrategy(
       {

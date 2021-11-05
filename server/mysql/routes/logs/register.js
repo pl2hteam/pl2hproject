@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-
-router.post('/', async (req, res, next) => { // POST /user/
+router.post('/', async (req, res, next) => {
   try {
+
+    console.log(1); // POST /user/
     const exUser = await User.findOne({
       where: {
         email: req.body.email,

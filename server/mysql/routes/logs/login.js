@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
       //   }]
       // })
       //return res.status(200).json(fullUserWithoutPassword);
-      return res.status(201).send('ok22');
+      return res.status(201).send('ok');
     });
   })(req, res, next);
 });

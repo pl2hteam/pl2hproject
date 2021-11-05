@@ -6,10 +6,7 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
 const { sequelize } = require("./mysql/models");
-const User = require('./mysql/models/user');
-const bcrypt = require('bcrypt');
-const passportConfig = require('./mysql/passport');
-
+const passportConfig = require('./mysql/passport')
 dotenv.config();
 
 /* DB 라우터 */
