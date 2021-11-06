@@ -53,7 +53,7 @@ function UploadProductPage(props) {
 
 
   const onSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();  // antd 자체 적용
 
     if (
       !PdNameValue ||
@@ -66,20 +66,21 @@ function UploadProductPage(props) {
     ) {
       return alert("fill all the fields first!");
     }
-
+    console.log('props 는 : ', props);
     const variables = {
-      seller: props.user.userData._id,
+      // seller: props.user.userData._id,
       pdName: PdNameValue,
-      BrandName: BrandValue,
+      brandName: BrandValue,
       description: DescriptionValue,
       price: PriceValue,
       quantity: QuantityValue,
-      continents: ContinentsValue,
+      select: ContinentsValue,
       images: Images,
     };
 
     Axios.post("/api/mongo/product/uploadProduct", variables)
       .then((response) => {
+        console.log('props.user 는 : ', response);
       if (response.data.success) {
         alert("Product Successfully Uploaded");
         props.history.push("/");

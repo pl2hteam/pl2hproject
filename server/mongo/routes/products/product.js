@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-// const { Product } = require("../models/Product");
+const { Product } = require("../../models/Product");
 const multer = require("multer");
 const path = require('path');
 
 // const { auth } = require("../middleware/auth");
 const box = multer.diskStorage({
   destination(req, file, done) {
-    done(null, 'uploads');
+    done(null, 'uploads/img/');
   },
   filename(req, file, done) { // 제로초.png
     const ext = path.extname(file.originalname); // 확장자 추출(.png)
@@ -32,7 +32,6 @@ const upload = multer({ storage: box }).single("file");
 
 router.post("/uploadImage", (req, res) => {
   upload(req, res, err => {
-    console.log(res.req.file);
     if (err) return res.json({ success: false, err });
     return res.json({
       success: true,
@@ -43,10 +42,11 @@ router.post("/uploadImage", (req, res) => {
 });
 
 router.post("/uploadProduct", (req, res) => {
+  console.log(req.body);
   //save all the data we got from the client into the DB
   const product = new Product(req.body);
 
-  product.save((err) => {
+  product.save(req, res, err => {
     if (err) return res.status(400).json({ success: false, err });
     return res.status(200).json({ success: true });
   });
@@ -73,8 +73,6 @@ router.post("/getProducts", (req, res) => {
       }
     }
   }
-
-  console.log(findArgs);
 
   if (term) {
     Product.find(findArgs)
