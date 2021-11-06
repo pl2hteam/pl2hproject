@@ -15,6 +15,8 @@ import Login from '../components/pages/Login'
 import LoginPage from "../components/pages/LoginPage/LoginPage"
 import RegisterPage from "../components/pages/RegisterPage/RegisterPage"
 import UploadProductPage from "./pages/UploadProductPage/UploadProductPage";
+import ShopMainPage from "./pages/ShopMainPage/ShopMainPage";
+import DetailProductPage from "./pages/DetailProductPage/DetailProductPage";
 
 function App() {
   // const { palette } = useSelector(state => state);
@@ -52,7 +54,13 @@ function App() {
           <Route exact path="/">
             <Pic />
           </Route>
-          <Route exact path="/product/upload" component={Auth(UploadProductPage, false)} />
+          <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
+          <Route exact path="/product" component={Auth(ShopMainPage, false)} />
+          <Route
+            exact
+            path="/product/:pdNumber"
+            component={Auth(DetailProductPage, null)}
+          />
         </Switch>
       </div>
     </Suspense>

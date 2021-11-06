@@ -3,6 +3,8 @@ const router = express.Router();
 const { Product } = require("../../schemas/Product");
 const multer = require("multer");
 const path = require('path');
+const uploadProduct = require('./uploadproduct');
+const getProducts = require('./getproduct');
 
 /* 이미지 파일 이름 지정 */
 const box = multer.diskStorage({
@@ -31,8 +33,9 @@ const box = multer.diskStorage({
 
 },);
 
-/* 이미지 미리보기 */
 const upload = multer({ storage: box }).single("file");
+
+/* 이미지 미리보기 */
 router.post("/uploadImage", (req, res) => {
   upload(req, res, err => {
     if (err) return res.json({ success: false, err });
@@ -44,69 +47,13 @@ router.post("/uploadImage", (req, res) => {
   });
 });
 
-/* 이미지 DB 저장 */
-router.post("/uploadProduct", (req, res) => {
-  ///////////////// 4:30 데이터 넘어옴 - DB 저장 X
-  console.log(req.body);
-  //save all the data we got from the client into the DB
-  const product = new Product(req.body);
+/* shop 목록 저장 */
+router.use("/uploadProduct", uploadProduct);
 
-  product.save((err, doc) => {
-      if (err) return res.json({ success: false, err });
-      return res.status(200).json({ success: true });
-  });
-});
+/* shop 메인 */
+router.use("/getProducts", getProducts);
 
 
-router.post("/getProducts", (req, res) => {
-  let order = req.body.order ? req.body.order : "desc";
-  let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
-  let limit = req.body.limit ? parseInt(req.body.limit) : 100;
-  let skip = parseInt(req.body.skip);
-
-  let findArgs = {};
-  let term = req.body.searchTerm;
-
-  for (let key in req.body.filters) {
-    if (req.body.filters[key].length > 0) {
-      if (key === "price") {
-        findArgs[key] = {
-          $gte: req.body.filters[key][0],
-          $lte: req.body.filters[key][1],
-        };
-      } else {
-        findArgs[key] = req.body.filters[key];
-      }
-    }
-  }
-
-  if (term) {
-    Product.find(findArgs)
-      .find({ $text: { $search: term } })
-      .populate("seller")
-      .sort([[sortBy, order]])
-      .skip(skip)
-      .limit(limit)
-      .exec((err, products) => {
-        if (err) return res.status(400).json({ success: false, err });
-        res
-          .status(200)
-          .json({ success: true, products, postSize: products.length });
-      });
-  } else {
-    Product.find(findArgs)
-      .populate("seller")
-      .sort([[sortBy, order]])
-      .skip(skip)
-      .limit(limit)
-      .exec((err, products) => {
-        if (err) return res.status(400).json({ success: false, err });
-        res
-          .status(200)
-          .json({ success: true, products, postSize: products.length });
-      });
-  }
-});
 
 //?id=${pdnumber}&type=single
 //id=12121212,121212,1212121   type=array

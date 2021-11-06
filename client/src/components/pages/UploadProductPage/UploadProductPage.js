@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import Icon from '@ant-design/icons';
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
-function UploadProductPage(props) {
+const UploadProductPage = (props) => {
   const [PdNameValue, setPdNameValue] = useState("");
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
@@ -68,7 +67,7 @@ function UploadProductPage(props) {
         console.log('props.user 는 : ', response);
       if (response.data.success) {
         alert("Product Successfully Uploaded");
-        props.history.push("/");
+        props.history.push("/shop");
       } else {
         alert("Failed to upload Product");
       }

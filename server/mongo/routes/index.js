@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const logs = require('./logs/logs');
-const product = require("./products/product");
+const user = require('./users');
+const product = require("./products");
 
-router.use("/users", logs);
+/* 판매자 정보 */
+router.use("/users", user);
+
+/* 메인 상품 정보 */
 router.use("/product", product);
 
 module.exports = router;
