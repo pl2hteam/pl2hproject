@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
-import {Icon} from 'antd';
+import Icon from '@ant-design/icons';
 import Axios from "axios";
+
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
 
@@ -10,18 +11,22 @@ function FileUpload(props) {
     const config = {
       header: { "content-type": "multipart/form-data" },
     };
+    console.log(files[0]);
     formData.append("file", files[0]);
     //save the Image we chose inside the Node Server
-    Axios.post("/api/mongo/product/uploadImage", formData, config).then(
-      (response) => {
-        if (response.data.success) {
-          setImages([...Images, response.data.image]);
-          props.refreshFunction([...Images, response.data.image]);
-        } else {
-          alert("Failed to save the Image in Server");
+    Axios.post("/api/mongo/product/uploadImage", formData, config)
+      .then(
+        (response) => {
+          console.log(response.data);
+          if (response.data.success) {
+            console.log(response.data);
+            setImages([...Images, response.data.image]);
+            // props.refreshFunction([...Images, response.data.image]);
+          } else {
+            alert("Failed to save the Image in Server");
+          }
         }
-      }
-    );
+      );
   };
 
   // 업로드 대기중인 상품이미지 클릭 시 삭제 함수
@@ -53,8 +58,6 @@ function FileUpload(props) {
             }}
             {...getRootProps()}
           >
-            {console.log("getRootProps", { ...getRootProps() })}
-            {console.log("getInputProps", { ...getInputProps() })}
             <input {...getInputProps()} />
             <Icon type="plus" style={{ fontSize: "3rem" }} />
           </div>
@@ -69,11 +72,11 @@ function FileUpload(props) {
           overflowX: "scroll",
         }}
       >
-        {Images.map((image, index) => (
-          <div onClick={() => onDelete(image)}>
+        {Images.map((filename, index) => (
+          <div onClick={() => onDelete(filename)}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`http://localhost:5000/${image}`}
+              src={`http://localhost:5000/${filename}`}
               alt={`productImg-${index}`}
             />
           </div>

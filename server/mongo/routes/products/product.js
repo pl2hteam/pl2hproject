@@ -1,37 +1,38 @@
 const express = require("express");
 const router = express.Router();
-const { Product } = require("../models/Product");
+// const { Product } = require("../models/Product");
 const multer = require("multer");
+const path = require('path');
 
-const { auth } = require("../middleware/auth");
-
-var storage = multer.diskStorage({
-  // 상품등록할때 사진이 저장되는 경로 지정
-  destination: (req, file, cb) => {
-    cb(null, "server/uploads/thumbnails/");
+// const { auth } = require("../middleware/auth");
+const box = multer.diskStorage({
+  destination(req, file, done) {
+    done(null, 'uploads');
   },
-  // 저장되는 파일의 이름형식 지정 (`현재날짜_파일이름`)
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`);
+  filename(req, file, done) { // 제로초.png
+    const ext = path.extname(file.originalname); // 확장자 추출(.png)
+    const basename = path.basename(file.originalname, ext); // 제로초
+    done(null, basename + '_' + new Date().getTime() + ext); // 제로초15184712891.png
   },
-  // 상품등록 사진 확장자 제한 설정
-  fileFilter: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    if (ext !== ".jpg" || ext !== ".png") {
-      // 위 확장자 이외의 파일을 업로드하면 오류문구 출력
-      return cb(
-        res.status(400).end("jpg와 png 파일만 업로드 할 수 있읍니다"),
-        false
-      );
-    }
-    cb(null, true);
-  },
-});
+  // fileFilter(req, file, cb) {
+  //   const ext = path.extname(file.originalname);
+  //   if (ext !== ".jpg" || ext !== ".png") {
+  //     // 위 확장자 이외의 파일을 업로드하면 오류문구 출력
+  //     return cb(
+  //       res.status(400).end("jpg와 png 파일만 업로드 할 수 있읍니다"),
+  //       false
+  //     );
+  //   }
+  //   cb(null, true);
+  // },
+  // limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+},);
 
-var upload = multer({ storage: storage }).single("file");
+const upload = multer({ storage: box }).single("file");
 
-router.post("/uploadImage", auth, (req, res) => {
-  upload(req, res, (err) => {
+router.post("/uploadImage", (req, res) => {
+  upload(req, res, err => {
+    console.log(res.req.file);
     if (err) return res.json({ success: false, err });
     return res.json({
       success: true,
@@ -41,7 +42,7 @@ router.post("/uploadImage", auth, (req, res) => {
   });
 });
 
-router.post("/uploadProduct", auth, (req, res) => {
+router.post("/uploadProduct", (req, res) => {
   //save all the data we got from the client into the DB
   const product = new Product(req.body);
 

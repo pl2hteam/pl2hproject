@@ -22,7 +22,7 @@ app.set('port', process.env.PORT || 5000);
 sequelize
   .sync({ focus: false })
   .then(() => {
-    console.log("mysql db 연결 성공");
+    console.log("*** MySQL 연결 성공 ***");
   })
   .catch((err) => {
     console.error(err);
@@ -37,12 +37,12 @@ mongoose.connect(config.mongoURI,
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
   })
-  .then(() => console.log('MongoDB Connected...'))
+  .then(() => console.log('*** MongoDB 연결 성공 ***'))
   .catch(err => console.log(err));
 
 app.use(morgan('dev'));
 app.use(cors());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, '')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));

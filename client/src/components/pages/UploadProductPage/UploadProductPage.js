@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input, Icon } from "antd";
+import { Typography, Button, Form, message, Input } from "antd";
+import Icon from '@ant-design/icons';
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
-// const Continents = [
-//   { key: 1, value: "Africa" },
-//   { key: 2, value: "Europe" },
-//   { key: 3, value: "Asia" },
-//   { key: 4, value: "North America" },
-//   { key: 5, value: "South America" },
-//   { key: 6, value: "Australia" },
-//   { key: 7, value: "Antarctica" },
-// ];
+const Continents = [
+  { key: 1, value: "S" },
+  { key: 2, value: "M" },
+  { key: 3, value: "L" },
+  { key: 4, value: "XL" },
+  { key: 5, value: "2XL" },
+];
 
 function UploadProductPage(props) {
   const [PdNameValue, setPdNameValue] = useState("");
@@ -22,7 +21,7 @@ function UploadProductPage(props) {
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
   const [QuantityValue, setQuantityValue] = useState(1);
-
+  const [ContinentsValue, setContinentsValue] = useState(1);
   const [Images, setImages] = useState([]);
 
   const onPdNameChange = (event) => {
@@ -44,9 +43,15 @@ function UploadProductPage(props) {
     setQuantityValue(event.currentTarget.value);
   };
 
+  const onContinentsSelectChange = (event) => {
+    setContinentsValue(event.currentTarget.value);
+  }
+
   const updateImages = (newImages) => {
     setImages(newImages);
   };
+
+
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -56,6 +61,7 @@ function UploadProductPage(props) {
       !DescriptionValue ||
       !PriceValue ||
       !QuantityValue ||
+      !ContinentsValue ||
       !Images
     ) {
       return alert("fill all the fields first!");
@@ -64,13 +70,16 @@ function UploadProductPage(props) {
     const variables = {
       seller: props.user.userData._id,
       pdName: PdNameValue,
+      BrandName: BrandValue,
       description: DescriptionValue,
       price: PriceValue,
+      quantity: QuantityValue,
+      continents: ContinentsValue,
       images: Images,
-      continents: QuantityValue,
     };
 
-    Axios.post("/api/product/uploadProduct", variables).then((response) => {
+    Axios.post("/api/mongo/product/uploadProduct", variables)
+      .then((response) => {
       if (response.data.success) {
         alert("Product Successfully Uploaded");
         props.history.push("/");
@@ -83,7 +92,7 @@ function UploadProductPage(props) {
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Title level={2}> Upload Travel Product</Title>
+        <Title level={2}>커플 상품</Title>
       </div>
 
       <Form onSubmit={onSubmit}>
@@ -94,6 +103,10 @@ function UploadProductPage(props) {
         <br />
         <label>물품명</label>
         <Input onChange={onPdNameChange} value={PdNameValue} />
+        <br />
+        <br />
+        <label>브랜드</label>
+        <Input onChange={onBrandChange} value={BrandValue} />
         <br />
         <br />
         <label>상세정보</label>
@@ -110,17 +123,14 @@ function UploadProductPage(props) {
           value={QuantityValue}
           type="number"
         />
-        <br />
-        <br />
-        <label>브랜드</label>
-        <Input onChange={onBrandChange} value={BrandValue} />
-        {/* <select onChange={onContinentsSelectChange} value={QuantityValue}>
+
+        <select onChange={onContinentsSelectChange}>
           {Continents.map((item) => (
-            <option key={item.key} value={item.key}>
-              {item.value}{" "}
+            <option key={item.key}  value={ContinentsValue}>
+              {item.value}
             </option>
           ))}
-        </select> */}
+        </select>
         <br />
         <br />
 

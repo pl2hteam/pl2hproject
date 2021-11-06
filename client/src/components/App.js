@@ -14,6 +14,7 @@ import Pic from '../components/pages/Pic'
 import Login from '../components/pages/Login'
 import LoginPage from "../components/pages/LoginPage/LoginPage"
 import RegisterPage from "../components/pages/RegisterPage/RegisterPage"
+import UploadProductPage from "./pages/UploadProductPage/UploadProductPage";
 
 function App() {
   // const { palette } = useSelector(state => state);
@@ -24,32 +25,35 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route path="/profile">
+          <Route exact path="/profile">
             <Profile />
           </Route>
-          <Route path="/Home">
+          <Route exact path="/Home">
             <Home />
           </Route>
-          <Route path="/Join">
+          <Route exact path="/Join">
             <Join />
           </Route>
-          <Route path="/Jam">
+          <Route exact path="/Jam">
             <Jam />
           </Route>
-          <Route path="/Latter">
+          <Route exact path="/Latter">
             <Latter />
           </Route>
-          <Route path="/Mind">
+          <Route exact path="/Mind">
             <Mind />
           </Route>
-          <Route path="/Pic">
+          <Route exact path="/Pic">
             <Pic />
           </Route>
-          <Route path="/Calendar">
+          <Route exact path="/Calendar">
             <Calendar />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Pic />
+          </Route>
+          <Route path="/product/upload">
+            <UploadProductPage />
           </Route>
         </Switch>
       </div>
