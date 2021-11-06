@@ -7,21 +7,12 @@ import Axios from "axios";
 const { Title } = Typography;
 const { TextArea } = Input;
 
-const Continents = [
-  { key: 1, value: "S" },
-  { key: 2, value: "M" },
-  { key: 3, value: "L" },
-  { key: 4, value: "XL" },
-  { key: 5, value: "2XL" },
-];
-
 function UploadProductPage(props) {
   const [PdNameValue, setPdNameValue] = useState("");
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
   const [QuantityValue, setQuantityValue] = useState(1);
-  const [ContinentsValue, setContinentsValue] = useState(1);
   const [Images, setImages] = useState([]);
 
   const onPdNameChange = (event) => {
@@ -43,10 +34,6 @@ function UploadProductPage(props) {
     setQuantityValue(event.currentTarget.value);
   };
 
-  const onContinentsSelectChange = (event) => {
-    setContinentsValue(event.currentTarget.value);
-  }
-
   const updateImages = (newImages) => {
     setImages(newImages);
   };
@@ -61,7 +48,6 @@ function UploadProductPage(props) {
       !DescriptionValue ||
       !PriceValue ||
       !QuantityValue ||
-      !ContinentsValue ||
       !Images
     ) {
       return alert("fill all the fields first!");
@@ -74,7 +60,6 @@ function UploadProductPage(props) {
       description: DescriptionValue,
       price: PriceValue,
       quantity: QuantityValue,
-      select: ContinentsValue,
       images: Images,
     };
 
@@ -124,14 +109,6 @@ function UploadProductPage(props) {
           value={QuantityValue}
           type="number"
         />
-
-        <select onChange={onContinentsSelectChange}>
-          {Continents.map((item) => (
-            <option key={item.key}  value={ContinentsValue}>
-              {item.value}
-            </option>
-          ))}
-        </select>
         <br />
         <br />
 

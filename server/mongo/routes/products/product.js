@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Product } = require("../../models/Product");
+const { Product } = require("../../schemas/Product");
 const multer = require("multer");
 const path = require('path');
 
@@ -9,10 +9,10 @@ const box = multer.diskStorage({
   destination(req, file, done) {
     done(null, 'uploads/img/');
   },
-  filename(req, file, done) { // 제로초.png
-    const ext = path.extname(file.originalname); // 확장자 추출(.png)
-    const basename = path.basename(file.originalname, ext); // 제로초
-    done(null, basename + '_' + new Date().getTime() + ext); // 제로초15184712891.png
+  filename(req, file, done) {
+    const ext = path.extname(file.originalname);
+    const basename = path.basename(file.originalname, ext);
+    done(null, basename + '_' + new Date().getTime() + ext);
   },
 
 /* 현재 주석 풀면 오류 (이미지만 올라가는 기능) */

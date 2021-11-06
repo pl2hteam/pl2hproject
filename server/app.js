@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const path = require("path");
 const session = require('express-session');
 const dotenv = require('dotenv');
-const mongoose = require("mongoose");
 const { sequelize } = require("./mysql/models");
 const passportConfig = require('./mysql/passport')
 dotenv.config();
@@ -12,6 +11,7 @@ dotenv.config();
 /* DB 라우터 */
 const mysqlRouter = require('./mysql/routes/index');
 const mongoRouter = require('./mongo/routes/index');
+const passport = require("passport");
 
 const app = express();
 passportConfig();
@@ -29,16 +29,8 @@ sequelize
   });
 
 /* 몽고 DB 연결 */
-const config = require("./mongo/configmongo/key");
-const passport = require("passport");
-
-mongoose.connect(config.mongoURI,
-  {
-    useNewUrlParser: true, useUnifiedTopology: true,
-    useCreateIndex: true, useFindAndModify: false
-  })
-  .then(() => console.log('*** MongoDB 연결 성공 ***'))
-  .catch(err => console.log(err));
+const connect = require('./mongo/schemas');
+connect();
 
 app.use(morgan('dev'));
 app.use(cors());
