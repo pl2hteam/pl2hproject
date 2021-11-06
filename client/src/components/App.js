@@ -52,9 +52,7 @@ function App() {
           <Route exact path="/">
             <Pic />
           </Route>
-          <Route path="/product/upload">
-            <UploadProductPage />
-          </Route>
+          <Route exact path="/product/upload" component={Auth(UploadProductPage, false)} />
         </Switch>
       </div>
     </Suspense>

@@ -4,7 +4,7 @@ const { Product } = require("../../models/Product");
 const multer = require("multer");
 const path = require('path');
 
-// const { auth } = require("../middleware/auth");
+/* 이미지 파일 이름 지정 */
 const box = multer.diskStorage({
   destination(req, file, done) {
     done(null, 'uploads/img/');
@@ -14,6 +14,8 @@ const box = multer.diskStorage({
     const basename = path.basename(file.originalname, ext); // 제로초
     done(null, basename + '_' + new Date().getTime() + ext); // 제로초15184712891.png
   },
+
+/* 현재 주석 풀면 오류 (이미지만 올라가는 기능) */
   // fileFilter(req, file, cb) {
   //   const ext = path.extname(file.originalname);
   //   if (ext !== ".jpg" || ext !== ".png") {
@@ -26,10 +28,11 @@ const box = multer.diskStorage({
   //   cb(null, true);
   // },
   // limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+
 },);
 
+/* 이미지 미리보기 */
 const upload = multer({ storage: box }).single("file");
-
 router.post("/uploadImage", (req, res) => {
   upload(req, res, err => {
     if (err) return res.json({ success: false, err });
@@ -41,16 +44,19 @@ router.post("/uploadImage", (req, res) => {
   });
 });
 
+/* 이미지 DB 저장 */
 router.post("/uploadProduct", (req, res) => {
+  ///////////////// 4:30 데이터 넘어옴 - DB 저장 X
   console.log(req.body);
   //save all the data we got from the client into the DB
   const product = new Product(req.body);
 
-  product.save(req, res, err => {
-    if (err) return res.status(400).json({ success: false, err });
-    return res.status(200).json({ success: true });
+  product.save((err, doc) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).json({ success: true });
   });
 });
+
 
 router.post("/getProducts", (req, res) => {
   let order = req.body.order ? req.body.order : "desc";
