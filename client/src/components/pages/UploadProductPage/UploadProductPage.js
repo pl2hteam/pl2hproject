@@ -36,7 +36,7 @@ function UploadProductPage(props) {
   };
 
   const onPriceChange = (event) => {
-    setPriceValue(event.currentTarget.value);
+    setPriceValue(parseInt(event.currentTarget.value));
   };
 
   const onQuantityChange = (event) => {
@@ -66,9 +66,9 @@ function UploadProductPage(props) {
     ) {
       return alert("fill all the fields first!");
     }
-    console.log('props 는 : ', props);
+    console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      // seller: props.user.userData._id,
+      seller: props.user.userData._id,
       pdName: PdNameValue,
       brandName: BrandValue,
       description: DescriptionValue,
