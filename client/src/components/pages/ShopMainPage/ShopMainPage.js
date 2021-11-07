@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Axios from "axios";
-import { Col, Card, Row, Carousel } from "antd";
+import { Col, Card, Row } from "antd";
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from './Section/CheckBox';
-import { itemNumber } from './Section/Datas';
+import { itemNumber } from './Section/itemDatas';
+import Radiobox from './Section/RadioBox';
+import { price } from './Section/priceDatas';
+import SearchFeature from './Section/SearchFeature';
 
 const { Meta } = Card;
 
@@ -15,12 +18,12 @@ const ShopMainPage = () => {
   const [Filters, setFilters] = useState({
     itemNumber: [],
     price: [],
-  })
+  });
+  const [SearchTerm, setSearchTerm] = useState("");
 
   /* 삼품 목록 표기 (미완) */
   const renderCards = Products.map((product, index) => {
     return (
-      <React.Fragment key={index}>
         <Col lg={6} md={8} xs={24}
           key={index} // 단순히 에러를 문구를 없얘기 위해 넣음
         >
@@ -33,7 +36,6 @@ const ShopMainPage = () => {
             </Card>
           </div>
         </Col>
-      </React.Fragment>
     )
   })
 
@@ -68,6 +70,7 @@ const ShopMainPage = () => {
     setSkip(skip);
   }
 
+  /* 목록 검색 */
   const showFilteredResults = (filters) => {
     let body = {
       skip: 0,    // 처음엔 아무 선택 없음
@@ -78,13 +81,49 @@ const ShopMainPage = () => {
     setSkip(0)
   }
 
+  /* 라디오버튼 검색 */
+  const handlePrice = (value) => {
+    const data = price;
+    let array = [];
+
+    for (let key in data) {
+      if (data[key]._id === parseInt(value, 10)) {
+        array = data[key].array;
+      }
+    }
+    return array;
+  } 
+
   // category 는 체크박스랑 라디오 박스를 나누기 위한 것
   const handleFilters = (filters, category) => {
+    console.log('filters', filters);
     const newFilters = { ...Filters };
     newFilters[category] = filters;
+    
+    if (category === "price") {
+      let priceValues = handlePrice(filters)
+      newFilters[category] = priceValues;
+    }
+
     showFilteredResults(newFilters);
+    setFilters(newFilters);
   }
 
+  /* 텍스트 검색 */
+  const updateSearchTerm = (newSearchTerm) => {
+    let body = {
+      skip: 0,
+      limit: Limit,
+      filters: Filters,
+      searchTerm: newSearchTerm,
+    }
+
+    setSkip(0);
+    setSearchTerm(newSearchTerm);
+    getProducts(body);
+  }
+
+  /* default */
   useEffect(() => {
     let variables = {
       skip: Skip,
@@ -94,18 +133,32 @@ const ShopMainPage = () => {
     getProducts(variables);
   }, [])
 
-  console.log(itemNumber);
   return (
     <div style={{ width:'75%', margin: '3rem auto' }}>
       <div style={{ textAlign: 'center' }}>
         <h2>상품 메인 화면</h2>
       </div>
 
-      <CheckBox 
-        list={itemNumber} 
-        handleFilters={filters => handleFilters(filters, "itemNumber")} 
-      />
-
+      <Row gutter={[16, 16]}>
+        <Col lg={12} xs={24}>
+          <CheckBox 
+            list={itemNumber} 
+            handleFilters={filters => handleFilters(filters, "itemNumber")} 
+          />
+        </Col>
+        <Col lg={12} xs={24}>
+          <Radiobox 
+            list={price}
+            handleFilters={filters => handleFilters(filters, "price")} 
+          />
+        </Col>
+      </Row>
+    
+      <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '1rem auto' }}>        
+        <SearchFeature 
+          refreshFunction={updateSearchTerm}
+        />
+      </div>
 
       <Row gutter={[16, 16]}>
         {renderCards}
@@ -123,204 +176,3 @@ const ShopMainPage = () => {
 };
 
 export default ShopMainPage;
-
-
-// import React, { useEffect, useState } from "react";
-// import Axios from "axios";
-// 
-// import ImageSlider from "../../utils/ImageSlider";
-// import CheckBox from "./Sections/CheckBox";
-// import RadioBox from "./Sections/RadioBox";
-// import { itemNumber, price } from "./Sections/Datas";
-// import SearchFeature from "./Sections/SearchFeature";
-
-// const { Meta } = Card;
-
-// const ShopMainPage = () => {
-//   const [Products, setProducts] = useState([]);
-//   const [Skip, setSkip] = useState(0);
-//   const [Limit, setLimit] = useState(8);
-//   const [PostSize, setPostSize] = useState();
-//   const [SearchTerms, setSearchTerms] = useState("");
-
-//   const [Filters, setFilters] = useState({
-//     continents: [],
-//     price: [],
-//   });
-
-//   useEffect(() => {
-//     const variables = {
-//       skip: Skip,
-//       limit: Limit,
-//     };
-
-//     getProducts(variables);
-//   }, []);
-
-//   const getProducts = (variables) => {
-//     Axios.post("/api/mongo/product/getProducts", variables)
-//       .then((response) => {
-//         if (response.data.success) {
-//           if (variables.loadMore) {
-//             setProducts([...Products, ...response.data.products]);
-//           } else {
-//             setProducts(response.data.products);
-//           }
-//           setPostSize(response.data.postSize);
-//         } else {
-//           alert(" 목록울 가져오는데 실패했습니다. ");
-//         }
-//       });
-//   };
-
-//   const onLoadMore = () => {
-//     let skip = Skip + Limit;
-
-//     const variables = {
-//       skip: skip,
-//       limit: Limit,
-//       loadMore: true,
-//       filters: Filters,
-//       searchTerm: SearchTerms,
-//     };
-//     getProducts(variables);
-//     setSkip(skip);
-//   };
-
-//   const renderCards = Products.map((product, index) => {
-//     return (
-//       <Col lg={6} md={8} xs={24}>
-//         <Card
-//           hoverable={true}
-//           cover={
-//             <a href={`/product/${product._id}`}>
-//               {" "}
-//               <ImageSlider images={product.images} />
-//             </a>
-//           }
-//         >
-//           <Meta pdName={product.pdName} description={`${product.price} 원`} />
-//         </Card>
-//       </Col>
-//     );
-//   });
-
-//   const showFilteredResults = (filters) => {
-//     const variables = {
-//       skip: 0,
-//       limit: Limit,
-//       filters: filters,
-//     };
-//     getProducts(variables);
-//     setSkip(0);
-//   };
-
-//   const handlePrice = (value) => {
-//     const data = price;
-//     let array = [];
-
-//     for (let key in data) {
-//       if (data[key]._id === parseInt(value, 10)) {
-//         array = data[key].array;
-//       }
-//     }
-//     console.log("array", array);
-//     return array;
-//   };
-
-//   const handleFilters = (filters, category) => {
-//     const newFilters = { ...Filters };
-
-//     newFilters[category] = filters;
-
-//     if (category === "price") {
-//       let priceValues = handlePrice(filters);
-//       newFilters[category] = priceValues;
-//     }
-
-//     console.log(newFilters);
-
-//     showFilteredResults(newFilters);
-//     setFilters(newFilters);
-//   };
-
-//   const updateSearchTerms = (newSearchTerm) => {
-//     const variables = {
-//       skip: 0,
-//       limit: Limit,
-//       filters: Filters,
-//       searchTerm: newSearchTerm,
-//     };
-
-//     setSkip(0);
-//     setSearchTerms(newSearchTerm);
-
-//     getProducts(variables);
-//   };
-
-//   return (
-//     <div style={{ width: "75%", margin: "3rem auto" }}>
-//       <div style={{ textAlign: "center" }}>
-//         <h2>
-//           {" "}
-//           Let's Travel Anywhere{" "}
-//         </h2>
-//       </div>
-
-//       {/* Filter  */}
-
-//       <Row gutter={[16, 16]}>
-//         <Col lg={12} xs={24}>
-//           <CheckBox
-//             list={continents}
-//             handleFilters={(filters) => handleFilters(filters, "continents")}
-//           />
-//         </Col>
-//         <Col lg={12} xs={24}>
-//           <RadioBox
-//             list={price}
-//             handleFilters={(filters) => handleFilters(filters, "price")}
-//           />
-//         </Col>
-//       </Row>
-
-//       {/* Search  */}
-//       <div
-//         style={{
-//           display: "flex",
-//           justifyContent: "flex-end",
-//           margin: "1rem auto",
-//         }}
-//       >
-//         <SearchFeature refreshFunction={updateSearchTerms} />
-//       </div>
-
-//       {Products.length === 0 ? (
-//         <div
-//           style={{
-//             display: "flex",
-//             height: "300px",
-//             justifyContent: "center",
-//             alignItems: "center",
-//           }}
-//         >
-//           <h2>No post yet...</h2>
-//         </div>
-//       ) : (
-//         <div>
-//           <Row gutter={[16, 16]}>{renderCards}</Row>
-//         </div>
-//       )}
-//       <br />
-//       <br />
-
-//       {PostSize >= Limit && (
-//         <div style={{ display: "flex", justifyContent: "center" }}>
-//           <button onClick={onLoadMore}>Load More</button>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default ShopMainPage;

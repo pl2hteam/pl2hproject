@@ -9,26 +9,25 @@ router.post("/", (req, res) => {
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
   let findArgs = {};
-  // let term = req.body.searchTerm;
+  let term = req.body.searchTerm;
 
   for (let key in req.body.filters) {
     if (req.body.filters[key].length > 0) {
-      findArgs[key] = req.body.filters[key];
-      // if (key === "price") {
-      //   findArgs[key] = {
-      //     $gte: req.body.filters[key][0],
-      //     $lte: req.body.filters[key][1],
-      //   };
-      // } else {
-      //   findArgs[key] = req.body.filters[key];
-      // }
+      if (key === "price") {
+        findArgs[key] = {
+          $gte: req.body.filters[key][0], // $gte : 몽고디비 용어로 해당 값보다 크거나 같음
+          $lte: req.body.filters[key][1], // $lte : 몽고디비 용어로 해당 값보다 작거나 같음
+        };
+      } else {
+        findArgs[key] = req.body.filters[key];
+      }
     }
   }
 
   console.log('findArgs : ', findArgs);
-  // if (term) { findArgs products, postSize: products.length
+  if (term) {
     Product.find(findArgs)
-      // .find({ $text: { $search: term } })
+      .find({ $text: { $search: term } })
       .populate("seller")
       // .sort([[sortBy, order]])
       .skip(skip)
@@ -39,19 +38,18 @@ router.post("/", (req, res) => {
           .status(200)
           .json({ success: true, productInfo, postSize: productInfo.length });
       });
-  // } else {
-  //   Product.find(findArgs)
-  //     .populate("seller")
-  //     .sort([[sortBy, order]])
-  //     .skip(skip)
-  //     .limit(limit)
-  //     .exec((err, products) => {
-  //       if (err) return res.status(400).json({ success: false, err });
-  //       res
-  //         .status(200)
-  //         .json({ success: true, products, postSize: products.length });
-  //     });
-  // }
+  } else {
+    Product.find(findArgs)
+      .populate("seller")
+      .skip(skip)
+      .limit(limit)
+      .exec((err, products) => {
+        if (err) return res.status(400).json({ success: false, err });
+        res
+          .status(200)
+          .json({ success: true, products, postSize: products.length });
+      });
+  }
 });
 
 module.exports = router;
