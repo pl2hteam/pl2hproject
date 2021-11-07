@@ -4,6 +4,7 @@ import Auth from "../hoc/auth";
 import { useSelector } from 'react-redux'
 import Home from "../components/pages/Home.js";
 import Profile from '../components/pages/Profile';
+import { ThemeProvider } from 'styled-components';
 
 import Join from "../components/pages/Join"
 import Jam from '../components/pages/Jam';
@@ -19,10 +20,10 @@ import ShopMainPage from "./pages/ShopMainPage/ShopMainPage";
 import DetailProductPage from "./pages/DetailProductPage/DetailProductPage";
 
 function App() {
-  // const { palette } = useSelector(state => state);
+  const { palette } = useSelector(state => state);
   return (
     <Suspense fallback={<div>Loading...</div>}>
-
+      <ThemeProvider theme={palette}>
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           <Route exact path="/profile">
@@ -63,6 +64,7 @@ function App() {
           />
         </Switch>
       </div>
+      </ThemeProvider>
     </Suspense>
 
   );

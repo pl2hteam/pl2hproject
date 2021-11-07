@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { MdCached, MdDone } from 'react-icons/md';
-import { setColor } from '../../../module/palette';
+import { setColor } from '../../../_reducers/palette';
 import { getRandomHexColor } from '../../../utils/utils';
 
 const Wrapper = styled.div`
