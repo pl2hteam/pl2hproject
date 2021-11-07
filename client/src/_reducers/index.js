@@ -6,7 +6,7 @@ import user from './user_reducer';
 const rootReducer = combineReducers({
     palette,
     playlist,
-    user,
+    // user,
 });
 
 export default rootReducer;
