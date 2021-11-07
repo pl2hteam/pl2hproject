@@ -33,9 +33,9 @@ const productSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    select: {
-      type: String,
-      trim: true,
+    itemNumber: {
+      type: Number,
+      default: 1,
     },
     views: {
       type: Number,

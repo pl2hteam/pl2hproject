@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Col, Card, Row, Carousel } from "antd";
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from './Section/CheckBox';
-import { continents } from './Section/Datas';
+import { itemNumber } from './Section/Datas';
 
 const { Meta } = Card;
 
@@ -12,8 +12,8 @@ const ShopMainPage = () => {
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
-  const [Filter, setFilter] = useState({
-    continets: [],
+  const [Filters, setFilters] = useState({
+    itemNumber: [],
     price: [],
   })
 
@@ -68,21 +68,21 @@ const ShopMainPage = () => {
     setSkip(skip);
   }
 
-  const showFilterResults = (filters) => {
+  const showFilteredResults = (filters) => {
     let body = {
       skip: 0,    // 처음엔 아무 선택 없음
       limit: Limit,
       filters: filters
     }
-    
     getProducts(body)
     setSkip(0)
   }
 
+  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
   const handleFilters = (filters, category) => {
-    const newFilters = { ...Filters }
-    newFilters[category] = filters
-    showFilterResults(newFilters)
+    const newFilters = { ...Filters };
+    newFilters[category] = filters;
+    showFilteredResults(newFilters);
   }
 
   useEffect(() => {
@@ -94,7 +94,7 @@ const ShopMainPage = () => {
     getProducts(variables);
   }, [])
 
-  console.log(continents);
+  console.log(itemNumber);
   return (
     <div style={{ width:'75%', margin: '3rem auto' }}>
       <div style={{ textAlign: 'center' }}>
@@ -102,8 +102,8 @@ const ShopMainPage = () => {
       </div>
 
       <CheckBox 
-        list={continents} 
-        handleFilters={filters => handleFilters(filters, "continents")} 
+        list={itemNumber} 
+        handleFilters={filters => handleFilters(filters, "itemNumber")} 
       />
 
 
@@ -131,7 +131,7 @@ export default ShopMainPage;
 // import ImageSlider from "../../utils/ImageSlider";
 // import CheckBox from "./Sections/CheckBox";
 // import RadioBox from "./Sections/RadioBox";
-// import { continents, price } from "./Sections/Datas";
+// import { itemNumber, price } from "./Sections/Datas";
 // import SearchFeature from "./Sections/SearchFeature";
 
 // const { Meta } = Card;

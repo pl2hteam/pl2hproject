@@ -8,24 +8,26 @@ router.post("/", (req, res) => {
   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
-  // let findArgs = {};
+  let findArgs = {};
   // let term = req.body.searchTerm;
 
-  // for (let key in req.body.filters) {
-  //   if (req.body.filters[key].length > 0) {
-  //     if (key === "price") {
-  //       findArgs[key] = {
-  //         $gte: req.body.filters[key][0],
-  //         $lte: req.body.filters[key][1],
-  //       };
-  //     } else {
-  //       findArgs[key] = req.body.filters[key];
-  //     }
-  //   }
-  // }
+  for (let key in req.body.filters) {
+    if (req.body.filters[key].length > 0) {
+      findArgs[key] = req.body.filters[key];
+      // if (key === "price") {
+      //   findArgs[key] = {
+      //     $gte: req.body.filters[key][0],
+      //     $lte: req.body.filters[key][1],
+      //   };
+      // } else {
+      //   findArgs[key] = req.body.filters[key];
+      // }
+    }
+  }
 
+  console.log('findArgs : ', findArgs);
   // if (term) { findArgs products, postSize: products.length
-    Product.find()
+    Product.find(findArgs)
       // .find({ $text: { $search: term } })
       .populate("seller")
       // .sort([[sortBy, order]])
