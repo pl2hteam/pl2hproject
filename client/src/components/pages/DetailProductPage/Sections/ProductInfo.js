@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { Button, Descriptions } from "antd";
+// import React, { useEffect, useState } from "react";
+// import { Button, Descriptions } from "antd";
 
-function ProductInfo(props) {
-  const [Product, setProduct] = useState({});
+// function ProductInfo(props) {
+//   const [Product, setProduct] = useState({});
 
-  useEffect(() => {
-    setProduct(props.detail);
-  }, [props.detail]);
+//   useEffect(() => {
+//     setProduct(props.detail);
+//   }, [props.detail]);
 
-  const addToCarthandler = () => {
-    props.addToCart(props.detail._id);
-  };
+//   const addToCarthandler = () => {
+//     props.addToCart(props.detail._id);
+//   };
 
-  return (
-    <div>
-      <Descriptions title="Product Info">
-        <Descriptions.Item label="Price"> {Product.price}</Descriptions.Item>
-        <Descriptions.Item label="Brand"> {Product.brand}</Descriptions.Item>
-        <Descriptions.Item label="Seller"> {Product.seller}</Descriptions.Item>
-        <Descriptions.Item label="Description">
-          {" "}
-          {Product.description}
-        </Descriptions.Item>
-      </Descriptions>
+//   return (
+//     <div>
+//       <Descriptions title="Product Info">
+//         <Descriptions.Item label="Price"> {Product.price}</Descriptions.Item>
+//         <Descriptions.Item label="Brand"> {Product.brand}</Descriptions.Item>
+//         <Descriptions.Item label="Seller"> {Product.seller}</Descriptions.Item>
+//         <Descriptions.Item label="Description">
+//           {" "}
+//           {Product.description}
+//         </Descriptions.Item>
+//       </Descriptions>
 
-      <br />
-      <br />
-      <br />
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button
-          size="large"
-          shape="round"
-          type="danger"
-          onClick={addToCarthandler}
-        >
-          Add to Cart
-        </Button>
-      </div>
-    </div>
-  );
-}
+//       <br />
+//       <br />
+//       <br />
+//       <div style={{ display: "flex", justifyContent: "center" }}>
+//         <Button
+//           size="large"
+//           shape="round"
+//           type="danger"
+//           onClick={addToCarthandler}
+//         >
+//           Add to Cart
+//         </Button>
+//       </div>
+//     </div>
+//   );
+// }
 
-export default ProductInfo;
+// export default ProductInfo;

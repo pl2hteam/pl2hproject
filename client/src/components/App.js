@@ -25,8 +25,6 @@ function App() {
 
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/profile">
             <Profile />
           </Route>
@@ -54,8 +52,10 @@ function App() {
           <Route exact path="/">
             <Pic />
           </Route>
-          <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
-          <Route exact path="/product" component={Auth(ShopMainPage, false)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/shop/upload" component={Auth(UploadProductPage, true)} />
+          <Route exact path="/shop" component={Auth(ShopMainPage, false)} />
           <Route
             exact
             path="/product/:pdNumber"

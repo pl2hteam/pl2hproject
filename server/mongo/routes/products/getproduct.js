@@ -5,8 +5,8 @@ const router = express.Router();
 router.post("/", (req, res) => {
   // let order = req.body.order ? req.body.order : "desc";
   // let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
-  // let limit = req.body.limit ? parseInt(req.body.limit) : 100;
-  // let skip = parseInt(req.body.skip);
+  let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+  let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
   // let findArgs = {};
   // let term = req.body.searchTerm;
@@ -29,13 +29,13 @@ router.post("/", (req, res) => {
       // .find({ $text: { $search: term } })
       .populate("seller")
       // .sort([[sortBy, order]])
-      // .skip(skip)
-      // .limit(limit)
-      .exec((err, products) => {
+      .skip(skip)
+      .limit(limit)
+      .exec((err, productInfo) => {
         if (err) return res.status(400).json({ success: false, err });
         return res
           .status(200)
-          .json({ success: true });
+          .json({ success: true, productInfo, postSize: productInfo.length });
       });
   // } else {
   //   Product.find(findArgs)
