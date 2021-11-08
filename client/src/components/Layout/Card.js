@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   z-index: 10;
@@ -8,9 +8,9 @@ const Wrapper = styled.div`
   height: 96%;
   margin-top: 10px;
   padding: 20px;
-  border: 1px solid ${props => props.theme.cardBorder.color};
+
   border-radius: 10px;
-  background: ${props => props.theme.cardBg.color};
+
   section {
     width: 100%;
     height: 100%;

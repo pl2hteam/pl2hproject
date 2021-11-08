@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     margin: 10px 5px;
     p:first-of-type {
-      color: ${props => props.theme.textColor.color};
+      color: green;
     }
     p:last-of-type {
       font-size: 0.9rem;

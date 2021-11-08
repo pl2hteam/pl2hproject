@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { publicUrl } from '../../../../utils/utils';
+import { publicUrl } from '../../../utils/utils'
 
 const Wrapper = styled.div`
   padding: 10px 0;

@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import Layout from '../../components/Layout/Layout';
-import Sidebar from '../../components/Layout/Sidebar';
-import Content from '../../components/Layout/Content';
-import Card from '../../components/Layout/Card';
+import React from "react";
+import styled from "styled-components";
+import Layout from "../../components/Layout/Layout";
+import Sidebar from "../../components/Layout/Sidebar";
+import Content from "../../components/Layout/Content";
+import Card from "../../components/Layout/Card";
 import {
   MdLink,
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
-} from 'react-icons/md';
-import { publicUrl } from '../../utils/utils';
+} from "react-icons/md";
+import { publicUrl } from "../utils/utils"
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const ContentSection = styled.section`
     padding: 5px;
     margin-bottom: 10px;
     font-weight: bold;
-    color: ${props => props.theme.mainColor.color};
+    color: green;
   }
   &:first-of-type {
     h2 {
@@ -77,7 +77,7 @@ const ProfileSection = styled.section`
   }
   .my-name {
     margin-right: 5px;
-    color: ${props => props.theme.mainColor.color};
+    color: green;
     font-size: 1rem;
     font-weight: bold;
   }
@@ -109,16 +109,16 @@ const LinkTitle = styled.p`
     font-size: 1.2rem;
   }
   &:hover {
-    color: ${props => props.theme.mainColor.color};
+    color: green;
   }
 `;
 
 const Home = () => {
   const goGithub = () => {
-    window.location.href = 'https://github.com/danbiilee/react-miniportfoly';
+    window.location.href = "https://github.com/danbiilee/react-miniportfoly";
   };
   const goVelog = () => {
-    window.location.href = 'https://velog.io/@dblee';
+    window.location.href = "https://velog.io/@dblee";
   };
 
   return (
@@ -127,7 +127,7 @@ const Home = () => {
         <Card>
           <FlexWrapper>
             <ProfileSection>
-              <img src={publicUrl + '/resources/img/memo_.jpg'} alt="profile" />
+              <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
               <LinkTitle onClick={goGithub}>
                 <MdLink />
                 Github
@@ -165,7 +165,7 @@ const Home = () => {
             <h2>미니룸</h2>
             <div>
               <img
-                src={publicUrl + '/resources/img/miniroom.gif'}
+                src={publicUrl + "/resources/img/miniroom.gif"}
                 alt="miniroom"
               />
             </div>

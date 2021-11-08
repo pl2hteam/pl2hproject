@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink, useRouteMatch } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { NavLink, useRouteMatch } from "react-router-dom";
+import styled from "styled-components";
 
 const ListDiv = styled.div`
   h2 {
@@ -8,7 +8,7 @@ const ListDiv = styled.div`
     border-bottom: 1px solid gray;
     font-weight: bold;
     a {
-      color: ${props => props.theme.mainColor.color};
+      color: green;
     }
   }
   nav > ul > li > a {
@@ -26,9 +26,9 @@ const ListDiv = styled.div`
       padding-left: 15px;
     }
     a {
-      color: ${props => props.theme.textColor.color};
+      color: green;
       &.selected {
-        color: ${props => props.theme.mainColor.color};
+        color: green;
         font-weight: bold;
       }
     }
@@ -47,12 +47,12 @@ const SubMenu = ({ title, list }) => {
       </h2>
       <nav>
         <ul>
-          {list.map(item => (
+          {list.map((item) => (
             <li key={item.id}>
               <NavLink to={match.url + item.url}>{item.title}</NavLink>
               {item.child && (
                 <ul>
-                  {item.child.map(child => (
+                  {item.child.map((child) => (
                     <li key={child.id}>
                       <NavLink
                         to={match.url + item.url + child.url}

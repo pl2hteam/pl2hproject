@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const Nav = styled.nav`
   z-index: -1;
@@ -13,7 +13,7 @@ const Nav = styled.nav`
       width: 85px;
       margin-bottom: 2px;
       padding: 10px 10px 10px 15px;
-      background: ${props => props.theme.mainColor.color};
+      background: green;
       border: 1px solid #a5a5a5;
       border-radius: 10px;
       color: #fff;
@@ -38,34 +38,11 @@ function MainMenu() {
         </li>
         <li>
           <NavLink to="/profile" activeClassName="selected">
-           SNS
+            SNS
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/Jam" activeClassName="selected">
-            놀거리
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Latter" activeClassName="selected">
-            편지
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Mind" activeClassName="selected">
-            심리
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Pic" activeClassName="selected">
-            사진첩
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Calendar" activeClassName="selected">
-            캘린더
-          </NavLink>
-        </li>
+      
+       
       </ul>
     </Nav>
   );

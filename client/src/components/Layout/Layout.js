@@ -1,20 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
-import Setting from '../Setting';
+import React from "react";
+import styled from "styled-components";
+
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background: ${props => props.theme.bg.color};
+  background: green;
 `;
 
 const BorderWrapper = styled.div`
   width: 75%;
   height: 95vh;
   padding: 25px;
-  background: ${props => props.theme.layoutBg1.color};
-  border: 1px solid ${props => props.theme.layoutBorder1.color};
+  background: green;
+  border: 1px solid green;
   border-radius: 10px;
 `;
 
@@ -24,8 +24,8 @@ const BgWrapper = styled.div`
   display: flex;
   height: 100%;
   padding: 20px 8px 8px;
-  background: ${props => props.theme.layoutBg2.color};
-  border: 2px dashed ${props => props.theme.layoutBorder2.color};
+  background: green;
+  border: 2px dashed green;
   border-radius: 10px;
 `;
 
@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
       <BorderWrapper>
         <BgWrapper>{children}</BgWrapper>
       </BorderWrapper>
-      <Setting />
+
     </Wrapper>
   );
 };
