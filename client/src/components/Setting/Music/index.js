@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Audio } from '../../../utils/utils';
-import { setCurSong } from '../../../module/playlist';
+import { setCurSong } from '../../../_reducers/playlist';
 
 
 const Wrapper = styled.div`

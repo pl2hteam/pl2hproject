@@ -109,7 +109,6 @@ function UploadProductPage(props) {
           value={QuantityValue}
           type="number"
         />
-
         <br />
         <br />
 

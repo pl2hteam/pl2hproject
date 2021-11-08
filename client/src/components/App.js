@@ -4,6 +4,7 @@ import Auth from "../hoc/auth";
 import { useSelector } from 'react-redux'
 import Home from "../components/pages/Home.js";
 import Profile from '../components/pages/Profile';
+import { ThemeProvider } from 'styled-components';
 
 import Join from "../components/pages/Join"
 import Jam from '../components/pages/Jam';
@@ -15,16 +16,16 @@ import Login from '../components/pages/Login'
 import LoginPage from "../components/pages/LoginPage/LoginPage"
 import RegisterPage from "../components/pages/RegisterPage/RegisterPage"
 import UploadProductPage from "./pages/UploadProductPage/UploadProductPage";
+import ShopMainPage from "./pages/ShopMainPage/ShopMainPage";
+import DetailProductPage from "./pages/DetailProductPage/DetailProductPage";
 
 function App() {
-  // const { palette } = useSelector(state => state);
+  const { palette } = useSelector(state => state);
   return (
     <Suspense fallback={<div>Loading...</div>}>
-
+      <ThemeProvider theme={palette}>
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/profile">
             <Profile />
           </Route>
@@ -52,9 +53,18 @@ function App() {
           <Route exact path="/">
             <Pic />
           </Route>
-          <Route exact path="/product/upload" component={Auth(UploadProductPage, false)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/shop/upload" component={Auth(UploadProductPage, true)} />
+          <Route exact path="/shop" component={Auth(ShopMainPage, false)} />
+          <Route
+            exact
+            path="/product/:pdNumber"
+            component={Auth(DetailProductPage, null)}
+          />
         </Switch>
       </div>
+      </ThemeProvider>
     </Suspense>
 
   );
