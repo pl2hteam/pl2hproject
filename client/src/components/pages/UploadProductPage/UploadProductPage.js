@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import Icon from '@ant-design/icons';
+import Icon from "@ant-design/icons";
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
 
 const { Title } = Typography;
 const { TextArea } = Input;
-
-const Continents = [
-  { key: 1, value: "S" },
-  { key: 2, value: "M" },
-  { key: 3, value: "L" },
-  { key: 4, value: "XL" },
-  { key: 5, value: "2XL" },
-];
 
 function UploadProductPage(props) {
   const [PdNameValue, setPdNameValue] = useState("");
@@ -21,7 +13,6 @@ function UploadProductPage(props) {
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
   const [QuantityValue, setQuantityValue] = useState(1);
-  const [ContinentsValue, setContinentsValue] = useState(1);
   const [Images, setImages] = useState([]);
 
   const onPdNameChange = (event) => {
@@ -43,14 +34,9 @@ function UploadProductPage(props) {
     setQuantityValue(event.currentTarget.value);
   };
 
-  const onContinentsSelectChange = (event) => {
-    setContinentsValue(event.currentTarget.value);
-  }
-
   const updateImages = (newImages) => {
     setImages(newImages);
   };
-
 
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
@@ -61,12 +47,11 @@ function UploadProductPage(props) {
       !DescriptionValue ||
       !PriceValue ||
       !QuantityValue ||
-      !ContinentsValue ||
       !Images
     ) {
       return alert("fill all the fields first!");
     }
-    console.log('props id 는 : ', props.user.userData._id);
+    console.log("props id 는 : ", props.user.userData._id);
     const variables = {
       seller: props.user.userData._id,
       pdName: PdNameValue,
@@ -74,20 +59,20 @@ function UploadProductPage(props) {
       description: DescriptionValue,
       price: PriceValue,
       quantity: QuantityValue,
-      select: ContinentsValue,
       images: Images,
     };
 
-    Axios.post("/api/mongo/product/uploadProduct", variables)
-      .then((response) => {
-        console.log('props.user 는 : ', response);
-      if (response.data.success) {
-        alert("Product Successfully Uploaded");
-        props.history.push("/");
-      } else {
-        alert("Failed to upload Product");
+    Axios.post("/api/mongo/product/uploadProduct", variables).then(
+      (response) => {
+        console.log("props.user 는 : ", response);
+        if (response.data.success) {
+          alert("Product Successfully Uploaded");
+          props.history.push("/");
+        } else {
+          alert("Failed to upload Product");
+        }
       }
-    });
+    );
   };
 
   return (
@@ -125,13 +110,6 @@ function UploadProductPage(props) {
           type="number"
         />
 
-        <select onChange={onContinentsSelectChange}>
-          {Continents.map((item) => (
-            <option key={item.key}  value={ContinentsValue}>
-              {item.value}
-            </option>
-          ))}
-        </select>
         <br />
         <br />
 
