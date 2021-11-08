@@ -1,14 +1,12 @@
-import "../../../utils/Section/style.scss";
-import loginImg from "../../../../login.svg";
-
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import { loginUser } from "../../../../_actions/user_actions";
+import { loginUser } from "../../../_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import loginImg from "../../../login.svg";
 
-const LoginPage = (props) => {
+const SnsLoginPage = (props) => {
   const dispatch = useDispatch();
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
@@ -83,8 +81,8 @@ const LoginPage = (props) => {
         return (
           <div className="app">
             <form onSubmit={handleSubmit} style={{ width: "350px" }}>
-              {/* <div className="base-container" ref={this.props.containerRef}> */}
-              <div className="base-container">
+              {/* <div className="base-container"  */}
+              <div className="base-container" ref={props.containerRef}>
                 <div className="header">Login</div>
                 <div className="content">
                   <div className="image">
@@ -179,4 +177,4 @@ const LoginPage = (props) => {
   );
 }
 
-export default withRouter(LoginPage);
+export default withRouter(SnsLoginPage);

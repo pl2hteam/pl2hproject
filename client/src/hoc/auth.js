@@ -11,14 +11,14 @@ export default function (ComposedClass, reload, adminRoute = null) {
       dispatch(auth()).then(async (response) => {
         if (await !response.payload.isAuth) {
           if (reload) {
-            props.history.push("/login");
+            props.history.push("/");
           }
         } else {
           if (adminRoute && !response.payload.isAdmin) {
-            props.history.push("/");
+            props.history.push("/sns");
           } else {
             if (reload === false) {
-              props.history.push("/");
+              props.history.push("/shop");
             }
           }
         }

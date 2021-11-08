@@ -4,10 +4,11 @@ import Auth from "../hoc/auth";
 import Home from "../components/pages/Home.js";
 import Profile from "../components/pages/Profile";
 
-import LoginPage from "../components/pages/Shop/LoginPage/LoginPage";
+// import LoginPage from "../components/pages/Shop/LoginPage/LoginPage";
 import RegisterPage from "../components/pages/Shop/RegisterPage/RegisterPage";
 import ShopMainPage from "../components/pages/Shop/ShopMain/ShopMainPage";
 import UploadProductPage from "../components/pages/Shop/UploadProductPage/UploadProductPage";
+import MainLogin from "../components/utils/MainLogin";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
           <Switch>
             {/* MAIN */}
-            <Route exact path="/" component={Auth(LoginPage, false)} />
+            <Route exact path="/" component={Auth(MainLogin, false)} />
+            {/* <Route exact path="/" component={Auth(LoginPage, false)} /> */}
             <Route exact path="/register" component={Auth(RegisterPage, false)} />
 
             {/* SNS */}
