@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import FileUpload from "../../utils/FileUpload";
+import FileUpload from "../../../utils/FileUpload";
 import Axios from "axios";
 
 const { Title } = Typography;

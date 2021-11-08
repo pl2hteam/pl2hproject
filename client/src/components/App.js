@@ -3,10 +3,11 @@ import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 import Home from "../components/pages/Home.js";
 import Profile from "../components/pages/Profile";
-import LoginPage from "../components/pages/LoginPage/LoginPage";
-import RegisterPage from "../components/pages/RegisterPage/RegisterPage";
-import UploadProductPage from "../components/pages/UploadProductPage/UploadProductPage";
-import ShopPage from "../components/pages/ShopMainPage/ShopMainPage";
+
+import LoginPage from "../components/pages/Shop/LoginPage/LoginPage";
+import RegisterPage from "../components/pages/Shop/RegisterPage/RegisterPage";
+import ShopMainPage from "../components/pages/Shop/ShopMain/ShopMainPage";
+import UploadProductPage from "../components/pages/Shop/UploadProductPage/UploadProductPage";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Route path="/sns/profile" component={Auth(Profile, false)} />
 
             {/* SHOP */}
-            <Route exact path="/shop" component={Auth(ShopPage, true)} />
+            <Route exact path="/shop" component={Auth(ShopMainPage, true)} />
             <Route exact path="/shop/upload" component={Auth(UploadProductPage, true)} />
           </Switch>
         </div>
