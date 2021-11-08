@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
-import Auth from "../hoc/auth";
+import Auth from "./hoc/auth";
 import { useSelector } from 'react-redux'
 import Home from "../components/pages/Home.js";
 import Profile from '../components/pages/Profile';
