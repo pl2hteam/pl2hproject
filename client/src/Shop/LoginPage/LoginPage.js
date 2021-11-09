@@ -42,6 +42,7 @@ const LoginPage = (props) => {
           let dataToSubmit = {
             email: values.email,
             password: values.password,
+            db: false, // MongoDB
           };
 
           dispatch(loginUser(dataToSubmit))

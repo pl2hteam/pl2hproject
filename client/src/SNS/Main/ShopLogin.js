@@ -1,7 +1,7 @@
 import React from "react";
-import "./Section/MainLogin.scss";
-import ShopLoginPage from "../../Shop/LoginPage/LoginPage";
-import SnsLoginPage from "../../SNS/Login/LoginPage";
+import "../../Common/components/Section/MainLogin.scss";
+import LoginPage from "../Login/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
 
 class MainLogin extends React.Component {
   constructor(props) {
@@ -31,17 +31,17 @@ class MainLogin extends React.Component {
 
   render() {
     const { isLogginActive } = this.state;
-    const current = isLogginActive ? "Shop" : "SNS";
-    const currentActive = isLogginActive ? "SNS" : "Shop";
+    const current = isLogginActive ? "LOGIN" : "RESISTER";
+    const currentActive = isLogginActive ? "RESISTER" : "LOGIN";
     return (
       <div className="MainLogin">
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
-              <ShopLoginPage containerRef={ref => (this.current = ref)} />
+              <LoginPage containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
-              <SnsLoginPage containerRef={ref => (this.current = ref)} />
+              <RegisterPage containerRef={ref => (this.current = ref)} />
             )}
           </div>
           <RightSide

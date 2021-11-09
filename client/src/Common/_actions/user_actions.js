@@ -6,13 +6,24 @@ import {
   LOGOUT_USER,
   ADD_TO_CART_USER,
 } from "./types";
-import { MONGO_USER_SERVER } from "../Config";
+import { MYSQL_USER_SERVER, MONGO_USER_SERVER } from "../Config";
+
+// dataToSubmit.db : true => mysql
+// dataToSubmit.db : false => mongo
 
 export function registerUser(dataToSubmit) {
-  const request = axios
+  let request = {};
+
+  if (dataToSubmit.db) {
+    request = axios
+    .post(`${MYSQL_USER_SERVER}/register`, dataToSubmit)
+    .then((response) => response.data);
+  } else {
+    request = axios
     .post(`${MONGO_USER_SERVER}/register`, dataToSubmit)
     .then((response) => response.data);
-
+  }
+  
   return {
     type: REGISTER_USER,
     payload: request,
@@ -20,10 +31,19 @@ export function registerUser(dataToSubmit) {
 }
 
 export function loginUser(dataToSubmit) {
-  const request = axios
+  let request = {};
+  console.log(dataToSubmit.db);
+  if (dataToSubmit.db) {
+    request = axios
+    .post(`${MYSQL_USER_SERVER}/login`, dataToSubmit)
+    .then((response) => response.data);
+    console.log(request);
+  } else {
+    request = axios
     .post(`${MONGO_USER_SERVER}/login`, dataToSubmit)
     .then((response) => response.data);
-  console.log(request);
+    console.log(request);
+  }
 
   return {
     type: LOGIN_USER,
@@ -31,10 +51,19 @@ export function loginUser(dataToSubmit) {
   };
 }
 
-export function auth() {
-  const request = axios
+export function auth(database) {
+  let request = {};
+  if (database) {
+    console.log(database);
+    request = axios
+    .get(`${MYSQL_USER_SERVER}/auth`)
+    .then((response) => response.data);
+  } else {
+    console.log(database);
+    request = axios
     .get(`${MONGO_USER_SERVER}/auth`)
     .then((response) => response.data);
+  }
 
   return {
     type: AUTH_USER,
@@ -44,8 +73,8 @@ export function auth() {
 
 export function logoutUser() {
   const request = axios
-    .get(`${MONGO_USER_SERVER}/logout`)
-    .then((response) => response.data);
+      .get(`${MONGO_USER_SERVER}/logout`)
+      .then((response) => response.data);
 
   return {
     type: LOGOUT_USER,

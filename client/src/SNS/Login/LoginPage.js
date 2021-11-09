@@ -40,6 +40,7 @@ const SnsLoginPage = (props) => {
           let dataToSubmit = {
             email: values.email,
             password: values.password,
+            db: true, // MySQL
           };
 
           dispatch(loginUser(dataToSubmit))
@@ -51,7 +52,7 @@ const SnsLoginPage = (props) => {
                 } else {
                   localStorage.removeItem("rememberMe");
                 }
-                props.history.push("/shop");
+                props.history.push("/sns");
               } else {
                 setFormErrorMessage("Check out your Account or Password again");
               }

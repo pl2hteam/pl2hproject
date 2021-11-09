@@ -69,8 +69,7 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
-            db: false, // MongoDB
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
 
           dispatch(registerUser(dataToSubmit)).then(response => {
