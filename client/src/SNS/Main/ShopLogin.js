@@ -31,8 +31,8 @@ class MainLogin extends React.Component {
 
   render() {
     const { isLogginActive } = this.state;
-    const current = isLogginActive ? "LOGIN" : "RESISTER";
-    const currentActive = isLogginActive ? "RESISTER" : "LOGIN";
+    const current = isLogginActive ? "RESISTER" : "LOGIN";
+    const currentActive = isLogginActive ? "LOGIN" : "RESISTER";
     return (
       <div className="MainLogin">
         <div className="login">

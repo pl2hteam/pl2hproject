@@ -10,6 +10,7 @@ import {
   Input,
   Button,
 } from 'antd';
+import { withRouter } from "react-router";
 
 const formItemLayout = {
   labelCol: {
@@ -37,7 +38,6 @@ const tailFormItemLayout = {
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-
     <Formik
       initialValues={{
         email: '',
@@ -63,7 +63,6 @@ function RegisterPage(props) {
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-
           let dataToSubmit = {
             email: values.email,
             password: values.password,
@@ -75,9 +74,9 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/login");
+              window.location.replace("/shop");
             } else {
-              alert(response.payload.err.errmsg)
+              alert(response.payload.err)
             }
           })
 
@@ -201,4 +200,4 @@ function RegisterPage(props) {
 };
 
 
-export default RegisterPage
+export default withRouter(RegisterPage);

@@ -1,28 +1,30 @@
 const express = require("express");
 const router = express.Router();
+const { User } = require('../../models');
+const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res, next) => {
   try {
-
-    console.log(1); // POST /user/
+    console.log(req.body); // POST /user/
     const exUser = await User.findOne({
       where: {
         email: req.body.email,
       }
     });
     if (exUser) {
-      return res.status(403).send('이미 사용 중인 아이디입니다.');
+      return res.json({ success: false });
     }
     const hashedPassword = await bcrypt.hash(req.body.password, 12);
     await User.create({
       email: req.body.email,
-      nickname: req.body.nickname,
+      nickname: req.body.name,
       password: hashedPassword,
     });
-    res.status(201).send('ok');
+    return res.status(200).json({
+      success: true
+    });
   } catch (error) {
-    console.error(error);
-    next(error); // status 500
+    return res.json({ success: false, error });
   }
 });
 

@@ -69,14 +69,15 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            db: true, // MySQL
           };
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/login");
+              window.location.replace("/");
             } else {
-              alert(response.payload.err.errmsg)
+              alert(response.payload.err)
             }
           })
 

@@ -13,7 +13,7 @@ import { MYSQL_USER_SERVER, MONGO_USER_SERVER } from "../Config";
 
 export function registerUser(dataToSubmit) {
   let request = {};
-
+  console.log(dataToSubmit);
   if (dataToSubmit.db) {
     request = axios
     .post(`${MYSQL_USER_SERVER}/register`, dataToSubmit)
@@ -32,19 +32,16 @@ export function registerUser(dataToSubmit) {
 
 export function loginUser(dataToSubmit) {
   let request = {};
-  console.log(dataToSubmit.db);
   if (dataToSubmit.db) {
     request = axios
     .post(`${MYSQL_USER_SERVER}/login`, dataToSubmit)
     .then((response) => response.data);
-    console.log(request);
   } else {
     request = axios
     .post(`${MONGO_USER_SERVER}/login`, dataToSubmit)
     .then((response) => response.data);
-    console.log(request);
   }
-
+  console.log(request);
   return {
     type: LOGIN_USER,
     payload: request,

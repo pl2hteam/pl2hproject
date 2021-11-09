@@ -47,6 +47,7 @@ const LoginPage = (props) => {
 
           dispatch(loginUser(dataToSubmit))
             .then((response) => {
+              console.log(response);
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
                 if (rememberMe === true) {
@@ -54,7 +55,7 @@ const LoginPage = (props) => {
                 } else {
                   localStorage.removeItem("rememberMe");
                 }
-                props.history.push("/shop");
+                props.history.push("/shop/main");
               } else {
                 setFormErrorMessage("Check out your Account or Password again");
               }
