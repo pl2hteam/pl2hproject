@@ -4,14 +4,14 @@ const morgan = require('morgan');
 const path = require("path");
 const session = require('express-session');
 const dotenv = require('dotenv');
-const mongoose = require("mongoose");
 const { sequelize } = require("./mysql/models");
 const passportConfig = require('./mysql/passport')
 dotenv.config();
 
 /* DB 라우터 */
-const mysqlRouter = require('./mysql/routes/index');
-const mongoRouter = require('./mongo/routes/index');
+const mysqlRouter = require('./mysql/routes');
+const mongoRouter = require('./mongo/routes');
+const passport = require("passport");
 
 const app = express();
 passportConfig();
@@ -22,27 +22,27 @@ app.set('port', process.env.PORT || 5000);
 sequelize
   .sync({ focus: false })
   .then(() => {
-    console.log("mysql db 연결 성공");
+    console.log("*** MySQL 연결 성공 ***");
   })
   .catch((err) => {
     console.error(err);
   });
 
 /* 몽고 DB 연결 */
-const config = require("./mongo/configmongo/key");
-const passport = require("passport");
-
-mongoose.connect(config.mongoURI,
-  {
-    useNewUrlParser: true, useUnifiedTopology: true,
-    useCreateIndex: true, useFindAndModify: false
-  })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+const connect = require('./mongo/schemas');
+connect();
 
 app.use(morgan('dev'));
 app.use(cors());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use(express.static(path.join(__dirname, '')));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -58,17 +58,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* DB 라우터 */
+/* DB 별 라우터 */
 app.use('/api/mysql', mysqlRouter);
 app.use('/api/mongo', mongoRouter);
 
-/* ? */
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
-  });
-}
 
 /* 404 처리 */
 app.use((req, res, next) => {
