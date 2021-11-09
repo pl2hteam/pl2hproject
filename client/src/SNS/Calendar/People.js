@@ -1,6 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
+import { publicUrl } from '../../Common/components/utils'
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,12 +18,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Favorite = () => {
+const People = () => {
   return (
     <Wrapper>
-      <p>내 즐겨찾기가 없습니다.</p>
+      <img src={publicUrl + '/resources/img/assa.jfif'} alt="assa" />
+      <p>By::sorewa_melon</p>
     </Wrapper>
   );
 };
 
-export default withRouter(Favorite);
+export default People;

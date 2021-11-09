@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import * as d3 from 'd3';
 import Post from '../../Layout/Post';
-import { withRouter } from 'react-router';
 
 const SkillChart = styled.svg`
   width: 100%;
@@ -329,4 +328,4 @@ const Dev = ({ title }) => {
   );
 };
 
-export default withRouter(Dev);
+export default Dev;

@@ -4,7 +4,7 @@
  * 
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
-* {
+ * {
   box-sizing: border-box;
 }
 a {
@@ -139,5 +139,11 @@ q:before {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* 배경화면 */
+body{
+  background-image: url('./resources/KakaoTalk_Image_2021-11-09-10-42-35.png');
+
 }
 /*# sourceMappingURL=/sm/04f4d35563f7cf9516264fcbb6e11a85def2ae5616df66563711867fe05befec.map */

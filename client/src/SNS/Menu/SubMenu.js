@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
-
+//사이드 바 색
 const ListDiv = styled.div`
   h2 {
     padding-bottom: 10px;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
     font-weight: bold;
     a {
-      color: green;
+      color: black;
     }
   }
   nav > ul > li > a {
@@ -20,15 +20,16 @@ const ListDiv = styled.div`
     margin-top: 10px;
     font-size: 0.9rem;
     li {
+      
       padding: 5px;
     }
     ul {
       padding-left: 15px;
     }
     a {
-      color: green;
+      color: black;
       &.selected {
-        color: green;
+        color: black;
         font-weight: bold;
       }
     }

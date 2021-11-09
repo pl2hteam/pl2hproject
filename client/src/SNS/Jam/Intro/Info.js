@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import Post from '../../Layout/Post';
 
@@ -101,4 +100,4 @@ const Info = ({ title }) => {
   );
 };
 
-export default withRouter(Info);
+export default Info;

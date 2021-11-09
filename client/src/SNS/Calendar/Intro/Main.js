@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/ImageSlider"
-import { withRouter } from "react-router";
 
 ////////////////////////////////////////
 
@@ -188,4 +187,4 @@ const Main = () => {
   );
 };
 
-export default withRouter(Main);
+export default Main;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import { publicUrl } from '../../Common/components/utils'
 
@@ -18,13 +19,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const People = () => {
+const People = (props) => {
+  console.log(",,,,,,,,,,,,,", props);
   return (
+
     <Wrapper>
+
       <img src={publicUrl + '/resources/img/assa.jfif'} alt="assa" />
       <p>By::sorewa_melon</p>
     </Wrapper>
   );
 };
 
-export default People;
+export default withRouter(People);

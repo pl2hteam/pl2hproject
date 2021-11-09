@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -26,4 +25,4 @@ const Favorite = () => {
   );
 };
 
-export default withRouter(Favorite);
+export default Favorite;

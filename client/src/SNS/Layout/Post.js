@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+//기본정보 이름
 const Wrapper = styled.div`
   width: 100%;
   height: max-content;
@@ -20,7 +20,8 @@ const Wrapper = styled.div`
     justify-content: space-between;
     margin: 10px 5px;
     p:first-of-type {
-      color: green;
+      
+      color: black;
     }
     p:last-of-type {
       font-size: 0.9rem;

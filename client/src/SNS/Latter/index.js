@@ -8,9 +8,6 @@ import Content from '../Layout/Content';
 import Intro from './Intro';
 import People from './People';
 import Favorite from './Favorite';
-import Write from './Write';
-import { withRouter } from 'react-router';
-
 
 const Profile = () => {
   const match = useRouteMatch();
@@ -20,8 +17,9 @@ const Profile = () => {
       title: '👩‍💻내 소개',
       url: '/intro',
       child: [
-        { id: 1, title: '마이페이지', url: '/default' },
-        { id: 3, title: '내 짝궁소개', url: '/dev' },
+        { id: 1, title: '기본정보', url: '/default' },
+        { id: 3, title: '기술 및 히스토리', url: '/dev' },
+        { id: 4, title: 'TMI 자문자답', url: '/qna' },
       ],
     },
     {
@@ -29,16 +27,10 @@ const Profile = () => {
       title: '👭내 인맥',
       url: '/people',
     },
-
     {
       id: 3,
-      title: '⭐즐겨찾기',
+      title: '⭐내 즐겨찾기',
       url: '/favorite',
-    },
-    {
-      id: 4,
-      title: '⭐즐겨찾기',
-      url: '/Write',
     },
   ];
 
@@ -46,7 +38,7 @@ const Profile = () => {
     <Layout>
       <Sidebar>
         <Card>
-          <SubMenu title="마이페이지" list={list} />
+          <SubMenu title="Profile" list={list} />
         </Card>
       </Sidebar>
       <Content>
@@ -57,8 +49,6 @@ const Profile = () => {
             <Route path={`${match.path}/intro/:type`} component={Intro} />
             <Route path={`${match.path}/people`} component={People} />
             <Route path={`${match.path}/favorite`} component={Favorite} />
-            <Route path={`${match.path}/Write`} component={Write} />
-
           </Switch>
         </Card>
       </Content>
@@ -66,4 +56,4 @@ const Profile = () => {
   );
 };
 
-export default withRouter(Profile);
+export default Profile;

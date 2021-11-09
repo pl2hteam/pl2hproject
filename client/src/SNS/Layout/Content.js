@@ -7,7 +7,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   width: 75%;
   h1 {
-    color: green;
+    color: black;
     font-weight: bold;
     font-size: 1.1rem;
   }
@@ -16,7 +16,7 @@ const ContentWrapper = styled.div`
 const Content = ({ children }) => {
   return (
     <ContentWrapper>
-      <h1>danbi::miniportfoly</h1>
+      <h1>누구의 커플페이지</h1>
       {children}
       <MainMenu />
     </ContentWrapper>

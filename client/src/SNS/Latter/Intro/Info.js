@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import Post from '../../Layout/Post';
 
@@ -37,7 +36,7 @@ const Info = ({ title }) => {
     <Post>
       <h3>{title}</h3>
       <div className="post-info">
-        <p>이단비</p>
+        <p>커플</p>
         <p>2021-01-05</p>
       </div>
       <Wrapper>
@@ -101,4 +100,4 @@ const Info = ({ title }) => {
   );
 };
 
-export default withRouter(Info);
+export default Info;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
+import { publicUrl } from '../../Common/components/utils'
+import UploadProductPage2 from './UploadProductPage2';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,12 +21,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const Favorite = () => {
+const Write = (props) => {
+
   return (
     <Wrapper>
-      <p>내 즐겨찾기가 없습니다.</p>
+      <UploadProductPage2 />
+      <img src={publicUrl + '/resources/img/assa.jfif'} alt="assa" />
+      <p>By::sorewa_melon</p>
     </Wrapper>
   );
 };
 
-export default withRouter(Favorite);
+export default withRouter(Write);
