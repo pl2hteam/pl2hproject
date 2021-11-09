@@ -1,38 +1,44 @@
 {
-  "name": "my-portfolio",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "d3": "^6.3.1",
-    "gh-pages": "^3.1.0",
-    "postcss-safe-parser": "^6.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.1",
-    "react-icons": "^3.11.0",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "styled-components": "^5.2.1",
-    "web-vitals": "^0.2.4"
+    "antd": "^3.26.20",
+    "ants": "^0.0.3-alpha",
+    "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.20.0",
+    "bootstrap": "^5.1.3",
+    "components": "^0.1.0",
+    "core-js": "^3.6.4",
+    "d3": "^7.1.1",
+    "formik": "^1.5.8",
+    "moment": "^2.24.0",
+    "node-sass": "4",
+    "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.6",
+    "react-dom": "^16.8.6",
+    "react-dropzone": "^11.4.2",
+    "react-hook-form": "^7.19.0",
+    "react-icons": "^3.7.0",
+    "react-image-gallery": "^1.2.7",
+    "react-redux": "^7.1.0-rc.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.0",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.3",
+    "webpack": "^4.42.0",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -46,5 +52,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://danbiilee.github.io/react-miniportfoly"
+  "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "http-proxy-middleware": "^1.0.3"
+  }
 }
