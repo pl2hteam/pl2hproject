@@ -73,7 +73,7 @@ router.post('/', async (req, res, next) => { // POST /post
     //   }]
     // })
     //res.status(201).json(fullPost);
-    res.status(201).json(post);
+    res.status(201).json({success: true,post});
   } catch (error) {
     console.error(error);
     next(error);

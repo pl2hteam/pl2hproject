@@ -12,7 +12,7 @@ function FileUpload(props) {
     };
     formData.append("file", files[0]);
     //save the Image we chose inside the Node Server
-    Axios.post("/api/mongo/product/uploadImage", formData, config).then(
+    Axios.post("/api/mysql/posts/uploadspage2", formData, config).then(
       (response) => {
         if (response.data.success) {
           setImages([...Images, response.data.image]);
@@ -69,11 +69,11 @@ function FileUpload(props) {
           overflowX: "scroll",
         }}
       >
-        {Images.map((image, index) => (
-          <div onClick={() => onDelete(image)}>
+        {Images.map((img, index) => (
+          <div onClick={() => onDelete(img)}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`http://localhost:5000/${image}`}
+              src={`http://localhost:5000/${img}`}
               alt={`productImg-${index}`}
             />
           </div>

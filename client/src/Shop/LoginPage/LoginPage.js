@@ -1,4 +1,4 @@
-import "../../Common/components/Section/style.scss";
+
 import loginImg from "../../Common/login.svg";
 
 import React, { useState } from "react";

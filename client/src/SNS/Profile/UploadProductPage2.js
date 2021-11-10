@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import FileUpload from "../../Common/components/FileUpload";
+//import FileUpload from "../../Common/components/FileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -9,70 +9,58 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
-  const [PdNameValue, setPdNameValue] = useState("");
-  const [BrandValue, setBrandValue] = useState("");
-  const [DescriptionValue, setDescriptionValue] = useState("");
-  const [PriceValue, setPriceValue] = useState(0);
-  const [QuantityValue, setQuantityValue] = useState(1);
-  const [Images, setImages] = useState([]);
+  const [PostTitle, setPostTitle] = useState("");
+  const [PostContent, setPostContent] = useState("");
+  const [PostImg, setPostImg] = useState("");
+  const [PostViews, setPostViews] = useState(0);
 
-  const onPdNameChange = (event) => {
-    setPdNameValue(event.currentTarget.value);
+  const onPostTitle = (event) => {
+    setPostTitle(event.currentTarget.value);
   };
-  const onBrandChange = (event) => {
-    setBrandValue(event.currentTarget.value);
+  const onPostContent = (event) => {
+    setPostContent(event.currentTarget.value);
   };
 
-  const onDescriptionChange = (event) => {
-    setDescriptionValue(event.currentTarget.value);
+  const onPostImg = (event) => {
+    setPostImg(event.currentTarget.value);
   };
 
-  const onPriceChange = (event) => {
-    setPriceValue(parseInt(event.currentTarget.value));
+  const onPostViews = (event) => {
+    setPostViews(parseInt(event.currentTarget.value));
   };
-
-  const onQuantityChange = (event) => {
-    setQuantityValue(event.currentTarget.value);
-  };
-
-  const updateImages = (newImages) => {
-    setImages(newImages);
-  };
-
 
   const user = useSelector(state => state.user);
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
-      !PdNameValue ||
-      !BrandValue ||
-      !DescriptionValue ||
-      !PriceValue ||
-      !QuantityValue ||
-      !Images
+      !PostTitle ||
+      !PostContent ||
+      !PostImg ||
+      !PostViews
     ) {
       return alert("fill all the fields first!");
     }
 
     // console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      seller: user.userData._id,
-      pdName: PdNameValue,
-      brandName: BrandValue,
-      description: DescriptionValue,
-      price: PriceValue,
-      quantity: QuantityValue,
-      images: Images,
+      //seller: user.userData._id,
+      title: PostTitle,
+      content: PostContent,
+      img: PostImg,
+      views: PostViews,
+
     };
 
-    Axios.post("/api/mongo/product/uploadProduct", variables)
+    Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
         console.log('props.user 는 : ', response);
         if (response.data.success) {
+   
           alert("Product Successfully Uploaded");
           props.history.push("/sns/profile");
         } else {
+          console.log(response.data)
           alert("Failed to upload Product");
         }
       });
@@ -86,32 +74,32 @@ const UploadProductPage2 = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <FileUpload refreshFunction={updateImages} />
+        {/* <FileUpload refreshFunction={updateImages} /> */}
 
         <br />
         <br />
         <label>물품명</label>1
-        <Input onChange={onPdNameChange} value={PdNameValue} />
+        <Input onChange={onPostTitle} value={PostTitle} />
         <br />
         <br />
         <label>브랜드</label>
-        <Input onChange={onBrandChange} value={BrandValue} />
+        <Input onChange={onPostContent} value={PostContent} />
         <br />
         <br />
         <label>상세정보</label>
-        <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
+        <TextArea onChange={onPostImg} value={PostImg} />
         <br />
         <br />
         <label>가격</label>
-        <Input onChange={onPriceChange} value={PriceValue} type="number" />
+        <Input onChange={onPostViews} value={PostViews} type="number" />
         <br />
         <br />
         <label>수량</label>
-        <Input
+        {/* <Input
           onChange={onQuantityChange}
           value={QuantityValue}
           type="number"
-        />
+        /> */}
         <br />
         <br />
 
