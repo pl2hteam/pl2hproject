@@ -4,9 +4,8 @@ import Axios from "axios";
 import Icon from "@ant-design/icons/lib/components/Icon";
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
-  const [VideoPath, setVideoPath] = useState([]);
+  const [VideoPath, setVideoPath] = useState("");
   const [Duration, setDuration] = useState("");
-  const [ThumbnailPath, setThumbnailPath] = useState("");
 
   const onDrop = (files) => {
     let formData = new FormData();
@@ -26,15 +25,19 @@ function FileUpload(props) {
             fileName: response.data.fileName,
           };
 
+          console.log();
+
           setVideoPath(response.data.url);
+          props.refreshImgFunction.updateVideoPath([...VideoPath , response.data.url]);
 
           Axios.post('/api/mongo/product/video/thumbnail', variable)
           .then(response => {
             console.log(response);
             if (response.data.success) {
-              setDuration([...Images, response.data.fileDuration]);
+              setDuration(response.data.fileDuration);
+              props.refreshImgFunction.updateDuration([...Duration , response.data.fileDuration]);
               setImages([...Images, response.data.url]);
-              props.refreshFunction([...Images, response.data.url]);
+              props.refreshImgFunction.updateImages([...Images, response.data.url]);
             } else {
               alert('썸내일 생성에 실패 했습니다.');
             }
@@ -48,7 +51,7 @@ function FileUpload(props) {
         (response) => {
           if (response.data.success) {
             setImages([...Images, response.data.image]);
-            props.refreshFunction([...Images, response.data.image]);
+            props.refreshImgFunction.updateImages([...Images, response.data.image]);
           } else {
             alert("Failed to save the Image in Server");
           }
@@ -68,8 +71,10 @@ function FileUpload(props) {
 
     // 날리고 남은 이미지들을 useState로 갱신
     setImages(newImages);
-    props.refreshFunction(newImages);
+    props.refreshImgFunction(newImages);
   };
+
+  console.log(props);
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>

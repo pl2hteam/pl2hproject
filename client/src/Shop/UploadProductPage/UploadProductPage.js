@@ -7,13 +7,15 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 const UploadProductPage = (props) => {
-  console.log(props);
   const [PdNameValue, setPdNameValue] = useState("");
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
   const [QuantityValue, setQuantityValue] = useState(1);
   const [Images, setImages] = useState([]);
+  const [VideoPath, setVideoPath] = useState([]);
+  const [Duration, setDuration] = useState([]);
+
 
   const onPdNameChange = (event) => {
     setPdNameValue(event.currentTarget.value);
@@ -38,6 +40,13 @@ const UploadProductPage = (props) => {
     setImages(newImages);
   };
 
+  const updateVideoPath = (newVideoPath) => {
+    setVideoPath(newVideoPath);
+  };
+
+  const updateDuration = (newDuration) => {
+    setDuration(newDuration);
+  }
 
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
@@ -48,7 +57,9 @@ const UploadProductPage = (props) => {
       !DescriptionValue ||
       !PriceValue ||
       !QuantityValue ||
-      !Images
+      !Images ||
+      !Duration ||
+      !VideoPath
     ) {
       return alert("fill all the fields first!");
     }
@@ -61,11 +72,13 @@ const UploadProductPage = (props) => {
       price: PriceValue,
       quantity: QuantityValue,
       images: Images,
+      videos: VideoPath,
+      duration: Duration,
     };
 
     Axios.post("/api/mongo/product/uploadProduct", variables)
       .then((response) => {
-        console.log('props.user 는 : ', response);
+        console.log('답신은 : ', response);
       if (response.data.success) {
         alert("Product Successfully Uploaded");
         props.history.push("/shop");
@@ -75,6 +88,12 @@ const UploadProductPage = (props) => {
     });
   };
 
+  let video = {
+    updateImages, 
+    updateVideoPath, 
+    updateDuration
+  }
+
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -83,7 +102,9 @@ const UploadProductPage = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <MovieFileUpload refreshFunction={updateImages} />
+        <MovieFileUpload 
+          refreshImgFunction={video}
+        />
 
         <br />
         <br />
