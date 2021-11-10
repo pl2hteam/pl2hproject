@@ -53,7 +53,8 @@ function FileUpload(props) {
             }}
             {...getRootProps()}
           >
-            
+            {/* {console.log("getRootProps", { ...getRootProps() })}
+            {console.log("getInputProps", { ...getInputProps() })} */}
             <input {...getInputProps()} />
             <Icon type="plus" style={{ fontSize: "3rem" }} />
           </div>
