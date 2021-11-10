@@ -7,19 +7,19 @@ import { addToCart } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 function DetailProductPage(props) {
   const dispatch = useDispatch();
-  const pdNumber = props.match.params.pdNumber;
+  const pd_id = props.match.params.pd_id;
   const [Product, setProduct] = useState([]);
 
   useEffect(() => {
-    Axios.get(
-      `/api/mongo/product/products_by_id?id=${pdNumber}&type=single`
-    ).then((response) => {
-      setProduct(response.data[0]);
-    });
+    Axios.get(`/api/mongo/product/products_by_id?id=${pd_id}&type=single`).then(
+      (response) => {
+        setProduct(response.data[0]);
+      }
+    );
   }, []);
 
-  const addToCartHandler = (pdNumber) => {
-    dispatch(addToCart(pdNumber));
+  const addToCartHandler = (pd_id) => {
+    dispatch(addToCart(pd_id));
   };
 
   return (
@@ -31,7 +31,7 @@ function DetailProductPage(props) {
       <br />
 
       <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}>
+        <Col lg={12} xs={16}>
           <ProductImage detail={Product} />
         </Col>
         <Col lg={12} xs={24}>
