@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import FileUpload from "../../Common/components/FileUpload";
+import MovieFileUpload from "../../Common/components/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -15,6 +15,7 @@ const UploadProductPage2 = (props) => {
   const [PriceValue, setPriceValue] = useState(0);
   const [QuantityValue, setQuantityValue] = useState(1);
   const [Images, setImages] = useState([]);
+  const [Videos, setVideos] = useState([]);
 
   const onPdNameChange = (event) => {
     setPdNameValue(event.currentTarget.value);
@@ -86,7 +87,7 @@ const UploadProductPage2 = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <FileUpload refreshFunction={updateImages} />
+        <MovieFileUpload refreshFunction={updateImages} />
 
         <br />
         <br />

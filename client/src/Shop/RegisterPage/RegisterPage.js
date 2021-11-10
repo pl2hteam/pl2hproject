@@ -68,7 +68,7 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`, // 나중에 기본 프로필로
             db: false, // MongoDB
           };
 

@@ -17,21 +17,7 @@ const box = multer.diskStorage({
     const basename = path.basename(file.originalname, ext);
     done(null, basename + "_" + new Date().getTime() + ext);
   },
-
-  /* 현재 주석 풀면 오류 (이미지만 올라가는 기능) */
-  // fileFilter(req, file, cb) {
-  //   const ext = path.extname(file.originalname);
-  //   if (ext !== ".jpg" || ext !== ".png") {
-  //     // 위 확장자 이외의 파일을 업로드하면 오류문구 출력
-  //     return cb(
-  //       res.status(400).end("jpg와 png 파일만 업로드 할 수 있읍니다"),
-  //       false
-  //     );
-  //   }
-  //   cb(null, true);
-  // },
-  // limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
-});
+},);
 
 const upload = multer({ storage: box }).single("file");
 

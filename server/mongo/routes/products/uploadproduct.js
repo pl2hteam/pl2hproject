@@ -3,6 +3,7 @@ const { Product } = require("../../schemas/Product");
 const router = express.Router();
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   const product = new Product(req.body);
 
   product.save((err, doc) => {
