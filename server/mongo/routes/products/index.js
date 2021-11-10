@@ -6,6 +6,7 @@ const path = require("path");
 const uploadProduct = require("./uploadproduct");
 const getProducts = require("./getproduct");
 const productitem = require("./productitem");
+const video = require("./videos");
 
 /* 이미지 파일 이름 지정 */
 const box = multer.diskStorage({
@@ -17,7 +18,7 @@ const box = multer.diskStorage({
     const basename = path.basename(file.originalname, ext);
     done(null, basename + "_" + new Date().getTime() + ext);
   },
-},);
+});
 
 const upload = multer({ storage: box }).single("file");
 
@@ -38,6 +39,9 @@ router.use("/uploadProduct", uploadProduct);
 
 /* shop 메인 */
 router.use("/getProducts", getProducts);
+
+/* video */
+router.use("/video", video);
 
 router.use("/products_by_id", productitem);
 
