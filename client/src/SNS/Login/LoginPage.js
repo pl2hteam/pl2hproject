@@ -153,7 +153,7 @@ const SnsLoginPage = (props) => {
                     disabled={isSubmitting}
                     onSubmit={handleSubmit}
                   >
-                    Login
+                    SNS Login
                   </button>
                 </div>
                 <input type="checkbox"

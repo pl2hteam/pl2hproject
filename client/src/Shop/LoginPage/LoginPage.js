@@ -155,7 +155,7 @@ const LoginPage = (props) => {
                     disabled={isSubmitting}
                     onSubmit={handleSubmit}
                   >
-                    Login
+                    ShopLogin
                   </button>
                 </div>
                 <input type="checkbox"

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import FileUpload from "../../Common/components/FileUpload";
+import MovieFileUpload from "../../Common/components/MovieFileUpload";
 import Axios from "axios";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
 const UploadProductPage = (props) => {
+  console.log(props);
   const [PdNameValue, setPdNameValue] = useState("");
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
@@ -82,7 +83,7 @@ const UploadProductPage = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <FileUpload refreshFunction={updateImages} />
+        <MovieFileUpload refreshFunction={updateImages} />
 
         <br />
         <br />

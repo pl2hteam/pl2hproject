@@ -5,6 +5,7 @@ const multer = require("multer");
 const path = require('path');
 const uploadProduct = require('./uploadproduct');
 const getProducts = require('./getproduct');
+const videoProduct = require('./videos');
 
 /* 이미지 파일 이름 지정 */
 const box = multer.diskStorage({
@@ -16,21 +17,6 @@ const box = multer.diskStorage({
     const basename = path.basename(file.originalname, ext);
     done(null, basename + '_' + new Date().getTime() + ext);
   },
-
-/* 현재 주석 풀면 오류 (이미지만 올라가는 기능) */
-  // fileFilter(req, file, cb) {
-  //   const ext = path.extname(file.originalname);
-  //   if (ext !== ".jpg" || ext !== ".png") {
-  //     // 위 확장자 이외의 파일을 업로드하면 오류문구 출력
-  //     return cb(
-  //       res.status(400).end("jpg와 png 파일만 업로드 할 수 있읍니다"),
-  //       false
-  //     );
-  //   }
-  //   cb(null, true);
-  // },
-  // limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
-
 },);
 
 const upload = multer({ storage: box }).single("file");
@@ -53,6 +39,8 @@ router.use("/uploadProduct", uploadProduct);
 /* shop 메인 */
 router.use("/getProducts", getProducts);
 
+/* video 미리보기 */
+router.use("/video", videoProduct);
 
 
 //?id=${pdnumber}&type=single

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const user = require('./users');
 const product = require("./products");
+const video = require("./products/videos");
 
 /* 판매자 정보 */
 router.use("/users", user);
