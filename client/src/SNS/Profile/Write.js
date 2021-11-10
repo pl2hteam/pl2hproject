@@ -26,8 +26,7 @@ const Write = (props) => {
   return (
     <Wrapper>
       <UploadProductPage2 />
-      <img src={publicUrl + '/resources/img/assa.jfif'} alt="assa" />
-      <p>By::sorewa_melon</p>
+  
     </Wrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-//import FileUpload from "../../Common/components/FileUpload";
+import FileUpload from "../../Common/components/FileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -74,7 +74,7 @@ const UploadProductPage2 = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        {/* <FileUpload refreshFunction={updateImages} /> */}
+        <FileUpload refreshFunction={PostImg} />
 
         <br />
         <br />
@@ -86,20 +86,16 @@ const UploadProductPage2 = (props) => {
         <Input onChange={onPostContent} value={PostContent} />
         <br />
         <br />
-        <label>상세정보</label>
+        {/* <label>상세정보</label>
         <TextArea onChange={onPostImg} value={PostImg} />
         <br />
-        <br />
+        <br /> */}
         <label>가격</label>
         <Input onChange={onPostViews} value={PostViews} type="number" />
         <br />
         <br />
         <label>수량</label>
-        {/* <Input
-          onChange={onQuantityChange}
-          value={QuantityValue}
-          type="number"
-        /> */}
+       
         <br />
         <br />
 

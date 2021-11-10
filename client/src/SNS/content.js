@@ -1,13 +1,17 @@
-import React from "react";
+
 import styled from "styled-components";
 import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Card from "./Layout/Card";
-import content from './content';
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Axios from "axios";
+import { useSelector } from "react-redux";
+import { Typography, Button, Form, message, Input } from "antd";
+import { withRouter } from "react-router";
+
 import {
-  MdLink,
+
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
@@ -114,14 +118,67 @@ const LinkTitle = styled.p`
     color: green;
   }
 `;
+const { Title } = Typography;
+const { TextArea } = Input;
 
-const Home = () => {
-  const goGithub = () => {
-    window.location.href = "https://github.com/danbiilee/react-miniportfoly";
+
+
+
+
+
+
+
+
+
+
+
+
+const ContentProfile = (props) => {
+
+
+
+  const [profilecontent, setPostTitle] = useState("");
+
+  const onPostTitle = (event) => {
+    setPostTitle(event.currentTarget.value);
   };
-  const goVelog = () => {
-    window.location.href = "https://velog.io/@dblee";
+ 
+  const user = useSelector(state => state.user);
+  const onSubmit = (event) => {
+    // event.preventDefault();  // antd 자체 적용
+
+    if (
+      !profilecontent 
+      
+    ) {
+      return alert("fill all the fields first!");
+    }
+
+    // console.log('props id 는 : ', props.user.userData._id);
+    const variables = {
+      //seller: user.userData._id,
+      content: profilecontent,
+   
+    };
+
+    Axios.post("/api/mysql/profiles/write", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+        if (response.data.success) {
+   
+          alert("Product Successfully Uploaded");
+          props.history.push("/sns");
+        } else {
+          console.log(response.data)
+          alert("Failed to upload Product");
+        }
+      });
   };
+
+
+
+
+  
 
   return (
     <Layout>
@@ -130,14 +187,7 @@ const Home = () => {
           <FlexWrapper>
             <ProfileSection>
               <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
-              <LinkTitle onClick={goGithub}>
-                <MdLink />
-                Github
-              </LinkTitle>
-              <LinkTitle onClick={goVelog}>
-                <MdLink />
-                dblee.log
-              </LinkTitle>
+          
             </ProfileSection>
             <ProfileSection>
               <p>
@@ -162,30 +212,27 @@ const Home = () => {
         </Card>
       </Sidebar>
       <Content>
-        <Card>
-          <ContentSection>
-            <h2>미니룸</h2>
-            <div>
-              <img
-                src={publicUrl + "/resources/img/miniroom.gif"}
-                alt="miniroom"
-              />
-            </div>
-          </ContentSection>
-          <ContentSection>
-            <h2>한 줄 감성</h2>
-            <Link to={'/content'}>방명록</Link>
-            <ul>
-              <li>싸이월드 미니홈피 감성으로 기획, 개발했습니다~☆</li>
-              <li>프로필 페이지를 구경해주세요~☆</li>
-              <li>배경도 바꿀 수 있답니다~☆</li>
-              <li></li>
-              <li></li>
-            </ul>
-          </ContentSection>
-        </Card>
+      <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+        <Title level={2}>커플 상품</Title>
+      </div>
+
+      <Form onSubmit={onSubmit}>
+        {/* DropZone */}
+       
+
+        <br />
+        <br />
+        <label>물품명</label>1
+        <Input onChange={onPostTitle} value={profilecontent} />
+        <br />
+      
+
+        <Button onClick={onSubmit}>Submit</Button>
+      </Form>
+    </div>
       </Content>
     </Layout>
   );
 };
-export default Home;
+export default withRouter(ContentProfile);

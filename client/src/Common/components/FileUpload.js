@@ -3,20 +3,25 @@ import Dropzone from "react-dropzone";
 import Axios from "axios";
 import Icon from "@ant-design/icons/lib/components/Icon";
 function FileUpload(props) {
+  
   const [Images, setImages] = useState([]);
 
   const onDrop = (files) => {
     let formData = new FormData();
     const config = {
+      
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
     //save the Image we chose inside the Node Server
-    Axios.post("/api/mysql/posts/uploadspage2", formData, config).then(
+    Axios.post("/api/mysql/route/posts/write/images", formData, config).then(
+     
       (response) => {
+        console.log(1,response);
         if (response.data.success) {
-          setImages([...Images, response.data.image]);
-          props.refreshFunction([...Images, response.data.image]);
+          setImages([...Images, response.data.img]);
+          props.refreshFunction([...Images, response.data.img]);
+          console.log(response.data.img);
         } else {
           alert("Failed to save the Image in Server");
         }
@@ -69,11 +74,11 @@ function FileUpload(props) {
           overflowX: "scroll",
         }}
       >
-        {Images.map((img, index) => (
-          <div onClick={() => onDelete(img)}>
+        {Images.map((image, index) => (
+          <div onClick={() => onDelete(image)}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`http://localhost:5000/${img}`}
+              src={`http://localhost:5000/${image}`}
               alt={`productImg-${index}`}
             />
           </div>
