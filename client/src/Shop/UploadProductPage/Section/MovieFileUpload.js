@@ -71,7 +71,7 @@ function FileUpload(props) {
 
     // 날리고 남은 이미지들을 useState로 갱신
     setImages(newImages);
-    props.refreshImgFunction(newImages);
+    props.refreshImgFunction.updateImages(newImages);
   };
 
   console.log(props);

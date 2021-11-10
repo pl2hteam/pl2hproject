@@ -38,8 +38,8 @@ function App() {
           {/* SHOP */}
           <Route exact path="/shop" component={Auth(ShopLoginPage, false, false)} />
           <Route exact path="/shop/main" component={Auth(ShopMainPage, true, false)} />
-          <Route exact path="/shop/detail" component={Auth(DetailProductPage, true, false)} />
           <Route exact path="/shop/upload" component={Auth(UploadProductPage, true, false)} />
+          <Route exact path="/shop/product/:pd_id" component={Auth(DetailProductPage, true, false)} />
         </Switch>
       </div>
     </Suspense>

@@ -11,7 +11,9 @@ function DetailProductPage(props) {
   const [Product, setProduct] = useState([]);
 
   useEffect(() => {
-    Axios.get(`/api/mongo/product/products_by_id?id=${pd_id}&type=single`).then(
+    console.log(11111111);
+    Axios.get(`/api/mongo/product/products_by_id?id=${pd_id}&type=single`)
+    .then(
       (response) => {
         setProduct(response.data[0]);
       }

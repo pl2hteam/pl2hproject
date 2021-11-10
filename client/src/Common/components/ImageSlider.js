@@ -1,10 +1,10 @@
 import React from "react";
-import { Carousel } from "antd";
+import { Carousel } from 'react-responsive-carousel';
 
 function ImageSlider(props) {
   return (
     <div>
-      <Carousel autoplay>
+      <Carousel showArrows={true}>
         {props.images.map((image, index) => (
           <div key={index}>
             <img

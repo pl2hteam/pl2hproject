@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import MovieFileUpload from "../../Common/components/MovieFileUpload";
+import MovieFileUpload from "../../Shop/UploadProductPage/Section/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";

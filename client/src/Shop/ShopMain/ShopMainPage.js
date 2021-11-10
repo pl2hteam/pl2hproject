@@ -55,7 +55,7 @@ const ShopMainPage = () => {
 
   const renderCards = Products.map((product, index) => {
     return (
-      <Col lg={3} md={4} xs={8}>
+      <Col lg={1} md={1} xs={1}>
         <Card
           hoverable={true}
           cover={
