@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { User } = require("../../schemas/User");
 
+/////////////////////////////////////////////////////
+/*                                                 */
+/*            /api/mongo/users/login               */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 router.post("/", (req, res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user)

@@ -3,8 +3,12 @@ const { User } = require("../../schemas/User");
 const { Product } = require("../../schemas/Product");
 const router = express.Router();
 
-//?id=${pdnumber}&type=single
-//id=12121212,121212,1212121   type=array
+/////////////////////////////////////////////////////
+/*                                                 */
+/*       /api/mongo/product/products_by_id         */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 router.get("/", (req, res) => {
   let type = req.query.type;
   let pdnumbers = req.query.id;
