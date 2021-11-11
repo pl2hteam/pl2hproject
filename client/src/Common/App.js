@@ -41,13 +41,14 @@ function App() {
           <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, true)} />
           <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, false, true)} />
           
-          
 
           {/* SHOP */}
           <Route exact path="/shop" component={Auth(ShopLoginPage, false, false)} />
           <Route exact path="/shop/main" component={Auth(ShopMainPage, true, false)} />
           <Route exact path="/shop/detail" component={Auth(DetailProductPage, true, false)} />
           <Route exact path="/shop/upload" component={Auth(UploadProductPage, true, false)} />
+
+
         </Switch>
       </div>
     </Suspense>

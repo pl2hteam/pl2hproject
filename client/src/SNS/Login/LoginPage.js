@@ -4,7 +4,7 @@ import { loginUser } from "../../Common/_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import loginImg from "../../Common/login.svg";
+
 
 const SnsLoginPage = (props) => {
   const dispatch = useDispatch();
@@ -88,7 +88,7 @@ const SnsLoginPage = (props) => {
                 <div className="header">Login</div>
                 <div className="content">
                   <div className="image">
-                    <img src={loginImg} />
+        
                   </div>
                   <div className="form">
                     <div className="form-group">
