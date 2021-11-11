@@ -13,7 +13,7 @@ function FileUpload(props) {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
-
+    
     if (files[0].type == "video/mp4") {
       Axios.post("/api/mongo/product/video/uploadfiles", formData, config).then(
         (response) => {
