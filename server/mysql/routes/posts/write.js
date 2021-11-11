@@ -1,37 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-
 const { Post, Img } = require('../../models');
-
-try {
-  fs.accessSync('uploads');
-} catch (error) {
-  console.log('uploads 폴더가 없으므로 생성합니다.');
-  fs.mkdirSync('uploads');
-}
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, 'uploads');
-    },
-    filename(req, file, done) { // 제로초.png
-      const ext = path.extname(file.originalname); // 확장자 추출(.png)
-      const basename = path.basename(file.originalname, ext); // 제로초
-      done(null, basename + '_' + new Date().getTime() + ext); // 제로초15184712891.png
-    },
-  }),
-  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
-});
 
 router.post('/', async (req, res, next) => { // POST /post
   try {
     //const hashtags = req.body.content.match(/#[^\s#]+/g);
-    const post = await Post.create({
+    const fullPost = await Post.create({
       id: req.body.id,
       title: req.body.title,
       content: req.body.content,
@@ -73,7 +48,7 @@ router.post('/', async (req, res, next) => { // POST /post
     //   }]
     // })
     //res.status(201).json(fullPost);
-    res.status(201).json({success: true,post});
+    res.status(201).json({ success: true, fullPost });
   } catch (error) {
     console.error(error);
     next(error);
