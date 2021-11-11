@@ -10,7 +10,7 @@ const router = express.Router();
 /////////////////////////////////////////////////////
 
 router.get("/", (req, res) => {
-
+  // 보류
 });
 
 module.exports = router;

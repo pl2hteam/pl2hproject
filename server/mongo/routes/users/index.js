@@ -13,7 +13,7 @@ const { auth } = require("../../middleware/auth");
 /*                                                 */
 /////////////////////////////////////////////////////
 
-router.get("/auth", auth, authRouter);
+router.use("/auth", auth, authRouter);
 router.use('/register', register);
 router.use('/login', login);
 router.use('/logout', auth, logout);
