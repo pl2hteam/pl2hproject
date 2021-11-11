@@ -25,6 +25,7 @@ const ShopMainPage = () => {
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
       if (response.data.success) {
+        console.log(response.data);
         if (body.loadMore) {
           setProducts([...Products, ...response.data.products]);
         } else {
