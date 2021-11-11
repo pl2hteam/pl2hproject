@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import MovieFileUpload from "../../Common/components/MovieFileUpload";
+import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
 
 const { Title } = Typography;
@@ -15,7 +15,6 @@ const UploadProductPage = (props) => {
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
-
 
   const onPdNameChange = (event) => {
     setPdNameValue(event.currentTarget.value);

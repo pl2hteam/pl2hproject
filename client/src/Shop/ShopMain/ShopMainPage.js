@@ -25,6 +25,7 @@ const ShopMainPage = () => {
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
       if (response.data.success) {
+        console.log(response.data);
         if (body.loadMore) {
           setProducts([...Products, ...response.data.products]);
         } else {
@@ -54,17 +55,10 @@ const ShopMainPage = () => {
   };
 
   const renderCards = Products.map((product, index) => {
+    console.log(product);
     return (
       <Col lg={3} md={4} xs={8} key={index}>
-        <Card
-          hoverable={true}
-          cover={
-            <a href={`/shop/product/${product._id}`}>
-              {" "}
-              <ImageSlider images={product.images} />
-            </a>
-          }
-        >
+        <Card hoverable={true} cover={<ImageSlider images={product} />}>
           <Meta title={product.title} description={`$${product.price}`} />
         </Card>
       </Col>

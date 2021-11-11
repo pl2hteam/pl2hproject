@@ -14,6 +14,7 @@ import SnsLoginPage from "../SNS/Main/ShopLogin";
 
 import ShopLoginPage from "../Shop/MainPage/ShopMainLogin";
 import ShopMainPage from "../Shop/ShopMain/ShopMainPage";
+import EasterEgg from "../Shop/MainPage/EasterEgg/EasterEgg";
 import UploadProductPage from "../Shop/UploadProductPage/UploadProductPage";
 import DetailProductPage from "../Shop/DetailProductPage/DetailProductPage";
 
@@ -53,6 +54,11 @@ function App() {
             exact
             path="/shop/product/:pd_id"
             component={Auth(DetailProductPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/EasterEgg"
+            component={Auth(EasterEgg, null, false)}
           />
           <Route
             exact
