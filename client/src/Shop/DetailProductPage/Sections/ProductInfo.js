@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Descriptions } from "antd";
 
-function ProductInfo(props) {
+const ProductInfo = (props) => {
   const [Product, setProduct] = useState({});
 
   useEffect(() => {

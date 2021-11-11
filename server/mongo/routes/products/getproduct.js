@@ -2,9 +2,13 @@ const express = require("express");
 const { Product } = require("../../schemas/Product");
 const router = express.Router();
 
+/////////////////////////////////////////////////////
+/*                                                 */
+/*         /api/mongo/product/getProducts          */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 router.post("/", (req, res) => {
-  // let order = req.body.order ? req.body.order : "desc";
-  // let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
@@ -15,8 +19,8 @@ router.post("/", (req, res) => {
     if (req.body.filters[key].length > 0) {
       if (key === "price") {
         findArgs[key] = {
-          $gte: req.body.filters[key][0], // $gte : 몽고디비 용어로 해당 값보다 크거나 같음
-          $lte: req.body.filters[key][1], // $lte : 몽고디비 용어로 해당 값보다 작거나 같음
+          $gte: req.body.filters[key][0],
+          $lte: req.body.filters[key][1],
         };
       } else {
         findArgs[key] = req.body.filters[key];
@@ -28,7 +32,6 @@ router.post("/", (req, res) => {
     Product.find(findArgs)
       .find({ $text: { $search: term } })
       .populate("seller")
-      // .sort([[sortBy, order]])
       .skip(skip)
       .limit(limit)
       .exec((err, productInfo) => {

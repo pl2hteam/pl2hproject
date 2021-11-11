@@ -3,6 +3,14 @@ const router = express.Router();
 
 let ffmpeg = require('fluent-ffmpeg');
 
+
+/////////////////////////////////////////////////////
+/*                                                 */
+/*      /api/mongo/product/video/thumbnail         */
+/*                                                 */
+/////////////////////////////////////////////////////
+
+
 router.post('/', (req, res) => {
   let filePath = "";
   let fileDuration = "";

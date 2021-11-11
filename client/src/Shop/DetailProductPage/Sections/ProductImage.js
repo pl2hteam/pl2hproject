@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 
-function ProductImage(props) {
-  const [Images, setImages] = useState([]);
-  const [Video, setVideo] = useState([]);
+const ProductImage = (props) => {
+    const [Images, setImages] = useState([]);
+    const [Video, setVideo] = useState([]);
 
   useEffect(() => {
     let images = [];
