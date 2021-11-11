@@ -13,45 +13,57 @@ function FileUpload(props) {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
-    
+
     if (files[0].type == "video/mp4") {
-      Axios.post('/api/mongo/product/video/uploadfiles', formData, config)
-      .then(response => {
-        if (response.data.success) {
-          console.log(response.data);
+      Axios.post("/api/mongo/product/video/uploadfiles", formData, config).then(
+        (response) => {
+          if (response.data.success) {
+            console.log(response.data);
 
-          let variable = {
-            url: response.data.url,
-            fileName: response.data.fileName,
-          };
+            let variable = {
+              url: response.data.url,
+              fileName: response.data.fileName,
+            };
 
-          console.log();
+            setVideoPath(response.data.url);
+            props.refreshImgFunction.updateVideoPath([
+              ...VideoPath,
+              response.data.url,
+            ]);
 
-          setVideoPath(response.data.url);
-          props.refreshImgFunction.updateVideoPath([...VideoPath , response.data.url]);
-
-          Axios.post('/api/mongo/product/video/thumbnail', variable)
-          .then(response => {
-            console.log(response);
-            if (response.data.success) {
-              setDuration(response.data.fileDuration);
-              props.refreshImgFunction.updateDuration([...Duration , response.data.fileDuration]);
-              setImages([...Images, response.data.url]);
-              props.refreshImgFunction.updateImages([...Images, response.data.url]);
-            } else {
-              alert('썸내일 생성에 실패 했습니다.');
-            }
-          })
-        } else {
-          alert('비디오 업로드를 실패했습니다.');
+            Axios.post("/api/mongo/product/video/thumbnail", variable).then(
+              (response) => {
+                console.log(response);
+                if (response.data.success) {
+                  setDuration(response.data.fileDuration);
+                  props.refreshImgFunction.updateDuration([
+                    ...Duration,
+                    response.data.fileDuration,
+                  ]);
+                  setImages([...Images, response.data.url]);
+                  props.refreshImgFunction.updateImages([
+                    ...Images,
+                    response.data.url,
+                  ]);
+                } else {
+                  alert("썸내일 생성에 실패 했습니다.");
+                }
+              }
+            );
+          } else {
+            alert("비디오 업로드를 실패했습니다.");
+          }
         }
-      })
+      );
     } else {
       Axios.post("/api/mongo/product/uploadImage", formData, config).then(
         (response) => {
           if (response.data.success) {
             setImages([...Images, response.data.image]);
-            props.refreshImgFunction.updateImages([...Images, response.data.image]);
+            props.refreshImgFunction.updateImages([
+              ...Images,
+              response.data.image,
+            ]);
           } else {
             alert("Failed to save the Image in Server");
           }
@@ -91,7 +103,6 @@ function FileUpload(props) {
             }}
             {...getRootProps()}
           >
-            
             <input {...getInputProps()} />
             <Icon type="plus" style={{ fontSize: "3rem" }} />
           </div>

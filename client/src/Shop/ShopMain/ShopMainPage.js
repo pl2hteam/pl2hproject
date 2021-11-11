@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from '../../Common/components/ImageSlider';
-import CheckBox from './Section/CheckBox';
-import { itemNumber } from './Section/itemDatas';
-import Radiobox from './Section/RadioBox';
-import { price } from './Section/priceDatas';
-import SearchFeature from './Section/SearchFeature';
+import ImageSlider from "../../Common/components/ImageSlider";
+import CheckBox from "./Section/CheckBox";
+import { itemNumber } from "./Section/itemDatas";
+import Radiobox from "./Section/RadioBox";
+import { price } from "./Section/priceDatas";
+import SearchFeature from "./Section/SearchFeature";
 
 const { Meta } = Card;
 
@@ -57,13 +57,8 @@ const ShopMainPage = () => {
   const renderCards = Products.map((product, index) => {
     console.log(product);
     return (
-      <Col lg={1} md={1} xs={1}>
-        <Card
-          hoverable={true}
-          cover={
-              <ImageSlider images={product} />
-          }
-        >
+      <Col lg={3} md={4} xs={8} key={index}>
+        <Card hoverable={true} cover={<ImageSlider images={product} />}>
           <Meta title={product.title} description={`$${product.price}`} />
         </Card>
       </Col>

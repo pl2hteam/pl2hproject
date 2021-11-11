@@ -4,19 +4,20 @@ import Auth from "../Common/hoc/auth";
 
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
-import Calendar from '../SNS/Calendar'
-import Latter from '../SNS/Latter'
-import Mind from '../SNS/Mind'
-import Pic from '../SNS/Pic'
-import Jam from "../SNS/Jam"
-import Write from "../SNS/Profile/Write"
-import SnsLoginPage from "../SNS/Main/ShopLogin"
+import Calendar from "../SNS/Calendar";
+import Latter from "../SNS/Latter";
+import Mind from "../SNS/Mind";
+import Pic from "../SNS/Pic";
+import Jam from "../SNS/Jam";
+import Write from "../SNS/Profile/Write";
+import SnsLoginPage from "../SNS/Main/ShopLogin";
 
 import ShopLoginPage from "../Shop/MainPage/ShopMainLogin";
 import ShopMainPage from "../Shop/ShopMain/ShopMainPage";
 import EasterEgg from "../Shop/MainPage/EasterEgg/EasterEgg";
 import UploadProductPage from "../Shop/UploadProductPage/UploadProductPage";
-import DetailProductPage from '../Shop/DetailProductPage/DetailProductPage';
+import DetailProductPage from "../Shop/DetailProductPage/DetailProductPage";
+import CartPage from "../Shop/CartPage/CartPage";
 
 function App() {
   return (
@@ -27,21 +28,49 @@ function App() {
           <Route exact path="/" component={Auth(SnsLoginPage, false)} />
 
           {/* SNS */}
-          <Route exact path="/sns" component={Auth(Home, true, true)} />
-          <Route path="/sns/profile" component={Auth(Profile, true, true)} />
-          <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
-          <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
-          <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
-          <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
-          <Route path="/sns/profile/Write" component={Auth(Write, true, true)} />
+          <Route exact path="/sns" component={Auth(Home, false, true)} />
+          <Route path="/sns/profile" component={Auth(Profile, false, true)} />
+          <Route path="/sns/Jam" component={Auth(Jam, false, true)} />
+          <Route path="/sns/Calendar" component={Auth(Calendar, false, true)} />
+          <Route path="/sns/Latter" component={Auth(Latter, false, true)} />
+          <Route path="/sns/Mind" component={Auth(Mind, false, true)} />
+          <Route path="/sns/Pic" component={Auth(Pic, false, true)} />
+          <Route
+            path="/sns/profile/Write"
+            component={Auth(Write, false, true)}
+          />
 
           {/* SHOP */}
-          <Route exact path="/shop" component={Auth(ShopLoginPage, false, false)} />
-          <Route exact path="/shop/main" component={Auth(ShopMainPage, true, false)} />
-          <Route exact path="/shop/product/:pd_id" component={Auth(DetailProductPage, true, false)} />
-          <Route exact path="/shop/EasterEgg" component={Auth(EasterEgg, null, false)} />
-          <Route exact path="/shop/upload" component={Auth(UploadProductPage, true, false)} />
+          <Route
+            exact
+            path="/shop"
+            component={Auth(ShopLoginPage, false, false)}
+          />
+          <Route
+            exact
+            path="/shop/main"
+            component={Auth(ShopMainPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/product/:pd_id"
+            component={Auth(DetailProductPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/EasterEgg"
+            component={Auth(EasterEgg, null, false)}
+          />
+          <Route
+            exact
+            path="/shop/upload"
+            component={Auth(UploadProductPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/cart"
+            component={Auth(CartPage, true, false)}
+          />
         </Switch>
       </div>
     </Suspense>
