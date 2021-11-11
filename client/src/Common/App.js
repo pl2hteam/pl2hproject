@@ -17,6 +17,7 @@ import ShopMainPage from "../Shop/ShopMain/ShopMainPage";
 import EasterEgg from "../Shop/MainPage/EasterEgg/EasterEgg";
 import UploadProductPage from "../Shop/UploadProductPage/UploadProductPage";
 import DetailProductPage from "../Shop/DetailProductPage/DetailProductPage";
+import CartPage from "../Shop/CartPage/CartPage";
 
 function App() {
   return (
@@ -64,6 +65,11 @@ function App() {
             exact
             path="/shop/upload"
             component={Auth(UploadProductPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/cart"
+            component={Auth(CartPage, true, false)}
           />
         </Switch>
       </div>
