@@ -56,7 +56,7 @@ module.exports = class Post extends Sequelize.Model {   // 객체 Sequelize 의 
     db.Post.belongsTo(db.User); // post.addUser, post.getUser, post.setUser
     //db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' }); // post.addHashtags
     //db.Post.hasMany(db.Comment); // post.addComments, post.getComments
-    db.Post.hasMany(db.Image); // post.addImages, post.getImages
+    db.Post.hasMany(db.Image); // fullPost.addImages, fullPost.getImages
     //db.Post.belongsToMany(db.User, { through: 'Like', as: 'Likers' }) // post.addLikers, post.removeLikers
     //db.Post.belongsTo(db.Post, { as: 'Retweet' }); // post.addRetweet
   }

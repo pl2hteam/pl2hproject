@@ -58,13 +58,13 @@ const Main = () => {
   // 상품목록 불러오기
   const getPosts = (body) => {
     Axios.post("/api/mysql/posts/read", body).then((response) => {
-    
+
       console.log(response.data);
       if (response.data.success) {
-        
+
         if (body.loadMore) {
           setPosts([...Posts, ...response.data.fullPost]);
-         
+
         } else {
           setPosts(response.data.fullPost);
         }
@@ -85,7 +85,7 @@ const Main = () => {
       skip: skip,
       limit: Limit,
       loadMore: true,
-      
+
     };
 
     getPosts(variables);
@@ -95,7 +95,7 @@ const Main = () => {
   const renderCards = Posts.map((fullPost, index) => {
     return (
       <Col lg={3} md={4} xs={8}>
-        <Meta title={fullPost.title} description={`$${fullPost.content}`} />
+        <Meta title={fullPost.title} description={fullPost.content} />
       </Col>
     );
   });
