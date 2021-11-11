@@ -55,15 +55,13 @@ const ShopMainPage = () => {
   };
 
   const renderCards = Products.map((product, index) => {
+    console.log(product);
     return (
       <Col lg={1} md={1} xs={1}>
         <Card
           hoverable={true}
           cover={
-            <a href={`/shop/product/${product._id}`}>
-              {" "}
-              <ImageSlider images={product.images} />
-            </a>
+              <ImageSlider images={product} />
           }
         >
           <Meta title={product.title} description={`$${product.price}`} />
