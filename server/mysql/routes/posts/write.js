@@ -55,10 +55,10 @@ router.post('/', async (req, res, next) => { // POST /post
   }
 });
 
-router.post('/images', upload.array('img'), (req, res, next) => { // POST /post/images
-  console.log(req.files);
-  res.json(req.files.map((v) => v.filename));
-});
+// router.post('/images', upload.array('img'), (req, res, next) => { // POST /post/images
+//   console.log(req.files);
+//   res.json(req.files.map((v) => v.filename));
+// });
 
 
 
