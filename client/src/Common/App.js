@@ -10,6 +10,7 @@ import Mind from '../SNS/Mind'
 import Pic from '../SNS/Pic'
 import Jam from "../SNS/Jam"
 import Write from "../SNS/Profile/Write"
+import LatterWrite from "../SNS/Latter/LatterWrite";
 import SnsLoginPage from "../SNS/Main/ShopLogin"
 import ContentProfile from "../SNS/ContentProfile"
 import UpdateProfile from "../SNS/UpdateProfile"
@@ -38,6 +39,8 @@ function App() {
           <Route path="/sns/profile/Write" component={Auth(Write, false, true)} />
           <Route path="/ContentProfile" component={Auth(ContentProfile, false, true)} />
           <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, true)} />
+          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, false, true)} />
+          
           
 
           {/* SHOP */}
