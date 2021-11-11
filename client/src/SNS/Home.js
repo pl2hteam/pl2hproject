@@ -1,13 +1,25 @@
-import React from "react";
+
 import styled from "styled-components";
 import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
-import Card from "./Layout/Card";
-import content from './content';
+import Cards from "./Layout/Card";
+import ContentProfile from './ContentProfile'
+import UpdateProfile from "./UpdateProfile";
+
+
+////////////////////////////////////////
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import { Col,Card } from "antd";
+
+import { withRouter } from "react-router-dom";
+
+////////////////////////////////////////
+
 import { Link } from "react-router-dom";
 import {
-  MdLink,
+  
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
@@ -114,30 +126,28 @@ const LinkTitle = styled.p`
     color: green;
   }
 `;
-
+const { Meta } = Card;
 const Home = () => {
-  const goGithub = () => {
-    window.location.href = "https://github.com/danbiilee/react-miniportfoly";
-  };
-  const goVelog = () => {
-    window.location.href = "https://velog.io/@dblee";
-  };
 
+  
+
+
+  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
+
+  // 텍스트 검색
+
+
+  // default
+ 
+    
   return (
     <Layout>
       <Sidebar>
-        <Card>
+        <Cards>
           <FlexWrapper>
             <ProfileSection>
               <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
-              <LinkTitle onClick={goGithub}>
-                <MdLink />
-                Github
-              </LinkTitle>
-              <LinkTitle onClick={goVelog}>
-                <MdLink />
-                dblee.log
-              </LinkTitle>
+          
             </ProfileSection>
             <ProfileSection>
               <p>
@@ -159,10 +169,10 @@ const Home = () => {
               </p>
             </ProfileSection>
           </FlexWrapper>
-        </Card>
+        </Cards>
       </Sidebar>
       <Content>
-        <Card>
+        <Cards>
           <ContentSection>
             <h2>미니룸</h2>
             <div>
@@ -174,18 +184,15 @@ const Home = () => {
           </ContentSection>
           <ContentSection>
             <h2>한 줄 감성</h2>
-            <Link to={'/content'}>방명록</Link>
+            <Link to={'/ContentProfile'}>방명록</Link>
             <ul>
-              <li>싸이월드 미니홈피 감성으로 기획, 개발했습니다~☆</li>
-              <li>프로필 페이지를 구경해주세요~☆</li>
-              <li>배경도 바꿀 수 있답니다~☆</li>
-              <li></li>
-              <li></li>
+              <li><UpdateProfile/></li>
             </ul>
           </ContentSection>
-        </Card>
+        </Cards>
       </Content>
     </Layout>
+
   );
 };
-export default Home;
+export default withRouter(Home);

@@ -11,7 +11,8 @@ import Pic from '../SNS/Pic'
 import Jam from "../SNS/Jam"
 import Write from "../SNS/Profile/Write"
 import SnsLoginPage from "../SNS/Main/ShopLogin"
-import Content from "../SNS/content"
+import ContentProfile from "../SNS/ContentProfile"
+import UpdateProfile from "../SNS/UpdateProfile"
 
 import ShopLoginPage from "../Shop/MainPage/ShopMainLogin";
 import ShopMainPage from "../Shop/ShopMain/ShopMainPage";
@@ -35,7 +36,8 @@ function App() {
           <Route path="/sns/Mind" component={Auth(Mind, false, true)} />
           <Route path="/sns/Pic" component={Auth(Pic, false, true)} />
           <Route path="/sns/profile/Write" component={Auth(Write, false, true)} />
-          <Route path="/content" component={Auth(Content, false, true)} />
+          <Route path="/ContentProfile" component={Auth(ContentProfile, false, true)} />
+          <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, true)} />
           
 
           {/* SHOP */}
