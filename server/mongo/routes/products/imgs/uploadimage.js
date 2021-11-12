@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const multer = require('multer');
+const multer = require("multer");
+const path = require("path");
 
 /* 이미지 파일 이름 지정 */
 const box = multer.diskStorage({
@@ -12,7 +13,7 @@ const box = multer.diskStorage({
     const basename = path.basename(file.originalname, ext);
     done(null, basename + "_" + new Date().getTime() + ext);
   },
-},);
+});
 
 const upload = multer({ storage: box }).single("file");
 
