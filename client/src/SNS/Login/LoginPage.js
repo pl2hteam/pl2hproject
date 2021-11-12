@@ -40,12 +40,11 @@ const SnsLoginPage = (props) => {
           let dataToSubmit = {
             email: values.email,
             password: values.password,
-            db: true, // MySQL
+            db: true, // SNS
           };
 
           dispatch(loginUser(dataToSubmit))
             .then((response) => {
-              console.log(response);
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
                 if (rememberMe === true) {
