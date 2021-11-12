@@ -21,6 +21,7 @@
     "react-hook-form": "^7.19.0",
     "react-icons": "^3.7.0",
     "react-image-gallery": "^1.2.7",
+    "react-paypal-express-checkout": "^1.0.5",
     "react-redux": "^7.1.0-rc.1",
     "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.0.1",
