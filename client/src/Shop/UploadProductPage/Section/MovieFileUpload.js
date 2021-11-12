@@ -3,30 +3,73 @@ import Dropzone from "react-dropzone";
 import Axios from "axios";
 import Icon from "@ant-design/icons/lib/components/Icon";
 function FileUpload(props) {
-  
   const [Images, setImages] = useState([]);
+  const [VideoPath, setVideoPath] = useState("");
+  const [Duration, setDuration] = useState("");
 
   const onDrop = (files) => {
     let formData = new FormData();
     const config = {
-      
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
-    //save the Image we chose inside the Node Server
-    Axios.post("/api/mysql/route/posts/write/images", formData, config).then(
-     
-      (response) => {
-        console.log(1,response);
-        if (response.data.success) {
-          setImages([...Images, response.data.img]);
-          props.refreshFunction([...Images, response.data.img]);
-          console.log(response.data.img);
-        } else {
-          alert("Failed to save the Image in Server");
+    
+    if (files[0].type == "video/mp4") {
+      Axios.post("/api/mongo/product/video/uploadfiles", formData, config).then(
+        (response) => {
+          if (response.data.success) {
+            console.log(response.data);
+
+            let variable = {
+              url: response.data.url,
+              fileName: response.data.fileName,
+            };
+
+            setVideoPath(response.data.url);
+            props.refreshImgFunction.updateVideoPath([
+              ...VideoPath,
+              response.data.url,
+            ]);
+
+            Axios.post("/api/mongo/product/video/thumbnail", variable).then(
+              (response) => {
+                console.log(response);
+                if (response.data.success) {
+                  setDuration(response.data.fileDuration);
+                  props.refreshImgFunction.updateDuration([
+                    ...Duration,
+                    response.data.fileDuration,
+                  ]);
+                  setImages([...Images, response.data.url]);
+                  props.refreshImgFunction.updateImages([
+                    ...Images,
+                    response.data.url,
+                  ]);
+                } else {
+                  alert("썸내일 생성에 실패 했습니다.");
+                }
+              }
+            );
+          } else {
+            alert("비디오 업로드를 실패했습니다.");
+          }
         }
-      }
-    );
+      );
+    } else {
+      Axios.post("/api/mongo/product/uploadImage", formData, config).then(
+        (response) => {
+          if (response.data.success) {
+            setImages([...Images, response.data.image]);
+            props.refreshImgFunction.updateImages([
+              ...Images,
+              response.data.image,
+            ]);
+          } else {
+            alert("Failed to save the Image in Server");
+          }
+        }
+      );
+    }
   };
 
   // 업로드 대기중인 상품이미지 클릭 시 삭제 함수
@@ -40,8 +83,10 @@ function FileUpload(props) {
 
     // 날리고 남은 이미지들을 useState로 갱신
     setImages(newImages);
-    props.refreshFunction(newImages);
+    props.refreshImgFunction.updateImages(newImages);
   };
+
+  console.log(props);
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -58,8 +103,6 @@ function FileUpload(props) {
             }}
             {...getRootProps()}
           >
-            {console.log("getRootProps", { ...getRootProps() })}
-            {console.log("getInputProps", { ...getInputProps() })}
             <input {...getInputProps()} />
             <Icon type="plus" style={{ fontSize: "3rem" }} />
           </div>

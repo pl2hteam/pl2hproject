@@ -1,5 +1,5 @@
 
-import loginImg from "../../Common/login.svg";
+
 
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
@@ -42,12 +42,11 @@ const LoginPage = (props) => {
           let dataToSubmit = {
             email: values.email,
             password: values.password,
-            db: false, // MongoDB
+            db: false, // SHOP
           };
 
           dispatch(loginUser(dataToSubmit))
             .then((response) => {
-              console.log(response);
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
                 if (rememberMe === true) {
@@ -90,7 +89,7 @@ const LoginPage = (props) => {
                 <div className="header">Login</div>
                 <div className="content">
                   <div className="image">
-                    <img src={loginImg} />
+                 
                   </div>
                   <div className="form">
                     <div className="form-group">
@@ -155,7 +154,7 @@ const LoginPage = (props) => {
                     disabled={isSubmitting}
                     onSubmit={handleSubmit}
                   >
-                    Login
+                    ShopLogin
                   </button>
                 </div>
                 <input type="checkbox"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import FileUpload from "../../Common/components/FileUpload";
+// import FileUpload from "../../Common/components/FileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -74,7 +74,7 @@ const UploadProductPage2 = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <FileUpload refreshFunction={PostImg} />
+        {/* <FileUpload refreshFunction={PostImg} /> */}
 
         <br />
         <br />

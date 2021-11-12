@@ -3,6 +3,12 @@ const router = express.Router();
 const user = require('./users');
 const product = require("./products");
 
+/////////////////////////////////////////////////////
+/*                                                 */
+/*                  /api/mongo                     */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 /* 판매자 정보 */
 router.use("/users", user);
 

@@ -8,12 +8,36 @@ module.exports = class User extends Sequelize.Model {
                 allowNull: true,
                 unique: true,
             },
-            nickname: {
+            name: {
                 type: Sequelize.STRING(15),
                 allowNull: false,
             },
             password: {
                 type: Sequelize.STRING(100),
+                allowNull: true,
+            },
+            img: {
+              type: Sequelize.STRING(200),
+              allowNull: true,
+            },
+            address: {
+                type: Sequelize.STRING(100),
+                allowNull: true,
+            },
+            gender: {   // boolean 으로 구분
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            role: {   // boolean 으로 구분
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            phone: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            birth: {
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             provider: {

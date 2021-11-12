@@ -212,10 +212,9 @@ const ContentProfile = (props) => {
         </Card>
       </Sidebar>
       <Content>
-      <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+      
         <Title level={2}>커플 상품</Title>
-      </div>
+   
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
@@ -230,7 +229,7 @@ const ContentProfile = (props) => {
 
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
-    </div>
+  
       </Content>
     </Layout>
   );

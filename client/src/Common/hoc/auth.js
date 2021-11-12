@@ -4,26 +4,27 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function (ComposedClass, reload, database, adminRoute = null) {
   function AuthenticationCheck(props) {
-    let user = useSelector((state) => state.user);
+    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
-
+    // 추후 DB 의 이미지 경로 유무로 판매자 구분
     useEffect(() => {
-      dispatch(auth(database)).then((response) => { // MySQL
-        if (database) {
+      dispatch(auth(database)).then((response) => {
+        if (database) { // SNS
+          console.log(response);
           if (!response.payload.isAuth) {
             if (reload) {
-              props.history.push("/");
+              props.history.push("/sns");
             }
           } else {
             if (adminRoute && !response.payload.isAdmin) {
               props.history.push("/sns/admin");
             } else {
               if (reload === false) {
-                props.history.push("/sns");
+                props.history.push("/sns/main");
               }
             }
           }
-        } else {  // 몽고DB
+        } else {  // SHOP
           if (!response.payload.isAuth) {
             if (reload) {
               props.history.push("/shop");
