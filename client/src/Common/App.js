@@ -4,13 +4,16 @@ import Auth from "../Common/hoc/auth";
 
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
-import Calendar from "../SNS/Calendar";
-import Latter from "../SNS/Latter";
-import Mind from "../SNS/Mind";
-import Pic from "../SNS/Pic";
-import Jam from "../SNS/Jam";
-import Write from "../SNS/Profile/Write";
-import SnsLoginPage from "../SNS/Main/ShopLogin";
+import Calendar from '../SNS/Calendar'
+import Latter from '../SNS/Latter'
+import Mind from '../SNS/Mind'
+import Pic from '../SNS/Pic'
+import Jam from "../SNS/Jam"
+import Write from "../SNS/Profile/Write"
+import LatterWrite from "../SNS/Latter/LatterWrite";
+import SnsLoginPage from "../SNS/Main/ShopLogin"
+import ContentProfile from "../SNS/ContentProfile"
+import UpdateProfile from "../SNS/UpdateProfile"
 
 import ShopLoginPage from "../Shop/MainPage/ShopMainLogin";
 import ShopMainPage from "../Shop/ShopMain/ShopMainPage";
@@ -37,6 +40,9 @@ function App() {
             path="/sns/profile/Write"
             component={Auth(Write, true, true)}
           />
+          <Route path="/ContentProfile" component={Auth(ContentProfile, false, true)} />
+          <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, true)} />
+          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, false, true)} />
 
           {/* SHOP */}
           <Route

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Common/components/Section/MainLogin.scss";
+
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 

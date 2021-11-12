@@ -5,7 +5,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from "../../../Common/components/ImageSlider"
+// import ImageSlider from "../../../Common/components/ImageSlider"
 import { withRouter } from "react-router";
 
 ////////////////////////////////////////
@@ -49,28 +49,30 @@ const TxtWrapper = styled.div`
 const { Meta } = Card;
 
 const Main = () => {
-  const [Products, setProducts] = useState([]);
+  const [Posts, setPosts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
-  const [Filters, setFilters] = useState({
-    itemNumber: [],
-    price: [],
-  });
-  const [SearchTerm, setSearchTerm] = useState("");
+
 
   // 상품목록 불러오기
-  const getProducts = (body) => {
-    Axios.post("/api/mongo/product/getProducts", body).then((response) => {
+  const getPosts = (body) => {
+    Axios.post("/api/mysql/posts/read", body).then((response) => {
+    
+      console.log(response.data);
       if (response.data.success) {
+        
         if (body.loadMore) {
-          setProducts([...Products, ...response.data.products]);
+          setPosts([...Posts, ...response.data.fullPost]);
+         
         } else {
-          setProducts(response.data.products);
+          setPosts(response.data.fullPost);
         }
         setPostSize(response.data.postSize);
+        setPosts([...Posts, ...response.data.fullPost]);
       } else {
-        alert("Failed to fectch product datas");
+        console.log(1);
+        alert("Failed to fectch post datas");
       }
     });
   };
@@ -83,52 +85,25 @@ const Main = () => {
       skip: skip,
       limit: Limit,
       loadMore: true,
-      filters: Filters,
-      searchTerm: SearchTerm,
+      
     };
 
-    getProducts(variables);
+    getPosts(variables);
     setSkip(skip);
   };
 
-  const renderCards = Products.map((product, index) => {
+  const renderCards = Posts.map((fullPost, index) => {
     return (
       <Col lg={3} md={4} xs={8}>
-        <a href={`/shop/product/${product._id}`}>
-          {" "}
-          <ImageSlider images={product.images} />
-        </a>
-
-        <Meta title={product.title} description={`$${product.price}`} />
+        <Meta title={fullPost.title} description={`$${fullPost.content}`} />
       </Col>
     );
   });
-  const showFilteredResults = (filters) => {
-    let body = {
-      skip: 0, // 처음엔 아무 선택 없음
-      limit: Limit,
-      filters: filters,
-    };
-    getProducts(body);
-    console.log(body);
-    setSkip(0);
-  };
 
   // category 는 체크박스랑 라디오 박스를 나누기 위한 것
 
   // 텍스트 검색
-  const updateSearchTerm = (newSearchTerm) => {
-    let body = {
-      skip: 0,
-      limit: Limit,
-      filters: Filters,
-      searchTerm: newSearchTerm,
-    };
 
-    setSkip(0);
-    setSearchTerm(newSearchTerm);
-    getProducts(body);
-  };
 
   // default
   useEffect(() => {
@@ -137,7 +112,7 @@ const Main = () => {
       limit: Limit,
     };
 
-    getProducts(variables);
+    getPosts(variables);
   }, []);
 
   return (
@@ -153,16 +128,10 @@ const Main = () => {
       </Row>
 
       {/* 검색란 */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
-        }}
-      ></div>
+
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-      {Products.length === 0 ? (
+      {Posts.length === 0 ? (
         <div
           style={{
             display: "flex",
