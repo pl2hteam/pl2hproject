@@ -1,23 +1,11 @@
-const { User } = require('../models/user');
-
 let auth = (req, res, next) => {
-  let token = req.sessionID;
-  // 1. MySQL 에 위변수 token 을 DB 에 저장 시키고
-
-  User.findByToken(token, (err, user) => {
-    if (err) throw err;
-    // 3. 없으면 isAuth : false 를 반환
-    if (!user)
+  if (!req.isAuthenticated()) {
     return res.json({
       isAuth: false,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
       error: true
     });
-    
-    // 2. 아래에서 해당 토큰이있으면 해당값들 반환
-    req.token = token;
-    req.user = user;
-    next();
-  });
+  }
+  next();
 };
 
 module.exports = { auth };

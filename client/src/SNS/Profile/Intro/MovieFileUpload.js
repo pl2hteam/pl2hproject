@@ -15,7 +15,7 @@ function FileUpload(props) {
     formData.append("file", files[0]);
     
     if (files[0].type == "video/mp4") {
-      Axios.post("/api/mongo/product/video/uploadfiles", formData, config).then(
+      Axios.post("/api/mysql/product/video/uploadfiles", formData, config).then(
         (response) => {
           if (response.data.success) {
             console.log(response.data);
@@ -31,7 +31,7 @@ function FileUpload(props) {
               response.data.url,
             ]);
 
-            Axios.post("/api/mongo/product/video/thumbnail", variable).then(
+            Axios.post("/api/mysql/product/video/thumbnail", variable).then(
               (response) => {
                 console.log(response);
                 if (response.data.success) {
@@ -56,7 +56,7 @@ function FileUpload(props) {
         }
       );
     } else {
-      Axios.post("/api/mongo/product/uploadImage", formData, config).then(
+      Axios.post("/api/mysql/product/uploadImage", formData, config).then(
         (response) => {
           if (response.data.success) {
             setImages([...Images, response.data.image]);

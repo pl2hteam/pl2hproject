@@ -10,20 +10,22 @@ export default function (ComposedClass, reload, database, adminRoute = null) {
     useEffect(() => {
       dispatch(auth(database)).then((response) => {
         if (database) { // SNS
+          console.log(response);
           if (!response.payload.isAuth) {
             if (reload) {
-              props.history.push("/");
+              props.history.push("/sns");
             }
           } else {
             if (adminRoute && !response.payload.isAdmin) {
               props.history.push("/sns/admin");
             } else {
               if (reload === false) {
-                props.history.push("/sns");
+                props.history.push("/sns/main");
               }
             }
           }
         } else {  // SHOP
+          console.log(response);
           if (!response.payload.isAuth) {
             if (reload) {
               props.history.push("/shop");

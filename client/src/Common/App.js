@@ -24,20 +24,18 @@ function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
-          {/* MAIN */}
-          <Route exact path="/" component={Auth(SnsLoginPage, false)} />
-
           {/* SNS */}
-          <Route exact path="/sns" component={Auth(Home, false, true)} />
-          <Route path="/sns/profile" component={Auth(Profile, false, true)} />
-          <Route path="/sns/Jam" component={Auth(Jam, false, true)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, false, true)} />
-          <Route path="/sns/Latter" component={Auth(Latter, false, true)} />
-          <Route path="/sns/Mind" component={Auth(Mind, false, true)} />
-          <Route path="/sns/Pic" component={Auth(Pic, false, true)} />
+          <Route exact path="/sns" component={Auth(SnsLoginPage, false, true)} />
+          <Route exact path="/sns/main" component={Auth(Home, true, true)} />
+          <Route path="/sns/profile" component={Auth(Profile, true, true)} />
+          <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
+          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
+          <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
+          <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
+          <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
           <Route
             path="/sns/profile/Write"
-            component={Auth(Write, false, true)}
+            component={Auth(Write, true, true)}
           />
 
           {/* SHOP */}

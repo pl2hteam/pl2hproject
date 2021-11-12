@@ -5,7 +5,7 @@ const post = require('./posts')
 
 // 라우터
 router.use('/users', user);
-router.use('/posts', post);
+router.use('/product', post);
 
 
 module.exports = router;
