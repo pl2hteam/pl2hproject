@@ -17,8 +17,8 @@ module.exports = class User extends Sequelize.Model {
                 allowNull: true,
             },
             img: {
-              type: Sequelize.STRING(200),
-              allowNull: true,
+                type: Sequelize.STRING(200),
+                allowNull: true,
             },
             address: {
                 type: Sequelize.STRING(100),
@@ -31,6 +31,7 @@ module.exports = class User extends Sequelize.Model {
             role: {   // boolean 으로 구분
                 type: Sequelize.INTEGER,
                 allowNull: true,
+                defaultValue: '1'
             },
             phone: {
                 type: Sequelize.INTEGER,

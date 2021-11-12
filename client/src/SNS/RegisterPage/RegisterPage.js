@@ -41,35 +41,50 @@ function RegisterPage(props) {
     <Formik
       initialValues={{
         email: '',
-        lastName: '',
         name: '',
         password: '',
+        address: '',
+        gender: '',
+        role: '',
+        phone: '',
+        birth: '',
         confirmPassword: ''
       }}
+
       validationSchema={Yup.object().shape({
-        name: Yup.string()
-          .required('Name is required'),
-        lastName: Yup.string()
-          .required('Last Name is required'),
         email: Yup.string()
           .email('Email is invalid')
           .required('Email is required'),
+        name: Yup.string()
+          .required('Name is required'),
         password: Yup.string()
           .min(6, 'Password must be at least 6 characters')
           .required('Password is required'),
         confirmPassword: Yup.string()
           .oneOf([Yup.ref('password'), null], 'Passwords must match')
-          .required('Confirm Password is required')
+          .required('Confirm Password is required'),
+        address: Yup.string()
+          .required('Address is required'),
+        gender: Yup.string()
+          .required('gender is required'),
+        phone: Yup.string()
+          .required('phone is required'),
+        birth: Yup.string()
+          .required('birth is required'),
       })}
+
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
 
           let dataToSubmit = {
             email: values.email,
-            password: values.password,
             name: values.name,
-            lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            password: values.password,
+            address: values.address,
+            gender: values.gender,
+            phone: values.phone,
+            birth: values.birth,
+            //image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
             db: true, // MySQL
           };
 
@@ -99,13 +114,13 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
-            <h2>Sign up</h2>
+            <h2>회원가입</h2>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
-              <Form.Item required label="Name">
+              <Form.Item required label="이름">
                 <Input
                   id="name"
-                  placeholder="Enter your name"
+                  placeholder="이름을 입력하세요."
                   type="text"
                   value={values.name}
                   onChange={handleChange}
@@ -119,27 +134,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
-                <Input
-                  id="lastName"
-                  placeholder="Enter your Last Name"
-                  type="text"
-                  value={values.lastName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.lastName && touched.lastName ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.lastName && touched.lastName && (
-                  <div className="input-feedback">{errors.lastName}</div>
-                )}
-              </Form.Item>
-
-              <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+              <Form.Item required label="이메일" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Input
                   id="email"
-                  placeholder="Enter your Email"
+                  placeholder="이메일을 입력하세요."
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -153,10 +151,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+              <Form.Item required label="비밀번호" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
                 <Input
                   id="password"
-                  placeholder="Enter your password"
+                  placeholder="비밀번호를 입력하세요."
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -170,10 +168,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Confirm" hasFeedback>
+              <Form.Item required label="비밀번호 확인" hasFeedback>
                 <Input
                   id="confirmPassword"
-                  placeholder="Enter your confirmPassword"
+                  placeholder="비밀번호 확인을 위해 한 번 더 입력하세요."
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
@@ -186,6 +184,76 @@ function RegisterPage(props) {
                   <div className="input-feedback">{errors.confirmPassword}</div>
                 )}
               </Form.Item>
+
+              <Form.Item required label="주소">
+                <Input
+                  id="address"
+                  placeholder="주소를 입력하세요."
+                  type="text"
+                  value={values.address}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.address && touched.address ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.address && touched.address && (
+                  <div className="input-feedback">{errors.address}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="성별">
+                <Input
+                  id="gender"
+                  placeholder="본인의 성을 선택해주세요."
+                  type="text"
+                  value={values.gender}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.gender && touched.gender ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.gender && touched.gender && (
+                  <div className="input-feedback">{errors.gender}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="연락처">
+                <Input
+                  id="phone"
+                  placeholder="연락처를 입력해주세요."
+                  type="text"
+                  value={values.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.phone && touched.phone ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.phone && touched.phone && (
+                  <div className="input-feedback">{errors.phone}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="생년월일">
+                <Input
+                  id="birth"
+                  placeholder="생년월일을 입력해주세요."
+                  type="text"
+                  value={values.birth}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.birth && touched.birth ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.birth && touched.birth && (
+                  <div className="input-feedback">{errors.birth}</div>
+                )}
+              </Form.Item>
+
+
 
               <Form.Item {...tailFormItemLayout}>
                 <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>

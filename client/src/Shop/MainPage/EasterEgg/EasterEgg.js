@@ -1,5 +1,5 @@
 import React from 'react';
-import './EasterEgg.scss';
+import './EasterEgg.css';
 
 const EasterEgg = () => {
   return (
