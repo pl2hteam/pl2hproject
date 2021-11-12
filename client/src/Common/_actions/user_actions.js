@@ -36,8 +36,8 @@ export function loginUser(dataToSubmit) {
   let request = {};
   if (dataToSubmit.db) {
     request = axios
-    .post(`${MYSQL_USER_SERVER}/login`, dataToSubmit)
-    .then((response) => response.data);
+      .post(`${MYSQL_USER_SERVER}/login`, dataToSubmit)
+      .then((response) => response.data);
   } else {
     request = axios
       .post(`${MONGO_USER_SERVER}/login`, dataToSubmit)
@@ -118,7 +118,7 @@ export function getCartItems(cartItems, userCart) {
 
 export function removeCartItem(id) {
   const request = axios
-    .get(`/api/users/removeFromCart?_id=${id}`)
+    .get(`/api/mongo/users/cart/removeFromCart?_id=${id}`)
     .then((response) => {
       response.data.cart.forEach((item) => {
         response.data.cartDetail.forEach((k, i) => {

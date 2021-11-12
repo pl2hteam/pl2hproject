@@ -12,6 +12,7 @@ import Axios from "axios";
 
 function CartPage(props) {
   const dispatch = useDispatch();
+  // 합계 state
   const [Total, setTotal] = useState(0);
   const [ShowTotal, setShowTotal] = useState(false);
   const [ShowSuccess, setShowSuccess] = useState(false);
@@ -38,6 +39,7 @@ function CartPage(props) {
     }
   }, [props.user.userData]);
 
+  // 장바구니 총액 계산
   const calculateTotal = (cartDetail) => {
     let total = 0;
 
@@ -49,6 +51,7 @@ function CartPage(props) {
     setShowTotal(true);
   };
 
+  // 장바구니에 있는 상품 제거
   const removeFromCart = (productId) => {
     dispatch(removeCartItem(productId)).then((response) => {
       if (response.payload.cartDetail.length <= 0) {
@@ -59,27 +62,27 @@ function CartPage(props) {
     });
   };
 
-  const transactionSuccess = (data) => {
-    dispatch(
-      onSuccessBuy({
-        cartDetail: props.user.cartDetail,
-        paymentData: data,
-      })
-    ).then((response) => {
-      if (response.payload.success) {
-        setShowSuccess(true);
-        setShowTotal(false);
-      }
-    });
-  };
+  // const transactionSuccess = (data) => {
+  //   dispatch(
+  //     onSuccessBuy({
+  //       cartDetail: props.user.cartDetail,
+  //       paymentData: data,
+  //     })
+  //   ).then((response) => {
+  //     if (response.payload.success) {
+  //       setShowSuccess(true);
+  //       setShowTotal(false);
+  //     }
+  //   });
+  // };
 
-  const transactionError = () => {
-    console.log("Paypal error");
-  };
+  // const transactionError = () => {
+  //   console.log("Paypal error");
+  // };
 
-  const transactionCanceled = () => {
-    console.log("Transaction canceled");
-  };
+  // const transactionCanceled = () => {
+  //   console.log("Transaction canceled");
+  // };
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
