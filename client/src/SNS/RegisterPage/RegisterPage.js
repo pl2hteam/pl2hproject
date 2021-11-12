@@ -114,7 +114,6 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
-            <h2>회원가입</h2>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
               <Form.Item required label="이름">

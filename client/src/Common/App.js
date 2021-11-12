@@ -11,7 +11,7 @@ import Pic from '../SNS/Pic'
 import Jam from "../SNS/Jam"
 import Write from "../SNS/Profile/Write"
 import LatterWrite from "../SNS/Latter/LatterWrite";
-import SnsLoginPage from "../SNS/Main/ShopLogin"
+import SnsLoginPage from "../SNS/Main/SnsLogin"
 import ContentProfile from "../SNS/ContentProfile"
 import UpdateProfile from "../SNS/UpdateProfile"
 
