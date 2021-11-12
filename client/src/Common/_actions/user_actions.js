@@ -95,7 +95,7 @@ export function addToCart(_id) {
 
 export function getCartItems(cartItems, userCart) {
   const request = axios
-    .get(`/api/product/products_by_id?id=${cartItems}&type=array`)
+    .get(`/api/mongo/product/products_by_id?id=${cartItems}&type=array`)
     .then((response) => {
       //Make CartDetail inside Redux Store
       // We need to add quantity data to Product Information that come from Product Collection.

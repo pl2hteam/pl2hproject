@@ -83,7 +83,7 @@ function CartPage(props) {
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
-      <h1>My Cart</h1>
+      <h1>장바구니</h1>
       <div>
         <UserCardBlock
           products={props.user.cartDetail}
@@ -92,7 +92,10 @@ function CartPage(props) {
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
-            <h2>Total amount: ${Total} </h2>
+            <h2>
+              총 상품 금액 : {Total} 원 밖에 안합니다. 얼른 더 담으시고
+              구매해주세요.
+            </h2>
           </div>
         ) : ShowSuccess ? (
           <Result status="success" title="Successfully Purchased Items" />
@@ -107,7 +110,7 @@ function CartPage(props) {
           >
             <br />
             <Empty description={false} />
-            <p>No Items In the Cart</p>
+            <p>장바구니에 담긴 상품이 달랑 한 개도 없읍니다.</p>
           </div>
         )}
       </div>
