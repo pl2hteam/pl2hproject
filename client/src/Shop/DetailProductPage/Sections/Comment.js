@@ -6,7 +6,7 @@ import SingleComment from './SingleComment';
 import ReplyComment from './ReplyComment';
 const { TextArea } = Input;
 
-function Comments(props) {
+const Comments = (props) => {
     const user = useSelector(state => state.user);
     const [Comment, setComment] = useState("");
 
@@ -14,7 +14,6 @@ function Comments(props) {
         setComment(event.currentTarget.value)
     };
 
-    console.log(user.userData);
     const onSubmit = (event) => {
         event.preventDefault();
 
@@ -41,7 +40,6 @@ function Comments(props) {
             <br />
             <p>댓글</p>
             <hr />
-            {console.log(props.CommentLists)}
 
             {props.commentLists && props.commentLists.map((comment, index) => (
                 (!comment.responseTo &&

@@ -42,7 +42,7 @@ const SingleComment = (props) => {
     const actions = [
         <span onClick={openReply} key="comment-basic-reply-to">답글 달기</span>
     ]
-    console.log(props.comment);
+    
     if (props.comment) {
       return (
           <div>

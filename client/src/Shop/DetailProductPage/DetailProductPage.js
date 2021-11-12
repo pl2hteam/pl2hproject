@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 // import Subscriber from "./Sections/Subscriber";
 import Comment from "./Sections/Comment";
 
-function DetailProductPage(props) {
+const DetailProductPage = (props) => {
   const dispatch = useDispatch();
   const pd_id = props.match.params.pd_id;
   const [Product, setProduct] = useState([]);
@@ -19,7 +19,6 @@ function DetailProductPage(props) {
     .then(
       (response) => {
         setProduct(response.data[0]);
-        console.log(response.data[0]);
       }
     );
 

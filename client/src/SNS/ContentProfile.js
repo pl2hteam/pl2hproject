@@ -3,23 +3,15 @@ import styled from "styled-components";
 import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
-import Cards from "./Layout/Card";
-import ContentProfile from './ContentProfile'
-import UpdateProfile from "./UpdateProfile";
-
-
-////////////////////////////////////////
-import React, { useEffect, useState } from "react";
+import Card from "./Layout/Card";
+import React, { useState } from "react";
 import Axios from "axios";
-import { Col,Card } from "antd";
+import { useSelector } from "react-redux";
+import { Typography, Button, Form, message, Input } from "antd";
+import { withRouter } from "react-router";
 
-import { withRouter } from "react-router-dom";
-
-////////////////////////////////////////
-
-import { Link } from "react-router-dom";
 import {
-  
+
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
@@ -126,24 +118,72 @@ const LinkTitle = styled.p`
     color: green;
   }
 `;
-const { Meta } = Card;
-const Home = () => {
+const { Title } = Typography;
+const { TextArea } = Input;
+
+
+
+
+
+
+
+
+
+
+
+
+
+const ContentProfile = (props) => {
+
+
+
+  const [profilecontent, setPostTitle] = useState("");
+
+  const onPostTitle = (event) => {
+    setPostTitle(event.currentTarget.value);
+  };
+ 
+  const user = useSelector(state => state.user);
+  const onSubmit = (event) => {
+    // event.preventDefault();  // antd 자체 적용
+
+    if (
+      !profilecontent 
+      
+    ) {
+      return alert("fill all the fields first!");
+    }
+
+    // console.log('props id 는 : ', props.user.userData._id);
+    const variables = {
+      //seller: user.userData._id,
+      content: profilecontent,
+   
+    };
+
+    Axios.post("/api/mysql/profiles/write", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+        if (response.data.success) {
+   
+          alert("Product Successfully Uploaded");
+          props.history.push("/sns");
+        } else {
+          console.log(response.data)
+          alert("Failed to upload Product");
+        }
+      });
+  };
+
+
+
 
   
 
-
-  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
-
-  // 텍스트 검색
-
-
-  // default
- 
-    
   return (
     <Layout>
       <Sidebar>
-        <Cards>
+        <Card>
           <FlexWrapper>
             <ProfileSection>
               <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
@@ -169,30 +209,29 @@ const Home = () => {
               </p>
             </ProfileSection>
           </FlexWrapper>
-        </Cards>
+        </Card>
       </Sidebar>
       <Content>
-        <Cards>
-          <ContentSection>
-            <h2>미니룸</h2>
-            <div>
-              <img
-                src={publicUrl + "/resources/img/miniroom.gif"}
-                alt="miniroom"
-              />
-            </div>
-          </ContentSection>
-          <ContentSection>
-            <h2>한 줄 감성</h2>
-            <Link to={'/ContentProfile'}>방명록</Link>
-            <ul>
-              <li><UpdateProfile/></li>
-            </ul>
-          </ContentSection>
-        </Cards>
+      
+        <Title level={2}>커플 상품</Title>
+   
+
+      <Form onSubmit={onSubmit}>
+        {/* DropZone */}
+       
+
+        <br />
+        <br />
+        <label>물품명</label>1
+        <Input onChange={onPostTitle} value={profilecontent} />
+        <br />
+      
+
+        <Button onClick={onSubmit}>Submit</Button>
+      </Form>
+  
       </Content>
     </Layout>
-
   );
 };
-export default withRouter(Home);
+export default withRouter(ContentProfile);
