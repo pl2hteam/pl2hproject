@@ -16,11 +16,19 @@ module.exports = class User extends Sequelize.Model {
                 type: Sequelize.STRING(100),
                 allowNull: true,
             },
+            img: {
+              type: Sequelize.STRING(200),
+              allowNull: true,
+            },
             address: {
                 type: Sequelize.STRING(100),
                 allowNull: true,
             },
-            gender: {   // 1 과 2로 구분?
+            gender: {   // boolean 으로 구분
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            role: {   // boolean 으로 구분
                 type: Sequelize.INTEGER,
                 allowNull: true,
             },

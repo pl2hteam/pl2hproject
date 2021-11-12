@@ -23,12 +23,15 @@ function DetailProductPage(props) {
       }
     );
 
-    Axios.post('/api/mongo/product/getComment')
+    const postId = {
+      postId: pd_id,
+    };
+
+    Axios.post('/api/mongo/product/getComments', postId)
     .then(
       (response) => {
         if (response.data.success) {
           setComments(response.data.comment);
-          console.log(response.data.comment);
         } else {
           alert('댓글을 가져오는 것을 실패했습니다.')
         }

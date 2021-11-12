@@ -8,15 +8,13 @@ const { auth } = require("../../middleware/auth");
 
 router.get("/auth", auth, (req, res) => {
     res.status(200).json({
-      // DB 테이블 맞추기
         id: req.user.id,
         isAdmin: req.user.role === 0 ? false : true,
         isAuth: true,
         email: req.user.email,
-        name: req.user.nickname,
-        // lastname: req.user.lastname,
-        // role: req.user.role,
-        // image: req.user.image,
+        name: req.user.name,
+        role: req.user.role,
+        image: req.user.img,
     });
 });
 

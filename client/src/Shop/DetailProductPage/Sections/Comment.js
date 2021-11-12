@@ -36,7 +36,6 @@ function Comments(props) {
             });
     };
 
-    console.log(props.commentLists);
     return (
         <div>
             <br />
