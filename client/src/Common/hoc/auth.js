@@ -25,7 +25,6 @@ export default function (ComposedClass, reload, database, adminRoute = null) {
             }
           }
         } else {  // SHOP
-          console.log(response);
           if (!response.payload.isAuth) {
             if (reload) {
               props.history.push("/shop");

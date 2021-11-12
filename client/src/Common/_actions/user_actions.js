@@ -53,12 +53,10 @@ export function loginUser(dataToSubmit) {
 export function auth(database) {
   let request = {};
   if (database) {
-    console.log(database);
     request = axios
       .get(`${MYSQL_USER_SERVER}/auth`, database)
       .then((response) => response.data);
   } else {
-    console.log(database);
     request = axios
       .get(`${MONGO_USER_SERVER}/auth`, database)
       .then((response) => response.data);
