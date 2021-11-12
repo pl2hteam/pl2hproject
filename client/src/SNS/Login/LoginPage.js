@@ -52,7 +52,7 @@ const SnsLoginPage = (props) => {
                 } else {
                   localStorage.removeItem("rememberMe");
                 }
-                props.history.push("/sns");
+                props.history.push("/sns/main");
               } else {
                 setFormErrorMessage("Check out your Account or Password again");
               }
