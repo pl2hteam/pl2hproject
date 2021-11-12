@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import MovieFileUpload from "./Intro/MovieFileUpload";
+// import FileUpload from "../../Common/components/FileUpload";
 import Axios from "axios";
+import { useSelector } from "react-redux";
+import { withRouter } from "react-router";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -64,12 +66,6 @@ const UploadProductPage2 = (props) => {
       });
   };
 
-  let video = {
-    updateImages, 
-    updateVideoPath, 
-    updateDuration
-  }
-
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -78,7 +74,7 @@ const UploadProductPage2 = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <FileUpload refreshFunction={PostImg} />
+        {/* <FileUpload refreshFunction={PostImg} /> */}
 
         <br />
         <br />
@@ -109,4 +105,4 @@ const UploadProductPage2 = (props) => {
   );
 }
 
-export default UploadProductPage2;
+export default withRouter(UploadProductPage2);
