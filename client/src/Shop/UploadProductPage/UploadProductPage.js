@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
 import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
+import MainForm from "../MainForm/MainForm";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -94,47 +95,46 @@ const UploadProductPage = (props) => {
   }
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Title level={2}>커플 상품</Title>
+    <MainForm>
+      <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <Title level={2}>커플 상품</Title>
+        </div>
+        <Form onSubmit={onSubmit}>
+          {/* DropZone */}
+          <MovieFileUpload 
+            refreshImgFunction={video}
+          />
+          <br />
+          <br />
+          <label>물품명</label>
+          <Input onChange={onPdNameChange} value={PdNameValue} />
+          <br />
+          <br />
+          <label>브랜드</label>
+          <Input onChange={onBrandChange} value={BrandValue} />
+          <br />
+          <br />
+          <label>상세정보</label>
+          <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
+          <br />
+          <br />
+          <label>가격</label>
+          <Input onChange={onPriceChange} value={PriceValue} type="number" />
+          <br />
+          <br />
+          <label>수량</label>
+          <Input
+            onChange={onQuantityChange}
+            value={QuantityValue}
+            type="number"
+          />
+          <br />
+          <br />
+          <Button onClick={onSubmit}>Submit</Button>
+        </Form>
       </div>
-
-      <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-        <MovieFileUpload 
-          refreshImgFunction={video}
-        />
-
-        <br />
-        <br />
-        <label>물품명</label>
-        <Input onChange={onPdNameChange} value={PdNameValue} />
-        <br />
-        <br />
-        <label>브랜드</label>
-        <Input onChange={onBrandChange} value={BrandValue} />
-        <br />
-        <br />
-        <label>상세정보</label>
-        <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
-        <br />
-        <br />
-        <label>가격</label>
-        <Input onChange={onPriceChange} value={PriceValue} type="number" />
-        <br />
-        <br />
-        <label>수량</label>
-        <Input
-          onChange={onQuantityChange}
-          value={QuantityValue}
-          type="number"
-        />
-        <br />
-        <br />
-
-        <Button onClick={onSubmit}>Submit</Button>
-      </Form>
-    </div>
+    </MainForm>
   );
 }
 

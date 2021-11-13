@@ -6,6 +6,7 @@ import {
   onSuccessBuy,
 } from "../../Common/_actions/user_actions";
 import UserCardBlock from "./Sections/UserCardBlock";
+import MainForm from "../MainForm/MainForm";
 import { Result, Empty } from "antd";
 import Axios from "axios";
 // import Paypal from '../../utils/Paypal';
@@ -82,7 +83,8 @@ function CartPage(props) {
   };
 
   return (
-    <div style={{ width: "85%", margin: "3rem auto" }}>
+    <MainForm>
+      <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1>My Cart</h1>
       <div>
         <UserCardBlock
@@ -123,6 +125,7 @@ function CartPage(props) {
         />
       )} */}
     </div>
+    </MainForm>
   );
 }
 

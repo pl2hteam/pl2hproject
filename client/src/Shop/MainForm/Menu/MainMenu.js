@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-//버튼색
+
+/* 버튼색 */
 const Nav = styled.nav`
   z-index: -1;
   position: absolute;
@@ -27,47 +28,40 @@ const Nav = styled.nav`
   }
 `;
 
-function MainMenu() {
+const MainMenu = () => {
   return (
     <Nav>
       <ul>
         <li>
-          <NavLink exact to="/sns" activeClassName="selected">
+          <NavLink exact to="/shop/main" activeClassName="selected">
             홈
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sns/profile" activeClassName="selected">
-            SNS
+          <NavLink to="/shop/profile" activeClassName="selected">
+            상품
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sns/Jam" activeClassName="selected">
-            놀거리
+          <NavLink to="/shop/main" activeClassName="selected">
+            이벤트
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sns/Latter" activeClassName="selected">
-            편지
+          <NavLink to="/shop/main" activeClassName="selected">
+            구매
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sns/Mind" activeClassName="selected">
-            심리
+          <NavLink to="/shop/main" activeClassName="selected">
+            장바
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sns/Pic" activeClassName="selected">
-            사진첩
+          <NavLink to="/shop/upload" activeClassName="selected">
+            등록
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/sns/Calendar" activeClassName="selected">
-            캘린더
-          </NavLink>
-        </li>
-      
-       
       </ul>
     </Nav>
   );

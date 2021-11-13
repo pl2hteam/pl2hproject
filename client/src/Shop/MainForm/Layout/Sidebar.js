@@ -28,11 +28,16 @@ const Sidebar = ({ children }) => {
     <SidebarBlock>
       <ul>
         <li>
+          ㅋㅋㅋㅋㅋㅋ <span className="today">1</span>
+        </li>
+        <li>이곳에 선택란 만들기</li>
+      </ul>
+      <ul>
+        <li>
           TODAY <span className="today">1</span>
         </li>
         <li>TOTAL 999999</li>
       </ul>
-      {children}
     </SidebarBlock>
   );
 };

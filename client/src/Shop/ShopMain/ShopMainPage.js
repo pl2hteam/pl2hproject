@@ -7,6 +7,7 @@ import { itemNumber } from "./Section/itemDatas";
 import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
+import MainForm from "../MainForm/MainForm";
 
 const { Meta } = Card;
 
@@ -128,62 +129,64 @@ const ShopMainPage = () => {
   }, []);
 
   return (
-    <div style={{ width: "75%", margin: "3rem auto" }}>
-      <div style={{ textAlign: "center" }}>
-        <h2>상품 메인 화면</h2>
-      </div>
+    <MainForm>
+      <div style={{ width: "75%", margin: "3rem auto" }}>
+        <div style={{ textAlign: "center" }}>
+          <h2>상품 메인 화면</h2>
+        </div>
 
-      {/* 상품, 가격 필터 */}
-      <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}>
-          <CheckBox
-            list={itemNumber}
-            handleFilters={(filters) => handleFilters(filters, "itemNumber")}
-          />
-        </Col>
-        <Col lg={12} xs={24}>
-          <Radiobox
-            list={price}
-            handleFilters={(filters) => handleFilters(filters, "price")}
-          />
-        </Col>
-      </Row>
+        {/* 상품, 가격 필터 */}
+        <Row gutter={[16, 16]}>
+          <Col lg={12} xs={24}>
+            <CheckBox
+              list={itemNumber}
+              handleFilters={(filters) => handleFilters(filters, "itemNumber")}
+            />
+          </Col>
+          <Col lg={12} xs={24}>
+            <Radiobox
+              list={price}
+              handleFilters={(filters) => handleFilters(filters, "price")}
+            />
+          </Col>
+        </Row>
 
-      {/* 검색란 */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
-        }}
-      >
-        <SearchFeature refreshFunction={updateSearchTerm} />
-      </div>
-
-      {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-      {Products.length === 0 ? (
+        {/* 검색란 */}
         <div
           style={{
             display: "flex",
-            height: "300px",
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: "flex-end",
+            margin: "1rem auto",
           }}
         >
-          <h2>등록된 상품이 없읍니다</h2>
+          <SearchFeature refreshFunction={updateSearchTerm} />
         </div>
-      ) : (
-        // 상품 있으면 목록 출력
-        <Row gutter={[16, 16]}>{renderCards}</Row>
-      )}
-      <br />
 
-      {PostSize >= Limit && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={loadMoreHandler}>더보기</button>
-        </div>
-      )}
-    </div>
+        {/* 등록된 상품이 0개면 "상품없다고 출력  */}
+        {Products.length === 0 ? (
+          <div
+            style={{
+              display: "flex",
+              height: "300px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h2>등록된 상품이 없읍니다</h2>
+          </div>
+        ) : (
+          // 상품 있으면 목록 출력
+          <Row gutter={[16, 16]}>{renderCards}</Row>
+        )}
+        <br />
+
+        {PostSize >= Limit && (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button onClick={loadMoreHandler}>더보기</button>
+          </div>
+        )}
+      </div>
+    </MainForm>
   );
 };
 

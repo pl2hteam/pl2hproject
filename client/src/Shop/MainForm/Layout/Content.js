@@ -16,7 +16,7 @@ const ContentWrapper = styled.div`
 const Content = ({ children }) => {
   return (
     <ContentWrapper>
-      <h1>누구의 커플페이지</h1>
+      <h1>검색창 예정</h1>
       {children}
       <MainMenu />
     </ContentWrapper>

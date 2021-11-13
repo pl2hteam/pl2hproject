@@ -1,20 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-
-// const Wrapper = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 20px;
-//   background: black;
-// `;
-
 //책 겉표지
 const BorderWrapper = styled.div`
   width: 75%;
   height: 95vh;
   padding: 25px;
-  background: #b8e6f2;
+  background: RGB(181,214,146);
   border: 3px solid black;
   border-radius: 10px;
 `;
