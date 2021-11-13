@@ -63,5 +63,6 @@ module.exports = class Post extends Sequelize.Model {   // 객체 Sequelize 의 
   static associate(db) {
     db.Post.belongsTo(db.User); 
     db.Post.hasMany(db.Image);
+    db.Post.hasMany(db.Comment);
   }
 };

@@ -32,7 +32,7 @@ function MainMenu() {
     <Nav>
       <ul>
         <li>
-          <NavLink exact to="/sns" activeClassName="selected">
+          <NavLink exact to="/sns/main" activeClassName="selected">
             홈
           </NavLink>
         </li>
