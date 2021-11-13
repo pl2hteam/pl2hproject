@@ -1,22 +1,19 @@
-import React, { useState } from "react";
-// import { Carousel } from 'react-responsive-carousel';
-// import Carousel from 'react-material-ui-carousel'
+import React from "react";
 import { Carousel } from 'react-carousel-minimal';
-// import Slider from 'react-slick'
 
 const ImageSlider = (props) => {
-  console.log(props);
+  const { images, brandName, description, pdName, seller, price } = props.detail;
   const captionStyle = {
     fontSize: '2em',
     fontWeight: 'bold',
   }
-  
+  console.log(props);
   const slideNumberStyle = {  // 좌측 상단 숫자 스타일
     display: 'none',
   }
 
   let data = [];
-  {props.images.images.map((image, index) => (
+  {images.map((image, index) => (
     data.push({
       image: `http://localhost:5000/${image}`
     })
@@ -26,8 +23,8 @@ const ImageSlider = (props) => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <h2>React Carousel Minimal</h2>
-        <p>Easy to use, responsive and customizable carousel component for React Projects.</p>
+        <h1>{brandName}</h1>
+        <p>{description}</p>
         <div style={{
           padding: "0 20px"
         }}>

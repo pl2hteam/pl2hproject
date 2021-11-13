@@ -51,19 +51,13 @@ const DetailProductPage = (props) => {
     return (
       <MainForm>
         <div className="postPage" style={{ width: "100%", padding: "3rem 4rem" }}>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h1>{Product.pdName}</h1>
-          </div>
           {/* <Subscriber /> */}
           <br />
           <Row gutter={[16, 16]}>
             <Col lg={12} xs={16}>
-              <h1 style={{fontSize:'100px'}}>{Product.seller.name}</h1>
-            </Col>
-            <Col lg={12} xs={16}>
               <ProductImage detail={Product} />
             </Col>
-            <Col lg={12} xs={24}>
+            <Col lg={12} xs={24} style={{ margin: "60px" }}>
               <ProductInfo addToCart={addToCartHandler} detail={Product} />
             </Col>
           </Row>

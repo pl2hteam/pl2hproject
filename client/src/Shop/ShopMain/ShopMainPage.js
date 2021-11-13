@@ -8,7 +8,7 @@ import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
 
-const { Meta } = Card;
+const { Meta } = Card; 
 
 const ShopMainPage = () => {
   const [Products, setProducts] = useState([]);

@@ -11,8 +11,8 @@ import {
 } from "./types";
 import { MYSQL_USER_SERVER, MONGO_USER_SERVER } from "../Config";
 
-// dataToSubmit.db : true => mysql
-// dataToSubmit.db : false => mongo
+// dataToSubmit.db : true => SNS
+// dataToSubmit.db : false => SHOP
 
 export function registerUser(dataToSubmit) {
   let request = {};

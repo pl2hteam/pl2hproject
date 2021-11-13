@@ -2,8 +2,6 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../Common/hoc/auth";
 
-import EmptyPage from "../SNS/EmptyPage"
-
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
 import Calendar from '../SNS/Calendar'
@@ -31,7 +29,6 @@ function App() {
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           {/* SNS */}
-          <Route exact path="/" component={Auth(EmptyPage, true, true)} />
           <Route exact path="/sns" component={Auth(SnsLoginPage, false, true)} />
           <Route exact path="/sns/main" component={Auth(Home, true, true)} />
           <Route path="/sns/profile" component={Auth(Profile, true, true)} />
