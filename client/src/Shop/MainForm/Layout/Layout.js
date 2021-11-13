@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Setting from "../../../Common/Setting";
 
 //책 겉표지
 const BorderWrapper = styled.div`
@@ -22,14 +23,20 @@ const BgWrapper = styled.div`
   border-radius: 10px;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
 const Layout = ({ children }) => {
   return (
-    // <Wrapper>
+    <Wrapper>
       <BorderWrapper>
         <BgWrapper>{children}</BgWrapper>
       </BorderWrapper>
-
-    // </Wrapper>
+      <Setting />
+    </Wrapper>
   );
 };
 

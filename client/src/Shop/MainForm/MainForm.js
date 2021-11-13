@@ -5,11 +5,9 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-import Setting from "../../Common/Setting";
 
-const MainForm = ({ children, childSide }) => {    
+const MainForm = ({ childSide, children }) => {    
   return (
-    <div>
       <Layout>
         <Sidebar>
           <Cards>
@@ -22,9 +20,6 @@ const MainForm = ({ children, childSide }) => {
           </Cards>
         </Content>
       </Layout>
-      <Setting />
-    </div>
-    
   );
 };
 export default withRouter(MainForm);

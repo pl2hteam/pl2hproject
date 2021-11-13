@@ -23,11 +23,10 @@ const SidebarBlock = styled.div`
   }
 `;
 
-const Sidebar = ({childSide}) => {
+const Sidebar = ({ children }) => {
   return (
     <SidebarBlock>
-      {childSide}
-      ㅠㅠ
+      {children}
     </SidebarBlock>
   );
 };
