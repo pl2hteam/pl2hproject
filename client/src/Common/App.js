@@ -23,6 +23,7 @@ import EasterEgg from "../Shop/MainPage/EasterEgg/EasterEgg";
 import UploadProductPage from "../Shop/UploadProductPage/UploadProductPage";
 import DetailProductPage from "../Shop/DetailProductPage/DetailProductPage";
 import CartPage from "../Shop/CartPage/CartPage";
+import MainForm from "../Shop/MainForm/MainForm";
 
 function App() {
   return (
@@ -77,6 +78,11 @@ function App() {
             exact
             path="/shop/cart"
             component={Auth(CartPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/Test"
+            component={Auth(MainForm, true, false)}
           />
         </Switch>
       </div>

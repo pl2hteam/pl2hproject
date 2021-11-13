@@ -5,7 +5,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from "../../../Common/components/ImageSlider"
+import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 
 ////////////////////////////////////////
