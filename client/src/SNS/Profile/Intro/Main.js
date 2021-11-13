@@ -5,7 +5,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-// import ImageSlider from "../../../Common/components/ImageSlider"
+import ImageSlider from "../../../Common/components/ImageSlider"
 import { withRouter } from "react-router";
 
 ////////////////////////////////////////
@@ -50,28 +50,23 @@ const { Meta } = Card;
 
 const Main = () => {
   const [Posts, setPosts] = useState([]);
+  // const [Images, setImages] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
 
-
   // 상품목록 불러오기
   const getPosts = (body) => {
     Axios.post("/api/mysql/posts/read", body).then((response) => {
-    
       console.log(response.data);
       if (response.data.success) {
-        
         if (body.loadMore) {
-          setPosts([...Posts, ...response.data.fullPost]);
-         
+          setPosts([...Posts, ...response.data.postData]);
         } else {
-          setPosts(response.data.fullPost);
+          setPosts(response.data.postData);
         }
-        setPostSize(response.data.postSize);
-        setPosts([...Posts, ...response.data.fullPost]);
+        setPosts([...Posts, ...response.data.postData]);
       } else {
-        console.log(1);
         alert("Failed to fectch post datas");
       }
     });
@@ -92,10 +87,14 @@ const Main = () => {
     setSkip(skip);
   };
 
-  const renderCards = Posts.map((fullPost, index) => {
+  const renderCards = Posts.map((postData, index) => {
+    console.log(postData);
+    // console.log(Images.PostId);
     return (
-      <Col lg={3} md={4} xs={8}>
-        <Meta title={fullPost.title} description={`$${fullPost.content}`} />
+      <Col lg={3} md={4} xs={8} key={index}>
+        <Card hoverable={true} cover={<ImageSlider images={postData} />}>
+          <Meta title={postData.title} description={`111${postData.content}`} />
+        </Card>
       </Col>
     );
   });
@@ -127,7 +126,6 @@ const Main = () => {
         <Col lg={12} xs={24}></Col>
       </Row>
 
-      {/* 검색란 */}
 
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
@@ -144,7 +142,9 @@ const Main = () => {
         </div>
       ) : (
         // 상품 있으면 목록 출력
-        <Row gutter={[16, 16]}>{renderCards}</Row>
+        <Row gutter={[16, 16]}>
+          {renderCards}
+        </Row>
       )}
       <br />
 

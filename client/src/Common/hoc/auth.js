@@ -7,6 +7,7 @@ export default function (ComposedClass, reload, database, adminRoute = null) {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
     // 추후 DB 의 이미지 경로 유무로 판매자 구분
+    console.log(user);
     useEffect(() => {
       dispatch(auth(database)).then((response) => {
         if (database) { // SNS

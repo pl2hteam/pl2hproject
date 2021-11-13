@@ -11,7 +11,6 @@ import { Typography, Button, Form, message, Input } from "antd";
 import { withRouter } from "react-router";
 
 import {
-
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,

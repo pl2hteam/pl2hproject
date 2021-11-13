@@ -13,10 +13,12 @@ function FileUpload(props) {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
+    console.log(files);
     
     if (files[0].type == "video/mp4") {
-      Axios.post("/api/mysql/product/video/uploadfiles", formData, config).then(
+      Axios.post("/api/mysql/posts/write", formData, config).then(
         (response) => {
+          console.log(response);
           if (response.data.success) {
             console.log(response.data);
 
@@ -26,7 +28,7 @@ function FileUpload(props) {
             };
 
             setVideoPath(response.data.url);
-            props.refreshImgFunction.updateVideoPath([
+            props.refresh.updateVideoPath([
               ...VideoPath,
               response.data.url,
             ]);
@@ -36,12 +38,12 @@ function FileUpload(props) {
                 console.log(response);
                 if (response.data.success) {
                   setDuration(response.data.fileDuration);
-                  props.refreshImgFunction.updateDuration([
+                  props.refresh.updateDuration([
                     ...Duration,
                     response.data.fileDuration,
                   ]);
                   setImages([...Images, response.data.url]);
-                  props.refreshImgFunction.updateImages([
+                  props.refresh.updateImages([
                     ...Images,
                     response.data.url,
                   ]);
@@ -56,11 +58,14 @@ function FileUpload(props) {
         }
       );
     } else {
-      Axios.post("/api/mysql/product/uploadImage", formData, config).then(
+      console.log("####################################");
+      Axios.post("/api/mysql/posts/uploadimage", formData, config).then(
         (response) => {
+          console.log(response.data.image);
+          console.log(props.refresh);
           if (response.data.success) {
             setImages([...Images, response.data.image]);
-            props.refreshImgFunction.updateImages([
+            props.refresh.updateImages([
               ...Images,
               response.data.image,
             ]);
@@ -83,7 +88,7 @@ function FileUpload(props) {
 
     // 날리고 남은 이미지들을 useState로 갱신
     setImages(newImages);
-    props.refreshImgFunction.updateImages(newImages);
+    props.refresh.updateImages(newImages);
   };
 
   console.log(props);

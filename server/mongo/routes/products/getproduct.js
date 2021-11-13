@@ -47,6 +47,9 @@ router.post("/", (req, res) => {
       .limit(limit)
       .exec((err, products) => {
         if (err) return res.status(400).json({ success: false, err });
+        console.log("/////////////////////////////////////fullPost");
+        console.log(products);
+        console.log("/////////////////////////////////////fullPost");
         res
           .status(200)
           .json({ success: true, products, postSize: products.length });
