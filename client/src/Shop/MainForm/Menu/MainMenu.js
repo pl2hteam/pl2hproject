@@ -38,11 +38,6 @@ const MainMenu = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shop/profile" activeClassName="selected">
-            상품
-          </NavLink>
-        </li>
-        <li>
           <NavLink to="/shop/main" activeClassName="selected">
             이벤트
           </NavLink>
