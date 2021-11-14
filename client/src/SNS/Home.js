@@ -186,7 +186,7 @@ const Home = () => {
             <h2>한 줄 감성</h2>
             <Link to={'/ContentProfile'}>방명록</Link>
             <ul>
-              <li><UpdateProfile/></li>
+              {/* <li><UpdateProfile/></li> */}
             </ul>
           </ContentSection>
         </Cards>
