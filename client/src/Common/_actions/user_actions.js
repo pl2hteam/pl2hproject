@@ -136,7 +136,7 @@ export function removeCartItem(id) {
 
 export function onSuccessBuy(data) {
   const request = axios
-    .post(`${MONGO_USER_SERVER}/successBuy`, data)
+    .post(`${MONGO_USER_SERVER}/payment/successBuy`, data)
     .then((response) => response.data);
 
   return {
