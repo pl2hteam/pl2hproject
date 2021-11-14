@@ -1,28 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import ImageGallery from 'react-image-gallery';
+import React, { useEffect, useState } from "react";
+import ImageSlider from "./ImageSlider";
 
-function ProductImage(props) {
-    const [Images, setImages] = useState([])
+const ProductImage = (props) => {
+  const [Video, setVideo] = useState([]);
+  console.log(props.detail);
 
-    useEffect(() => {
-        if (props.detail.images && props.detail.images.length > 0) {
-            let images = [];
+  useEffect(() => {
+    let videos = [];
+    if (props.detail.videos && props.detail.videos.length > 0) {
+      props.detail.videos &&
+        props.detail.videos.map((item) => {
+          videos.push(item);
+        });
+    }
+      setVideo(videos);
+  }, [props.detail]);
 
-            props.detail.images && props.detail.images.map(item => {
-                images.push({
-                    original: `http://localhost:5000/${item}`,
-                    thumbnail: `http://localhost:5000/${item}`
-                })
-            })
-            setImages(images)
-        }
-    }, [props.detail])
-
-    return (
+  return (
+    <div>
+      {Video.length === 0 ? (
         <div>
-            <ImageGallery items={Images} />
+          <ImageSlider detail={props.detail} />
         </div>
-    )
+      ) : (
+        <div>
+          <ImageSlider detail={props.detail} />
+          <video
+            style={{ width: "100%" }}
+            src={`http://localhost:5000/${Video} `}
+            controls
+            auto
+            loop
+            muted
+          />
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default ProductImage
+export default ProductImage;

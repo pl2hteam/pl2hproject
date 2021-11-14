@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from '../../Common/components/ImageSlider';
-import CheckBox from './Section/CheckBox';
-import { itemNumber } from './Section/itemDatas';
-import Radiobox from './Section/RadioBox';
-import { price } from './Section/priceDatas';
-import SearchFeature from './Section/SearchFeature';
+import ImageSlider from "../../Common/components/ImageSlider";
+import CheckBox from "./Section/CheckBox";
+import { itemNumber } from "./Section/itemDatas";
+import Radiobox from "./Section/RadioBox";
+import { price } from "./Section/priceDatas";
+import SearchFeature from "./Section/SearchFeature";
 
-const { Meta } = Card;
+const { Meta } = Card; 
 
 const ShopMainPage = () => {
   const [Products, setProducts] = useState([]);
@@ -25,6 +25,7 @@ const ShopMainPage = () => {
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
       if (response.data.success) {
+        console.log(response.data);
         if (body.loadMore) {
           setProducts([...Products, ...response.data.products]);
         } else {
@@ -54,22 +55,16 @@ const ShopMainPage = () => {
   };
 
   const renderCards = Products.map((product, index) => {
+    console.log(product);
     return (
-      <Col lg={3} md={4} xs={8}>
-        <Card
-          hoverable={true}
-          cover={
-            <a href={`/shop/product/${product._id}`}>
-              {" "}
-              <ImageSlider images={product.images} />
-            </a>
-          }
-        >
+      <Col lg={3} md={4} xs={8} key={index}>
+        <Card hoverable={true} cover={<ImageSlider images={product} />}>
           <Meta title={product.title} description={`$${product.price}`} />
         </Card>
       </Col>
     );
   });
+  
   const showFilteredResults = (filters) => {
     let body = {
       skip: 0, // 처음엔 아무 선택 없음

@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { User } = require("../../schemas/User");
 
+/////////////////////////////////////////////////////
+/*                                                 */
+/*          /api/mongo/users/register              */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 router.post("/", (req, res) => {
   const user = new User(req.body);
   console.log(req.body);

@@ -5,10 +5,10 @@ const { Profile } = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
-    const fullPost = await Profile.findAll({
+    const fullProfile = await Profile.findAll({
     });
 
-    res.status(201).json({ success: true, fullPost });
+    res.status(201).json({ success: true, fullProfile });
 
   } catch (error) {
     console.error(error);

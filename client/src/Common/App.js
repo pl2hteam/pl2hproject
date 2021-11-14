@@ -10,39 +10,77 @@ import Mind from '../SNS/Mind'
 import Pic from '../SNS/Pic'
 import Jam from "../SNS/Jam"
 import Write from "../SNS/Profile/Write"
-import SnsLoginPage from "../SNS/Main/ShopLogin"
-import Content from "../SNS/content"
+import LatterWrite from "../SNS/Latter/LatterWrite";
+import SnsLoginPage from "../SNS/Main/SnsLogin"
+import ContentProfile from "../SNS/ContentProfile"
+import UpdateProfile from "../SNS/UpdateProfile"
 
-import ShopLoginPage from "../Shop/MainPage/ShopMainLogin";
-import ShopMainPage from "../Shop/ShopMain/ShopMainPage";
-import UploadProductPage from "../Shop/UploadProductPage/UploadProductPage";
-import DetailProductPage from '../Shop/DetailProductPage/DetailProductPage';
+import ShopLoginPage from "../Shop/LoginMainPage/ShopMainLogin";
+import ShopMainWrapper from "../Shop/ShopMain/ShopMainWrapper";
+import EasterEgg from "../Shop/LoginMainPage/EasterEgg/EasterEgg";
+import UploadWrapper from "../Shop/UploadProductPage/UploadWrapper";
+import DetailProductPage from "../Shop/DetailProductPage/DetailProductPage";
+import CartPage from "../Shop/CartPage/CartPage";
+import MainForm from "../Shop/MainForm/MainForm";
 
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
-          {/* MAIN */}
-          <Route exact path="/" component={Auth(SnsLoginPage, false)} />
-
           {/* SNS */}
-          <Route exact path="/sns" component={Auth(Home, false, true)} />
-          <Route path="/sns/profile" component={Auth(Profile, false, true)} />
-          <Route path="/sns/Jam" component={Auth(Jam, false, true)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, false, true)} />
-          <Route path="/sns/Latter" component={Auth(Latter, false, true)} />
-          <Route path="/sns/Mind" component={Auth(Mind, false, true)} />
-          <Route path="/sns/Pic" component={Auth(Pic, false, true)} />
-          <Route path="/sns/profile/Write" component={Auth(Write, false, true)} />
-          <Route path="/content" component={Auth(Content, false, true)} />
-          
+          <Route exact path="/sns" component={Auth(SnsLoginPage, false, true)} />
+          <Route exact path="/sns/main" component={Auth(Home, true, true)} />
+          <Route path="/sns/profile" component={Auth(Profile, true, true)} />
+          <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
+          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
+          <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
+          <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
+          <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
+          <Route
+            path="/sns/profile/Write"
+            component={Auth(Write, true, true)}
+          />
+          <Route path="/ContentProfile" component={Auth(ContentProfile, true, true)} />
+          <Route path="/UpdateProfile" component={Auth(UpdateProfile, true, true)} />
+          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, true, true)} />
 
           {/* SHOP */}
-          <Route exact path="/shop" component={Auth(ShopLoginPage, false, false)} />
-          <Route exact path="/shop/main" component={Auth(ShopMainPage, true, false)} />
-          <Route exact path="/shop/detail" component={Auth(DetailProductPage, true, false)} />
-          <Route exact path="/shop/upload" component={Auth(UploadProductPage, true, false)} />
+          <Route
+            exact
+            path="/shop"
+            component={Auth(ShopLoginPage, false, false)}
+          />
+          <Route
+            exact
+            path="/shop/main"
+            component={Auth(ShopMainWrapper, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/product/:pd_id"
+            component={Auth(DetailProductPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/EasterEgg"
+            component={Auth(EasterEgg, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/upload"
+            component={Auth(UploadWrapper, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/cart"
+            component={Auth(CartPage, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/Test"
+            component={Auth(MainForm, true, false)}
+          />
         </Switch>
       </div>
     </Suspense>

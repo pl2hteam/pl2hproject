@@ -8,6 +8,7 @@ import Content from '../Layout/Content';
 import Intro from './Intro';
 import People from './People';
 import Favorite from './Favorite';
+import LatterWrite from './LatterWrite'
 
 const Profile = () => {
   const match = useRouteMatch();
@@ -17,9 +18,8 @@ const Profile = () => {
       title: '👩‍💻내 소개',
       url: '/intro',
       child: [
-        { id: 1, title: '기본정보', url: '/default' },
-        { id: 3, title: '기술 및 히스토리', url: '/dev' },
-        { id: 4, title: 'TMI 자문자답', url: '/qna' },
+        { id: 1, title: '마이페이지', url: '/default' },
+        { id: 3, title: '내 짝궁소개', url: '/dev' },
       ],
     },
     {
@@ -27,10 +27,16 @@ const Profile = () => {
       title: '👭내 인맥',
       url: '/people',
     },
+
     {
       id: 3,
-      title: '⭐내 즐겨찾기',
+      title: '⭐즐겨찾기',
       url: '/favorite',
+    },
+    {
+      id: 4,
+      title: '⭐즐겨찾기',
+      url: '/LatterWrite',
     },
   ];
 
@@ -49,6 +55,7 @@ const Profile = () => {
             <Route path={`${match.path}/intro/:type`} component={Intro} />
             <Route path={`${match.path}/people`} component={People} />
             <Route path={`${match.path}/favorite`} component={Favorite} />
+            <Route path={`${match.path}/LatterWrite`} component={LatterWrite} />
           </Switch>
         </Card>
       </Content>

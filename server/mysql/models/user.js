@@ -8,12 +8,37 @@ module.exports = class User extends Sequelize.Model {
                 allowNull: true,
                 unique: true,
             },
-            nickname: {
+            name: {
                 type: Sequelize.STRING(15),
                 allowNull: false,
             },
             password: {
                 type: Sequelize.STRING(100),
+                allowNull: true,
+            },
+            image: {
+                type: Sequelize.STRING(200),
+                allowNull: true,
+            },
+            address: {
+                type: Sequelize.STRING(100),
+                allowNull: true,
+            },
+            gender: {   // boolean 으로 구분
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            role: {   // boolean 으로 구분
+                type: Sequelize.INTEGER,
+                allowNull: true,
+                defaultValue: '1'
+            },
+            phone: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            birth: {
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             provider: {
@@ -38,6 +63,7 @@ module.exports = class User extends Sequelize.Model {
     }
 
     static associate(db) {
-
+        db.User.hasMany(db.Post);
+        db.User.hasMany(db.Comment);
     }
 };
