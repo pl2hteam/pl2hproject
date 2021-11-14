@@ -20,6 +20,6 @@ router.use("/register", register);
 router.use("/login", login);
 router.use("/logout", auth, logout);
 router.use("/cart", auth, cart);
-router.use("/payment", auth, payment);
+router.use("/payment", payment);
 
 module.exports = router;

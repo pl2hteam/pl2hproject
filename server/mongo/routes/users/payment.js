@@ -5,11 +5,13 @@ const { Product } = require("../../schemas/Product");
 const { auth } = require("../../middleware/auth");
 const { Payment } = require("../../schemas/Payment");
 
-router.post("/payment/successBuy", auth, (req, res) => {
+const async = require("async");
+
+router.post("/successBuy", auth, (req, res) => {
   let history = [];
   let transactionData = {};
 
-  //1.Put brief Payment Information inside User Collection
+  //1. 구매내역 DB저장
   req.body.cartDetail.forEach((item) => {
     history.push({
       dateOfPurchase: Date.now(),
@@ -21,7 +23,7 @@ router.post("/payment/successBuy", auth, (req, res) => {
     });
   });
 
-  //2.Put Payment Information that come from Paypal into Payment Collection
+  //2. 결제정보 DB 저장
   transactionData.user = {
     id: req.user._id,
     name: req.user.name,

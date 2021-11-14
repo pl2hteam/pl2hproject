@@ -4,16 +4,16 @@ import Auth from "../Common/hoc/auth";
 
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
-import Calendar from '../SNS/Calendar'
-import Latter from '../SNS/Latter'
-import Mind from '../SNS/Mind'
-import Pic from '../SNS/Pic'
-import Jam from "../SNS/Jam"
-import Write from "../SNS/Profile/Write"
+import Calendar from "../SNS/Calendar";
+import Latter from "../SNS/Latter";
+import Mind from "../SNS/Mind";
+import Pic from "../SNS/Pic";
+import Jam from "../SNS/Jam";
+import Write from "../SNS/Profile/Write";
 import LatterWrite from "../SNS/Latter/LatterWrite";
-import SnsLoginPage from "../SNS/Main/SnsLogin"
-import ContentProfile from "../SNS/ContentProfile"
-import UpdateProfile from "../SNS/UpdateProfile"
+import SnsLoginPage from "../SNS/Main/SnsLogin";
+import ContentProfile from "../SNS/ContentProfile";
+import UpdateProfile from "../SNS/UpdateProfile";
 
 import ShopLoginPage from "../Shop/LoginMainPage/ShopMainLogin";
 import ShopMainWrapper from "../Shop/ShopMain/ShopMainWrapper";
@@ -21,6 +21,7 @@ import EasterEgg from "../Shop/LoginMainPage/EasterEgg/EasterEgg";
 import UploadWrapper from "../Shop/UploadProductPage/UploadWrapper";
 import DetailProductPageWrapper from "../Shop/DetailProductPage/DetailProductPageWrapper";
 import CartPageWrapper from "../Shop/CartPage/CartPageWrapper";
+import HistoryPageWrapper from "../Shop/HistoryPage/HistoryPageWrapper";
 
 function App() {
   return (
@@ -28,7 +29,11 @@ function App() {
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           {/* SNS */}
-          <Route exact path="/sns" component={Auth(SnsLoginPage, false, true)} />
+          <Route
+            exact
+            path="/sns"
+            component={Auth(SnsLoginPage, false, true)}
+          />
           <Route exact path="/sns/main" component={Auth(Home, true, true)} />
           <Route path="/sns/profile" component={Auth(Profile, true, true)} />
           <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
@@ -40,9 +45,18 @@ function App() {
             path="/sns/profile/Write"
             component={Auth(Write, true, true)}
           />
-          <Route path="/ContentProfile" component={Auth(ContentProfile, true, true)} />
-          <Route path="/UpdateProfile" component={Auth(UpdateProfile, true, true)} />
-          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, true, true)} />
+          <Route
+            path="/ContentProfile"
+            component={Auth(ContentProfile, true, true)}
+          />
+          <Route
+            path="/UpdateProfile"
+            component={Auth(UpdateProfile, true, true)}
+          />
+          <Route
+            path="/sns/Latter/LatterWrite"
+            component={Auth(LatterWrite, true, true)}
+          />
 
           {/* SHOP */}
           <Route
@@ -74,6 +88,11 @@ function App() {
             exact
             path="/shop/cart"
             component={Auth(CartPageWrapper, true, false)}
+          />
+          <Route
+            exact
+            path="/shop/purch"
+            component={Auth(HistoryPageWrapper, true, false)}
           />
         </Switch>
       </div>

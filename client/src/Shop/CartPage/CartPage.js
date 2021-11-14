@@ -13,7 +13,7 @@ import Paypal from "../../Common/components/Paypal";
 
 function CartPage(props) {
   console.log(props);
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   // 합계 state
   const [Total, setTotal] = useState(0);
@@ -66,9 +66,10 @@ function CartPage(props) {
   };
 
   const transactionSuccess = (data) => {
+    console.log(data);
     dispatch(
       onSuccessBuy({
-        cartDetail: props.user.cartDetail,
+        cartDetail: user.cartDetail,
         paymentData: data,
       })
     ).then((response) => {
@@ -91,13 +92,7 @@ function CartPage(props) {
     <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1>장바구니</h1>
       <div>
-        {/* {
-          (<UserCardBlock
-          products={user.cartDetail}
-          removeItem={removeFromCart}
-          />)
-        }
-         */}
+        <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
