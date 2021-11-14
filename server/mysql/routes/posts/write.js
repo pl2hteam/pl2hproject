@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const { Post, Image } = require('../../models');
 
+
 router.post('/', async (req, res, next) => { // POST /post
   try {
     const IMGARR = req.body.img;

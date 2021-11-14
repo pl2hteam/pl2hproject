@@ -80,7 +80,7 @@ const Main = () => {
       skip: skip,
       limit: Limit,
       loadMore: true,
-      
+
     };
 
     getPosts(variables);

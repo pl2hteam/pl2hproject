@@ -13,6 +13,7 @@ import Axios from "axios";
 
 function CartPage(props) {
   const dispatch = useDispatch();
+  // 합계 state
   const [Total, setTotal] = useState(0);
   const [ShowTotal, setShowTotal] = useState(false);
   const [ShowSuccess, setShowSuccess] = useState(false);
@@ -39,6 +40,7 @@ function CartPage(props) {
     }
   }, [props.user.userData]);
 
+  // 장바구니 총액 계산
   const calculateTotal = (cartDetail) => {
     let total = 0;
 
@@ -50,6 +52,7 @@ function CartPage(props) {
     setShowTotal(true);
   };
 
+  // 장바구니에 있는 상품 제거
   const removeFromCart = (productId) => {
     dispatch(removeCartItem(productId)).then((response) => {
       if (response.payload.cartDetail.length <= 0) {
@@ -60,32 +63,31 @@ function CartPage(props) {
     });
   };
 
-  const transactionSuccess = (data) => {
-    dispatch(
-      onSuccessBuy({
-        cartDetail: props.user.cartDetail,
-        paymentData: data,
-      })
-    ).then((response) => {
-      if (response.payload.success) {
-        setShowSuccess(true);
-        setShowTotal(false);
-      }
-    });
-  };
+  // const transactionSuccess = (data) => {
+  //   dispatch(
+  //     onSuccessBuy({
+  //       cartDetail: props.user.cartDetail,
+  //       paymentData: data,
+  //     })
+  //   ).then((response) => {
+  //     if (response.payload.success) {
+  //       setShowSuccess(true);
+  //       setShowTotal(false);
+  //     }
+  //   });
+  // };
 
-  const transactionError = () => {
-    console.log("Paypal error");
-  };
+  // const transactionError = () => {
+  //   console.log("Paypal error");
+  // };
 
-  const transactionCanceled = () => {
-    console.log("Transaction canceled");
-  };
+  // const transactionCanceled = () => {
+  //   console.log("Transaction canceled");
+  // };
 
   return (
-    <MainForm>
-      <div style={{ width: "85%", margin: "3rem auto" }}>
-      <h1>My Cart</h1>
+    <div style={{ width: "85%", margin: "3rem auto" }}>
+      <h1>장바구니</h1>
       <div>
         <UserCardBlock
           products={props.user.cartDetail}
@@ -94,7 +96,10 @@ function CartPage(props) {
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
-            <h2>Total amount: ${Total} </h2>
+            <h2>
+              총 상품 금액 : {Total} 원 밖에 안합니다. 얼른 더 담으시고
+              구매해주세요.
+            </h2>
           </div>
         ) : ShowSuccess ? (
           <Result status="success" title="Successfully Purchased Items" />
@@ -109,7 +114,7 @@ function CartPage(props) {
           >
             <br />
             <Empty description={false} />
-            <p>No Items In the Cart</p>
+            <p>장바구니에 담긴 상품이 달랑 한 개도 없읍니다.</p>
           </div>
         )}
       </div>
@@ -125,7 +130,6 @@ function CartPage(props) {
         />
       )} */}
     </div>
-    </MainForm>
   );
 }
 

@@ -36,8 +36,8 @@ export function loginUser(dataToSubmit) {
   let request = {};
   if (dataToSubmit.db) {
     request = axios
-    .post(`${MYSQL_USER_SERVER}/login`, dataToSubmit)
-    .then((response) => response.data);
+      .post(`${MYSQL_USER_SERVER}/login`, dataToSubmit)
+      .then((response) => response.data);
   } else {
     request = axios
       .post(`${MONGO_USER_SERVER}/login`, dataToSubmit)
@@ -92,7 +92,7 @@ export function addToCart(_id) {
 
 export function getCartItems(cartItems, userCart) {
   const request = axios
-    .get(`/api/product/products_by_id?id=${cartItems}&type=array`)
+    .get(`/api/mongo/product/products_by_id?id=${cartItems}&type=array`)
     .then((response) => {
       //Make CartDetail inside Redux Store
       // We need to add quantity data to Product Information that come from Product Collection.
@@ -116,7 +116,7 @@ export function getCartItems(cartItems, userCart) {
 
 export function removeCartItem(id) {
   const request = axios
-    .get(`/api/users/removeFromCart?_id=${id}`)
+    .get(`/api/mongo/users/cart/removeFromCart?_id=${id}`)
     .then((response) => {
       response.data.cart.forEach((item) => {
         response.data.cartDetail.forEach((k, i) => {

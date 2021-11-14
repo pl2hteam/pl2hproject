@@ -9,7 +9,7 @@ const letter = require('./letters');
 router.use('/users', user);
 router.use('/posts', post);
 router.use('/profiles', profile);
-router.use('/letters',letter);
+router.use('/letters', letter);
 
 
 module.exports = router;
