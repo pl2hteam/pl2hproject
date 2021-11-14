@@ -8,7 +8,7 @@ import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
 
-const { Meta } = Card; 
+const { Meta } = Card;
 
 const ShopMainPage = () => {
   const [Products, setProducts] = useState([]);
@@ -55,7 +55,6 @@ const ShopMainPage = () => {
   };
 
   const renderCards = Products.map((product, index) => {
-    console.log(product);
     return (
       <Col lg={3} md={4} xs={8} key={index}>
         <Card hoverable={true} cover={<ImageSlider images={product} />}>
@@ -64,45 +63,45 @@ const ShopMainPage = () => {
       </Col>
     );
   });
-  
-  const showFilteredResults = (filters) => {
-    let body = {
-      skip: 0, // 처음엔 아무 선택 없음
-      limit: Limit,
-      filters: filters,
-    };
-    getProducts(body);
-    console.log(body);
-    setSkip(0);
-  };
 
-  // 라디오버튼 검색
-  const handlePrice = (value) => {
-    const data = price;
-    let array = [];
+  // const showFilteredResults = (filters) => {
+  //   let body = {
+  //     skip: 0, // 처음엔 아무 선택 없음
+  //     limit: Limit,
+  //     filters: filters,
+  //   };
+  //   getProducts(body);
+  //   console.log(body);
+  //   setSkip(0);
+  // };
 
-    for (let key in data) {
-      if (data[key]._id === parseInt(value, 10)) {
-        array = data[key].array;
-      }
-    }
-    return array;
-  };
+  // // 라디오버튼 검색
+  // const handlePrice = (value) => {
+  //   const data = price;
+  //   let array = [];
 
-  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
-  const handleFilters = (filters, category) => {
-    const newFilters = { ...Filters };
-    newFilters[category] = filters;
+  //   for (let key in data) {
+  //     if (data[key]._id === parseInt(value, 10)) {
+  //       array = data[key].array;
+  //     }
+  //   }
+  //   return array;
+  // };
 
-    if (category === "price") {
-      let priceValues = handlePrice(filters);
-      newFilters[category] = priceValues;
-      console.log(newFilters);
-    }
+  // // category 는 체크박스랑 라디오 박스를 나누기 위한 것
+  // const handleFilters = (filters, category) => {
+  //   const newFilters = { ...Filters };
+  //   newFilters[category] = filters;
 
-    showFilteredResults(newFilters);
-    setFilters(newFilters);
-  };
+  //   if (category === "price") {
+  //     let priceValues = handlePrice(filters);
+  //     newFilters[category] = priceValues;
+  //     console.log(newFilters);
+  //   }
+
+  //   showFilteredResults(newFilters);
+  //   setFilters(newFilters);
+  // };
 
   // 텍스트 검색
   const updateSearchTerm = (newSearchTerm) => {
@@ -135,7 +134,7 @@ const ShopMainPage = () => {
       </div>
 
       {/* 상품, 가격 필터 */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col lg={12} xs={24}>
           <CheckBox
             list={itemNumber}
@@ -148,7 +147,7 @@ const ShopMainPage = () => {
             handleFilters={(filters) => handleFilters(filters, "price")}
           />
         </Col>
-      </Row>
+      </Row> */}
 
       {/* 검색란 */}
       <div
