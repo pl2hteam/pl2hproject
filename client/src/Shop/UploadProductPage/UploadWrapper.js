@@ -4,9 +4,9 @@ import UploadProductPage from './UploadProduct';
 import UploadBar from './UploadBar';
 import { withRouter } from 'react-router';
 
-const UploadWrapper = () => {
+const UploadWrapper = (props) => {
     return (
-        <MainForm childSide={<UploadBar />} children={<UploadProductPage />} />
+        <MainForm childSide={<UploadBar />} children={<UploadProductPage item={props}/>} />
     );
 };
 

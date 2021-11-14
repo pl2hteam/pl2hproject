@@ -3,10 +3,13 @@ import './style/upload.css';
 import { Button, Form, Input } from "antd";
 import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
+import { useSelector } from "react-redux";
+import { withRouter } from "react-router";
 
 const { TextArea } = Input;
 
 const UploadProductPage = (props) => {
+  const user = useSelector(state => state.user);
   const [PdNameValue, setPdNameValue] = useState("");
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
@@ -62,9 +65,8 @@ const UploadProductPage = (props) => {
     ) {
       return alert("fill all the fields first!");
     }
-    console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      seller: props.user.userData._id,
+      seller: user.userData._id,
       pdName: PdNameValue,
       brandName: BrandValue,
       description: DescriptionValue,
@@ -134,4 +136,4 @@ const UploadProductPage = (props) => {
   );
 }
 
-export default UploadProductPage;
+export default withRouter(UploadProductPage);
