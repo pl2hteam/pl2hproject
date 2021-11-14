@@ -5,48 +5,9 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-// import ImageSlider from "../../../Common/components/ImageSlider"
+
 import { withRouter } from "react-router";
 
-// import Comment from "./Profile/Comment/Comment";
-
-////////////////////////////////////////
-
-const Wrapper = styled.div`
-  padding: 10px 0;
-  font-family: serif;
-  font-weight: bold;
-  img {
-    width: 100%;
-    margin: 5px 0;
-  }
-  h2 {
-    color: #a7a7a7;
-    font-size: 1.2rem;
-  }
-  .at {
-    color: #cec6a0;
-    font-size: 0.9rem;
-  }
-  .warn {
-    text-align: right;
-    color: #d9d9d9;
-    text-decoration: line-through;
-    font-weight: bold;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-`;
-
-const TxtWrapper = styled.div`
-  padding: 40px;
-  text-align: center;
-  .txt {
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: normal;
-  }
-`;
 
 const { Meta } = Card;
 
@@ -85,33 +46,15 @@ const UpdateProfile = () => {
       });
     };
     
-    // 더보기 버튼
-    const loadMoreHandler = () => {
-      let skip = Skip + Limit;
-  
-      let variables = {
-        skip: skip,
-        limit: Limit,
-        loadMore: true,
-        
-      };
-  
-      getProfiles(variables);
-      setSkip(skip);
-    };
-  
+ 
     const renderCards = Profiles.map((fullProfile, index) => {
       return (
         <Col lg={3} md={4} xs={8}>
             <Meta description={`$${fullProfile.content}`} />
+            <hr/>
         </Col>
       );
     });
-     
-    // category 는 체크박스랑 라디오 박스를 나누기 위한 것
-  
-    // 텍스트 검색
-  
   
     // default
     useEffect(() => {
@@ -124,9 +67,8 @@ const UpdateProfile = () => {
     }, []);
    
     return (
-        <div style={{ width: "75%", margin: "3rem auto" }}>
+        <div >
         <div style={{ textAlign: "center" }}>
-          <h2>상품 메인 화면</h2>
         </div>
   
         {/* 상품, 가격 필터 */}
@@ -148,25 +90,16 @@ const UpdateProfile = () => {
               alignItems: "center",
             }}
           >
-            <h2>등록된 상품이 없읍니다</h2>
+            <h2>등록된 댓글이 없습니다</h2>
           </div>
         ) : (
-          // 상품 있으면 목록 출력
-          // <Row gutter={[16, 16]}>{renderCards&&renderCards.map(fullProfile=>{
-          //   return <p><div><Col lg={3} md={4} xs={8}>
-          //   <Meta description={`$${fullProfile.content}`} />
-          // </Col></div></p>
-          // })}</Row>
+   
               <Row gutter={[16, 16]}>{renderCards}</Row>
         )}
         <br />
-        {/* <Comment /> */}
+     
   
-        {PostSize >= Limit && (
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <button onClick={loadMoreHandler}>더보기</button>
-          </div>
-        )}
+      
       </div>
     );
   };

@@ -8,10 +8,8 @@ import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 
-////////////////////////////////////////
 
 
-/////////////
 
 const Wrapper = styled.div`
   padding: 10px 0;
@@ -134,9 +132,7 @@ const Main = (props) => {
     return (
       <Col lg={3} md={4} xs={8} key={index}>
         <Card hoverable={true} cover={<ImageSlider images={postData} />}>
-          <Meta title={postData.title} description={`111${postData.content}`} />
-          <ImageSlider images={postData} />
-              {/* <p> <Meta description={`111${postData.content}`} /> 🌱</p> */}
+          <Meta title={postData.title} />
         </Card>
       </Col>
     );

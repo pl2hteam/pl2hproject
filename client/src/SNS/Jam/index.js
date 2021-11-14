@@ -35,7 +35,7 @@ const Profile = () => {
     },
     {
       id: 4,
-      title: '⭐내 즐겨찾기',
+      title: '⭐지도',
       url: '/Location',
     },
   ];
