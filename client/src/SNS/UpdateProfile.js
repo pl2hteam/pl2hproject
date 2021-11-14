@@ -7,8 +7,8 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 // import ImageSlider from "../../../Common/components/ImageSlider"
 import { withRouter } from "react-router";
-import Profile from "./Calendar";
-import Comment from "./Profile/Comment/Comment";
+
+// import Comment from "./Profile/Comment/Comment";
 
 ////////////////////////////////////////
 
@@ -160,7 +160,7 @@ const UpdateProfile = () => {
               <Row gutter={[16, 16]}>{renderCards}</Row>
         )}
         <br />
-        <Comment />
+        {/* <Comment /> */}
   
         {PostSize >= Limit && (
           <div style={{ display: "flex", justifyContent: "center" }}>

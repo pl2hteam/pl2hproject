@@ -10,6 +10,9 @@ import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
 import Feed from './feed.css'
 ////////////////////////////////////////
+import { Typography, Button, Form, message, Input } from "antd";
+
+/////////////
 
 const Wrapper = styled.div`
   padding: 10px 0;
@@ -49,7 +52,7 @@ const TxtWrapper = styled.div`
 
 const { Meta } = Card;
 
-const Main = () => {
+const Main = (props) => {
   const [Posts, setPosts] = useState([]);
   // const [Images, setImages] = useState([]);
   const [Skip, setSkip] = useState(0);
@@ -72,6 +75,44 @@ const Main = () => {
       }
     });
   };
+
+
+  const [profilecontent, setPostTitle] = useState("");
+
+  const onPostTitle = (event) => {
+    setPostTitle(event.currentTarget.value);
+  };
+  const onSubmit = (event) => {
+    // event.preventDefault();  // antd 자체 적용
+
+    if (
+      !profilecontent 
+      
+    ) {
+      return alert("fill all the fields first!");
+    }
+
+    // console.log('props id 는 : ', props.user.userData._id);
+    const variables = {
+      //seller: user.userData._id,
+      content: profilecontent,
+   
+    };
+
+    Axios.post("/api/mysql/profiles/write", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+        if (response.data.success) {
+   
+          alert("Product Successfully Uploaded");
+          props.history.push("/sns");
+        } else {
+          console.log(response.data)
+          alert("Failed to upload Product");
+        }
+      });
+  };
+
 
   // 더보기 버튼
   const loadMoreHandler = () => {
@@ -145,8 +186,22 @@ const Main = () => {
           </div>
           <div class="hl"></div>
           <div class="comment">
-            <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-            <button type="submit" class="submit-comment" disabled>게시</button>
+            
+      <Form onSubmit={onSubmit}>
+        {/* DropZone */}
+       
+
+        <br />
+        <br />
+        <label>물품명</label>1
+        <Input onChange={onPostTitle} value={profilecontent} />
+        <br />
+      
+
+        <Button onClick={onSubmit}>Submit</Button>
+      </Form>
+            {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
+            <button type="submit" class="submit-comment" disabled>게시</button> */}
           </div>
         </article>
         </Card>
