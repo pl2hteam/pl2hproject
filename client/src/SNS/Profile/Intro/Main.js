@@ -7,10 +7,9 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
+import Comment from "../Comment/Comment";
 import Feed from './feed.css'
-
 ////////////////////////////////////////
-
 
 const Wrapper = styled.div`
   padding: 10px 0;
@@ -82,7 +81,7 @@ const Main = () => {
       skip: skip,
       limit: Limit,
       loadMore: true,
-      
+
     };
 
     getPosts(variables);
@@ -90,12 +89,13 @@ const Main = () => {
   };
 
   const renderCards = Posts.map((postData, index) => {
-    // console.log(postData);
+    console.log(postData);
     // console.log(Images.PostId);
     return (
       <Col lg={3} md={4} xs={8} key={index}>
-        <Card hoverable={true} >
-        <article>
+        <Card hoverable={true} cover={<ImageSlider images={postData} />}>
+          <Meta title={postData.title} description={`111${postData.content}`} />
+          <article>
        
           <header>
             <div class="profile-of-article">
@@ -149,13 +149,6 @@ const Main = () => {
             <button type="submit" class="submit-comment" disabled>게시</button>
           </div>
         </article>
-      
-        
-
-
-
-
-
         </Card>
       </Col>
     );
@@ -209,7 +202,7 @@ const Main = () => {
         </Row>
       )}
       <br />
-
+      {/* <Comment /> */}
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>
@@ -220,4 +213,3 @@ const Main = () => {
 };
 
 export default withRouter(Main);
-

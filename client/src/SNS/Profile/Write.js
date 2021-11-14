@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { publicUrl } from '../../Common/components/utils'
 import UploadProductPage2 from './UploadProductPage2';
 
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

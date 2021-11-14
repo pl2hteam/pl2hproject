@@ -60,7 +60,7 @@ const SingleComment = (props) => {
                           {props.comment.content}
                       </p>
                   }
-              ></Comment>
+              />
 
               {OpenReply &&
                   <form style={{ display: 'flex' }} onSubmit={onSubmit}>

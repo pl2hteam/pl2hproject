@@ -56,7 +56,6 @@ const ImageSlider = (props) => {
               margin: "40px auto",
             }}
           />
-          {data = []}
         </div>
       </div>
     </div>

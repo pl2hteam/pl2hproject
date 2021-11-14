@@ -40,7 +40,6 @@ const Comments = (props) => {
             <br />
             <p>댓글</p>
             <hr />
-
             {props.commentLists && props.commentLists.map((comment, index) => (
                 (!comment.responseTo &&
                     <React.Fragment>

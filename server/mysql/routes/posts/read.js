@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const  {User,Post, Image} = require("../../models");
 
-router.post('/',async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    // console.log(req);
     const fullPost = await Post.findAll({ 
       include: {
         model: User,

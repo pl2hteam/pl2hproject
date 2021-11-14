@@ -16,9 +16,9 @@ module.exports = class User extends Sequelize.Model {
                 type: Sequelize.STRING(100),
                 allowNull: true,
             },
-            img: {
-              type: Sequelize.STRING(200),
-              allowNull: true,
+            image: {
+                type: Sequelize.STRING(200),
+                allowNull: true,
             },
             address: {
                 type: Sequelize.STRING(100),
@@ -31,6 +31,7 @@ module.exports = class User extends Sequelize.Model {
             role: {   // boolean 으로 구분
                 type: Sequelize.INTEGER,
                 allowNull: true,
+                defaultValue: '1'
             },
             phone: {
                 type: Sequelize.INTEGER,
@@ -63,5 +64,6 @@ module.exports = class User extends Sequelize.Model {
 
     static associate(db) {
         db.User.hasMany(db.Post);
+        db.User.hasMany(db.Comment);
     }
 };

@@ -21,8 +21,9 @@ db.Post = Post;
 db.Comment = Comment;
 db.Hashtag = Hashtag;
 db.Image = Image;
-db.Profile=Profile;
-db.Letter=Letter;
+db.Profile = Profile;
+db.Letter = Letter;
+
 
 Object.keys(db).forEach(modelName => {
   db[modelName].init(sequelize);
