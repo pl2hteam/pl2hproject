@@ -8,6 +8,7 @@ import Content from '../Layout/Content';
 import Intro from './Intro';
 import People from './People';
 import Favorite from './Favorite';
+import UpdatePic from './UpdatePic';
 
 const Profile = () => {
   const match = useRouteMatch();
@@ -32,6 +33,11 @@ const Profile = () => {
       title: '⭐내 즐겨찾기',
       url: '/favorite',
     },
+    {
+      id: 4,
+      title: '⭐갤러리',
+      url: '/UpdatePic',
+    },
   ];
 
   return (
@@ -49,6 +55,7 @@ const Profile = () => {
             <Route path={`${match.path}/intro/:type`} component={Intro} />
             <Route path={`${match.path}/people`} component={People} />
             <Route path={`${match.path}/favorite`} component={Favorite} />
+            <Route path={`${match.path}/UpdatePic`} component={UpdatePic} />
           </Switch>
         </Card>
       </Content>
