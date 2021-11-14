@@ -29,6 +29,14 @@ const productSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
+    videos: {
+      type: Array,
+      default: [],
+    },
+    duration: {
+      type: Array,
+      default: [],
+    },
     quantity: {
       type: Number,
       default: 0,

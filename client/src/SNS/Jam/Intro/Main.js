@@ -1,58 +1,36 @@
-import React from 'react';
-import styled from 'styled-components';
-import { publicUrl } from '../../../Common/components/utils'
+import React, { Component } from 'react';
+import MyModal from './MyModal';
+import ModalPortal from './ModalPortal';
 
-const Wrapper = styled.div`
-  padding: 10px 0;
-  font-family: serif;
-  font-weight: bold;
-  img {
-    width: 100%;
-    margin: 5px 0;
-  }
-  h2 {
-    color: #a7a7a7;
-    font-size: 1.2rem;
-  }
-  .at {
-    color: #cec6a0;
-    font-size: 0.9rem;
-  }
-  .warn {
-    text-align: right;
-    color: #d9d9d9;
-    text-decoration: line-through;
-    font-weight: bold;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-`;
 
-const TxtWrapper = styled.div`
-  padding: 40px;
-  text-align: center;
-  .txt {
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: normal;
+class Main extends Component {
+  state = {
+    modal: false
+  };
+  handleOpenModal = () => {
+    this.setState({
+      modal: true
+    });
+  };
+  handleCloseModal = () => {
+    this.setState({
+      modal: false
+    });
+  };
+  render() {
+    return (
+     
+      <div className="App">
+        <h1>안녕하세요 리액트!</h1>
+        <button onClick={this.handleOpenModal}>모달 열기</button>
+        {this.state.modal && (
+          <ModalPortal>
+            <MyModal onClose={this.handleCloseModal} />
+          </ModalPortal>
+        )}
+      </div>
+    );
   }
-`;
-
-const Main = () => {
-  return (
-    <Wrapper>
-      <h2>danbilee::</h2>
-      <p className="at">2020.10.30_Bumgye_DarakBang::</p>
-      <img src={publicUrl + '/resources/img/aboutMe.JPG'} alt="selfie" />
-      <p className="warn">눈뽕주의::감성주의::</p>
-      <TxtWrapper>
-        <p className="txt">"이런."</p>
-        <p className="txt">"그게 뭔데."</p>
-        <p className="txt">"내 눈을 바라 봐."</p>
-        <p className="txt">"그거 어떻게 하는 건데."</p>
-      </TxtWrapper>
-    </Wrapper>
-  );
-};
+}
 
 export default Main;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import { publicUrl } from '../../Common/components/utils'
@@ -21,12 +22,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const Write = (props) => {
-
+const Write = () => {
+  const user = useSelector(state => state.user);
+  
   return (
     <Wrapper>
-      <UploadProductPage2 />
-  
+      <UploadProductPage2 user={user} />
     </Wrapper>
   );
 };

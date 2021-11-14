@@ -2,7 +2,14 @@ const express = require("express");
 const { Product } = require("../../schemas/Product");
 const router = express.Router();
 
+/////////////////////////////////////////////////////
+/*                                                 */
+/*       /api/mongo/product/uploadProduct          */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 router.post("/", (req, res) => {
+  console.log(req.body);
   const product = new Product(req.body);
 
   product.save((err, doc) => {

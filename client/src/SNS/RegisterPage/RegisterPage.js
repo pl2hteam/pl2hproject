@@ -75,7 +75,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              window.location.replace("/");
+              window.location.replace("/sns");
             } else {
               alert(response.payload.err)
             }

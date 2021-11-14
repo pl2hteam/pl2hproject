@@ -20,11 +20,8 @@ const Wrapper = styled.div`
 `;
 
 const People = (props) => {
-  console.log(",,,,,,,,,,,,,", props);
   return (
-
     <Wrapper>
-
       <img src={publicUrl + '/resources/img/assa.jfif'} alt="assa" />
       <p>By::sorewa_melon</p>
     </Wrapper>

@@ -68,7 +68,7 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`, // 나중에 기본 프로필로
             db: false, // MongoDB
           };
 
@@ -100,7 +100,6 @@ function RegisterPage(props) {
           <div className="app">
             <h2>Sign up</h2>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
-
               <Form.Item required label="Name">
                 <Input
                   id="name"

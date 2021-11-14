@@ -40,12 +40,11 @@ const SnsLoginPage = (props) => {
           let dataToSubmit = {
             email: values.email,
             password: values.password,
-            db: true, // MySQL
+            db: true, // SNS
           };
 
           dispatch(loginUser(dataToSubmit))
             .then((response) => {
-              console.log(response);
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
                 if (rememberMe === true) {
@@ -53,7 +52,7 @@ const SnsLoginPage = (props) => {
                 } else {
                   localStorage.removeItem("rememberMe");
                 }
-                props.history.push("/sns");
+                props.history.push("/sns/main");
               } else {
                 setFormErrorMessage("Check out your Account or Password again");
               }
@@ -153,7 +152,7 @@ const SnsLoginPage = (props) => {
                     disabled={isSubmitting}
                     onSubmit={handleSubmit}
                   >
-                    Login
+                    SNS Login
                   </button>
                 </div>
                 <input type="checkbox"

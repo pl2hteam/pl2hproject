@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { User } = require("../../schemas/User");
 
+/////////////////////////////////////////////////////
+/*                                                 */
+/*            /api/mongo/users/login               */
+/*                                                 */
+/////////////////////////////////////////////////////
+
 router.post("/", (req, res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user)
@@ -9,7 +15,7 @@ router.post("/", (req, res) => {
                 loginSuccess: false,
                 message: "Auth failed, email not found"
             });
-
+            console.log("test");
         user.comparePassword(req.body.password, (err, isMatch) => {
             if (!isMatch)
                 return res.json({ loginSuccess: false, message: "Wrong password" });
