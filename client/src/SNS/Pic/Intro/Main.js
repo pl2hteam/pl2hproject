@@ -7,10 +7,9 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
-// import Comment from "../Comment/Comment";
-// import Feed from './feed.css'
+
 ////////////////////////////////////////
-import { Typography, Button, Form, message, Input } from "antd";
+
 
 /////////////
 
@@ -136,74 +135,8 @@ const Main = (props) => {
       <Col lg={3} md={4} xs={8} key={index}>
         <Card hoverable={true} cover={<ImageSlider images={postData} />}>
           <Meta title={postData.title} description={`111${postData.content}`} />
-          <article>
-       
-          <header>
-            <div class="profile-of-article">
-              {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
-              <span class="userID main-id point-span"><Meta description={`${postData.UserId}`} /></span>
-            </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
-          </header>
-          <div class="main-image">
           <ImageSlider images={postData} />
-          </div>
-          <div class="icons-react">
-            <div class="icons-left">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선"/>
-              <img class="icon-react" src="img/dm.png" alt="DM"/>  
-            </div>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크"/>
-          </div>
-         
-          <div class="reaction">
-            <div class="liked-people">
-              {/* <img class="pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/89296253_1521373131359783_504744616755462144_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=_9raiaB11CAAX_u7RhK&oh=c162d17b1570f31f94a1a28e19167609&oe=5F6C7A90" alt="johnnyjsuh님의 프로필 사진"/> */}
-              <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
-            </div>
-            <div class="description">
-              <p> <Meta description={`111${postData.content}`} /> 🌱</p>
-            </div>
-            <div class="comment-section">
-              <ul class="comments">
-                <li>
-                  <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                  <div>
-                    <img class="comment-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
-                    <div class="comment-like">
-                      <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
-                      <img class="comment-heart-liked" src="img/liked.png" alt="좋아요된하트"/>
-                    </div>
-                  </div>
-                </li>
-              ]
-              </ul>
-              <div class="time-log">
-                <span>32분 전</span>
-              </div>
-            </div>
-          </div>
-          <div class="hl"></div>
-          <div class="comment">
-            
-      <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-       
-
-        <br />
-        <br />
-        <label>물품명</label>1
-        <Input onChange={onPostTitle} value={profilecontent} />
-        <br />
-      
-
-        <Button onClick={onSubmit}>Submit</Button>
-      </Form>
-            {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-            <button type="submit" class="submit-comment" disabled>게시</button> */}
-          </div>
-        </article>
+              {/* <p> <Meta description={`111${postData.content}`} /> 🌱</p> */}
         </Card>
       </Col>
     );

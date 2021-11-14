@@ -45,10 +45,10 @@ const UpdatePic = (props) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
-      !PostTitle ||
-      !PostContent ||
+      !PostTitle
+      // !PostContent ||
       // !PostImg ||
-      !PostViews
+      // !PostViews
     ) {
       return alert("fill all the fields first!");
     }
@@ -71,7 +71,7 @@ const UpdatePic = (props) => {
         console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         if (response.data.success) {
           alert("Product Successfully Uploaded");
-          props.history.push("/sns/profile");
+          props.history.push("/sns/pic");
         } else {
           console.log(response.data)
           alert("Failed to upload Product");
@@ -97,26 +97,8 @@ const UpdatePic = (props) => {
 
         <br />
         <br />
-        <label>물품명</label>
+        <label>해시태그</label>
         <Input onChange={onPostTitle} value={PostTitle} />
-        <br />
-        <br />
-        <label>브랜드</label>
-        <Input onChange={onPostContent} value={PostContent} />
-        <br />
-        <br />
-        {/* <label>상세정보</label>
-        <TextArea onChange={onPostImg} value={PostImg} />
-        <br />
-        <br /> */}
-        <label>가격</label>
-        <Input onChange={onPostViews} value={PostViews} type="number" />
-        <br />
-        <br />
-        <label>수량</label>
-       
-        <br />
-        <br />
 
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
