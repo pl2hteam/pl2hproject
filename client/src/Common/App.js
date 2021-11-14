@@ -29,21 +29,21 @@ function App() {
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           {/* SNS */}
-          <Route exact path="/sns" component={Auth(SnsLoginPage, false, false)} />
-          <Route exact path="/sns/main" component={Auth(Home, false, false)} />
-          <Route path="/sns/profile" component={Auth(Profile, false, false)} />
-          <Route path="/sns/Jam" component={Auth(Jam, false, false)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, false, false)} />
-          <Route path="/sns/Latter" component={Auth(Latter, false, false)} />
-          <Route path="/sns/Mind" component={Auth(Mind, false, false)} />
-          <Route path="/sns/Pic" component={Auth(Pic, false, false)} />
+          <Route exact path="/sns" component={Auth(SnsLoginPage, false, true)} />
+          <Route exact path="/sns/main" component={Auth(Home, true, true)} />
+          <Route path="/sns/profile" component={Auth(Profile, true, true)} />
+          <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
+          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
+          <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
+          <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
+          <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
           <Route
             path="/sns/profile/Write"
-            component={Auth(Write, false, false)}
+            component={Auth(Write, true, true)}
           />
-          <Route path="/ContentProfile" component={Auth(ContentProfile, false, false)} />
-          <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, false)} />
-          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, false, false)} />
+          <Route path="/ContentProfile" component={Auth(ContentProfile, true, true)} />
+          <Route path="/UpdateProfile" component={Auth(UpdateProfile, true, true)} />
+          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, true, true)} />
 
           {/* SHOP */}
           <Route
@@ -59,12 +59,12 @@ function App() {
           <Route
             exact
             path="/shop/product/:pd_id"
-            component={Auth(DetailProductPage, false, false)}
+            component={Auth(DetailProductPage, true, false)}
           />
           <Route
             exact
             path="/shop/EasterEgg"
-            component={Auth(EasterEgg, null, false)}
+            component={Auth(EasterEgg, true, false)}
           />
           <Route
             exact
@@ -74,7 +74,7 @@ function App() {
           <Route
             exact
             path="/shop/cart"
-            component={Auth(CartPage, false, false)}
+            component={Auth(CartPage, true, false)}
           />
           <Route
             exact
