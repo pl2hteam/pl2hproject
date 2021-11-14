@@ -19,9 +19,8 @@ import ShopLoginPage from "../Shop/LoginMainPage/ShopMainLogin";
 import ShopMainWrapper from "../Shop/ShopMain/ShopMainWrapper";
 import EasterEgg from "../Shop/LoginMainPage/EasterEgg/EasterEgg";
 import UploadWrapper from "../Shop/UploadProductPage/UploadWrapper";
-import DetailProductPage from "../Shop/DetailProductPage/DetailProductPage";
-import CartPage from "../Shop/CartPage/CartPage";
-import MainForm from "../Shop/MainForm/MainForm";
+import DetailProductPageWrapper from "../Shop/DetailProductPage/DetailProductPageWrapper";
+import CartPageWrapper from "../Shop/CartPage/CartPageWrapper";
 
 function App() {
   return (
@@ -59,7 +58,7 @@ function App() {
           <Route
             exact
             path="/shop/product/:pd_id"
-            component={Auth(DetailProductPage, true, false)}
+            component={Auth(DetailProductPageWrapper, true, false)}
           />
           <Route
             exact
@@ -74,12 +73,7 @@ function App() {
           <Route
             exact
             path="/shop/cart"
-            component={Auth(CartPage, true, false)}
-          />
-          <Route
-            exact
-            path="/shop/Test"
-            component={Auth(MainForm, true, false)}
+            component={Auth(CartPageWrapper, true, false)}
           />
         </Switch>
       </div>
