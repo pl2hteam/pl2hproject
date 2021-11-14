@@ -1,56 +1,111 @@
-import React from 'react';
-import styled from 'styled-components';
-import { publicUrl } from '../../../Common/components/utils'
-import UploadLatterPage from '../UploadLatterPage';
+// import React from "react";
 
-const Wrapper = styled.div`
-  padding: 10px 0;
-  font-family: serif;
-  font-weight: bold;
-  img {
-    width: 100%;
-    margin: 5px 0;
-  }
-  h2 {
-    color: #a7a7a7;
-    font-size: 1.2rem;
-  }
-  .at {
-    color: #cec6a0;
-    font-size: 0.9rem;
-  }
-  .warn {
-    text-align: right;
-    color: #d9d9d9;
-    text-decoration: line-through;
-    font-weight: bold;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-`;
 
-const TxtWrapper = styled.div`
-  padding: 40px;
-  text-align: center;
-  .txt {
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: normal;
-  }
-`;
+////////////////////////////////////////
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import { Col, Card, Row } from "antd";
+
+import { withRouter } from "react-router";
+
+
+const { Meta } = Card;
 
 const Main = () => {
-  return (
-    <Wrapper>
-      <h2>danbilee::</h2>
-      <p className="at">2020.10.30_Bumgye_DarakBang::</p>
-      <img src={publicUrl + '/resources/img/aboutMe.JPG'} alt="selfie" />
-      <p className="warn">눈뽕주의::감성주의::</p>
-      <TxtWrapper>
-      <UploadLatterPage/>
-      </TxtWrapper>
-    </Wrapper>
-  );
-};
 
-export default Main;
+    const [Letters, setProfiles] = useState([]);
+    const [Skip, setSkip] = useState(0);
+    const [Limit, setLimit] = useState(2);
+    const [PostSize, setPostSize] = useState(0);
+  
+  
+    // 상품목록 불러오기
+    const getProfiles = (body) => {
+      
+     
+      Axios.post("/api/mysql/letters/read", body).then((response) => {
+       
+        console.log(body,2);
+        if (response.data.success) {
+          console.log(response.data,4);
+          
+          if (body.loadMore) {
+            setProfiles([...Letters, ...response.data.fullLetter]);
+            console.log(response.data.fullLetter,6);
+          
+          } else {
+            setProfiles(response.data.fullLetter);
+            console.log(response.data.fullLetter,5);
+          }
+          setPostSize(response.data.postSize);
+          setProfiles([...Letters, ...response.data.fullLetter]);
+        } else {
+          console.log(1);
+          alert("Failed to fectch post datas");
+        }
+      });
+    };
+    
+ 
+    const renderCards = Letters.map((fullLetter, index) => {
+      return (
+        <Col lg={3} md={4} xs={8}>
+            <Meta description={`$${fullLetter.to}`} />
+            <Meta description={`$${fullLetter.title}`} />
+            <Meta description={`$${fullLetter.content}`} />
+            <Meta description={`$${fullLetter.from}`} />
+            <Meta description={`$${fullLetter.ps}`} />
+            <hr/>
+        </Col>
+      );
+    });
+  
+    // default
+    useEffect(() => {
+      let variables = {
+        skip: Skip,
+        limit: Limit,
+      };
+  
+      getProfiles(variables);
+    }, []);
+   
+    return (
+        <div >
+        <div style={{ textAlign: "center" }}>
+        </div>
+  
+        {/* 상품, 가격 필터 */}
+        <Row gutter={[16, 16]}>
+          <Col lg={12} xs={24}></Col>
+          <Col lg={12} xs={24}></Col>
+        </Row>
+  
+        {/* 검색란 */}
+  
+  
+        {/* 등록된 상품이 0개면 "상품없다고 출력  */}
+        {Letters.length === 0 ? (
+          <div
+            style={{
+              display: "flex",
+              height: "300px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h2>등록된 댓글이 없습니다</h2>
+          </div>
+        ) : (
+   
+              <Row gutter={[16, 16]}>{renderCards}</Row>
+        )}
+        <br />
+     
+  
+      
+      </div>
+    );
+  };
+
+export default withRouter(Main);
