@@ -7,9 +7,9 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
-import Comment from "../Comment/Comment";
-import Feed from './feed.css'
+
 ////////////////////////////////////////
+
 
 const Wrapper = styled.div`
   padding: 10px 0;
@@ -46,10 +46,13 @@ const TxtWrapper = styled.div`
     font-weight: normal;
   }
 `;
-
+const handleShowDialog = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+    console.log("cliked");
+  };
 const { Meta } = Card;
 
-const Main = () => {
+const ImageComponent = () => {
   const [Posts, setPosts] = useState([]);
   // const [Images, setImages] = useState([]);
   const [Skip, setSkip] = useState(0);
@@ -81,7 +84,7 @@ const Main = () => {
       skip: skip,
       limit: Limit,
       loadMore: true,
-
+      
     };
 
     getPosts(variables);
@@ -89,14 +92,12 @@ const Main = () => {
   };
 
   const renderCards = Posts.map((postData, index) => {
-    console.log(postData);
+    // console.log(postData);
     // console.log(Images.PostId);
     return (
       <Col lg={3} md={4} xs={8} key={index}>
-        <Card hoverable={true} cover={<ImageSlider images={postData} />}>
-          <Meta title={postData.title} description={`111${postData.content}`} />
-          <article>
-       
+        <Card hoverable={true} >
+        <article>
           <header>
             <div class="profile-of-article">
               {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
@@ -105,7 +106,7 @@ const Main = () => {
             <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
           </header>
           <div class="main-image">
-          <ImageSlider images={postData} />
+          <ImageSlider images={postData}  onClick={this.handleShowDialog}/>
           </div>
           <div class="icons-react">
             <div class="icons-left">
@@ -149,6 +150,13 @@ const Main = () => {
             <button type="submit" class="submit-comment" disabled>게시</button>
           </div>
         </article>
+      
+        
+
+
+
+
+
         </Card>
       </Col>
     );
@@ -202,7 +210,7 @@ const Main = () => {
         </Row>
       )}
       <br />
-      {/* <Comment /> */}
+
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>
@@ -212,4 +220,5 @@ const Main = () => {
   );
 };
 
-export default withRouter(Main);
+export default withRouter(ImageComponent);
+

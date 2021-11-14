@@ -5,7 +5,7 @@ module.exports = class Hashtag extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        name: {
+        title: {
           type: Sequelize.STRING(15),
           allowNull: false,
           unique: true,
