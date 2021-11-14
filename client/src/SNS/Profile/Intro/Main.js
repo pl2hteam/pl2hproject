@@ -7,7 +7,7 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
-
+import Comment from "../Comment/Comment";
 ////////////////////////////////////////
 
 const Wrapper = styled.div`
@@ -147,7 +147,7 @@ const Main = () => {
         </Row>
       )}
       <br />
-
+      {/* <Comment /> */}
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>
