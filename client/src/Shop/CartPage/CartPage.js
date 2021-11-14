@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCartItems,
   removeCartItem,
@@ -12,6 +12,8 @@ import Axios from "axios";
 import Paypal from "../../Common/components/Paypal";
 
 function CartPage(props) {
+  console.log(props);
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch();
   // 합계 state
   const [Total, setTotal] = useState(0);
@@ -21,15 +23,15 @@ function CartPage(props) {
   useEffect(() => {
     let cartItems = [];
     //
-    if (props.user.userData && props.user.userData.cart) {
+    if (user.userData && user.userData.cart) {
       // 장바구니에 담은게 있으면 실행
-      if (props.user.userData.cart.length > 0) {
+      if (user.userData.cart.length > 0) {
         // DB에 있는 user 가 담아둔 상품들을 forEach 로
-        props.user.userData.cart.forEach((item) => {
+        user.userData.cart.forEach((item) => {
           // cartItems 배열에 때려넣음
           cartItems.push(item.id);
         });
-        dispatch(getCartItems(cartItems, props.user.userData.cart)).then(
+        dispatch(getCartItems(cartItems, user.userData.cart)).then(
           (response) => {
             if (response.payload.length > 0) {
               calculateTotal(response.payload);
@@ -38,7 +40,7 @@ function CartPage(props) {
         );
       }
     }
-  }, [props.user.userData]);
+  }, [user.userData]);
 
   // 장바구니 총액 계산
   const calculateTotal = (cartDetail) => {
@@ -89,10 +91,13 @@ function CartPage(props) {
     <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1>장바구니</h1>
       <div>
-        <UserCardBlock
-          products={props.user.cartDetail}
+        {/* {
+          (<UserCardBlock
+          products={user.cartDetail}
           removeItem={removeFromCart}
-        />
+          />)
+        }
+         */}
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
