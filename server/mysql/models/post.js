@@ -13,23 +13,31 @@ module.exports = class Post extends Sequelize.Model {   // 객체 Sequelize 의 
         },
         */
         title: {
-          type: Sequelize.STRING(30),
+          type: Sequelize.STRING(140),
           allowNull: false,  // allowNull: faulse 면 NOT NULL
         },
         content: {
           type: Sequelize.STRING(140),
           allowNull: false,
         },
-        // img: {
-        //   type: Sequelize.STRING(200),
-        //   allowNull: true,
-        // },
+        img: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
+        },
+        videos: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
+        },
         views: {
           type: Sequelize.INTEGER,
-          allowNull: false,
+          // allowNull: false,
+        },
+        duration: {
+          type: Sequelize.INTEGER,
+          // allowNull: false,
         },
         createdAt: {
-          type: Sequelize.DATEONLY,         // DATE 는 DateOnly
+          type: Sequelize.DATE,         // DATE 는 DateOnly
           allowNull: false,
           defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
         },
@@ -52,12 +60,9 @@ module.exports = class Post extends Sequelize.Model {   // 객체 Sequelize 의 
     );
   }
 
-  static associate(db) {  // 이 범위(associate)를 index.js 에서 사용해서 부른다.
-    db.Post.belongsTo(db.User); // post.addUser, post.getUser, post.setUser
-    //db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' }); // post.addHashtags
-    //db.Post.hasMany(db.Comment); // post.addComments, post.getComments
-    db.Post.hasMany(db.Image); // fullPost.addImages, fullPost.getImages
-    //db.Post.belongsToMany(db.User, { through: 'Like', as: 'Likers' }) // post.addLikers, post.removeLikers
-    //db.Post.belongsTo(db.Post, { as: 'Retweet' }); // post.addRetweet
+  static associate(db) {
+    db.Post.belongsTo(db.User); 
+    db.Post.hasMany(db.Image);
+    db.Post.hasMany(db.Comment);
   }
 };

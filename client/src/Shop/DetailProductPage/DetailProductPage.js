@@ -7,6 +7,7 @@ import { addToCart } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 // import Subscriber from "./Sections/Subscriber";
 import Comment from "./Sections/Comment";
+import MainForm from "../MainForm/MainForm";
 
 const DetailProductPage = (props) => {
   const dispatch = useDispatch();
@@ -48,29 +49,27 @@ const DetailProductPage = (props) => {
 
   if (Product.seller) {
     return (
-      <div className="postPage" style={{ width: "100%", padding: "3rem 4rem" }}>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1>{Product.pdName}</h1>
+      <MainForm>
+        <div className="postPage" style={{ width: "100%", padding: "3rem 4rem" }}>
+          {/* <Subscriber /> */}
+          <br />
+          <Row gutter={[16, 16]}>
+            <Col lg={12} xs={16}>
+              <ProductImage detail={Product} />
+            </Col>
+            <Col lg={12} xs={24} style={{ margin: "60px" }}>
+              <ProductInfo addToCart={addToCartHandler} detail={Product} />
+            </Col>
+          </Row>
+          <Comment refreshFunction={refreshFunction} commentLists={Comments} postId={pd_id} />
         </div>
-        {/* <Subscriber /> */}
-        <br />
-        <Row gutter={[16, 16]}>
-          <Col lg={12} xs={16}>
-            <h1 style={{fontSize:'100px'}}>{Product.seller.name}</h1>
-          </Col>
-          <Col lg={12} xs={16}>
-            <ProductImage detail={Product} />
-          </Col>
-          <Col lg={12} xs={24}>
-            <ProductInfo addToCart={addToCartHandler} detail={Product} />
-          </Col>
-        </Row>
-        <Comment refreshFunction={refreshFunction} commentLists={Comments} postId={pd_id} />
-      </div>
+      </MainForm>
     );
   } else {
     return (
-      <div>....loading</div>
+      <MainForm>
+        <div>....loading</div>
+      </MainForm>
     )
   }
 }

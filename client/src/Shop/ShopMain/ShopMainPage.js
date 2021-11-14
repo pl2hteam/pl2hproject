@@ -8,7 +8,7 @@ import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
 
-const { Meta } = Card;
+const { Meta } = Card; 
 
 const ShopMainPage = () => {
   const [Products, setProducts] = useState([]);
@@ -64,6 +64,7 @@ const ShopMainPage = () => {
       </Col>
     );
   });
+  
   const showFilteredResults = (filters) => {
     let body = {
       skip: 0, // 처음엔 아무 선택 없음

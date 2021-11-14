@@ -8,6 +8,7 @@ import { Col, Card, Row } from "antd";
 // import ImageSlider from "../../../Common/components/ImageSlider"
 import { withRouter } from "react-router";
 import Profile from "./Calendar";
+import Comment from "./Profile/Comment/Comment";
 
 ////////////////////////////////////////
 
@@ -123,9 +124,6 @@ const UpdateProfile = () => {
     }, []);
    
     return (
-      
-               
-         
         <div style={{ width: "75%", margin: "3rem auto" }}>
         <div style={{ textAlign: "center" }}>
           <h2>상품 메인 화면</h2>
@@ -162,6 +160,7 @@ const UpdateProfile = () => {
               <Row gutter={[16, 16]}>{renderCards}</Row>
         )}
         <br />
+        <Comment />
   
         {PostSize >= Limit && (
           <div style={{ display: "flex", justifyContent: "center" }}>
