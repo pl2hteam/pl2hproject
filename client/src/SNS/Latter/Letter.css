@@ -4,30 +4,30 @@
 
 
 
-	#form_wrap { overflow:hidden; height:446px; position:relative; top:0px;
+#wrap #form_wrap { overflow:hidden; height:446px; position:relative; top:0px;
 		-webkit-transition: all 1s ease-in-out .3s;
 		-moz-transition: all 1s ease-in-out .3s;
 		-o-transition: all 1s ease-in-out .3s;
 		transition: all 1s ease-in-out .3s;}
 	 
-	 #form_wrap:before {content:"";
+		#wrap  #form_wrap:before {content:"";
 		position:absolute;
-		bottom:158px;left:41%;
+		bottom:158px;left:42%;
 		background:url('../images/before.png');
 		width:530px;height: 316px;} 
 	
-	#form_wrap:after {content:"";position:absolute;
-		bottom:30px;left:41%;
+		#wrap #form_wrap:after {content:"";position:absolute;
+		bottom:30px;left:42%;
 		background:url('../images/after.png');
 		width:530px;height: 260px; } 
 
-	#form_wrap.hide:after, #form_wrap.hide:before {display:none; }
-	#form_wrap:hover {height:776px;top:-200px;}
+		#wrap 	#form_wrap.hide:after, #form_wrap.hide:before {display:none; }
+		#wrap 	#form_wrap:hover {height:776px;top:-200px;}
 
 
-	form {background:#f7f2ec url('../images/letter_bg.png'); 
+		#wrap form {background:#f7f2ec  url('../images/letter_bg.png'); 
 		position:relative;top:200px;overflow:hidden;
-		height:1000px;width:700px;margin:0px auto;padding:20px; 
+		height:520px;width:530px;margin:0px auto;padding:20px; 
 		border: 1px solid #fff;
 		border-radius: 3px; 
 		-moz-border-radius: 3px; -webkit-border-radius: 3px;
@@ -40,16 +40,16 @@
 		transition: all 1s ease-in-out .3s;}
 
 
-		#form_wrap:hover form {height:530px;}
+		#wrap 	#form_wrap:hover form {height:530px;}
 
-		label {
+		#wrap 	label {
 			margin: 11px 20px 0 0; 
 			font-size: 16px; color: #b3aba1;
 			text-transform: uppercase; 
 			text-shadow: 0px 1px 0px #fff;
 		}
 
-		input[type=text], textarea {
+		#wrap 	input[type=text], textarea {
 			font: 14px normal normal uppercase helvetica, arial, serif;
 			color: #7c7873;background:none;
 			width: 98%; height: 36px; padding: 0px 10px; margin: 0 0 10px 0;
@@ -60,11 +60,11 @@
 			box-shadow:  inset 0px 0px 1px #b3a895;
 		}	
 
-		textarea { height: 80px; padding-top:14px;}
+		#wrap 	textarea { height: 80px; padding-top:14px;}
 
-		textarea:focus, input[type=text]:focus {background:rgba(255,255,255,.35);}
+		#wrap textarea:focus, input[type=text]:focus {background:rgba(255,255,255,.35);}
 
-		#form_wrap input[type=submit] {
+		#wrap 	#form_wrap input[type=submit] {
 			position:relative;font-family: 'YanoneKaffeesatzRegular'; 
 			font-size:24px; color: #7c7873;text-shadow:0 1px 0 #fff;
 			width:100%; text-align:center;opacity:0;
@@ -77,10 +77,10 @@
 			transition: opacity .6s ease-in-out 0s;
 		}
 
-		#form_wrap:hover input[type=submit] {z-index:1;opacity:1;
+		#wrap 	#form_wrap:hover input[type=submit] {z-index:1;opacity:1;
 			-webkit-transition: opacity .5s ease-in-out 1.3s;
 			-moz-transition: opacity .5s ease-in-out 1.3s;
 			-o-transition: opacity .5s ease-in-out 1.3s;
 			transition: opacity .5s ease-in-out 1.3s;}
 
-			#form_wrap:hover input:hover[type=submit] {color:#435c70;}
+			#wrap 	#form_wrap:hover input:hover[type=submit] {color:#435c70;}
