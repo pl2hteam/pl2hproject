@@ -84,11 +84,7 @@ const SnsLoginPage = (props) => {
             <form onSubmit={handleSubmit} style={{ width: "350px" }}>
               {/* <div className="base-container"  */}
               <div className="base-container" ref={props.containerRef}>
-                <div className="header">Login</div>
                 <div className="content">
-                  <div className="image">
-        
-                  </div>
                   <div className="form">
                     <div className="form-group">
                       <label htmlFor="username">E-mail</label>
@@ -102,7 +98,7 @@ const SnsLoginPage = (props) => {
                           errors.email && touched.email
                             ? "text-input error"
                             : "text-input"
-                        } 
+                        }
                       />
                       {errors.email && touched.email && (
                         <div className="input-feedback">{errors.email}</div>
@@ -144,7 +140,7 @@ const SnsLoginPage = (props) => {
                   </div>
                 </div>
                 <div className="footer">
-                  <button 
+                  <button
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
@@ -160,15 +156,15 @@ const SnsLoginPage = (props) => {
                   onChange={handleRememberMe}
                   checked={rememberMe}
                 />
-                  ID 기억하기
-                <a
+                ID 기억하기
+                {/* <a
                   className="login-form-forgot"
                   href="/reset_user"
                   style={{ float: "right" }}
                 >
                   forgot password
                 </a>
-                <a href="/register"> 회원가입</a>
+                <a href="/register"> 회원가입</a> */}
               </div>
             </form>
           </div>

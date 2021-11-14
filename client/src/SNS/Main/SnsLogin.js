@@ -26,13 +26,14 @@ class MainLogin extends React.Component {
       this.rightSide.classList.remove("left");
       this.rightSide.classList.add("right");
     }
+
     this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
   }
 
   render() {
     const { isLogginActive } = this.state;
-    const current = isLogginActive ? "RESISTER" : "LOGIN";
-    const currentActive = isLogginActive ? "LOGIN" : "RESISTER";
+    const current = isLogginActive ? "회원가입" : "로그인";
+    const currentActive = isLogginActive ? "로그인" : "회원가입";
     return (
       <div className="MainLogin">
         <div className="login">

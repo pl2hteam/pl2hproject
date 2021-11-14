@@ -18,6 +18,7 @@
     "core-js": "^3.6.4",
     "d3": "^7.1.1",
     "formik": "^1.5.8",
+    "html-react-parser": "^1.4.0",
     "moment": "^2.24.0",
     "postcss-loader": "^6.2.0",
     "react": "^16.8.6",

@@ -20,6 +20,11 @@ router.post('/', async (req, res, next) => {
       email: req.body.email,
       name: req.body.name,
       password: hashedPassword,
+      address: req.body.address,
+      gender: req.body.gender,
+      role: req.body.role,
+      phone: req.body.phone,
+      birth: req.body.birth,
     });
     return res.status(200).json({
       success: true

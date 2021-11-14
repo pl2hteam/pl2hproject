@@ -33,9 +33,11 @@ const BgWrapper = styled.div`
 const Layout = ({ children }) => {
   return (
     // <Wrapper>
-      <BorderWrapper>
-        <BgWrapper>{children}</BgWrapper>
-      </BorderWrapper>
+    <BorderWrapper>
+      <BgWrapper>
+        {children}
+      </BgWrapper>
+    </BorderWrapper>
 
     // </Wrapper>
   );

@@ -11,7 +11,7 @@ import Pic from '../SNS/Pic'
 import Jam from "../SNS/Jam"
 import Write from "../SNS/Profile/Write"
 import LatterWrite from "../SNS/Latter/LatterWrite";
-import SnsLoginPage from "../SNS/Main/ShopLogin"
+import SnsLoginPage from "../SNS/Main/SnsLogin"
 import ContentProfile from "../SNS/ContentProfile"
 import UpdateProfile from "../SNS/UpdateProfile"
 
@@ -29,21 +29,21 @@ function App() {
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           {/* SNS */}
-          <Route exact path="/sns" component={Auth(SnsLoginPage, false, true)} />
-          <Route exact path="/sns/main" component={Auth(Home, true, true)} />
-          <Route path="/sns/profile" component={Auth(Profile, true, true)} />
-          <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
-          <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
-          <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
-          <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
+          <Route exact path="/sns" component={Auth(SnsLoginPage, false, false)} />
+          <Route exact path="/sns/main" component={Auth(Home, false, false)} />
+          <Route path="/sns/profile" component={Auth(Profile, false, false)} />
+          <Route path="/sns/Jam" component={Auth(Jam, false, false)} />
+          <Route path="/sns/Calendar" component={Auth(Calendar, false, false)} />
+          <Route path="/sns/Latter" component={Auth(Latter, false, false)} />
+          <Route path="/sns/Mind" component={Auth(Mind, false, false)} />
+          <Route path="/sns/Pic" component={Auth(Pic, false, false)} />
           <Route
             path="/sns/profile/Write"
-            component={Auth(Write, true, true)}
+            component={Auth(Write, false, false)}
           />
-          <Route path="/ContentProfile" component={Auth(ContentProfile, false, true)} />
-          <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, true)} />
-          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, false, true)} />
+          <Route path="/ContentProfile" component={Auth(ContentProfile, false, false)} />
+          <Route path="/UpdateProfile" component={Auth(UpdateProfile, false, false)} />
+          <Route path="/sns/Latter/LatterWrite" component={Auth(LatterWrite, false, false)} />
 
           {/* SHOP */}
           <Route
@@ -59,7 +59,7 @@ function App() {
           <Route
             exact
             path="/shop/product/:pd_id"
-            component={Auth(DetailProductPage, true, false)}
+            component={Auth(DetailProductPage, false, false)}
           />
           <Route
             exact
@@ -74,7 +74,7 @@ function App() {
           <Route
             exact
             path="/shop/cart"
-            component={Auth(CartPage, true, false)}
+            component={Auth(CartPage, false, false)}
           />
           <Route
             exact
