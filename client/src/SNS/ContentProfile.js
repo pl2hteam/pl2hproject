@@ -216,14 +216,11 @@ const ContentProfile = (props) => {
    
 
       <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-       
+      
 
-        <br />
-        <br />
-        <label>물품명</label>1
+        <label>방명록쓰기</label>1
         <Input onChange={onPostTitle} value={profilecontent} />
-        <br />
+       
       
 
         <Button onClick={onSubmit}>Submit</Button>

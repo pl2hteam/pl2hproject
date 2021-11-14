@@ -46,9 +46,7 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-      // !PostContent ||
-      // !PostImg ||
-      // !PostViews
+     
     ) {
       return alert("fill all the fields first!");
     }

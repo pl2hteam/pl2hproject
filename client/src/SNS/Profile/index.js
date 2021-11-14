@@ -6,7 +6,6 @@ import SubMenu from '../Menu/SubMenu';
 import Sidebar from '../Layout/Sidebar';
 import Content from '../Layout/Content';
 import Intro from './Intro';
-import People from './People';
 import Favorite from './Favorite';
 import Write from './Write';
 import { withRouter } from 'react-router';
@@ -25,19 +24,8 @@ const Profile = () => {
       ],
     },
     {
-      id: 2,
-      title: '👭내 인맥',
-      url: '/people',
-    },
-
-    {
       id: 3,
-      title: '⭐즐겨찾기',
-      url: '/favorite',
-    },
-    {
-      id: 4,
-      title: '⭐즐겨찾기',
+      title: '⭐sns글쓰기',
       url: '/Write',
     },
   ];
@@ -55,7 +43,6 @@ const Profile = () => {
             <Route exact path={`${match.path}`} component={Intro} />
             <Route exact path={`${match.path}/intro`} component={Intro} />
             <Route path={`${match.path}/intro/:type`} component={Intro} />
-            <Route path={`${match.path}/people`} component={People} />
             <Route path={`${match.path}/favorite`} component={Favorite} />
             <Route path={`${match.path}/Write`} component={Write} />
 
