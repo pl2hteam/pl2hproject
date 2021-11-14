@@ -178,3 +178,4 @@ const UpdateProfile = () => {
   };
 
 export default withRouter(UpdateProfile);
+
