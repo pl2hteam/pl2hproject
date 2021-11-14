@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "1234",
+    "username": "admin",
+    "password": "diary1234",
     "database": "pl2h",
-    "host": "127.0.0.1",
+    "host": "teamdiary.ciszsojgfruj.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {

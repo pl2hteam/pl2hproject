@@ -37,6 +37,7 @@ function App() {
           <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
           <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
           <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
+          
           <Route
             path="/sns/profile/Write"
             component={Auth(Write, true, true)}
