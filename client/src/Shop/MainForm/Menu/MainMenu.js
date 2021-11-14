@@ -48,7 +48,7 @@ const MainMenu = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shop/main" activeClassName="selected">
+          <NavLink to="/shop/cart" activeClassName="selected">
             장바
           </NavLink>
         </li>

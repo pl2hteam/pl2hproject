@@ -12,8 +12,9 @@ import Axios from "axios";
 import Paypal from "../../Common/components/Paypal";
 
 function CartPage(props) {
+  const user = useSelector(state => state.user);
   console.log(props);
-  const user = useSelector(state => state.user)
+  console.log(user.userData);
   const dispatch = useDispatch();
   // 합계 state
   const [Total, setTotal] = useState(0);
@@ -68,10 +69,11 @@ function CartPage(props) {
   const transactionSuccess = (data) => {
     dispatch(
       onSuccessBuy({
-        cartDetail: props.user.cartDetail,
+        cartDetail: user.cartDetail,
         paymentData: data,
       })
     ).then((response) => {
+      console.log(response);
       if (response.payload.success) {
         setShowSuccess(true);
         setShowTotal(false);
@@ -91,13 +93,10 @@ function CartPage(props) {
     <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1>장바구니</h1>
       <div>
-        {/* {
-          (<UserCardBlock
+        <UserCardBlock
           products={user.cartDetail}
           removeItem={removeFromCart}
-          />)
-        }
-         */}
+        />
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
