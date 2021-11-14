@@ -24,6 +24,6 @@ module.exports = class Image extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Image.belongsTo(db.Post);
+    db.Post.belongsToMany(db.Hashtag, { through: 'ImageHashtag' }); // post.addHashtags
   }
 };
