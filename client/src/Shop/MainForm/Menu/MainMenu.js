@@ -43,7 +43,7 @@ const MainMenu = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shop/main" activeClassName="selected">
+          <NavLink to="/shop/purch" activeClassName="selected">
             구매
           </NavLink>
         </li>
@@ -60,6 +60,6 @@ const MainMenu = () => {
       </ul>
     </Nav>
   );
-}
+};
 
 export default MainMenu;
