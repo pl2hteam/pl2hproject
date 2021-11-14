@@ -9,7 +9,7 @@ import UserCardBlock from "./Sections/UserCardBlock";
 import MainForm from "../MainForm/MainForm";
 import { Result, Empty } from "antd";
 import Axios from "axios";
-// import Paypal from '../../utils/Paypal';
+import Paypal from "../../Common/components/Paypal";
 
 function CartPage(props) {
   const dispatch = useDispatch();
@@ -63,27 +63,27 @@ function CartPage(props) {
     });
   };
 
-  // const transactionSuccess = (data) => {
-  //   dispatch(
-  //     onSuccessBuy({
-  //       cartDetail: props.user.cartDetail,
-  //       paymentData: data,
-  //     })
-  //   ).then((response) => {
-  //     if (response.payload.success) {
-  //       setShowSuccess(true);
-  //       setShowTotal(false);
-  //     }
-  //   });
-  // };
+  const transactionSuccess = (data) => {
+    dispatch(
+      onSuccessBuy({
+        cartDetail: props.user.cartDetail,
+        paymentData: data,
+      })
+    ).then((response) => {
+      if (response.payload.success) {
+        setShowSuccess(true);
+        setShowTotal(false);
+      }
+    });
+  };
 
-  // const transactionError = () => {
-  //   console.log("Paypal error");
-  // };
+  const transactionError = () => {
+    console.log("Paypal error");
+  };
 
-  // const transactionCanceled = () => {
-  //   console.log("Transaction canceled");
-  // };
+  const transactionCanceled = () => {
+    console.log("Transaction canceled");
+  };
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
@@ -121,14 +121,14 @@ function CartPage(props) {
 
       {/* Paypal Button */}
 
-      {/* {ShowTotal && (
+      {ShowTotal && (
         <Paypal
           toPay={Total}
           onSuccess={transactionSuccess}
           transactionError={transactionError}
           transactionCanceled={transactionCanceled}
         />
-      )} */}
+      )}
     </div>
   );
 }
