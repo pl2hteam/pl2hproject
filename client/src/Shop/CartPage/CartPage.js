@@ -14,7 +14,6 @@ import Paypal from "../../Common/components/Paypal";
 function CartPage(props) {
   const user = useSelector(state => state.user);
   console.log(props);
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   // 합계 state
   const [Total, setTotal] = useState(0);

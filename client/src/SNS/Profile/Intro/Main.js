@@ -8,9 +8,8 @@ import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
-import Feed from './feed.css'
 ////////////////////////////////////////
-import { Typography, Button, Form, message, Input } from "antd";
+import ImgTest from "./ImgTest";
 
 /////////////
 
@@ -139,7 +138,7 @@ const Main = (props) => {
     // console.log(Images.PostId);
     return (
       <Col lg={3} md={4} xs={8} key={index}>
-        <Card hoverable={true} cover={<ImageSlider images={postData} />}>
+        {/* <Card hoverable={true} cover={<ImageSlider images={postData} />}> */}
           <Meta title={postData.title} description={`111${postData.content}`} />
           <article>
 
@@ -148,10 +147,10 @@ const Main = (props) => {
               {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
               <span class="userID main-id point-span"><Meta description={`${postData.UserId}`} /></span>
             </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
+            {/* <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/> */}
           </header>
           <div class="main-image">
-          <ImageSlider images={postData} />
+          {postData.images != 0 && <ImgTest images={postData.images} />}
           </div>
           <div class="icons-react">
             <div class="icons-left">
@@ -197,7 +196,7 @@ const Main = (props) => {
             <button type="submit" class="submit-comment" disabled>게시</button> */}
           </div>
         </article>
-        </Card>
+        {/* </Card> */}
       </Col>
     );
   });
