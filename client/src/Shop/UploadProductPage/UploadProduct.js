@@ -83,7 +83,7 @@ const UploadProductPage = (props) => {
         // console.log("답신은 : ", response);
         if (response.data.success) {
           alert("Product Successfully Uploaded");
-          props.props.history.push("/shop/main");
+          props.history.push("/shop/main");
         } else {
           alert("Failed to upload Product");
         }
