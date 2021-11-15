@@ -7,6 +7,7 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
+import Modal from "../Modal"
 
 
 
@@ -182,7 +183,7 @@ const Main = (props) => {
 
     getPosts(variables);
   }, []);
-
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
@@ -265,9 +266,19 @@ const Main = (props) => {
         <div class="gallery-pics inner-wrap">
      
 
-        <div class="pic-wrap">
+        <div class="pic-wrap"onSubmit={onSubmit} onDoubleClick={() => {
+        setOpenModal(true);
+      }}>
           
-         
+        {openModal && (
+          <Modal
+          
+            setOpenModal={setOpenModal}
+            openModal={openModal}
+           
+            
+          />
+        )}
           {renderCards}   
           
           
