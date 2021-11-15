@@ -1,107 +1,110 @@
-// import React from "react";
 
 
-////////////////////////////////////////
-import React, { useEffect, useState } from "react";
+
+
+import React, { useState } from "react";
 import Axios from "axios";
-import { Col, Card, Row } from "antd";
-
+import { useSelector } from "react-redux";
+import { Typography, Button, Form, message, Input } from "antd";
 import { withRouter } from "react-router";
 
+// import {
 
-const { Meta } = Card;
+//   MdMailOutline,
+//   MdLocationOn,
+//   MdPhoneIphone,
+// } from "react-icons/md";
+// import { publicUrl } from "../../Common/components/utils"
 
-const Main = () => {
 
-    const [Profiles, setProfiles] = useState([]);
-    const [Skip, setSkip] = useState(0);
-    const [Limit, setLimit] = useState(2);
-    const [PostSize, setPostSize] = useState(0);
+
+
+const { Title } = Typography;
+const { TextArea } = Input;
+
+
+
+
+
+
+
+
+const ContentProfile = (props) => {
+
+
+
+  
+  const [ProfileContent, setProfileContent] = useState("");
+ 
   
   
-    // 상품목록 불러오기
-    const getProfiles = (body) => {
+ 
+  const onProfileContent= (event) => {
+    setProfileContent(event.currentTarget.value);
+  
+  };
+ 
+  
+  const user = useSelector(state => state.user);
+  const onSubmit = (event) => {
+    // event.preventDefault();  // antd 자체 적용
+
+    if (
       
+      !ProfileContent 
+    
+    ) {
+      return alert("fill all the fields first!");
+    }
+
+    // console.log('props id 는 : ', props.user.userData._id);
+    const variables = {
+      //seller: user.userData._id,
      
-      Axios.post("/api/mysql/profiles/read", body).then((response) => {
-       
-        console.log(body,2);
+      content:ProfileContent,
+      
+   
+    };
+
+    Axios.post("/api/mysql/profiles/write", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
         if (response.data.success) {
-          console.log(response.data,4);
-          
-          if (body.loadMore) {
-            setProfiles([...Profiles, ...response.data.fullProfile]);
-            console.log(response.data.fullProfile,6);
-          
-          } else {
-            setProfiles(response.data.fullProfile);
-            console.log(response.data.fullProfile,5);
-          }
-          setPostSize(response.data.postSize);
-          setProfiles([...Profiles, ...response.data.fullProfile]);
+   
+          alert("Product Successfully Uploaded");
+          props.history.push("/sns/main");
         } else {
-          console.log(1);
-          alert("Failed to fectch post datas");
+          console.log(response.data)
+          alert("Failed to upload Product");
         }
       });
-    };
-    
- 
-    const renderCards = Profiles.map((fullProfile, index) => {
-      return (
-        <Col lg={3} md={4} xs={8}>
-            <Meta description={`$${fullProfile.content}`} />
-            <hr/>
-        </Col>
-      );
-    });
-  
-    // default
-    useEffect(() => {
-      let variables = {
-        skip: Skip,
-        limit: Limit,
-      };
-  
-      getProfiles(variables);
-    }, []);
-   
-    return (
-        <div >
-        <div style={{ textAlign: "center" }}>
-        </div>
-  
-        {/* 상품, 가격 필터 */}
-        <Row gutter={[16, 16]}>
-          <Col lg={12} xs={24}></Col>
-          <Col lg={12} xs={24}></Col>
-        </Row>
-  
-        {/* 검색란 */}
-  
-  
-        {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-        {Profiles.length === 0 ? (
-          <div
-            style={{
-              display: "flex",
-              height: "300px",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <h2>등록된 댓글이 없습니다</h2>
-          </div>
-        ) : (
-   
-              <Row gutter={[16, 16]}>{renderCards}</Row>
-        )}
-        <br />
-     
-  
-      
-      </div>
-    );
   };
 
-export default withRouter(Main);
+
+
+
+  
+
+  return (
+    
+      
+       <Form onSubmit={onSubmit}>
+        {/* DropZone */}
+       
+
+       
+     
+     
+        <label>내용</label>
+        <Input onChange={onProfileContent} value={ProfileContent} />
+      
+   
+      
+
+        <Button onClick={onSubmit}>편지보내기</Button>
+      </Form>
+  
+   
+  );
+ };
+export default withRouter(ContentProfile);

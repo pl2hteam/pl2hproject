@@ -5,17 +5,17 @@ function ImageSlider(props) {
   console.log(props);
   return (
     <div>
-      <Carousel showArrows={true}>
+      <div showArrows={true}>
         {props.images.images.map((image, index) => (
           <div key={index}>
             <img
-              style={{ width: "30vw", maxHeight: "150px" }}
+              style={{ width: "100%", maxHeight: "500px" }}
               src={`http://localhost:5000/${image}`}
               alt="productImage"
             />
           </div>
         ))}
-      </Carousel>
+      </div>
     </div>
   );
 }
