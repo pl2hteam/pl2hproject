@@ -135,7 +135,9 @@ const Main = (props) => {
 
 
     if ( postData || postData.HashtagId ) {
-      return <Col lg={3} md={4} xs={8} key={index}>
+      return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
+        setOpenModal(true);
+      }}>
       <Card hoverable={true}>
         <article>
      
@@ -158,15 +160,7 @@ const Main = (props) => {
           <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크"/>
         </div>
        
-        {openModal && (
-          <Modal
-          
-            setOpenModal={setOpenModal}
-            openModal={openModal}
-           
-            
-          />
-        )}
+      
         <div class="reaction">
           <div class="liked-people">
             {/* <img class="pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/89296253_1521373131359783_504744616755462144_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=_9raiaB11CAAX_u7RhK&oh=c162d17b1570f31f94a1a28e19167609&oe=5F6C7A90" alt="johnnyjsuh님의 프로필 사진"/> */}
@@ -196,9 +190,7 @@ const Main = (props) => {
         <div class="hl"></div>
         <div class="comment">
           
-    <Form onSubmit={onSubmit} onDoubleClick={() => {
-          setOpenModal(true);
-        }}>
+    <Form >
       {/* DropZone */}
      
 
@@ -268,7 +260,15 @@ const Main = (props) => {
         </div>
       ) : (
         // 상품 있으면 목록 출력
-       <div>
+       <div>  {openModal && (
+          <Modal
+          
+            setOpenModal={setOpenModal}
+            openModal={openModal}
+           
+            
+          />
+        )}
           {renderCards}
        </div>
       )}
