@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import Axios from 'axios';
 import SingleComment from './SingleComment';
+import ReplyComment from './ReplyComment';
 
 const Comment = (props) => {
+  const [Comments, setComments] = useState([]);
   console.log(props);
+  useEffect(() => {
+    console.log(333333333333333);
+      let id = {
+        postId: props.postId,
+      }
+  
+      Axios.post('/api/mysql/posts/comment/getComment', id)
+      .then(response => {
+        if (response.data.success) {
+          console.log(response.data.comments);
+          setComments("")
+          setComments(response.data.comments);
+        } else {
+          alert('댓글 정보를 가져오지 못했습니다.');
+        }
+      })
+  }, []);
+
+  console.log(Comments);
   const [commentValue, setCommentValue] = useState("");
 
   const handleClick = (event) => {
@@ -16,16 +37,16 @@ const Comment = (props) => {
     
     const variables = {
       content: commentValue,
-      writer: props.postData.UserId,
-      postId: props.postData.id,
+      writer: props.UserId,
+      postId: props.id,
     }
 
     Axios.post('/api/mysql/posts/comment/saveComment', variables)
       .then(response => {
         if (response.data.success) {
-          console.log(response.data.comments);
+          console.log(response.data.commentsInfo);
           setCommentValue("")
-          props.refreshFunction(response.data.comments)
+          setComments(response.data.commentsInfo)
         } else {
           alert('댓글을 저장하지 못했습니다.');
         }
@@ -36,14 +57,15 @@ const Comment = (props) => {
       <br />
       <p>댓글</p>
       <hr />
-      {props.commentLists && props.commentLists.map((comment, index) => (
+      
+      {Comments && Comments.map((comment, index) => (
                 (!comment.responseTo &&
                     <React.Fragment>
                         <SingleComment comment={comment} postId={props.postData.id} refreshFunction={props.refreshFunction} />
                         {/* <ReplyComment CommentLists={props.commentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} /> */}
                     </React.Fragment>
                 )
-            ))};
+            ))}
 
       <from style={{ display: 'flex' }} onSubmit={onSubmit} >
         <textarea
