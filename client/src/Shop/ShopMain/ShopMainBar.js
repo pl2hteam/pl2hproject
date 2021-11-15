@@ -15,8 +15,8 @@ const ShopMainBar = (props) => {
 
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
-  const [Limit, setLimit] = useState(99999);
-  const [PostSize, setPostSize] = useState(0);
+  const [Limit, setLimit] = useState(2);
+  const [PostSize, setPostSize] = useState();
   const [Filters, setFilters] = useState({
     itemNumber: [],
     price: [],
