@@ -10,7 +10,8 @@ import SearchFeature from "./Section/SearchFeature";
 
 const { Meta } = Card;
 
-const ShopMainPage = () => {
+const ShopMainPage = (pdFilter) => {
+  console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
@@ -103,19 +104,19 @@ const ShopMainPage = () => {
   //   setFilters(newFilters);
   // };
 
-  // 텍스트 검색
-  const updateSearchTerm = (newSearchTerm) => {
-    let body = {
-      skip: 0,
-      limit: Limit,
-      filters: Filters,
-      searchTerm: newSearchTerm,
-    };
+  // // 텍스트 검색
+  // const updateSearchTerm = (newSearchTerm) => {
+  //   let body = {
+  //     skip: 0,
+  //     limit: Limit,
+  //     filters: Filters,
+  //     searchTerm: newSearchTerm,
+  //   };
 
-    setSkip(0);
-    setSearchTerm(newSearchTerm);
-    getProducts(body);
-  };
+  //   setSkip(0);
+  //   setSearchTerm(newSearchTerm);
+  //   getProducts(body);
+  // };
 
   // default
   useEffect(() => {
@@ -126,6 +127,21 @@ const ShopMainPage = () => {
 
     getProducts(variables);
   }, []);
+
+  // useEffect(() => {
+  //   console.log(pdFilter);
+  //   console.log(pdFilter.pdFilter);
+  //   if (pdFilter.pdFilter != undefined) {
+  //     setProducts(pdFilter.pdFilter.Products);
+  //     setSkip(pdFilter.pdFilter.Skip);
+  //     setLimit(pdFilter.pdFilter.Limit);
+  //     setPostSize(pdFilter.pdFilter.PostSize);
+  //     setFilters({
+  //       itemNumber: [...itemNumber],
+  //       price: [...price],
+  //     });
+  //   }
+  // }, [pdFilter]);
 
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
@@ -150,7 +166,7 @@ const ShopMainPage = () => {
       </Row> */}
 
       {/* 검색란 */}
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "flex-end",
@@ -158,7 +174,7 @@ const ShopMainPage = () => {
         }}
       >
         <SearchFeature refreshFunction={updateSearchTerm} />
-      </div>
+      </div> */}
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
       {Products.length === 0 ? (
