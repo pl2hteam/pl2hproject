@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const { Hashtag,Image} = require("../../models");
+const { Hashtag, Image } = require("../../models");
 
 const write = require('./write');
 const read = require('./read');

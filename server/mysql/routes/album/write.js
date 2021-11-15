@@ -21,11 +21,11 @@ router.post('/', async (req, res, next) => { // POST /post
       console.log(IMGARR[i]);
       await Image.create({
         src: IMGARR[i],
-       HashtagId:hashtag.id
-        
+        HashtagId: hashtag.id
+
       })
     };
-    
+
     return res.status(200).json({ success: true, hashtag });
   } catch (err) {
     return res.json({ success: false, err });

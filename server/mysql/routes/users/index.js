@@ -15,6 +15,10 @@ router.get("/auth", auth, (req, res) => {
         name: req.user.name,
         role: req.user.role,
         image: req.user.img,
+        address: req.user.address,
+        gender: req.user.gender,
+        phone: req.user.phone,
+        birth: req.user.birth,
     });
 });
 

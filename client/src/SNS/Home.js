@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 ////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Col,Card } from "antd";
+import { Col, Card } from "antd";
 
 import { withRouter } from "react-router-dom";
 
@@ -21,7 +21,7 @@ import { withRouter } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
-  
+
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
@@ -131,11 +131,10 @@ const LinkTitle = styled.p`
   }
 `;
 const { Meta } = Card;
-const Home = () => {
-
-  
-  const user = useSelector(state => state.userData);
-  console.log(user);
+const Home = (props) => {
+  console.log(props);
+  const userInfo = useSelector((state) => state.user);
+  console.log(userInfo);
 
   // category 는 체크박스랑 라디오 박스를 나누기 위한 것
 
@@ -143,8 +142,8 @@ const Home = () => {
 
 
   // default
- 
-    
+
+
   return (
     <Layout>
       <Sidebar>
@@ -152,25 +151,25 @@ const Home = () => {
           <FlexWrapper>
             <ProfileSection>
               <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
-          
+
             </ProfileSection>
             <ProfileSection>
               <p>
-                <span className="my-name">{user}</span>
-                <span className="my-sex">(♀)</span>
-                <span className="my-brthdy">1992.08.19</span>
+                <span className="my-name">{userInfo.userData.name}</span>
+                <span className="my-sex">({userInfo.userData.gender})</span>
+                <span className="my-brthdy">{userInfo.userData.birth}</span>
               </p>
               <p>
                 <MdMailOutline />
-                danbi.db@gmail.com
+                {userInfo.userData.email}
               </p>
               <p>
                 <MdPhoneIphone />
-                010-4013-4147
+                {userInfo.userData.phone}
               </p>
               <p>
                 <MdLocationOn />
-                경기도 안양시
+                {userInfo.userData.address}
               </p>
             </ProfileSection>
           </FlexWrapper>
@@ -178,14 +177,14 @@ const Home = () => {
       </Sidebar>
       <Content>
         <Cards>
-        <Mini>
-        <MiniRoom/>
-        </Mini>
+          <Mini>
+            <MiniRoom />
+          </Mini>
           <ContentSection>
             <h2>한 줄 감성</h2>
             <Link to={'/ContentProfile'}>방명록</Link>
             <ul>
-            <UpdateProfile/>
+              <UpdateProfile />
             </ul>
           </ContentSection>
         </Cards>
