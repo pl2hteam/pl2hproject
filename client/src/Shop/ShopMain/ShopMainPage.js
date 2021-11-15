@@ -59,10 +59,12 @@ const ShopMainPage = () => {
     console.log(product);
     return (
         <span>
-          <ImageShadow
-            src={`http://localhost:5000/${product.images[0]}`}
-            alt="productImage"
-          />
+          <a href={`/shop/product/${product._id}`}>
+            <ImageShadow
+              src={`http://localhost:5000/${product.images[0]}`}
+              alt="productImage"
+            />
+          </a>
           <Meta title={product.title} description={`$${product.price}`} />
         </span>
     );
@@ -137,32 +139,35 @@ const ShopMainPage = () => {
         <h2>상품 메인 화면</h2>
       </div>
 
-      {/* 상품, 가격 필터 */}
-      <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}>
-          <CheckBox
-            list={itemNumber}
-            handleFilters={(filters) => handleFilters(filters, "itemNumber")}
-          />
-        </Col>
-        <Col lg={12} xs={24}>
-          <Radiobox
-            list={price}
-            handleFilters={(filters) => handleFilters(filters, "price")}
-          />
-        </Col>
-      </Row>
+      <div className='zz'>
+        {/* 상품, 가격 필터 */}
+        <Row gutter={[16, 16]}>
+          <Col lg={12} xs={24}>
+            <CheckBox
+              list={itemNumber}
+              handleFilters={(filters) => handleFilters(filters, "itemNumber")}
+            />
+          </Col>
+          <Col lg={12} xs={24}>
+            <Radiobox
+              list={price}
+              handleFilters={(filters) => handleFilters(filters, "price")}
+            />
+          </Col>
+        </Row>
 
-      {/* 검색란 */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
-        }}
-      >
-        <SearchFeature refreshFunction={updateSearchTerm} />
+        {/* 검색란 */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            margin: "1rem auto",
+          }}
+        >
+          <SearchFeature refreshFunction={updateSearchTerm} />
+        </div>
       </div>
+      
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
       {Products.length === 0 ? (
