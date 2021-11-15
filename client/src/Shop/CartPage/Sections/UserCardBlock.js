@@ -22,7 +22,7 @@ function UserCardBlock(props) {
           />
         </td>
         <td>{product.quantity} 개</td>
-        <td>{product.price} 원</td>
+        <td>금화 {product.price}</td>
         <td>
           <button onClick={() => props.removeItem(product._id)}>Remove </button>{" "}
         </td>
@@ -34,13 +34,10 @@ function UserCardBlock(props) {
       <table>
         <thead>
           <tr>
-            <th>상품사진</th>
-            <th>주문수량</th>
-            <th>상품가격</th>
-            <th>
-              그냥 구매하시지 굳이 장바구니에서 빼시려면 여기 있는 버튼 눌러서
-              빼시던가
-            </th>
+            <th>아이템사진</th>
+            <th>수량</th>
+            <th>아이템가격</th>
+            <th>주문제거</th>
           </tr>
         </thead>
         <tbody>{renderItems()}</tbody>

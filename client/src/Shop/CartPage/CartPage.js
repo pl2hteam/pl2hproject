@@ -12,7 +12,7 @@ import Axios from "axios";
 import Paypal from "../../Common/components/Paypal";
 
 function CartPage(props) {
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
   console.log(props);
   const dispatch = useDispatch();
   // 합계 state
@@ -93,17 +93,11 @@ function CartPage(props) {
     <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1>장바구니</h1>
       <div>
-        <UserCardBlock
-          products={user.cartDetail}
-          removeItem={removeFromCart}
-        />
+        <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
-            <h2>
-              총 상품 금액 : {Total} 원 밖에 안합니다. 얼른 더 담으시고
-              구매해주세요.
-            </h2>
+            <h2>총 금화 {Total}</h2>
           </div>
         ) : ShowSuccess ? (
           <Result status="success" title="Successfully Purchased Items" />
@@ -118,7 +112,7 @@ function CartPage(props) {
           >
             <br />
             <Empty description={false} />
-            <p>장바구니에 담긴 상품이 달랑 한 개도 없읍니다.</p>
+            <p>담겨진 아이템이 없습니다</p>
           </div>
         )}
       </div>

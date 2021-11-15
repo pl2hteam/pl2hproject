@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Card, Row } from "antd";
 import CheckBox from "./Section/CheckBox";
 import { itemNumber } from "./Section/itemDatas";
@@ -6,16 +6,22 @@ import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import Axios from "axios";
 
-const ShopMainBar = () => {
+const ShopMainBar = (props) => {
+  const sendPdFilter = () => {
+    props.getPdFilter(pdFilter);
+  };
+
+  // sendPdFilter();
+
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
-  const [PostSize, setPostSize] = useState(0);
+  const [PostSize, setPostSize] = useState();
   const [Filters, setFilters] = useState({
     itemNumber: [],
     price: [],
   });
-
+  let pdFilter;
   // 상품목록 불러오기
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
@@ -30,6 +36,8 @@ const ShopMainBar = () => {
       } else {
         alert("Failed to fectch product datas");
       }
+      console.log(Products);
+      sendPdFilter();
     });
   };
   const showFilteredResults = (filters) => {
@@ -69,10 +77,21 @@ const ShopMainBar = () => {
 
     showFilteredResults(newFilters);
     setFilters(newFilters);
+    pdFilter = { Products, Skip, Limit, PostSize, Filters };
   };
+  // default
+  useEffect(() => {
+    let variables = {
+      skip: Skip,
+      limit: Limit,
+    };
+    console.log(variables);
+    getProducts(variables);
+  }, []);
 
   return (
     <div>
+      <button onClick={sendPdFilter}>실험</button>
       {/* 상품, 가격 필터 */}
       <Row gutter={[16, 16]}>
         <Col lg={12} xs={24}>

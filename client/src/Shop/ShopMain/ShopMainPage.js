@@ -6,12 +6,13 @@ import { itemNumber } from "./Section/itemDatas";
 import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
-import ImageShadow from 'react-image-shadow';
-import 'react-image-shadow/assets/index.css';
+import ImageShadow from "react-image-shadow";
+import "react-image-shadow/assets/index.css";
 
-const { Meta } = Card; 
+const { Meta } = Card;
 
-const ShopMainPage = () => {
+const ShopMainPage = (pdFilter) => {
+  console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
@@ -58,18 +59,18 @@ const ShopMainPage = () => {
   const renderCards = Products.map((product, index) => {
     console.log(product);
     return (
-        <span>
-          <a href={`/shop/product/${product._id}`}>
-            <ImageShadow
-              src={`http://localhost:5000/${product.images[0]}`}
-              alt="productImage"
-            />
-          </a>
-          <Meta title={product.title} description={`$${product.price}`} />
-        </span>
+      <span>
+        <a href={`/shop/product/${product._id}`}>
+          <ImageShadow
+            src={`http://localhost:5000/${product.images[0]}`}
+            alt="productImage"
+          />
+        </a>
+        <Meta title={product.title} description={`$${product.price}`} />
+      </span>
     );
   });
-  
+
   const showFilteredResults = (filters) => {
     let body = {
       skip: 0, // 처음엔 아무 선택 없음
@@ -109,19 +110,19 @@ const ShopMainPage = () => {
     setFilters(newFilters);
   };
 
-  // 텍스트 검색
-  const updateSearchTerm = (newSearchTerm) => {
-    let body = {
-      skip: 0,
-      limit: Limit,
-      filters: Filters,
-      searchTerm: newSearchTerm,
-    };
+  // // 텍스트 검색
+  // const updateSearchTerm = (newSearchTerm) => {
+  //   let body = {
+  //     skip: 0,
+  //     limit: Limit,
+  //     filters: Filters,
+  //     searchTerm: newSearchTerm,
+  //   };
 
-    setSkip(0);
-    setSearchTerm(newSearchTerm);
-    getProducts(body);
-  };
+  //   setSkip(0);
+  //   setSearchTerm(newSearchTerm);
+  //   getProducts(body);
+  // };
 
   // default
   useEffect(() => {
@@ -133,41 +134,53 @@ const ShopMainPage = () => {
     getProducts(variables);
   }, []);
 
+  // useEffect(() => {
+  //   console.log(pdFilter);
+  //   console.log(pdFilter.pdFilter);
+  //   if (pdFilter.pdFilter != undefined) {
+  //     setProducts(pdFilter.pdFilter.Products);
+  //     setSkip(pdFilter.pdFilter.Skip);
+  //     setLimit(pdFilter.pdFilter.Limit);
+  //     setPostSize(pdFilter.pdFilter.PostSize);
+  //     setFilters({
+  //       itemNumber: [...itemNumber],
+  //       price: [...price],
+  //     });
+  //   }
+  // }, [pdFilter]);
+
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
         <h2>상품 메인 화면</h2>
       </div>
 
-      <div className='zz'>
-        {/* 상품, 가격 필터 */}
-        <Row gutter={[16, 16]}>
-          <Col lg={12} xs={24}>
-            <CheckBox
-              list={itemNumber}
-              handleFilters={(filters) => handleFilters(filters, "itemNumber")}
-            />
-          </Col>
-          <Col lg={12} xs={24}>
-            <Radiobox
-              list={price}
-              handleFilters={(filters) => handleFilters(filters, "price")}
-            />
-          </Col>
-        </Row>
+      {/* 상품, 가격 필터 */}
+      <Row gutter={[16, 16]}>
+        <Col lg={12} xs={24}>
+          <CheckBox
+            list={itemNumber}
+            handleFilters={(filters) => handleFilters(filters, "itemNumber")}
+          />
+        </Col>
+        <Col lg={12} xs={24}>
+          <Radiobox
+            list={price}
+            handleFilters={(filters) => handleFilters(filters, "price")}
+          />
+        </Col>
+      </Row>
 
-        {/* 검색란 */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            margin: "1rem auto",
-          }}
-        >
-          <SearchFeature refreshFunction={updateSearchTerm} />
-        </div>
-      </div>
-      
+      {/* 검색란 */}
+      {/* <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          margin: "1rem auto",
+        }}
+      >
+        <SearchFeature refreshFunction={updateSearchTerm} />
+      </div> */}
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
       {Products.length === 0 ? (
