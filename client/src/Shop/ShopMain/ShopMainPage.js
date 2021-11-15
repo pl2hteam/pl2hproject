@@ -6,10 +6,10 @@ import { itemNumber } from "./Section/itemDatas";
 import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
-import ImageShadow from 'react-image-shadow';
-import 'react-image-shadow/assets/index.css';
+import ImageShadow from "react-image-shadow";
+import "react-image-shadow/assets/index.css";
 
-const { Meta } = Card; 
+const { Meta } = Card;
 
 const ShopMainPage = (pdFilter) => {
   console.log(pdFilter);
@@ -59,16 +59,18 @@ const ShopMainPage = (pdFilter) => {
   const renderCards = Products.map((product, index) => {
     console.log(product);
     return (
-        <span>
+      <span>
+        <a href={`/shop/product/${product._id}`}>
           <ImageShadow
             src={`http://localhost:5000/${product.images[0]}`}
             alt="productImage"
           />
-          <Meta title={product.title} description={`$${product.price}`} />
-        </span>
+        </a>
+        <Meta title={product.title} description={`$${product.price}`} />
+      </span>
     );
   });
-  
+
   const showFilteredResults = (filters) => {
     let body = {
       skip: 0, // 처음엔 아무 선택 없음

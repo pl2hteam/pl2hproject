@@ -11,7 +11,7 @@ const SingleComment = (props) => {
   const [OpenReply, setOpenReply] = useState(false)
 
   const handleChange = (event) => {
-    setCommentValue(event.currentTarget.value)
+    setCommentValue(event.currentTarget.CommentValue)
   }
 
   const openReply = () => {
@@ -23,7 +23,7 @@ const SingleComment = (props) => {
 
     const variables = {
         writer: user.userData.id,
-        postId: props.postId,
+        // postId: comment.id,
         responseTo: props.comment.id,
         content: CommentValue
     }
@@ -43,16 +43,16 @@ const SingleComment = (props) => {
   const actions = [
     <span onClick={openReply} key="comment-basic-reply-to">답글 달기</span>
   ]
-
+  console.log(props.comment);
   if (props.comment) {
     return (
       <div>
         <Comment
             actions={actions}
-            author={props.comment.writer.name}
+            author={props.comment.User.name}
             avatar={
                 <Avatar
-                    src={props.comment.writer.image}
+                    src={props.comment.User.image}
                     alt="image"
                 />
             }
@@ -62,20 +62,6 @@ const SingleComment = (props) => {
               </p>
             }
         />
-
-        {OpenReply &&
-          <form style={{ display: 'flex' }} onSubmit={onSubmit}>
-              <TextArea
-                  style={{ width: '100%', borderRadius: '5px' }}
-                  onChange={handleChange}
-                  value={CommentValue}
-                  placeholder="댓글을 적어주세요."
-              />
-              <br />
-              <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>작성하기</Button>
-          </form>
-        }
-
       </div>
     )
   } else {
