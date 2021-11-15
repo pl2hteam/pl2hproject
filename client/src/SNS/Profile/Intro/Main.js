@@ -4,7 +4,7 @@ import Modal from "../Modal";
 ////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Col, Card, Row } from "antd";
+import { Col, Card, Row, Input, Form, Button } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
@@ -176,8 +176,6 @@ const Main = (props) => {
     } else {
       return null;
     }
-    console.log(postData);
-    // console.log(Images.PostId);
    
   });
 
