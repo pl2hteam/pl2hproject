@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
+import React from "react";
 import SNSMain from "./SNSMain";
-import ShopMain from "./ShopMain";
+import ShopMain from "../Shop/MainForm/ShopMain";
 
 function App() {
   return (

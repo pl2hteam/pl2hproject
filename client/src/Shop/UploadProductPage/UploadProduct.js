@@ -7,6 +7,20 @@ import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 
 const { TextArea } = Input;
+const Continents = [
+  { key: 1, value: "의류" },
+  { key: 2, value: "신발" },
+  { key: 3, value: "쥬얼리 / 시계" },
+  { key: 4, value: "가방 / 잡화" },
+  { key: 5, value: "생활용품" },
+  { key: 6, value: "자전거 / 보드" },
+  { key: 7, value: "화장품 / 향수" },
+  { key: 8, value: "바디 / 헤어" },
+  { key: 9, value: "중고시장" },
+  { key: 10, value: "카메라" },
+  { key: 11, value: "건강 / 의료용품" },
+  { key: 12, value: "기타" },
+];
 
 const UploadProductPage = (props) => {
   const user = useSelector((state) => state.user);
@@ -19,6 +33,11 @@ const UploadProductPage = (props) => {
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
+  const [ContinentValue, setContinentValue] = useState(1);
+
+  const onContinentsSelectChange = (event) => {
+    setContinentValue(event.currentTarget.value);
+  };
 
   const onPdNameChange = (event) => {
     setPdNameValue(event.currentTarget.value);
@@ -60,12 +79,14 @@ const UploadProductPage = (props) => {
       !DescriptionValue ||
       !PriceValue ||
       !QuantityValue ||
-      !Images ||
+      !Images == false ||
       !Duration ||
-      !VideoPath
+      !VideoPath ||
+      !ContinentValue
     ) {
-      return alert("fill all the fields first!");
+      return alert("빈칸을 채워주세요");
     }
+
     const variables = {
       seller: user.userData._id,
       pdName: PdNameValue,
@@ -76,16 +97,17 @@ const UploadProductPage = (props) => {
       images: Images,
       videos: VideoPath,
       duration: Duration,
+      continents: ContinentValue,
     };
 
     Axios.post("/api/mongo/product/uploadProduct", variables).then(
       (response) => {
         // console.log("답신은 : ", response);
         if (response.data.success) {
-          alert("Product Successfully Uploaded");
+          alert("아이템이 거래소에 등록되었습니다.");
           props.history.push("/shop/main");
         } else {
-          alert("Failed to upload Product");
+          alert("아이템 등록이 실패하였습니다");
         }
       }
     );
@@ -121,15 +143,18 @@ const UploadProductPage = (props) => {
         <Input onChange={onPriceChange} value={PriceValue} type="number" />
         <br />
         <br />
-        <label>수량</label>
-        <Input
-          onChange={onQuantityChange}
-          value={QuantityValue}
-          type="number"
-        />
+        <label>아이템종류</label>
+        <select onChange={onContinentsSelectChange} value={ContinentValue}>
+          {Continents.map((item) => (
+            <option key={item.key} value={item.key}>
+              {item.value}{" "}
+            </option>
+          ))}
+        </select>
+
         <br />
         <br />
-        <Button onClick={onSubmit}>Submit</Button>
+        <Button onClick={onSubmit}>아이템 등록하기</Button>
       </Form>
     </div>
   );

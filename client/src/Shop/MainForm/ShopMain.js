@@ -1,29 +1,16 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
-import Auth from "../Common/hoc/auth";
+import Auth from "../../Common/hoc/auth";
 
-import ShopLoginPage from "../Shop/LoginMainPage/ShopMainLogin";
-import ShopMainWrapper from "../Shop/ShopMain/ShopMainWrapper";
-import EasterEgg from "../Shop/LoginMainPage/EasterEgg/EasterEgg";
-import UploadWrapper from "../Shop/UploadProductPage/UploadWrapper";
-import DetailProductPageWrapper from "../Shop/DetailProductPage/DetailProductPageWrapper";
-import CartPageWrapper from "../Shop/CartPage/CartPageWrapper";
-import HistoryPageWrapper from "../Shop/HistoryPage/HistoryPageWrapper";
+import ShopLoginPage from "../LoginMainPage/ShopMainLogin";
+import ShopMainWrapper from "../ShopMain/ShopMainWrapper";
+import EasterEgg from "../LoginMainPage/EasterEgg/EasterEgg";
+import UploadWrapper from "../UploadProductPage/UploadWrapper";
+import DetailProductPageWrapper from "../DetailProductPage/DetailProductPageWrapper";
+import CartPageWrapper from "../CartPage/CartPageWrapper";
+import HistoryPageWrapper from "../HistoryPage/HistoryPageWrapper";
 import styled from "styled-components";
-
-const ShopFont = styled.div`
-  @font-face {
-    font-family: "CookieRun-Regular";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  * {
-    font-family: "CookieRun-Regular";
-  }
-`;
+import { ShopFont } from "./ShopFont";
 
 function ShopMain() {
   return (
