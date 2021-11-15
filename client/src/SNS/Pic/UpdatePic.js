@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import MovieFileUpload from "../Profile/Intro/MovieFileUpload";
+import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -19,17 +19,17 @@ const UpdatePic = (props) => {
   const onPostTitle = (event) => {
     setPostTitle(event.currentTarget.value);
   };
-  const onPostContent = (event) => {
-    setPostContent(event.currentTarget.value);
-  };
+  // const onPostContent = (event) => {
+  //   setPostContent(event.currentTarget.value);
+  // };
 
   const updateImages = (newImages) => {
     setPostImg(newImages);
   };
 
-  const onPostViews = (event) => {
-    setPostViews(parseInt(event.currentTarget.value));
-  };
+  // const onPostViews = (event) => {
+  //   setPostViews(parseInt(event.currentTarget.value));
+  // };
 
   const updateVideoPath = (newVideoPath) => {
     setVideoPath(newVideoPath);
@@ -46,25 +46,25 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-      // !PostContent ||
+     
       // !PostImg ||
-      // !PostViews
+      
     ) {
       return alert("fill all the fields first!");
     }
 
-    // console.log(props.user.userData.id);
+    console.log(props.user.userData.id);
     const variables = {
       seller: props.user.userData.id,
       title: PostTitle,
-      content: PostContent,
+      // content: PostContent,
       img: PostImg,
-      views: PostViews,
+      // views: PostViews,
       videos: VideoPath,
       duration: Duration,
     };
 
-    Axios.post("/api/mysql/posts/write", variables)
+    Axios.post("/api/mysql/album/write", variables)
       .then((response) => {
         console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         console.log(response);
@@ -97,8 +97,12 @@ const UpdatePic = (props) => {
 
         <br />
         <br />
-        <label>해시태그</label>
+        <label>물품명</label>
         <Input onChange={onPostTitle} value={PostTitle} />
+        <br />
+   
+        <br />
+        <br />
 
         <Button onClick={onSubmit}>Submit</Button>
       </Form>

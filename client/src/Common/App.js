@@ -3,6 +3,7 @@ import SNSMain from "./SNSMain";
 import ShopMain from "../Shop/MainForm/ShopMain";
 
 function App() {
+  
   return (
     <>
       <SNSMain />

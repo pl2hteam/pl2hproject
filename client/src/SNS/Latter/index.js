@@ -13,29 +13,15 @@ import LatterWrite from './LatterWrite'
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
+ 
     {
       id: 1,
-      title: '👩‍💻내 소개',
-      url: '/intro',
-      child: [
-        { id: 1, title: '마이페이지', url: '/default' },
-        { id: 3, title: '내 짝궁소개', url: '/dev' },
-      ],
-    },
-    {
-      id: 2,
       title: '👭내 인맥',
       url: '/people',
     },
-
     {
-      id: 3,
-      title: '⭐즐겨찾기',
-      url: '/favorite',
-    },
-    {
-      id: 4,
-      title: '⭐즐겨찾기',
+      id: 2,
+      title: '⭐연인에게~',
       url: '/LatterWrite',
     },
   ];
