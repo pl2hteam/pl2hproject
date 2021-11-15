@@ -4,6 +4,7 @@ import { Button, Form, Input } from "antd";
 import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
+import { withRouter } from "react-router";
 
 const { TextArea } = Input;
 
@@ -65,7 +66,6 @@ const UploadProductPage = (props) => {
     ) {
       return alert("fill all the fields first!");
     }
-    // console.log("props id 는 : ", user.userData._id);
     const variables = {
       seller: user.userData._id,
       pdName: PdNameValue,
@@ -135,4 +135,4 @@ const UploadProductPage = (props) => {
   );
 };
 
-export default UploadProductPage;
+export default withRouter(UploadProductPage);

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from "../../Common/components/ImageSlider";
 import CheckBox from "./Section/CheckBox";
 import { itemNumber } from "./Section/itemDatas";
 import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
+import ImageShadow from 'react-image-shadow';
+import 'react-image-shadow/assets/index.css';
 
-const { Meta } = Card;
+const { Meta } = Card; 
 
 const ShopMainPage = (pdFilter) => {
   console.log(pdFilter);
@@ -56,53 +57,56 @@ const ShopMainPage = (pdFilter) => {
   };
 
   const renderCards = Products.map((product, index) => {
+    console.log(product);
     return (
-      <Col lg={3} md={4} xs={8} key={index}>
-        <Card hoverable={true} cover={<ImageSlider images={product} />}>
+        <span>
+          <ImageShadow
+            src={`http://localhost:5000/${product.images[0]}`}
+            alt="productImage"
+          />
           <Meta title={product.title} description={`$${product.price}`} />
-        </Card>
-      </Col>
+        </span>
     );
   });
+  
+  const showFilteredResults = (filters) => {
+    let body = {
+      skip: 0, // 처음엔 아무 선택 없음
+      limit: Limit,
+      filters: filters,
+    };
+    getProducts(body);
+    console.log(body);
+    setSkip(0);
+  };
 
-  // const showFilteredResults = (filters) => {
-  //   let body = {
-  //     skip: 0, // 처음엔 아무 선택 없음
-  //     limit: Limit,
-  //     filters: filters,
-  //   };
-  //   getProducts(body);
-  //   console.log(body);
-  //   setSkip(0);
-  // };
+  // 라디오버튼 검색
+  const handlePrice = (value) => {
+    const data = price;
+    let array = [];
 
-  // // 라디오버튼 검색
-  // const handlePrice = (value) => {
-  //   const data = price;
-  //   let array = [];
+    for (let key in data) {
+      if (data[key]._id === parseInt(value, 10)) {
+        array = data[key].array;
+      }
+    }
+    return array;
+  };
 
-  //   for (let key in data) {
-  //     if (data[key]._id === parseInt(value, 10)) {
-  //       array = data[key].array;
-  //     }
-  //   }
-  //   return array;
-  // };
+  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
+  const handleFilters = (filters, category) => {
+    const newFilters = { ...Filters };
+    newFilters[category] = filters;
 
-  // // category 는 체크박스랑 라디오 박스를 나누기 위한 것
-  // const handleFilters = (filters, category) => {
-  //   const newFilters = { ...Filters };
-  //   newFilters[category] = filters;
+    if (category === "price") {
+      let priceValues = handlePrice(filters);
+      newFilters[category] = priceValues;
+      console.log(newFilters);
+    }
 
-  //   if (category === "price") {
-  //     let priceValues = handlePrice(filters);
-  //     newFilters[category] = priceValues;
-  //     console.log(newFilters);
-  //   }
-
-  //   showFilteredResults(newFilters);
-  //   setFilters(newFilters);
-  // };
+    showFilteredResults(newFilters);
+    setFilters(newFilters);
+  };
 
   // // 텍스트 검색
   // const updateSearchTerm = (newSearchTerm) => {
@@ -150,7 +154,7 @@ const ShopMainPage = (pdFilter) => {
       </div>
 
       {/* 상품, 가격 필터 */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col lg={12} xs={24}>
           <CheckBox
             list={itemNumber}
@@ -163,7 +167,7 @@ const ShopMainPage = (pdFilter) => {
             handleFilters={(filters) => handleFilters(filters, "price")}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* 검색란 */}
       {/* <div

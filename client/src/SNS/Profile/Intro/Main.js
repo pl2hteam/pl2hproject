@@ -8,8 +8,10 @@ import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
-import Feed from './feed.css'
 ////////////////////////////////////////
+import ImgTest from "./ImgTest";
+
+/////////////
 
 const Wrapper = styled.div`
   padding: 10px 0;
@@ -49,12 +51,13 @@ const TxtWrapper = styled.div`
 
 const { Meta } = Card;
 
-const Main = () => {
+const Main = (props) => {
   const [Posts, setPosts] = useState([]);
   // const [Images, setImages] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
+  const [Comments, setComments] = useState([]);
 
   // 상품목록 불러오기
   const getPosts = (body) => {
@@ -72,6 +75,48 @@ const Main = () => {
       }
     });
   };
+
+
+  const [profilecontent, setPostTitle] = useState("");
+
+  const refreshFunction = (newComment) => {
+    setComments(Comments.concat(newComment))
+  }
+
+  const onPostTitle = (event) => {
+    setPostTitle(event.currentTarget.value);
+  };
+  const onSubmit = (event) => {
+    // event.preventDefault();  // antd 자체 적용
+
+    if (
+      !profilecontent
+
+    ) {
+      return alert("fill all the fields first!");
+    }
+
+    // console.log('props id 는 : ', props.user.userData._id);
+    const variables = {
+      //seller: user.userData._id,
+      content: profilecontent,
+
+    };
+
+    Axios.post("/api/mysql/profiles/write", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+        if (response.data.success) {
+
+          alert("Product Successfully Uploaded");
+          props.history.push("/sns");
+        } else {
+          console.log(response.data)
+          alert("Failed to upload Product");
+        }
+      });
+  };
+
 
   // 더보기 버튼
   const loadMoreHandler = () => {
@@ -93,29 +138,29 @@ const Main = () => {
     // console.log(Images.PostId);
     return (
       <Col lg={3} md={4} xs={8} key={index}>
-        <Card hoverable={true} cover={<ImageSlider images={postData} />}>
+        {/* <Card hoverable={true} cover={<ImageSlider images={postData} />}> */}
           <Meta title={postData.title} description={`111${postData.content}`} />
           <article>
-       
+
           <header>
             <div class="profile-of-article">
               {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
               <span class="userID main-id point-span"><Meta description={`${postData.UserId}`} /></span>
             </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
+            {/* <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/> */}
           </header>
           <div class="main-image">
-          <ImageSlider images={postData} />
+          {postData.images != 0 && <ImgTest images={postData.images} />}
           </div>
           <div class="icons-react">
             <div class="icons-left">
               <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
               <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선"/>
-              <img class="icon-react" src="img/dm.png" alt="DM"/>  
+              <img class="icon-react" src="img/dm.png" alt="DM"/>
             </div>
             <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크"/>
           </div>
-         
+
           <div class="reaction">
             <div class="liked-people">
               {/* <img class="pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/89296253_1521373131359783_504744616755462144_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=_9raiaB11CAAX_u7RhK&oh=c162d17b1570f31f94a1a28e19167609&oe=5F6C7A90" alt="johnnyjsuh님의 프로필 사진"/> */}
@@ -145,11 +190,13 @@ const Main = () => {
           </div>
           <div class="hl"></div>
           <div class="comment">
-            <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-            <button type="submit" class="submit-comment" disabled>게시</button>
+     
+          <Comment postData={postData} refreshFunction={refreshFunction} commentLists={Comments}/>
+            {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
+            <button type="submit" class="submit-comment" disabled>게시</button> */}
           </div>
         </article>
-        </Card>
+        {/* </Card> */}
       </Col>
     );
   });
@@ -202,7 +249,7 @@ const Main = () => {
         </Row>
       )}
       <br />
-      {/* <Comment /> */}
+
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>

@@ -8,7 +8,7 @@ const UploadWrapper = (props) => {
   return (
     <MainForm
       childSide={<UploadBar />}
-      children={<UploadProductPage props={props} />}
+      children={<UploadProductPage item={props} />}
     />
   );
 };
