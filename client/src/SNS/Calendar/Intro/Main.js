@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Calendar from '../../../Common/calender/Calendar'
+import Dates from '../src/components/Dates'
+
 
 
 
@@ -19,7 +20,7 @@ function Main() {
 
   return (
     <div>
-<Calendar/>
+<Dates/>
   </div>
   )
 }
