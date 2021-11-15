@@ -6,6 +6,8 @@ import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
 import ContentProfile from './ContentProfile'
 import UpdateProfile from "./UpdateProfile";
+import MiniRoom from "../Common/miniroom/miniRoom";
+import { useSelector } from "react-redux";
 
 
 ////////////////////////////////////////
@@ -25,7 +27,9 @@ import {
   MdPhoneIphone,
 } from "react-icons/md";
 import { publicUrl } from "../Common/components/utils"
-
+const Mini = styled.div`
+width: 100%;
+`;
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,7 +134,8 @@ const { Meta } = Card;
 const Home = () => {
 
   
-
+  const user = useSelector(state => state.userData);
+  console.log(user);
 
   // category 는 체크박스랑 라디오 박스를 나누기 위한 것
 
@@ -151,7 +156,7 @@ const Home = () => {
             </ProfileSection>
             <ProfileSection>
               <p>
-                <span className="my-name">이단비</span>
+                <span className="my-name">{user}</span>
                 <span className="my-sex">(♀)</span>
                 <span className="my-brthdy">1992.08.19</span>
               </p>
@@ -173,15 +178,9 @@ const Home = () => {
       </Sidebar>
       <Content>
         <Cards>
-          <ContentSection>
-            <h2>미니룸</h2>
-            <div>
-              <img
-                src={publicUrl + "/resources/img/miniroom.gif"}
-                alt="miniroom"
-              />
-            </div>
-          </ContentSection>
+        <Mini>
+        <MiniRoom/>
+        </Mini>
           <ContentSection>
             <h2>한 줄 감성</h2>
             <Link to={'/ContentProfile'}>방명록</Link>
