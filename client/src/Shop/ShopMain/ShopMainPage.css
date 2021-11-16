@@ -17,6 +17,7 @@ a:active {
   margin-bottom: 10px;
 }
 .shop-main-sidebar {
+  margin-left: -15px;
   width: 150px;
   max-height: 400px;
   display: flex;

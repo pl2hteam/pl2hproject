@@ -15,7 +15,7 @@ const ProductInfo = (props) => {
   return (
     <div>
       <div>
-        <div>금화 : {Product.price}</div>
+        <div>금화 : {props.detail.price.toLocaleString("ko-KR")}</div>
         <div>브랜드 : {Product.brand}</div>
         <div> 수량 : {Product.quantity}</div>
         {/* <div> {Product.seller}</div> */}
