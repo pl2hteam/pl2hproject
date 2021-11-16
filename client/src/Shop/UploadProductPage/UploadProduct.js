@@ -60,11 +60,9 @@ const UploadProductPage = (props) => {
       !BrandValue ||
       !DescriptionValue ||
       !PriceValue ||
-      !QuantityValue ||
       !Images.length == 0 ||
       !Duration ||
-      !VideoPath ||
-      !ContinentValue
+      !VideoPath
     ) {
       return alert("빈칸을 채워주세요");
     }
@@ -121,7 +119,7 @@ const UploadProductPage = (props) => {
             <label>가 격 : </label>
             <Input onChange={onPriceChange} value={PriceValue} type="number" />
             </div>
-          <div className="item">
+          {/* <div className="item">
             <label>종 류 : </label>
             <select onChange={onContinentsSelectChange} value={ContinentValue}>
               {Continents.map((item) => (
@@ -130,7 +128,7 @@ const UploadProductPage = (props) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
 
           <Button onClick={onSubmit}>아이템 등록하기</Button>
         </Form>
