@@ -15,23 +15,13 @@ const ProductInfo = (props) => {
 
   return (
     <div>
-      <Descriptions title="Product Info">
-        <Descriptions.Item label="Price">
-          금화 : {Product.price}
-        </Descriptions.Item>
-        <Descriptions.Item label="Brand">
-          브랜드 : {Product.brand}
-        </Descriptions.Item>
-        <Descriptions.Item label="quantity">
-          {" "}
-          수량 : {Product.quantity}
-        </Descriptions.Item>
-        {/* <Descriptions.Item label="Seller"> {Product.seller}</Descriptions.Item> */}
-        <Descriptions.Item label="Description">
-          {" "}
-          설명 : {Product.description}
-        </Descriptions.Item>
-      </Descriptions>
+      <div>
+        <div>금화 : {Product.price}</div>
+        <div>브랜드 : {Product.brand}</div>
+        <div> 수량 : {Product.quantity}</div>
+        {/* <div> {Product.seller}</div> */}
+        <div> 설명 : {Product.description}</div>
+      </div>
 
       <br />
       <br />
