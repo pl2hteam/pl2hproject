@@ -1,36 +1,29 @@
-import React, { Component } from 'react';
-import MyModal from './MyModal';
-import ModalPortal from './ModalPortal';
+import React, { useState } from 'react'
+import MapContainer from '../MapContainer'
 
+function Main() {
+  const [InputText, setInputText] = useState('')
+  const [Place, setPlace] = useState('')
 
-class Main extends Component {
-  state = {
-    modal: false
-  };
-  handleOpenModal = () => {
-    this.setState({
-      modal: true
-    });
-  };
-  handleCloseModal = () => {
-    this.setState({
-      modal: false
-    });
-  };
-  render() {
-    return (
-     
-      <div className="App">
-        <h1>안녕하세요 리액트!</h1>
-        <button onClick={this.handleOpenModal}>모달 열기</button>
-        {this.state.modal && (
-          <ModalPortal>
-            <MyModal onClose={this.handleCloseModal} />
-          </ModalPortal>
-        )}
-      </div>
-    );
+  const onChange = (e) => {
+    setInputText(e.target.value)
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setPlace(InputText)
+    setInputText('')
+  }
+
+  return (
+    <>
+      <form className="inputForm" onSubmit={handleSubmit}>
+        <input placeholder="검색어를 입력하세요" onChange={onChange} value={InputText} />
+        <button type="submit">검색</button>
+      </form>
+      <MapContainer searchPlace={Place} />
+    </>
+  )
 }
 
 export default Main;

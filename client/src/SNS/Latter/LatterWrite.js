@@ -111,6 +111,7 @@ const LetterWrite = (props) => {
   return (
     <div id="wrap"> 
     <div id='form_wrap'>
+      
        <Form onSubmit={onSubmit}>
         {/* DropZone */}
        
@@ -135,7 +136,7 @@ const LetterWrite = (props) => {
         
       
 
-        <Button onClick={onSubmit}>Submit</Button>
+        <Button onClick={onSubmit}>편지보내기</Button>
       </Form>
   
     </div>

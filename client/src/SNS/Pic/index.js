@@ -13,28 +13,19 @@ import Write from './Write';
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
+  
     {
       id: 1,
-      title: '👩‍💻내 소개',
-      url: '/intro',
-      child: [
-        { id: 1, title: '기본정보', url: '/default' },
-        { id: 3, title: '기술 및 히스토리', url: '/dev' },
-        { id: 4, title: 'TMI 자문자답', url: '/qna' },
-      ],
-    },
-    {
-      id: 2,
       title: '👭내 인맥',
       url: '/people',
     },
     {
-      id: 3,
+      id: 2,
       title: '⭐내 즐겨찾기',
       url: '/favorite',
     },
     {
-      id: 4,
+      id: 3,
       title: '⭐갤러리',
       url: '/Write',
     },

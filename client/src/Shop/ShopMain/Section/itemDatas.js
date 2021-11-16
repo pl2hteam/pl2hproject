@@ -1,5 +1,9 @@
 const itemNumber = [
   {
+    _id: 0,
+    name: "전체",
+  },
+  {
     _id: 1,
     name: "의류",
   },

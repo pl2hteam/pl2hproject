@@ -47,11 +47,7 @@ const Main = () => {
       <img src={publicUrl + '/resources/img/aboutMe.JPG'} alt="selfie" />
       <p className="warn">눈뽕주의::감성주의::</p>
       <TxtWrapper>
-   
-        <p className="txt">"이런."</p>
-        <p className="txt">"그게 뭔데."</p>
-        <p className="txt">"내 눈을 바라 봐."</p>
-        <p className="txt">"그거 어떻게 하는 건데."</p>
+      
       </TxtWrapper>
     </Wrapper>
   );
