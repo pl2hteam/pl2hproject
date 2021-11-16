@@ -4,14 +4,15 @@ import Setting from "../../../Common/Setting";
 
 //책 겉표지
 const BorderWrapper = styled.div`
+  min-width: 1060px;
   width: 75%;
   height: 95vh;
   padding: 25px;
-  background: RGBA(0,0,0,0.3);
+  background: RGBA(0, 0, 0, 0.3);
   border: 3px solid black;
   border-radius: 10px;
 `;
-//책 안 
+//책 안
 const BgWrapper = styled.div`
   z-index: 1;
   position: relative;

@@ -16,14 +16,13 @@ const UploadProductPage = (props) => {
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
-  const [QuantityValue, setQuantityValue] = useState(1);
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
-  const [ContinentValue, setContinentValue] = useState(1);
+  const [ItemNumber, setItemNumber] = useState(1);
 
-  const onContinentsSelectChange = (event) => {
-    setContinentValue(event.currentTarget.value);
+  const onItemNumberSelectChange = (event) => {
+    setItemNumber(event.currentTarget.value);
   };
 
   const onPdNameChange = (event) => {
@@ -39,10 +38,6 @@ const UploadProductPage = (props) => {
 
   const onPriceChange = (event) => {
     setPriceValue(parseInt(event.currentTarget.value));
-  };
-
-  const onQuantityChange = (event) => {
-    setQuantityValue(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
@@ -80,11 +75,10 @@ const UploadProductPage = (props) => {
       brandName: BrandValue,
       description: DescriptionValue,
       price: PriceValue,
-      quantity: QuantityValue,
       images: Images,
       videos: VideoPath,
       duration: Duration,
-      continents: ContinentValue,
+      itemNumber: ItemNumber,
     };
 
     Axios.post("/api/mongo/product/uploadProduct", variables).then(
@@ -105,7 +99,7 @@ const UploadProductPage = (props) => {
     updateVideoPath,
     updateDuration,
   };
-
+  console.log(Images);
   return (
     <UploadStyle>
       <div style={{ maxWidth: "700px", margin: "0rem auto" }}>

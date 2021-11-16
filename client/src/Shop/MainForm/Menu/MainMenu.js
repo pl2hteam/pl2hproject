@@ -11,9 +11,9 @@ const Nav = styled.nav`
   ul {
     a {
       display: inline-block;
-      width: 85px;
+      width: 80px;
       margin-bottom: 2px;
-      padding: 10px 10px 10px 15px;
+      padding: 10px 5px 10px 5px;
       background: #e6eaf0;
       border: 2px solid black;
       border-radius: 10px;
@@ -34,7 +34,7 @@ const MainMenu = () => {
       <ul>
         <li>
           <NavLink exact to="/shop/main" activeClassName="selected">
-            홈
+            상점
           </NavLink>
         </li>
         <li>
@@ -44,17 +44,17 @@ const MainMenu = () => {
         </li>
         <li>
           <NavLink to="/shop/purch" activeClassName="selected">
-            구매
+            구매내역
           </NavLink>
         </li>
         <li>
           <NavLink to="/shop/cart" activeClassName="selected">
-            장바
+            장바구니
           </NavLink>
         </li>
         <li>
           <NavLink to="/shop/upload" activeClassName="selected">
-            등록
+            아이템등록
           </NavLink>
         </li>
       </ul>
