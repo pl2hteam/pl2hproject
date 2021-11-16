@@ -130,10 +130,7 @@ const Main = (props) => {
   };const [openModal, setOpenModal] = useState(false);
 
   const renderCards = Posts.map((postData, index) => {
-
     
-
-
     if ( postData || postData.HashtagId ) {
       return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
         setOpenModal(true);
@@ -189,20 +186,15 @@ const Main = (props) => {
         </div>
         <div class="hl"></div>
         <div class="comment">
-          
-    <Form >
-      {/* DropZone */}
-     
-
+      <Comment postData={postData}/>
+      {/* <br />
       <br />
-      <br />
-      <label>물품명</label>1
+      <label>물품명 </label>
       <Input onChange={onPostTitle} value={profilecontent} />
       <br />
     
 
-      <Button onClick={onSubmit}>Submit</Button>
-    </Form>
+      <Button onClick={onSubmit}>Submit</Button> */}
           {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
           <button type="submit" class="submit-comment" disabled>게시</button> */}
         </div>
@@ -212,11 +204,7 @@ const Main = (props) => {
     } else {
       return null;
     }
-    console.log(postData);
-    // console.log(Images.PostId);
-   
   });
-
   // category 는 체크박스랑 라디오 박스를 나누기 위한 것
 
   // 텍스트 검색
@@ -273,7 +261,6 @@ const Main = (props) => {
        </div>
       )}
       <br />
-      {/* <Comment /> */}
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>

@@ -1,72 +1,70 @@
-import React, { useState } from 'react'
-import { Comment, Avatar, Button, Input } from 'antd';
-import Axios from 'axios';
-import { useSelector } from 'react-redux';
-const { TextArea } = Input;
+// import React from 'react';
+// import { Comment, Avatar, Button, Input } from 'antd';
+// import { useState } from 'react';
+// import Axios from 'axios';
 
-const SingleComment = (props) => {
-  const user = useSelector(state => state.user);
-  console.log(props);
-  const [CommentValue, setCommentValue] = useState("")
-  const [OpenReply, setOpenReply] = useState(false)
+// const { TextArea } = Input;
 
-  const handleChange = (event) => {
-    setCommentValue(event.currentTarget.CommentValue)
-  }
+// const SingleComment = (props) => {
+//   const [OpenReply, setOpenReply] = useState(false)
+//   const [CommentValue, setCommentValue] = useState("")
 
-  const openReply = () => {
-    setOpenReply(!OpenReply)
-  }
+//   const onClickReplyOpen = () => {
+//     setOpenReply(!OpenReply);
+//   }
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+//   const onHandleChange = (event) => {
+//     setCommentValue(event.currentTarget.CommentValue)
+//   }
 
-    const variables = {
-        writer: user.userData.id,
-        // postId: comment.id,
-        responseTo: props.comment.id,
-        content: CommentValue
-    }
+//   const onSubmit = (event) => {
+//     event.preventDefault();
 
-    Axios.post('/api/mysql/posts/comment/saveComment', variables)
-        .then(response => {
-            if (response.data.success) {
-                setCommentValue("")
-                setOpenReply(!OpenReply)
-                props.refreshFunction(response.data.result)
-            } else {
-                alert('Failed to save Comment')
-            }
-        })
-  }
+//     console.log(props);
+//     const variables = {
+//       content: CommentValue,
+//       writer: props.user.userData.id,
+//       postId: props.postData.id,
+//       // responseTo: 
+//     }
 
-  const actions = [
-    <span onClick={openReply} key="comment-basic-reply-to">답글 달기</span>
-  ]
-  console.log(props.comment);
-  if (props.comment) {
-    return (
-      <div>
-        <Comment
-            actions={actions}
-            author={props.comment.User.name}
-            avatar={
-                <Avatar
-                    src={props.comment.User.image}
-                    alt="image"
-                />
-            }
-            content={
-              <p>
-                  {props.comment.content}
-              </p>
-            }
-        />
-      </div>
-    )
-  } else {
-    return <div>....loading</div>
-  }
-}
+//     Axios.post('/api/mysql/posts/comment/saveReplyComment', variables)
+//     .then(response => {
+//      if (response.data.success) {
+//        console.log(response.data);
+//      } else {
+//        alert('댓글을 저장하지 못했습니다.')
+//      } 
+//     })
+//   }
+//   console.log(props.comment);
+//   const actions = [
+//     <span onClick={onClickReplyOpen} key="comment-basic-reply-to">답글</span>
+//   ]
+//   return (
+//     <div>
+//       <Comment 
+//         actions={actions}
+//         author
+//         avatar={<Avatar src alt />}
+//         // content={<p>{props.comment</p>}
+//       />
 
-export default SingleComment
+//       {OpenReply &&
+//         <form style={{ display:'flex' }} onSubmit={onSubmit}>
+//           <textarea 
+//             style={{ width: '100x%', borderRadius: '5px' }}
+//             onChange={onHandleChange}
+//             value={CommentValue}
+//             placeholder="댓글 달기..."
+//           />
+//           <br />
+//           <button style={{ width: '20%', height: '37px' }} onClick={onSubmit} >게시</button>
+//         </form>
+//       }
+      
+//     </div>
+//   )
+// };
+
+// export default SingleComment;
