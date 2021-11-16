@@ -73,7 +73,7 @@ const ShopMainPage = (pdFilter) => {
             </div>
             <div className="shop-main-content-item_box-info-price">
               <img className="purse" src={Purse} alt="money" />
-              {product.price}
+              {product.price.toLocaleString("ko-KR")}
             </div>
           </div>
         </a>
