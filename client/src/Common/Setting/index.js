@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const Setting = () => {
   return (
     <Wrapper>
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
     </Wrapper>
   );
 };

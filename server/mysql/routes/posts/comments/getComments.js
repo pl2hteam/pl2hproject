@@ -1,15 +1,29 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-// const { Comment } = require("../../../schemas/Comment");
+const { Comment, User } = require("../../../models");
 
-// router.post("/", (req, res) => {
-//   Comment.find({ "postId": req.body.postId })
-//       .populate('writer')
-//       .exec((err, comment) => {
-//           if (err) return res.status(400).send(err)
-//           res.status(200).json({ success: true, comment })
-//       })
-// });
+router.post("/", async (req, res) => {
+  try {
+    console.log(req.body);
+    const comments = await Comment.findAll({ 
+      include: {
+        model: User,
+        attribute: ['id', 'name', 'image'],
+      },
+      where: { 
+        PostId: req.body.postId 
+      },
+      order: [['id', 'DESC']],
+    });
 
-// module.exports = router;
+    return res.json({
+      success: true,
+      comments
+    });
+  } catch (error) {
+    return res.json({ success: false, err });
+  }
+});
+
+module.exports = router;

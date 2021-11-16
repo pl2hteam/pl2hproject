@@ -16,7 +16,7 @@ const ProductInfo = (props) => {
     <div>
       <Descriptions title="Product Info">
         <Descriptions.Item label="Price">
-          가격 : {Product.price} 원
+          금화 : {Product.price}
         </Descriptions.Item>
         <Descriptions.Item label="Brand">
           브랜드 : {Product.brand}
@@ -28,7 +28,7 @@ const ProductInfo = (props) => {
         {/* <Descriptions.Item label="Seller"> {Product.seller}</Descriptions.Item> */}
         <Descriptions.Item label="Description">
           {" "}
-          상품설명 : {Product.description}
+          설명 : {Product.description}
         </Descriptions.Item>
       </Descriptions>
       {/* <div className="price">가격 : {Product.price} 원</div>
@@ -47,11 +47,11 @@ const ProductInfo = (props) => {
           type="danger"
           onClick={addToCarthandler}
         >
-          Add to Cart
+          장바구니 추가
         </Button>
       </div>
     </div>
   );
-}
+};
 
 export default ProductInfo;
