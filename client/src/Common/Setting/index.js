@@ -1,7 +1,7 @@
-import React from "react";
-import { withRouter } from "react-router";
-import styled from "styled-components";
-import MusicPlayer from "./Music";
+import React from 'react';
+import { withRouter } from 'react-router';
+import styled from 'styled-components';
+import MusicPlayer from './rightSideBox/rightSideBox';
 
 const Wrapper = styled.div`
   min-width: 250px;

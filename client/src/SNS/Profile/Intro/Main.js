@@ -4,27 +4,65 @@ import Modal from "../Modal";
 ////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Col, Card, Row, Input, Form, Button } from "antd";
+import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
-import ImgCarousel from "./ImgCarousel";
-import { Wrapper, TxtWrapper } from '../style/MainStyle';
+import Feed from './feed.css'
+////////////////////////////////////////
+import { Typography, Button, Form, message, Input } from "antd";
+
+/////////////
+
+const Wrapper = styled.div`
+  padding: 10px 0;
+  font-family: serif;
+  font-weight: bold;
+  img {
+    width: 100%;
+    margin: 5px 0;
+  }
+  h2 {
+    color: #a7a7a7;
+    font-size: 1.2rem;
+  }
+  .at {
+    color: #cec6a0;
+    font-size: 0.9rem;
+  }
+  .warn {
+    text-align: right;
+    color: #d9d9d9;
+    text-decoration: line-through;
+    font-weight: bold;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+`;
+
+const TxtWrapper = styled.div`
+  padding: 40px;
+  text-align: center;
+  .txt {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: normal;
+  }
+`;
+
 const { Meta } = Card;
 
 const Main = (props) => {
   const [Posts, setPosts] = useState([]);
+  // const [Images, setImages] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
-  const [profilecontent, setPostTitle] = useState("");
 
-  /* 상품목록 불러오기 */
+  // 상품목록 불러오기
   const getPosts = (body) => {
-    console.log(body);
-    Axios.post("/api/mysql/posts/read", body)
-    .then((response) => {
-      console.log('222222222222', response.data);
+    Axios.post("/api/mysql/posts/read", body).then((response) => {
+      console.log(response.data);
       if (response.data.success) {
         if (body.loadMore) {
           setPosts([...Posts, ...response.data.postData]);
@@ -38,40 +76,45 @@ const Main = (props) => {
     });
   };
 
-  // const refreshFunction = (newComment) => {
-  //   setComments(Comments.concat(newComment))
-  // }
+
+  const [profilecontent, setPostTitle] = useState("");
 
   const onPostTitle = (event) => {
     setPostTitle(event.currentTarget.value);
   };
-
-  // const commentFunction = (newComment) => {
-  //   setComments(Comments.concat(newComment));
-  // }
-
   const onSubmit = (event) => {
-    if (!profilecontent) {
+    // event.preventDefault();  // antd 자체 적용
+
+    if (
+      !profilecontent 
+      
+    ) {
       return alert("fill all the fields first!");
     }
 
+    // console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      seller: props.user.userData._id,
+      //seller: user.userData._id,
       content: profilecontent,
+   
     };
 
     Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
+        console.log('props.user 는 : ', response);
         if (response.data.success) {
+   
           alert("Product Successfully Uploaded");
           props.history.push("/sns");
         } else {
+          console.log(response.data)
           alert("Failed to upload Product");
         }
       });
   };
 
-  /* 더보기 버튼 */
+
+  // 더보기 버튼
   const loadMoreHandler = () => {
     let skip = Skip + Limit;
 
@@ -79,6 +122,7 @@ const Main = (props) => {
       skip: skip,
       limit: Limit,
       loadMore: true,
+
     };
 
     getPosts(variables);
@@ -86,25 +130,34 @@ const Main = (props) => {
   };const [openModal, setOpenModal] = useState(false);
 
   const renderCards = Posts.map((postData, index) => {
-
-    
-
-
     if ( postData || postData.HashtagId ) {
-      return <Col lg={3} md={4} xs={8} key={index}>
+      console.log(postData);
+      return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
+        setOpenModal(true);
+      }}>
       <Card hoverable={true}>
         <article>
-     
+
         <header>
+          {/* 사용자 정보 */}
           <div class="profile-of-article">
-            {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
-            <span class="userID main-id point-span"><Meta description={`${postData.HashtagId}`} /></span>
+            <span class="userID main-id point-span">
+              {/* <Meta description={`${postData.UserId.image}`} /> */}
+              <Meta description={`${postData.UserId.name}`} />
+            </span>
           </div>
+
+          {/* 추가 정보 *** */}
           <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
+          
         </header>
+
+        {/* 이미지 정보 */}
         <div class="main-image">
-        <ImageSlider images={postData} />
+          <ImageSlider images={postData} />
         </div>
+
+        {/* 좋아요, 댓글 더보기, 공유, 북마크 */}
         <div class="icons-react">
           <div class="icons-left">
             <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
@@ -114,23 +167,19 @@ const Main = (props) => {
           <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크"/>
         </div>
        
-        {openModal && (
-          <Modal
-          
-            setOpenModal={setOpenModal}
-            openModal={openModal}
-           
-            
-          />
-        )}
+        {/* 본문 */}
         <div class="reaction">
+          {/* 좋아요 개수 표기 */}
           <div class="liked-people">
-            {/* <img class="pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/89296253_1521373131359783_504744616755462144_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=_9raiaB11CAAX_u7RhK&oh=c162d17b1570f31f94a1a28e19167609&oe=5F6C7A90" alt="johnnyjsuh님의 프로필 사진"/> */}
             <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
           </div>
+
+          {/* 설명 */}
           <div class="description">
-            <p> <Meta description={`111${postData.content}`} /> 🌱</p>
+            <p> <Meta description={`설명 글란 : ${postData.content}`} /> 🌱</p>
           </div>
+
+          {/* 댓글 란 Comment 안에 넣기 */}
           <div class="comment-section">
             <ul class="comments">
               <li>
@@ -144,49 +193,38 @@ const Main = (props) => {
                 </div>
               </li>
             </ul>
+
+            {/* 몇 분전인지 표기 */}
             <div class="time-log">
               <span>32분 전</span>
             </div>
+
           </div>
+
         </div>
+
         <div class="hl"></div>
-        <div class="comment">
-          
-    <Form onSubmit={onSubmit} onDoubleClick={() => {
-          setOpenModal(true);
-        }}>
-      {/* DropZone */}
-     
+        <Comment postData={postData}/>
 
-      <br />
-      <br />
-      <label>물품명</label>1
-      <Input onChange={onPostTitle} value={profilecontent} />
-      <br />
-    
-
-      <Button onClick={onSubmit}>Submit</Button>
-    </Form>
-          {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-          <button type="submit" class="submit-comment" disabled>게시</button> */}
-        </div>
       </article>
       </Card>
     </Col>;
     } else {
       return null;
     }
-   
   });
+  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
 
-  /* 텍스트 검색 */
+  // 텍스트 검색
+
+
+  // default
   useEffect(() => {
     let variables = {
-      /* default */
       skip: Skip,
       limit: Limit,
     };
-    console.log(11111111111111);
+
     getPosts(variables);
   }, []);
 
@@ -202,6 +240,8 @@ const Main = (props) => {
         <Col lg={12} xs={24}></Col>
       </Row>
 
+
+
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
       {Posts.length === 0 ? (
         <div
@@ -216,12 +256,19 @@ const Main = (props) => {
         </div>
       ) : (
         // 상품 있으면 목록 출력
-       <div>
+       <div>  {openModal && (
+          <Modal
+          
+            setOpenModal={setOpenModal}
+            openModal={openModal}
+           
+            
+          />
+        )}
           {renderCards}
        </div>
       )}
       <br />
-
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>

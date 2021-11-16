@@ -1,16 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const  {User, Post, Image} = require("../../models");
-
-/////////////////////////////////////////////////////
-/*                                                 */
-/*            /api/mysql/posts/read                */
-/*                                                 */
-/////////////////////////////////////////////////////
+const  { User, Post, Image } = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
-    const fullPost = await Post.findAll({
+    const fullPost = await Post.findAll({ 
       include: {
         model: User,
         attribute: ["id", "name"],
@@ -45,7 +39,7 @@ router.post('/', async (req, res, next) => {
         // duration: null,
         createdAt: fullPost[i].dataValues.createdAt,
         updatedAt: fullPost[i].dataValues.updatedAt,
-        UserId: fullPost[i].dataValues.UserId
+        UserId: fullPost[i].dataValues.User
       })
     }
 

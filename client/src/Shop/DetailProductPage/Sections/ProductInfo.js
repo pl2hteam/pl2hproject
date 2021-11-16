@@ -8,6 +8,7 @@ const ProductInfo = (props) => {
     setProduct(props.detail);
   }, [props.detail]);
 
+  console.log(props.detail._id);
   const addToCarthandler = () => {
     props.addToCart(props.detail._id);
   };

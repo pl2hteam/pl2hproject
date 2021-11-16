@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 const Favorite = () => {
   return (
     <Wrapper>
-      <p>내 즐겨찾기가 없습니다.</p>
+    <a href="국내여행지도.jpg" target="" download> <img src="국내여행지도.jpg"></img>  </a>
     </Wrapper>
   );
 };

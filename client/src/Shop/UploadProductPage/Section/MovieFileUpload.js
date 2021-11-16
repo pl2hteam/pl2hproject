@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import Axios from "axios";
-import Icon from "@ant-design/icons/lib/components/Icon";
+
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState("");
@@ -83,33 +83,15 @@ function FileUpload(props) {
   console.log(props);
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
-        {({ getRootProps, getInputProps }) => (
-          <div
-            style={{
-              width: "300px",
-              height: "240px",
-              border: "1px solid lightgray",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            {...getRootProps()}
-          >
-            +
-            <input {...getInputProps()} />
-            <Icon type="plus" style={{ fontSize: "3rem" }} />
-          </div>
-        )}
-      </Dropzone>
-
+    <div style={{ display: "block", justifyContent: "space-between" }}>
       <div
         style={{
           display: "flex",
-          width: "350px",
-          height: "240px",
+          width: "400px",
+          height: "260px",
           overflowX: "scroll",
+          margin: "0 0 10px 75px",
+          border: "1px solid lightgray",
         }}
       >
         {Images.map((image, index) => (
@@ -122,6 +104,27 @@ function FileUpload(props) {
           </div>
         ))}
       </div>
+      <div style={{ display: "block"}}>
+      <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
+        {({ getRootProps, getInputProps }) => (
+          <div
+            style={{
+              width: "130px",
+              height: "30px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid lightgray",
+              marginLeft: "200px",
+            }}
+            {...getRootProps()}
+          >
+            <input {...getInputProps()} />
+            사진 등록
+          </div>
+        )}
+      </Dropzone>
+        </div>
     </div>
   );
 }

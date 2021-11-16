@@ -14,7 +14,6 @@ import LatterWrite from "../SNS/Latter/LatterWrite";
 import SnsLoginPage from "../SNS/Main/SnsLogin";
 import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
-import MiniRoim from '../Common/miniroom/miniRoom'
 
 function SNSMain() {
   return (
@@ -28,13 +27,12 @@ function SNSMain() {
             component={Auth(SnsLoginPage, false, true)}
           />
           <Route exact path="/sns/main" component={Auth(Home, true, true)} />
-          <Route path="/sns/profile" component={Auth(Profile, true, true)} />
-          <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
-          <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
-          <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
-          <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
-          <Route path="/sns/MiniRoim" component={Auth(MiniRoim, true, true)} />
+          <Route exact path="/sns/profile" component={Auth(Profile, true, true)} />
+          <Route exact path="/sns/Jam" component={Auth(Jam, true, true)} />
+          <Route exact path="/sns/Calendar" component={Auth(Calendar, true, true)} />
+          <Route exact path="/sns/Latter" component={Auth(Latter, true, true)} />
+          <Route exact path="/sns/Mind" component={Auth(Mind, true, true)} />
+          <Route exact path="/sns/Pic" component={Auth(Pic, true, true)} />
 
           <Route
             path="/sns/profile/Write"

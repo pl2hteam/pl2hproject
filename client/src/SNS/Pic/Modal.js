@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Main from './Intro/Main'
-import Feed from './Intro/feed.css'
+import Feed from'./Intro/css/feed.css'
 
 import { Typography, Button, message, Input } from "antd";
 const Modal = (props) => {
