@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCartItems,
   removeCartItem,
@@ -9,9 +9,11 @@ import UserCardBlock from "./Sections/UserCardBlock";
 import MainForm from "../MainForm/MainForm";
 import { Result, Empty } from "antd";
 import Axios from "axios";
-// import Paypal from '../../utils/Paypal';
+import Paypal from "../../Common/components/Paypal";
 
 function CartPage(props) {
+  const user = useSelector((state) => state.user);
+  console.log(props);
   const dispatch = useDispatch();
   // 합계 state
   const [Total, setTotal] = useState(0);
@@ -21,15 +23,15 @@ function CartPage(props) {
   useEffect(() => {
     let cartItems = [];
     //
-    if (props.user.userData && props.user.userData.cart) {
+    if (user.userData && user.userData.cart) {
       // 장바구니에 담은게 있으면 실행
-      if (props.user.userData.cart.length > 0) {
+      if (user.userData.cart.length > 0) {
         // DB에 있는 user 가 담아둔 상품들을 forEach 로
-        props.user.userData.cart.forEach((item) => {
+        user.userData.cart.forEach((item) => {
           // cartItems 배열에 때려넣음
           cartItems.push(item.id);
         });
-        dispatch(getCartItems(cartItems, props.user.userData.cart)).then(
+        dispatch(getCartItems(cartItems, user.userData.cart)).then(
           (response) => {
             if (response.payload.length > 0) {
               calculateTotal(response.payload);
@@ -38,7 +40,7 @@ function CartPage(props) {
         );
       }
     }
-  }, [props.user.userData]);
+  }, [user.userData]);
 
   // 장바구니 총액 계산
   const calculateTotal = (cartDetail) => {
@@ -63,43 +65,39 @@ function CartPage(props) {
     });
   };
 
-  // const transactionSuccess = (data) => {
-  //   dispatch(
-  //     onSuccessBuy({
-  //       cartDetail: props.user.cartDetail,
-  //       paymentData: data,
-  //     })
-  //   ).then((response) => {
-  //     if (response.payload.success) {
-  //       setShowSuccess(true);
-  //       setShowTotal(false);
-  //     }
-  //   });
-  // };
+  const transactionSuccess = (data) => {
+    console.log(data);
+    dispatch(
+      onSuccessBuy({
+        cartDetail: user.cartDetail,
+        paymentData: data,
+      })
+    ).then((response) => {
+      console.log(response);
+      if (response.payload.success) {
+        setShowSuccess(true);
+        setShowTotal(false);
+      }
+    });
+  };
 
-  // const transactionError = () => {
-  //   console.log("Paypal error");
-  // };
+  const transactionError = () => {
+    console.log("Paypal error");
+  };
 
-  // const transactionCanceled = () => {
-  //   console.log("Transaction canceled");
-  // };
+  const transactionCanceled = () => {
+    console.log("Transaction canceled");
+  };
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1>장바구니</h1>
       <div>
-        <UserCardBlock
-          products={props.user.cartDetail}
-          removeItem={removeFromCart}
-        />
+        <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />
 
         {ShowTotal ? (
           <div style={{ marginTop: "3rem" }}>
-            <h2>
-              총 상품 금액 : {Total} 원 밖에 안합니다. 얼른 더 담으시고
-              구매해주세요.
-            </h2>
+            <h2>총 금화 {Total}</h2>
           </div>
         ) : ShowSuccess ? (
           <Result status="success" title="Successfully Purchased Items" />
@@ -114,21 +112,21 @@ function CartPage(props) {
           >
             <br />
             <Empty description={false} />
-            <p>장바구니에 담긴 상품이 달랑 한 개도 없읍니다.</p>
+            <p>담겨진 아이템이 없습니다</p>
           </div>
         )}
       </div>
 
       {/* Paypal Button */}
 
-      {/* {ShowTotal && (
+      {ShowTotal && (
         <Paypal
           toPay={Total}
           onSuccess={transactionSuccess}
           transactionError={transactionError}
           transactionCanceled={transactionCanceled}
         />
-      )} */}
+      )}
     </div>
   );
 }

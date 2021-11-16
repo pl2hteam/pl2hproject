@@ -1,7 +1,7 @@
 import React from "react";
 
-import LoginPage from "../LoginPage/LoginPage";
-import RegisterPage from "../RegisterPage/RegisterPage";
+import LoginPage from "./LoginPage/LoginPage";
+import RegisterPage from "./RegisterPage/RegisterPage";
 
 class MainLogin extends React.Component {
   constructor(props) {

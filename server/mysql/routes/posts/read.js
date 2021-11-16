@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const  {User,Post, Image} = require("../../models");
+const  { User, Post, Image } = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
@@ -42,6 +42,22 @@ router.post('/', async (req, res, next) => {
         UserId: fullPost[i].dataValues.UserId
       })
     }
+
+    // const comments = await Comment.findAll({
+    //   include: {
+    //     model: User,
+    //     attribute: ['id', 'name', 'image'],
+    //   },
+    //   where: {
+    //     PostId: req.body.postId
+    //   },
+    //   order: [['id', 'DESC']],
+    // });
+
+    // return res.json({
+    //   success: true,
+    //   comments
+    // });
 
     res.status(201).json({ success: true, postData });
   } catch (error) {

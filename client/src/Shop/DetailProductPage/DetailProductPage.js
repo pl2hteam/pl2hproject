@@ -11,7 +11,7 @@ import MainForm from "../MainForm/MainForm";
 
 const DetailProductPage = (props) => {
   const dispatch = useDispatch();
-  const pd_id = props.match.params.pd_id;
+  const pd_id = props.info.match.params.pd_id;
   const [Product, setProduct] = useState([]);
   const [Comments, setComments] = useState([]);
 
@@ -49,7 +49,6 @@ const DetailProductPage = (props) => {
 
   if (Product.seller) {
     return (
-      <MainForm>
         <div className="postPage" style={{ width: "100%", padding: "3rem 4rem" }}>
           {/* <Subscriber /> */}
           <br />
@@ -63,13 +62,10 @@ const DetailProductPage = (props) => {
           </Row>
           <Comment refreshFunction={refreshFunction} commentLists={Comments} postId={pd_id} />
         </div>
-      </MainForm>
     );
   } else {
     return (
-      <MainForm>
         <div>....loading</div>
-      </MainForm>
     )
   }
 }

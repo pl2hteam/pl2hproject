@@ -47,7 +47,7 @@ const Comments = (props) => {
                         <ReplyComment CommentLists={props.commentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} />
                     </React.Fragment>
                 )
-            ))};
+            ))}
 
             <form style={{ display: 'flex' }} onSubmit={onSubmit}>
                 <TextArea

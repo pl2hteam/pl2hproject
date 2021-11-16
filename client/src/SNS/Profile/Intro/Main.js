@@ -129,13 +129,15 @@ const Main = (props) => {
     setSkip(skip);
   };const [openModal, setOpenModal] = useState(false);
 
-  const  renderCards = Posts.map((postData, index) => {
+  const renderCards = Posts.map((postData, index) => {
 
     
 
 
     if ( postData || postData.HashtagId ) {
-      return <Col lg={3} md={4} xs={8} key={index} >
+      return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
+        setOpenModal(true);
+      }}>
       <Card hoverable={true}>
         <article>
      
@@ -144,9 +146,7 @@ const Main = (props) => {
             {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
             <span class="userID main-id point-span"><Meta description={`${postData.HashtagId}`} /></span>
           </div>
-          <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" onSubmit={onSubmit} onClick={() => {
-        setOpenModal(true);
-      }}/>
+          <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
         </header>
         <div class="main-image">
         <ImageSlider images={postData} />

@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { registerUser } from "../../Common/_actions/user_actions";
+import { registerUser } from "../../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 
 import {

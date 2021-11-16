@@ -33,8 +33,8 @@ const CheckBox = (props) => {
   
   return (
     <div>
-      <Collapse defaultActiveKey={['1']}>
-        <Panel header=" 품목 선택" key="1">
+      <Collapse defaultActiveKey={['0']}>
+        <Panel header=" 가격 선택" key="1">
           {renderCheckboxLists()}
         </Panel>
       </Collapse>
