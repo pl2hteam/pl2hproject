@@ -87,10 +87,10 @@ function FileUpload(props) {
       <div
         style={{
           display: "flex",
-          width: "350px",
+          width: "400px",
           height: "260px",
           overflowX: "scroll",
-          margin: "0 0 10px 50px",
+          margin: "0 0 10px 75px",
           border: "1px solid lightgray",
         }}
       >
@@ -115,7 +115,7 @@ function FileUpload(props) {
               alignItems: "center",
               justifyContent: "center",
               border: "1px solid lightgray",
-              marginLeft: "160px",
+              marginLeft: "200px",
             }}
             {...getRootProps()}
           >

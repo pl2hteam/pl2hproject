@@ -6,7 +6,7 @@ export const UploadStyle = styled.div`
   }
 
   form {
-    margin-left: 15vw;
+    margin-left: 8vw;
   }
 
   textarea, 
@@ -44,7 +44,7 @@ export const UploadStyle = styled.div`
   button {
     border: 2.1px solid RGBA(0,0,0,0.3);
     margin-top: 15px;
-    margin-left: 120px;
+    margin-left: 180px;
     width: 170px;
     height: 40px;
   }

@@ -90,7 +90,7 @@ function CartPage(props) {
 
   return (
     <CartStyle>
-      <div style={{ width: "85%", margin: "0 0 0 300px" }} className="cartBox">
+      <div style={{ width: "85%", margin: "0 0 0 350px" }} className="cartBox">
         <h1>장바구니</h1>
         <div>
           <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />
@@ -111,7 +111,6 @@ function CartPage(props) {
               }}
             >
               <br />
-              
               <p>담겨진 아이템이 없습니다</p>
             </div>
           )}

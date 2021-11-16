@@ -8,6 +8,7 @@ const ProductInfo = (props) => {
     setProduct(props.detail);
   }, [props.detail]);
 
+  console.log(props.detail._id);
   const addToCarthandler = () => {
     props.addToCart(props.detail._id);
   };
@@ -31,11 +32,6 @@ const ProductInfo = (props) => {
           설명 : {Product.description}
         </Descriptions.Item>
       </Descriptions>
-      {/* <div className="price">가격 : {Product.price} 원</div>
-      <div className="brand">브랜드명 : {Product.brand}</div>
-      <div className="quantity">수량 : {Product.quantity}</div>
-      <div className="seller">판매자 : {Product.seller}</div>
-      <div className="description">상세정보 : {Product.description}</div> */}
 
       <br />
       <br />
