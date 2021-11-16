@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
 export const UploadStyle = styled.div`
-  {
-    margin: -30px
-  } 
-
   .ant-form {
     top: 0px;
   }
@@ -55,5 +51,9 @@ export const UploadStyle = styled.div`
 
   button:hover {
     border: 3.5px solid RGBA(0,0,0,0.3);
+  }
+
+  .item {
+    margin: 10px;
   }
 `;

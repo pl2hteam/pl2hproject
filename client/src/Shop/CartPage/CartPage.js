@@ -6,10 +6,9 @@ import {
   onSuccessBuy,
 } from "../../Common/_actions/user_actions";
 import UserCardBlock from "./Sections/UserCardBlock";
-import MainForm from "../MainForm/MainForm";
-import { Result, Empty } from "antd";
-import Axios from "axios";
+import { Result } from "antd";
 import Paypal from "../../Common/components/Paypal";
+import { CartStyle } from './style/cartstyle';
 
 function CartPage(props) {
   const user = useSelector((state) => state.user);
@@ -90,44 +89,45 @@ function CartPage(props) {
   };
 
   return (
-    <div style={{ width: "85%", margin: "3rem auto" }}>
-      <h1>장바구니</h1>
-      <div>
-        <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />
+    <CartStyle>
+      <div style={{ width: "85%", margin: "0 0 0 300px" }} className="cartBox">
+        <h1>장바구니</h1>
+        <div>
+          <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />
 
-        {ShowTotal ? (
-          <div style={{ marginTop: "3rem" }}>
-            <h2>총 금화 {Total}</h2>
-          </div>
-        ) : ShowSuccess ? (
-          <Result status="success" title="Successfully Purchased Items" />
-        ) : (
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <br />
-            <Empty description={false} />
-            <p>담겨진 아이템이 없습니다</p>
-          </div>
+          {ShowTotal ? (
+            <div style={{ marginTop: "3rem" }}>
+              <h2>총 금화 {Total}</h2>
+            </div>
+          ) : ShowSuccess ? (
+            <Result status="success" title="Successfully Purchased Items" />
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <br />
+              
+              <p>담겨진 아이템이 없습니다</p>
+            </div>
+          )}
+        </div>
+
+        {/* Paypal Button */}
+        {ShowTotal && (
+          <Paypal
+            toPay={Total}
+            onSuccess={transactionSuccess}
+            transactionError={transactionError}
+            transactionCanceled={transactionCanceled}
+          />
         )}
       </div>
-
-      {/* Paypal Button */}
-
-      {ShowTotal && (
-        <Paypal
-          toPay={Total}
-          onSuccess={transactionSuccess}
-          transactionError={transactionError}
-          transactionCanceled={transactionCanceled}
-        />
-      )}
-    </div>
+    </CartStyle>
   );
 }
 
