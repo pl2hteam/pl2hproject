@@ -46,10 +46,10 @@ const Main = (props) => {
     setPostTitle(event.currentTarget.value);
   };
 
-    if (
-      !profilecontent
 
-    ) {
+  
+  const onSubmit = (event) => {
+    if (!profilecontent) {
       return alert("fill all the fields first!");
     }
 
