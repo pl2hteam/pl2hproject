@@ -20,10 +20,6 @@ module.exports = class Post extends Sequelize.Model {   // 객체 Sequelize 의 
           type: Sequelize.STRING(140),
           allowNull: false,
         },
-        img: {
-          type: Sequelize.STRING(200),
-          allowNull: true,
-        },
         videos: {
           type: Sequelize.STRING(200),
           allowNull: true,
@@ -61,7 +57,7 @@ module.exports = class Post extends Sequelize.Model {   // 객체 Sequelize 의 
   }
 
   static associate(db) {
-    db.Post.belongsTo(db.User); 
+    db.Post.belongsTo(db.User);
     db.Post.hasMany(db.Image);
     db.Post.hasMany(db.Comment);
   }

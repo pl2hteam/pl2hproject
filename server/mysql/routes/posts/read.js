@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const  {User, Post, Image} = require("../../models");
+const  { User, Post, Image } = require("../../models");
 
 /////////////////////////////////////////////////////
 /*                                                 */
@@ -10,6 +10,7 @@ const  {User, Post, Image} = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
+    //Post모델에서 User모델의 id, name 값을 가져온다.
     const fullPost = await Post.findAll({
       include: {
         model: User,
@@ -27,10 +28,15 @@ router.post('/', async (req, res, next) => {
     });
 
     let postData = [];
+
     for (let i = 0; i < fullPost.length; i++) {
+
       let imgData = [];
+
       for (let j = 0; j < Images.length; j++) {
-        if(fullPost[i].dataValues.id === Images[j].dataValues.PostId) {
+
+        if (fullPost[i].dataValues.id === Images[j].dataValues.PostId) {
+          // console.log("fullPost[i] : ", fullPost[i]);
           imgData.push(Images[j].src);
         }
       }
@@ -39,14 +45,16 @@ router.post('/', async (req, res, next) => {
         id: fullPost[i].dataValues.id,
         title: fullPost[i].dataValues.title,
         content: fullPost[i].dataValues.content,
-        images: imgData,
         // videos: null,
         views: fullPost[i].dataValues.views,
         // duration: null,
         createdAt: fullPost[i].dataValues.createdAt,
         updatedAt: fullPost[i].dataValues.updatedAt,
-        UserId: fullPost[i].dataValues.UserId
+        UserId: fullPost[i].dataValues.UserId,
+        UserName: fullPost[i].User.name,
+        images: imgData,
       })
+
     }
 
     // const comments = await Comment.findAll({
