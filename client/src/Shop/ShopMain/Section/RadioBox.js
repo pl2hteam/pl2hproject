@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import { Collapse, Radio } from 'antd';
+import React, { useState } from "react";
+import { Collapse, Radio } from "antd";
 
 const { Panel } = Collapse;
 
 const RadioBox = (props) => {
   const [Value, setValue] = useState(0);
 
-  const renderRadioBox = () => props.list && props.list.map(
-    (value) => {
-      return(
+  const renderRadioBox = () =>
+    props.list &&
+    props.list.map((value) => {
+      return (
         <React.Fragment>
-          <Radio key={value._id} value={value._id}>
-            <span>{value.name}</span>
-          </Radio>
+          <div>
+            <Radio key={value._id} value={value._id}>
+              <span style={{ fontSize: "0.8rem" }}>{value.name}</span>
+            </Radio>
+          </div>
         </React.Fragment>
       );
-  })
+    });
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -23,16 +26,19 @@ const RadioBox = (props) => {
   };
 
   return (
-    <div>
-      <Collapse defaultActiveKey={['0']}>
-        <Panel header=" 품목 선택" key="1">
-          <Radio.Group onChange={handleChange} value={Value}>
-            {renderRadioBox()}
-          </Radio.Group>
-        </Panel>
+    <div style={{ marginTop: "20px" }}>
+      <Collapse defaultActiveKey={["0"]}>
+        <Radio.Group onChange={handleChange} value={Value}>
+          <div style={{ marginBottom: "10px", textAlign: "center" }}>
+            <span style={{ fontSize: "1.3rem", textAlign: "center" }}>
+              가격대 선택
+            </span>
+          </div>
+          {renderRadioBox()}
+        </Radio.Group>
       </Collapse>
     </div>
-  )
-}
+  );
+};
 
-export default RadioBox
+export default RadioBox;
