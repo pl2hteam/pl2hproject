@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style/upload.css";
+import { UploadStyle } from "./style/uploadstyle";
 import { Button, Form, Input } from "antd";
 import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
@@ -79,7 +79,7 @@ const UploadProductPage = (props) => {
       !DescriptionValue ||
       !PriceValue ||
       !QuantityValue ||
-      !Images == false ||
+      !Images.length == 0 ||
       !Duration ||
       !VideoPath ||
       !ContinentValue
@@ -120,43 +120,45 @@ const UploadProductPage = (props) => {
   };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}></div>
-      <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-        <MovieFileUpload refreshImgFunction={video} />
-        <br />
-        <br />
-        <label>물품명</label>
-        <Input onChange={onPdNameChange} value={PdNameValue} />
-        <br />
-        <br />
-        <label>브랜드</label>
-        <Input onChange={onBrandChange} value={BrandValue} />
-        <br />
-        <br />
-        <label>상세정보</label>
-        <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
-        <br />
-        <br />
-        <label>가격</label>
-        <Input onChange={onPriceChange} value={PriceValue} type="number" />
-        <br />
-        <br />
-        <label>아이템종류</label>
-        <select onChange={onContinentsSelectChange} value={ContinentValue}>
-          {Continents.map((item) => (
-            <option key={item.key} value={item.key}>
-              {item.value}{" "}
-            </option>
-          ))}
-        </select>
+    <UploadStyle>
+      <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}></div>
+        <Form onSubmit={onSubmit}>
+          {/* DropZone */}
+          <MovieFileUpload refreshImgFunction={video} />
+          <br />
+          <br />
+          <label>물품명 : </label>
+          <Input onChange={onPdNameChange} value={PdNameValue} />
+          <br />
+          <br />
+          <label>브랜드 : </label>
+          <Input onChange={onBrandChange} value={BrandValue} />
+          <br />
+          <br />
+          <label>상세정보 : </label>
+          <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
+          <br />
+          <br />
+          <label>가 격 : </label>
+          <Input onChange={onPriceChange} value={PriceValue} type="number" />
+          <br />
+          <br />
+          <label>종 류 : </label>
+          <select onChange={onContinentsSelectChange} value={ContinentValue}>
+            {Continents.map((item) => (
+              <option key={item.key} value={item.key}>
+                {item.value}{" "}
+              </option>
+            ))}
+          </select>
 
-        <br />
-        <br />
-        <Button onClick={onSubmit}>아이템 등록하기</Button>
-      </Form>
-    </div>
+          <br />
+          <br />
+          <Button onClick={onSubmit}>아이템 등록하기</Button>
+        </Form>
+      </div>
+    </UploadStyle>
   );
 };
 
