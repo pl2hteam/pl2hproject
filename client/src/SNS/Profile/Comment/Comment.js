@@ -2,11 +2,19 @@ import Axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import SingComment from './SingleComment';
+import '../Intro/feed.css';
 
 const Comment = (props) => {
   const user = useSelector(state => state.user)
+
+  const [OpenReply, setOpenReply] = useState(false)
   const [commentValue, setcommentValue] = useState("");
   const [Comments, setComments] = useState([]);
+
+  const onClickReplyOpen = () => {
+    setOpenReply(!OpenReply);
+  }
 
   const variables = {
     postId: props.postData.id,
@@ -27,8 +35,6 @@ const Comment = (props) => {
         }
       })
   }
-
-  console.log(Comments);
 
   const handleClick = (event) => {
     setcommentValue(event.currentTarget.value)
@@ -63,7 +69,6 @@ const Comment = (props) => {
         </div>
         <div>
           {/* 몇시간후? */}
-          {/* 답근? */}
         </div>
       </div>
     )
@@ -72,11 +77,20 @@ const Comment = (props) => {
   return (
     <div>
       <br />
-      <p>댓글</p>
+      <p onClick={onClickReplyOpen} >댓글 {Comments.length} 모두 보기</p>
+      {/* 가장 추천 많이 받은 댓글 2개 보이기 */}
       <br />
-      <div>
-        {CommentsInfo}
-      </div>
+
+      {/* 모든 댓글 */}
+      {OpenReply &&
+        <div>
+          {CommentsInfo}
+        </div>
+      }
+      
+      {/* feed.css 의 선 스타일 적용 */}
+      <div class="hl"></div>
+      
       <form style={{ display:'flex' }} onSubmit={onSubmit}>
         <textarea 
           style={{ width: '100x%', borderRadius: '5px' }}

@@ -130,24 +130,34 @@ const Main = (props) => {
   };const [openModal, setOpenModal] = useState(false);
 
   const renderCards = Posts.map((postData, index) => {
-    
     if ( postData || postData.HashtagId ) {
+      console.log(postData);
       return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
         setOpenModal(true);
       }}>
       <Card hoverable={true}>
         <article>
-     
+
         <header>
+          {/* 사용자 정보 */}
           <div class="profile-of-article">
-            {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
-            <span class="userID main-id point-span"><Meta description={`${postData.HashtagId}`} /></span>
+            <span class="userID main-id point-span">
+              {/* <Meta description={`${postData.UserId.image}`} /> */}
+              <Meta description={`${postData.UserId.name}`} />
+            </span>
           </div>
+
+          {/* 추가 정보 *** */}
           <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
+          
         </header>
+
+        {/* 이미지 정보 */}
         <div class="main-image">
-        <ImageSlider images={postData} />
+          <ImageSlider images={postData} />
         </div>
+
+        {/* 좋아요, 댓글 더보기, 공유, 북마크 */}
         <div class="icons-react">
           <div class="icons-left">
             <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
@@ -157,15 +167,19 @@ const Main = (props) => {
           <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크"/>
         </div>
        
-      
+        {/* 본문 */}
         <div class="reaction">
+          {/* 좋아요 개수 표기 */}
           <div class="liked-people">
-            {/* <img class="pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/89296253_1521373131359783_504744616755462144_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=_9raiaB11CAAX_u7RhK&oh=c162d17b1570f31f94a1a28e19167609&oe=5F6C7A90" alt="johnnyjsuh님의 프로필 사진"/> */}
             <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
           </div>
+
+          {/* 설명 */}
           <div class="description">
-            <p> <Meta description={`111${postData.content}`} /> 🌱</p>
+            <p> <Meta description={`설명 글란 : ${postData.content}`} /> 🌱</p>
           </div>
+
+          {/* 댓글 란 Comment 안에 넣기 */}
           <div class="comment-section">
             <ul class="comments">
               <li>
@@ -179,25 +193,19 @@ const Main = (props) => {
                 </div>
               </li>
             </ul>
+
+            {/* 몇 분전인지 표기 */}
             <div class="time-log">
               <span>32분 전</span>
             </div>
-          </div>
-        </div>
-        <div class="hl"></div>
-        <div class="comment">
-      <Comment postData={postData}/>
-      {/* <br />
-      <br />
-      <label>물품명 </label>
-      <Input onChange={onPostTitle} value={profilecontent} />
-      <br />
-    
 
-      <Button onClick={onSubmit}>Submit</Button> */}
-          {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-          <button type="submit" class="submit-comment" disabled>게시</button> */}
+          </div>
+
         </div>
+
+        <div class="hl"></div>
+        <Comment postData={postData}/>
+
       </article>
       </Card>
     </Col>;
