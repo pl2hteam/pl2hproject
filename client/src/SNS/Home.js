@@ -143,7 +143,6 @@ const Home = (props) => {
 
   // default
 
-
   return (
     <Layout>
       <Sidebar>

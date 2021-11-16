@@ -14,7 +14,6 @@ import LatterWrite from "../SNS/Latter/LatterWrite";
 import SnsLoginPage from "../SNS/Main/SnsLogin";
 import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
-import MiniRoim from '../Common/miniroom/miniRoom'
 
 function SNSMain() {
   return (
@@ -34,7 +33,6 @@ function SNSMain() {
           <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
           <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
           <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
-          <Route path="/sns/MiniRoim" component={Auth(MiniRoim, true, true)} />
 
           <Route
             path="/sns/profile/Write"

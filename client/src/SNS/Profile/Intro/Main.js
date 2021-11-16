@@ -85,10 +85,10 @@ const Main = (props) => {
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
-    if (
-      !profilecontent
 
-    ) {
+  
+  const onSubmit = (event) => {
+    if (!profilecontent) {
       return alert("fill all the fields first!");
     }
 
