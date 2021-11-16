@@ -2,7 +2,6 @@ import Axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import SingComment from './SingleComment';
 import '../Intro/feed.css';
 
 const Comment = (props) => {
@@ -68,7 +67,7 @@ const Comment = (props) => {
           <span>{info.content}</span>
         </div>
         <div>
-          {/* 몇시간후? */}
+          {/* 몇시간 전? */}
         </div>
       </div>
     )
@@ -78,9 +77,9 @@ const Comment = (props) => {
     <div>
       <br />
       <p onClick={onClickReplyOpen} >댓글 {Comments.length} 모두 보기</p>
-      {/* 가장 추천 많이 받은 댓글 2개 보이기 */}
       <br />
 
+      {/* 가장 추천 많이 받은 댓글 2개 보이기 */}
       {/* 모든 댓글 */}
       {OpenReply &&
         <div>
