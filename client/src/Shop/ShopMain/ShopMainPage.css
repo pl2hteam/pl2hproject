@@ -35,32 +35,52 @@ a:active {
   grid-template-rows: minmax(100px, 100px);
 }
 .shop-main-content-item_box {
+  background-color: rgba(128, 128, 128, 0.2);
   width: 100%;
-  height: 100%;
-  min-width: 100%;
-  min-height: 100%;
+  height: 100px;
+  padding: 3px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+}
+.shop-main-content-item_box:hover {
+  background-color: rgba(43, 43, 43, 0.7);
 }
 .shop-main-content-item_box * {
   height: 100%;
 }
+
 .shop-main-content-item_box a {
   display: flex;
   justify-content: space-between;
 }
 .shop-main-content-item_box-img {
-  width: 100px;
-  min-width: 100px;
+  border-radius: 10px;
+  width: 94px;
+  height: 100%;
   object-fit: inherit;
 }
 .shop-main-content-item_box-info {
-  min-width: 1rem;
+  width: calc(100% - 10px - 3px - 94px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: right;
 }
-.shop-main-content-item_box-info > div {
-  height: 1rem;
+.shop-main-content-item_box-info-name {
+  padding-top: 6px;
+  text-align: left;
+}
+.shop-main-content-item_box-info-price {
+  font-size: 18px;
+  height: 2.5rem;
+  padding-bottom: 6px;
+  text-align: right;
+  vertical-align: bottom;
+}
+.shop-main-content-item_box-info-price > .purse {
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
 }
 
 .load_more {
@@ -68,9 +88,15 @@ a:active {
   margin-top: 10px;
 }
 .load_more > button {
+  background-color: rgba(128, 128, 128, 0.295);
   text-align: center;
+  border-radius: 7px;
   width: 200px;
   padding: 7px 0;
   font-size: 1.4rem;
   cursor: pointer;
+  transition-duration: 0.3s;
+}
+.load_more > button:hover {
+  background-color: rgba(43, 43, 43, 0.7);
 }

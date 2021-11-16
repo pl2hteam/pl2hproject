@@ -9,6 +9,7 @@ import SearchFeature from "./Section/SearchFeature";
 import ImageShadow from "react-image-shadow";
 import "react-image-shadow/assets/index.css";
 import "./ShopMainPage.css";
+import Purse from "../images/purse.png";
 
 const { Meta } = Card;
 
@@ -67,8 +68,13 @@ const ShopMainPage = (pdFilter) => {
             alt="productImage"
           />
           <div className="shop-main-content-item_box-info">
-            <div>{product.pdName}</div>
-            <div>{product.price}</div>
+            <div className="shop-main-content-item_box-info-name">
+              {product.pdName}
+            </div>
+            <div className="shop-main-content-item_box-info-price">
+              <img className="purse" src={Purse} alt="money" />
+              {product.price}
+            </div>
           </div>
         </a>
       </div>
