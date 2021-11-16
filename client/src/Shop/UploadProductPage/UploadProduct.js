@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 
 const { TextArea } = Input;
-const Continents = [
+const ItemList = [
   { key: 1, value: "의류" },
   { key: 2, value: "신발" },
   { key: 3, value: "쥬얼리 / 시계" },
@@ -29,14 +29,13 @@ const UploadProductPage = (props) => {
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
-  const [QuantityValue, setQuantityValue] = useState(1);
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
-  const [ContinentValue, setContinentValue] = useState(1);
+  const [ItemNumber, setItemNumber] = useState(1);
 
-  const onContinentsSelectChange = (event) => {
-    setContinentValue(event.currentTarget.value);
+  const onItemNumberSelectChange = (event) => {
+    setItemNumber(event.currentTarget.value);
   };
 
   const onPdNameChange = (event) => {
@@ -52,10 +51,6 @@ const UploadProductPage = (props) => {
 
   const onPriceChange = (event) => {
     setPriceValue(parseInt(event.currentTarget.value));
-  };
-
-  const onQuantityChange = (event) => {
-    setQuantityValue(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
@@ -78,11 +73,7 @@ const UploadProductPage = (props) => {
       !BrandValue ||
       !DescriptionValue ||
       !PriceValue ||
-      !QuantityValue ||
-      !Images == false ||
-      !Duration ||
-      !VideoPath ||
-      !ContinentValue
+      Images.length == 0
     ) {
       return alert("빈칸을 채워주세요");
     }
@@ -93,11 +84,10 @@ const UploadProductPage = (props) => {
       brandName: BrandValue,
       description: DescriptionValue,
       price: PriceValue,
-      quantity: QuantityValue,
       images: Images,
       videos: VideoPath,
       duration: Duration,
-      continents: ContinentValue,
+      itemNumber: ItemNumber,
     };
 
     Axios.post("/api/mongo/product/uploadProduct", variables).then(
@@ -118,7 +108,7 @@ const UploadProductPage = (props) => {
     updateVideoPath,
     updateDuration,
   };
-
+  console.log(Images);
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}></div>
@@ -144,8 +134,8 @@ const UploadProductPage = (props) => {
         <br />
         <br />
         <label>아이템종류</label>
-        <select onChange={onContinentsSelectChange} value={ContinentValue}>
-          {Continents.map((item) => (
+        <select onChange={onItemNumberSelectChange} value={ItemNumber}>
+          {ItemList.map((item) => (
             <option key={item.key} value={item.key}>
               {item.value}{" "}
             </option>
