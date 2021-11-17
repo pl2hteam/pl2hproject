@@ -33,7 +33,7 @@ function FileUpload(props) {
               response.data.url,
             ]);
 
-            Axios.post("/api/mysql/product/video/thumbnail", variable).then(
+            Axios.post("/api/mysql/product/thumbnail", variable).then(
               (response) => {
                 console.log(response);
                 if (response.data.success) {

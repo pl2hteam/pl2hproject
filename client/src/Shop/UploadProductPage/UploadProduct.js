@@ -60,9 +60,7 @@ const UploadProductPage = (props) => {
       !BrandValue ||
       !DescriptionValue ||
       !PriceValue ||
-      !Images.length == 0 ||
-      !Duration ||
-      !VideoPath
+      Images.length == 0
     ) {
       return alert("빈칸을 채워주세요");
     }

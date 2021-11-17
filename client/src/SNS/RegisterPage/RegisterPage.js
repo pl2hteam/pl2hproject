@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { registerUser } from "../../Common/_actions/user_actions";
+import { registerCart, registerUser } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 
 import {
@@ -88,9 +88,24 @@ function RegisterPage(props) {
             db: true, // MySQL
           };
 
+          let dataToMongo = {
+            email: values.email,
+            name: values.name,
+            address: values.address,
+            gender: values.gender,
+            phone: values.phone,
+          }
+
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              window.location.replace("/sns");
+              dispatch(registerCart(dataToMongo))
+                .then(response => {
+                  if (response.payload.success) {
+                    window.location.replace("/sns");
+                  } else {
+                    alert(response.payload.err)
+                  }
+                })
             } else {
               alert(response.payload.err)
             }

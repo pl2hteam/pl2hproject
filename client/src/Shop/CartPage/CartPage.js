@@ -23,11 +23,8 @@ function CartPage(props) {
     let cartItems = [];
     
     if (user.userData && user.userData.cart) {
-      // 장바구니에 담은게 있으면 실행
       if (user.userData.cart.length > 0) {
-        // DB에 있는 user 가 담아둔 상품들을 forEach 로
         user.userData.cart.forEach((item) => {
-          // cartItems 배열에 때려넣음
           cartItems.push(item.id);
         });
         dispatch(getCartItems(cartItems, user.userData.cart)).then(

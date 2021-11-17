@@ -5,7 +5,7 @@ const multer = require("multer");
 
 /////////////////////////////////////////////////////
 /*                                                 */
-/*      /api/mongo/product/video/uploadfiles       */
+/*         /api/mongo/product/uploadfiles          */
 /*                                                 */
 /////////////////////////////////////////////////////
 

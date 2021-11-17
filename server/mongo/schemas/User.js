@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  gender: {
+  gender: { // 판매자 구분 용도
     type: Number,
     default: 0,
   },

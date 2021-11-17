@@ -5,7 +5,7 @@ let ffmpeg = require('fluent-ffmpeg');
 
 /////////////////////////////////////////////////////
 /*                                                 */
-/*      /api/mongo/product/video/thumbnail         */
+/*         /api/mongo/product/thumbnail            */
 /*                                                 */
 /////////////////////////////////////////////////////
 
