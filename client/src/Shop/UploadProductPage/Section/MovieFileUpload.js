@@ -83,15 +83,13 @@ function FileUpload(props) {
   console.log(props);
 
   return (
-    <div style={{ display: "block", justifyContent: "space-between" }}>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
       <div
         style={{
           display: "flex",
-          width: "400px",
-          height: "260px",
+          width: "350px",
+          height: "240px",
           overflowX: "scroll",
-          margin: "0 0 10px 75px",
-          border: "1px solid lightgray",
         }}
       >
         {Images.map((image, index) => (
@@ -104,18 +102,16 @@ function FileUpload(props) {
           </div>
         ))}
       </div>
-      <div style={{ display: "block"}}>
       <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
         {({ getRootProps, getInputProps }) => (
           <div
             style={{
-              width: "130px",
-              height: "30px",
+              width: "200px",
+              height: "50px",
+              border: "1px solid lightgray",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid lightgray",
-              marginLeft: "200px",
             }}
             {...getRootProps()}
           >
@@ -124,7 +120,8 @@ function FileUpload(props) {
           </div>
         )}
       </Dropzone>
-        </div>
+
+      
     </div>
   );
 }

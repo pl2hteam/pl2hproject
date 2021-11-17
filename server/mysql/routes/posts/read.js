@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
         // duration: null,
         createdAt: fullPost[i].dataValues.createdAt,
         updatedAt: fullPost[i].dataValues.updatedAt,
-        UserId: fullPost[i].dataValues.User
+        UserId: fullPost[i].dataValues.UserId
       })
     }
 
