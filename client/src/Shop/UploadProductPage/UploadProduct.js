@@ -5,22 +5,9 @@ import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import { Continents } from './Section/data';
 
 const { TextArea } = Input;
-const Continents = [
-  { key: 1, value: "의류" },
-  { key: 2, value: "신발" },
-  { key: 3, value: "쥬얼리 / 시계" },
-  { key: 4, value: "가방 / 잡화" },
-  { key: 5, value: "생활용품" },
-  { key: 6, value: "자전거 / 보드" },
-  { key: 7, value: "화장품 / 향수" },
-  { key: 8, value: "바디 / 헤어" },
-  { key: 9, value: "중고시장" },
-  { key: 10, value: "카메라" },
-  { key: 11, value: "건강 / 의료용품" },
-  { key: 12, value: "기타" },
-];
 
 const UploadProductPage = (props) => {
   const user = useSelector((state) => state.user);
@@ -29,14 +16,13 @@ const UploadProductPage = (props) => {
   const [BrandValue, setBrandValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState(0);
-  const [QuantityValue, setQuantityValue] = useState(1);
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
-  const [ContinentValue, setContinentValue] = useState(1);
+  const [ItemNumber, setItemNumber] = useState(1);
 
-  const onContinentsSelectChange = (event) => {
-    setContinentValue(event.currentTarget.value);
+  const onItemNumberSelectChange = (event) => {
+    setItemNumber(event.currentTarget.value);
   };
 
   const onPdNameChange = (event) => {
@@ -52,10 +38,6 @@ const UploadProductPage = (props) => {
 
   const onPriceChange = (event) => {
     setPriceValue(parseInt(event.currentTarget.value));
-  };
-
-  const onQuantityChange = (event) => {
-    setQuantityValue(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
@@ -78,11 +60,9 @@ const UploadProductPage = (props) => {
       !BrandValue ||
       !DescriptionValue ||
       !PriceValue ||
-      !QuantityValue ||
       !Images.length == 0 ||
       !Duration ||
-      !VideoPath ||
-      !ContinentValue
+      !VideoPath
     ) {
       return alert("빈칸을 채워주세요");
     }
@@ -93,11 +73,10 @@ const UploadProductPage = (props) => {
       brandName: BrandValue,
       description: DescriptionValue,
       price: PriceValue,
-      quantity: QuantityValue,
       images: Images,
       videos: VideoPath,
       duration: Duration,
-      continents: ContinentValue,
+      itemNumber: ItemNumber,
     };
 
     Axios.post("/api/mongo/product/uploadProduct", variables).then(
@@ -118,43 +97,39 @@ const UploadProductPage = (props) => {
     updateVideoPath,
     updateDuration,
   };
-
+  console.log(Images);
   return (
     <UploadStyle>
-      <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "2rem" }}></div>
+      <div style={{ maxWidth: "700px", margin: "0rem auto" }}>
         <Form onSubmit={onSubmit}>
-          {/* DropZone */}
           <MovieFileUpload refreshImgFunction={video} />
-          <br />
-          <br />
-          <label>물품명 : </label>
-          <Input onChange={onPdNameChange} value={PdNameValue} />
-          <br />
-          <br />
-          <label>브랜드 : </label>
-          <Input onChange={onBrandChange} value={BrandValue} />
-          <br />
-          <br />
-          <label>상세정보 : </label>
-          <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
-          <br />
-          <br />
-          <label>가 격 : </label>
-          <Input onChange={onPriceChange} value={PriceValue} type="number" />
-          <br />
-          <br />
-          <label>종 류 : </label>
-          <select onChange={onContinentsSelectChange} value={ContinentValue}>
-            {Continents.map((item) => (
-              <option key={item.key} value={item.key}>
-                {item.value}{" "}
-              </option>
-            ))}
-          </select>
+          <div className="item">
+            <label>물품명 : </label>
+            <Input onChange={onPdNameChange} value={PdNameValue} />
+          </div>
+          <div className="item">
+            <label>브랜드 : </label>
+            <Input onChange={onBrandChange} value={BrandValue} />
+          </div>
+          <div className="item">
+            <label>상세정보 : </label>
+            <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
+            </div>
+          <div className="item">
+            <label>가 격 : </label>
+            <Input onChange={onPriceChange} value={PriceValue} type="number" />
+            </div>
+          {/* <div className="item">
+            <label>종 류 : </label>
+            <select onChange={onContinentsSelectChange} value={ContinentValue}>
+              {Continents.map((item) => (
+                <option key={item.key} value={item.key}>
+                  {item.value}{" "}
+                </option>
+              ))}
+            </select>
+          </div> */}
 
-          <br />
-          <br />
           <Button onClick={onSubmit}>아이템 등록하기</Button>
         </Form>
       </div>

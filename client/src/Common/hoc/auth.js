@@ -6,8 +6,7 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
   function AuthenticationCheck(props) {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
-    // 추후 DB 의 이미지 경로 유무로 판매자 구분
-    console.log(user);
+
     useEffect(() => {
       if (homePage) { // SNS PAGE
         dispatch(auth(true)).then((response) => {
