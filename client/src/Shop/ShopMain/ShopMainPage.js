@@ -17,7 +17,7 @@ const ShopMainPage = (pdFilter) => {
   console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
-  const [Limit, setLimit] = useState(2);
+  const [Limit, setLimit] = useState(12);
   const [PostSize, setPostSize] = useState(0);
   const [Filters, setFilters] = useState({
     itemNumber: [],
