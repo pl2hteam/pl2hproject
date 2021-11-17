@@ -21,7 +21,7 @@ function CartPage(props) {
 
   useEffect(() => {
     let cartItems = [];
-    //
+    
     if (user.userData && user.userData.cart) {
       // 장바구니에 담은게 있으면 실행
       if (user.userData.cart.length > 0) {
@@ -65,14 +65,12 @@ function CartPage(props) {
   };
 
   const transactionSuccess = (data) => {
-    console.log(data);
     dispatch(
       onSuccessBuy({
         cartDetail: user.cartDetail,
         paymentData: data,
       })
     ).then((response) => {
-      console.log(response);
       if (response.payload.success) {
         setShowSuccess(true);
         setShowTotal(false);

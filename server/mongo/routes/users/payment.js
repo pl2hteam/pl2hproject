@@ -7,33 +7,23 @@ const { Payment } = require("../../schemas/Payment");
 
 const async = require("async");
 
-function getCurrentDate() {
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = date.getMonth();
-  var today = date.getDate();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  var milliseconds = date.getMilliseconds();
-  return new Date(
-    Date.UTC(year, month, today, hours, minutes, seconds, milliseconds)
-  );
-}
-
 router.post("/successBuy", auth, (req, res) => {
   let history = [];
   let transactionData = {};
+  console.log("판매팜낸ㅁㅇㅁㄴㅇㅁㄴㅇ");
+  console.log(req.body.cartDetail);
+  console.log("판매팜낸ㅁㅇㅁㄴㅇㅁㄴㅇ");
 
   //1. 구매내역 DB저장
   req.body.cartDetail.forEach((item) => {
     history.push({
-      dateOfPurchase: getCurrentDate(Date.now()),
-      name: item.title,
+      dateOfPurchase: Date(),
+      name: item.pdName,
       id: item._id,
       price: item.price,
       quantity: item.quantity,
       paymentId: req.body.paymentData.paymentID,
+      images: item.images[0],
     });
   });
 

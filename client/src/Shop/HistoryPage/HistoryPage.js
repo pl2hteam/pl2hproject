@@ -4,7 +4,7 @@ import { HistoryStyle } from "./style/historystyle";
 
 function HistoryPage() {
   const user = useSelector((state) => state.user);
-  console.log(user);
+  
   return (
     <HistoryStyle>
       <div style={{ width: "80%", margin: "0 0 0 200px" }}>
