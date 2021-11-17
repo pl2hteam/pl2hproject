@@ -8,6 +8,7 @@ import {
   GET_CART_ITEMS_USER,
   REMOVE_CART_ITEM_USER,
   ON_SUCCESS_BUY_USER,
+  CHANGE_MY_CONDITION,
 } from "./types";
 import { MYSQL_USER_SERVER, MONGO_USER_SERVER } from "../Config";
 
@@ -68,10 +69,18 @@ export function auth(database) {
   };
 }
 
-export function logoutUser() {
-  const request = axios
-    .get(`${MONGO_USER_SERVER}/logout`)
-    .then((response) => response.data);
+export function logoutUser(dataToSubmit) {
+
+  let request = {};
+  if (dataToSubmit.db) {
+    request = axios
+      .get(`${MYSQL_USER_SERVER}/logout`)
+      .then((response) => response.data);
+  } else {
+    request = axios
+      .get(`${MONGO_USER_SERVER}/logout`)
+      .then((response) => response.data);
+  }
 
   return {
     type: LOGOUT_USER,
@@ -141,6 +150,17 @@ export function onSuccessBuy(data) {
 
   return {
     type: ON_SUCCESS_BUY_USER,
+    payload: request,
+  };
+}
+
+export function onChangeMyCondition(data) {
+  const request = axios
+    .post(`${MYSQL_USER_SERVER}/condions/write`, data)
+    .then((response) => response.data);
+
+  return {
+    type: CHANGE_MY_CONDITION,
     payload: request,
   };
 }
