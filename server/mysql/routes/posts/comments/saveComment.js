@@ -20,6 +20,7 @@ router.post("/", async (req, res) => {
   //     next(error);
   //   }
   // });
+  console.log(req.body);
   try {
     const comments = await Comment.create({
       content: req.body.content,
@@ -32,7 +33,6 @@ router.post("/", async (req, res) => {
         model: User,
         attribute: ['id', 'name', 'image'],
       },
-      // 유저 비번은 제외해서 보내기
       where: {
         id: comments.id,
       },
