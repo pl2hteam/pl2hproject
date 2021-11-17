@@ -187,7 +187,7 @@ const Main = (props) => {
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
-        <h2>상품 메인 화면</h2>
+        <h2>사 진 첩</h2>
       </div>
 
       {/* 상품, 가격 필터 */}

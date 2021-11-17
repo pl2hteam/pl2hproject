@@ -104,6 +104,7 @@ nav img {
   } */
 /* main */
 main {
+    border-radius: 30px;
     width: 960px;
     margin: 0 auto;
     padding-top: 94px;
@@ -116,16 +117,19 @@ main {
     top: 94px;
 }
 .feeds {
+    
     width: 614px;
     margin-right: 34px;
     display: inline-block;
 }
 article, .section-story, .section-recommend {
+    border-radius: 30px;
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #DBDBDB;
 }
 article {
+    border-radius: 30px;
     margin-bottom: 60px;
 }
 .section-story, .section-recommend {
