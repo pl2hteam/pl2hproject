@@ -5,7 +5,7 @@ import MovieFileUpload from "./Section/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
-import { Continents } from './Section/data';
+import { Subject } from "./Section/data";
 
 const { TextArea } = Input;
 
@@ -60,9 +60,7 @@ const UploadProductPage = (props) => {
       !BrandValue ||
       !DescriptionValue ||
       !PriceValue ||
-      !Images.length == 0 ||
-      !Duration ||
-      !VideoPath
+      Images.length == 0
     ) {
       return alert("빈칸을 채워주세요");
     }
@@ -97,7 +95,7 @@ const UploadProductPage = (props) => {
     updateVideoPath,
     updateDuration,
   };
-  console.log(Images);
+  console.log(ItemNumber);
   return (
     <UploadStyle>
       <div style={{ maxWidth: "700px", margin: "0rem auto" }}>
@@ -114,21 +112,21 @@ const UploadProductPage = (props) => {
           <div className="item">
             <label>상세정보 : </label>
             <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
-            </div>
+          </div>
           <div className="item">
             <label>가 격 : </label>
             <Input onChange={onPriceChange} value={PriceValue} type="number" />
-            </div>
-          {/* <div className="item">
+          </div>
+          <div className="item">
             <label>종 류 : </label>
-            <select onChange={onContinentsSelectChange} value={ContinentValue}>
-              {Continents.map((item) => (
+            <select onChange={onItemNumberSelectChange} value={ItemNumber}>
+              {Subject.map((item) => (
                 <option key={item.key} value={item.key}>
-                  {item.value}{" "}
+                  {item.value}
                 </option>
               ))}
             </select>
-          </div> */}
+          </div>
 
           <Button onClick={onSubmit}>아이템 등록하기</Button>
         </Form>

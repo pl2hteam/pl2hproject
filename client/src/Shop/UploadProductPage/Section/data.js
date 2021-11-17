@@ -1,4 +1,4 @@
-export const Continents = [
+export const Subject = [
   { key: 1, value: "의류" },
   { key: 2, value: "신발" },
   { key: 3, value: "쥬얼리 / 시계" },
