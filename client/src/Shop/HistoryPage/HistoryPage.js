@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { HistoryStyle } from "./style/historystyle";
 
+import Moment from "react-moment";
+
 function HistoryPage() {
   const user = useSelector((state) => state.user);
   
@@ -9,7 +11,7 @@ function HistoryPage() {
     <HistoryStyle>
       <div style={{ width: "80%", margin: "0 0 0 200px" }}>
         <div style={{ textAlign: "center" }}>
-          <h1>History</h1>
+          <h1>구매내역</h1>
         </div>
         <br />
 
@@ -31,7 +33,10 @@ function HistoryPage() {
                   <td>{item.name}</td>
                   <td>{item.price}</td>
                   <td>{item.quantity}</td>
-                  <td>{item.dateOfPurchase}</td>
+
+                  <td>
+                    <Moment format="YYYY-MM-DD">{item.dateOfPurchase}</Moment>
+                  </td>
                 </tr>
               ))}
           </tbody>

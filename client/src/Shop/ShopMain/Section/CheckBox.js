@@ -39,15 +39,8 @@ const CheckBox = (props) => {
   return (
     <div>
       <Collapse defaultActiveKey={["0"]}>
-        <div style={{ marginBottom: "10px", textAlign: "center" }}>
-          <span
-            style={{
-              fontSize: "1.3rem",
-              textAlign: "center",
-            }}
-          >
-            종류 선택
-          </span>
+        <div style={{ marginBottom: "10px" }}>
+          <span style={{ fontSize: "1.3rem" }}>종류 선택</span>
         </div>
         <div>{renderCheckboxLists()}</div>
       </Collapse>

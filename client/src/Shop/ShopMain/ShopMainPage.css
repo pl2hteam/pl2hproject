@@ -11,17 +11,22 @@ a:active {
   width: 100%;
   display: flex;
 }
-.shop-main-title {
+.shop-main * {
+  color: white;
+}
+.shop-main-title > h1 {
+  color: white;
   margin-left: 150px;
   text-align: center;
   margin-bottom: 10px;
 }
 .shop-main-sidebar {
-  margin-left: -15px;
+  /* margin-left: -15px; */
   width: 150px;
   max-height: 400px;
   display: flex;
   flex-direction: column;
+  line-height: 1.2rem;
 }
 
 .shop-main-content {
@@ -30,22 +35,25 @@ a:active {
   flex-direction: column;
 }
 .shop-main-content-item_list {
-  min-height: 100px;
+  /* background-image: url(../images/inventory.png); */
+
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: minmax(100px, 100px);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(auto-fill, 102px);
+  gap: 8px;
+  align-items: stretch;
+  align-content: stretch;
 }
 .shop-main-content-item_box {
-  background-color: rgba(128, 128, 128, 0.2);
-  width: 100%;
-  height: 100px;
-  padding: 3px;
-  padding-right: 10px;
   border-radius: 10px;
+  border: solid transparent;
+  background: rgb(84, 92, 143);
+  width: 100%;
+  height: 102px;
   transition-duration: 0.3s;
 }
 .shop-main-content-item_box:hover {
-  background-color: rgba(43, 43, 43, 0.7);
+  border: solid rgb(6, 214, 160);
 }
 .shop-main-content-item_box * {
   height: 100%;
@@ -53,32 +61,35 @@ a:active {
 
 .shop-main-content-item_box a {
   display: flex;
-  justify-content: space-between;
 }
 .shop-main-content-item_box-img {
   border-radius: 10px;
-  width: 94px;
-  height: 100%;
+  margin: auto auto;
+  width: 86px;
+  height: 86px;
   object-fit: inherit;
 }
 .shop-main-content-item_box-info {
-  width: calc(100% - 10px - 3px - 94px);
+  width: calc(100% - 96px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .shop-main-content-item_box-info-name {
-  padding-top: 6px;
+  padding-top: 12px;
+  padding-left: 4px;
+  line-height: 1.2rem;
   text-align: left;
 }
 .shop-main-content-item_box-info-price {
-  font-size: 18px;
-  height: 2.5rem;
-  padding-bottom: 6px;
+  font-size: 1.2rem;
+  height: 1.2rem;
+  margin-bottom: 10px;
+  margin-right: 10px;
   text-align: right;
   vertical-align: bottom;
 }
-.shop-main-content-item_box-info-price > .purse {
+.shop-main-content-item_box-info-price > .acorn {
   vertical-align: middle;
   width: 22px;
   height: 22px;
@@ -89,8 +100,9 @@ a:active {
   margin-top: 10px;
 }
 .load_more > button {
-  background-color: rgba(128, 128, 128, 0.295);
+  background-color: rgb(84, 92, 143);
   text-align: center;
+  border: solid transparent;
   border-radius: 7px;
   width: 200px;
   padding: 7px 0;
@@ -99,5 +111,5 @@ a:active {
   transition-duration: 0.3s;
 }
 .load_more > button:hover {
-  background-color: rgba(43, 43, 43, 0.7);
+  border: solid rgb(6, 214, 160);
 }

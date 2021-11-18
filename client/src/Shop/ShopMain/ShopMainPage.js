@@ -9,7 +9,7 @@ import SearchFeature from "./Section/SearchFeature";
 import ImageShadow from "react-image-shadow";
 import "react-image-shadow/assets/index.css";
 import "./ShopMainPage.css";
-import Purse from "../images/purse.png";
+import acorn from "../images/acorn.png";
 
 const { Meta } = Card;
 
@@ -17,7 +17,7 @@ const ShopMainPage = (pdFilter) => {
   console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
-  const [Limit, setLimit] = useState(2);
+  const [Limit, setLimit] = useState(12);
   const [PostSize, setPostSize] = useState(0);
   const [Filters, setFilters] = useState({
     itemNumber: [],
@@ -72,7 +72,7 @@ const ShopMainPage = (pdFilter) => {
               {product.pdName}
             </div>
             <div className="shop-main-content-item_box-info-price">
-              <img className="purse" src={Purse} alt="money" />
+              <img className="acorn" src={acorn} alt="money" />
               {product.price.toLocaleString("ko-KR")}
             </div>
           </div>
@@ -147,7 +147,7 @@ const ShopMainPage = (pdFilter) => {
   return (
     <div>
       <div className="shop-main-title">
-        <h1 style={{ fontSize: "2rem" }}>상점</h1>
+        <h1 style={{ fontSize: "2rem", color: "white" }}>상점</h1>
       </div>
       <div className="shop-main">
         {/* 상품, 가격 필터 */}

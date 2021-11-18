@@ -29,10 +29,8 @@ const RadioBox = (props) => {
     <div style={{ marginTop: "20px" }}>
       <Collapse defaultActiveKey={["0"]}>
         <Radio.Group onChange={handleChange} value={Value}>
-          <div style={{ marginBottom: "10px", textAlign: "center" }}>
-            <span style={{ fontSize: "1.3rem", textAlign: "center" }}>
-              가격대 선택
-            </span>
+          <div style={{ marginBottom: "10px" }}>
+            <span style={{ fontSize: "1.3rem" }}>가격대 선택</span>
           </div>
           {renderRadioBox()}
         </Radio.Group>
