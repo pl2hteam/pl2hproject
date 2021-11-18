@@ -9,7 +9,7 @@ const Image = require('./image');
 const Hashtag = require('./hashtag');
 const Profile = require('./profile');
 const Letter = require('./letter');
-//const User2nd = require('./user2nd');
+const Couple = require('./couple');
 
 const db = {};
 const sequelize = new Sequelize(
@@ -24,7 +24,7 @@ db.Hashtag = Hashtag;
 db.Image = Image;
 db.Profile = Profile;
 db.Letter = Letter;
-//db.User2nd = User2nd;
+db.Couple = Couple;
 
 
 Object.keys(db).forEach(modelName => {
