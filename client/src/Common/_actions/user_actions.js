@@ -69,25 +69,6 @@ export function auth(database) {
   };
 }
 
-export function logoutUser(dataToSubmit) {
-
-  let request = {};
-  if (dataToSubmit.db) {
-    request = axios
-      .get(`${MYSQL_USER_SERVER}/logout`)
-      .then((response) => response.data);
-  } else {
-    request = axios
-      .get(`${MONGO_USER_SERVER}/logout`)
-      .then((response) => response.data);
-  }
-
-  return {
-    type: LOGOUT_USER,
-    payload: request,
-  };
-}
-
 export function addToCart(_id) {
   const request = axios
     .get(`${MONGO_USER_SERVER}/addToCart?productId=${_id}`)

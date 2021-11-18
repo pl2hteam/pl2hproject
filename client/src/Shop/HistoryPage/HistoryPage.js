@@ -6,9 +6,9 @@ import { getHistory } from "../../Common/_actions/user_actions";
 import Moment from "react-moment";
 
 function HistoryPage() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [History, setHistory] = useState([]);
-  const dispatch = useDispatch();
   
   let userData = {};
   useEffect(() => {

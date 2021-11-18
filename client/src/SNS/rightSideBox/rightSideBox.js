@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ActivityStatus from "./activityStatus";
 import MusicPlayer from "./musicPlayer";
+import Button from "./buttons";
 
 const Container = styled.div`
   background-color: #fff;
@@ -17,6 +18,7 @@ function RightSideBox() {
     <Container>
       <ActivityStatus />
       <MusicPlayer />
+      <Button />
     </Container>
   );
 }
