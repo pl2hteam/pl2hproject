@@ -39,6 +39,15 @@ const FlexWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
+`;
+const FlexWrapperImage = styled.div`
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    width: 250px;
+    height: 250px;
+
 `;
 
 const ContentSection = styled.section`
@@ -134,6 +143,8 @@ const LinkTitle = styled.p`
     color: green;
   }
 `;
+
+
 const { Meta } = Card;
 
 
@@ -244,18 +255,23 @@ const Home = (props) => {
     getCondition();
   }, []);
 
-
+  const genderImoticon = () => {
+    if (userInfo.userData.gender == 1) {
+      return <div>(♀)</div>
+    } else {
+      return <div>(♂)</div>
+    }
+  }
 
   return (
     <Layout>
       <Sidebar>
         <Cards>
           <FlexWrapper>
-            <ProfileSection>
-              <img src={`http://localhost:5000/${userImg}`} alt="profile" />
-              {/* <div>{userConditionData.message}</div> */}
-              {/* {renderMyImage} */}
-
+            <ProfileSection >
+              <FlexWrapperImage>
+                <img src={`http://localhost:5000/${userImg}`} alt="profile" />
+              </FlexWrapperImage>
 
               <Link to={'/ChangeCondition'}>내 상태변경</Link>
               <hr />
@@ -263,11 +279,14 @@ const Home = (props) => {
               <p>{userInfo.userData.message}</p>
 
             </ProfileSection>
+
+
+
             <ProfileSection>
               <p>
                 <span className="my-name">{userInfo.userData.name}</span>
 
-                <span className="my-sex">({userInfo.userData.gender})</span>
+                <span className="my-sex">{genderImoticon()}</span>
                 <span className="my-brthdy">{userInfo.userData.birth}</span>
               </p>
               <p>
