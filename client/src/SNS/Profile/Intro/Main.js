@@ -7,7 +7,7 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
-// import Comment from "../Comment/Comment";
+import Comment from "../Comment/Comment";
 import Feed from './feed.css'
 ////////////////////////////////////////
 import { Typography, Button, Form, message, Input } from "antd";

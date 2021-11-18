@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import Axios from 'axios';
-import SingleComment from './SingleComment';
 import ReplyComment from './ReplyComment';
 
 const Comment = (props) => {
@@ -9,11 +8,11 @@ const Comment = (props) => {
   console.log(props);
   useEffect(() => {
     console.log(333333333333333);
-      let id = {
-        postId: props.postId,
-      }
-  
-      Axios.post('/api/mysql/posts/comment/getComment', id)
+    let id = {
+      postId: props.postId,
+    }
+
+    Axios.post('/api/mysql/posts/comment/getComment', id)
       .then(response => {
         if (response.data.success) {
           console.log(response.data.comments);
@@ -34,7 +33,7 @@ const Comment = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    
+
     const variables = {
       content: commentValue,
       writer: props.UserId,
@@ -57,15 +56,15 @@ const Comment = (props) => {
       <br />
       <p>댓글</p>
       <hr />
-      
+
       {Comments && Comments.map((comment, index) => (
-                (!comment.responseTo &&
-                    <React.Fragment>
-                        <SingleComment comment={comment} postId={props.postData.id} refreshFunction={props.refreshFunction} />
-                        {/* <ReplyComment CommentLists={props.commentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} /> */}
-                    </React.Fragment>
-                )
-            ))}
+        (!comment.responseTo &&
+          <React.Fragment>
+            {/* <SingleComment comment={comment} postId={props.postData.id} refreshFunction={props.refreshFunction} /> */}
+            {/* <ReplyComment CommentLists={props.commentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} /> */}
+          </React.Fragment>
+        )
+      ))}
 
       <from style={{ display: 'flex' }} onSubmit={onSubmit} >
         <textarea
@@ -74,7 +73,7 @@ const Comment = (props) => {
           value={commentValue}
           placeholder='댓글을 적어주세요.'
         />
-        <br/>
+        <br />
         <button style={{ width: '20%', height: '52px' }} onClick={onSubmit} >작성하기</button>
       </from>
     </div>

@@ -8,7 +8,7 @@ import ContentProfile from './ContentProfile';
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
-import VisitorWriting from "./visitor/VisitorWriting";
+//import VisitorWriting from "./visitor/VisitorWriting";
 
 
 
