@@ -9,8 +9,12 @@ module.exports = class Hashtag extends Sequelize.Model {
           type: Sequelize.STRING(15),
           allowNull: false,
           unique: true,
+        }, img: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
         },
       },
+      
       {
         sequelize,
         timestamps: true,

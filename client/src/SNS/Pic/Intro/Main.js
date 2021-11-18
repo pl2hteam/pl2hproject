@@ -38,27 +38,11 @@ const Wrapper = styled.div`
     font-style: italic;
   }
 `;
-
-const TxtWrapper = styled.div`
-  padding: 40px;
-  text-align: center;
-  .txt {
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: normal;
-  }
-`;
-
-const Grid = styled.div`
-display : flex;
-flex-direction: row;
-`
-
 const { Meta } = Card;
 
 const Main = (props) => {
   const [Posts, setPosts] = useState([]);
-  // const [Images, setImages] = useState([]);
+  
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
@@ -83,9 +67,7 @@ const Main = (props) => {
 
   const [profilecontent, setPostTitle] = useState("");
 
-  const onPostTitle = (event) => {
-    setPostTitle(event.currentTarget.value);
-  };
+
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
@@ -130,36 +112,43 @@ const Main = (props) => {
     };
 
     getPosts(variables);
-    setSkip(skip);
-  };
-
+    setSkip(skip); 
+  };const [openModal, setOpenModal] = useState(false);
+ 
   const renderCards = Posts.map((postData, index) => {
-    console.log(postData);
-    // console.log(Images.PostId);
+    
+    console.log(postData,3710379170);
+  
     return (
        
-      <div class="pic">
-             <div class="opacity-overlay">
-          <Col lg={2} md={4} xs={8} key={index}>
-        <Card hoverable={true}>
-      
-
-
-
-  
-
-  <ImageSlider images={postData} />
-
-
+      <div class="pic" >
+        
+             <div class="opacity-overlay" onDoubleClick={() => {
+        setOpenModal(true);
+      }}>
+          {openModal && (
+              <Modal
+                modal={postData.images[0]}
+                 aaaa={postData}
  
+                setOpenModal={setOpenModal}
+                openModal={openModal}
 
-        </Card>
-      </Col>
+
+              />
+            )}
+            <img
+              style={{ width: "100%", maxHeight: "500px" }}
+              src={`http://localhost:5000/${postData.images}`}
+              alt="productImage"
+              images={postData}/>
       </div>
+      
       <div class="icons">
    <i class="fa fa-heart">200m</i>
    <i class="fa fa-comment">2m</i>
     </div>
+    
     </div>
       
     
@@ -183,18 +172,13 @@ const Main = (props) => {
 
     getPosts(variables);
   }, []);
-  const [openModal, setOpenModal] = useState(false);
+  
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
         <h2>사 진 첩</h2>
       </div>
-
-      {/* 상품, 가격 필터 */}
-      <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}></Col>
-        <Col lg={12} xs={24}></Col>
-      </Row>
+    
 
 
 
@@ -263,23 +247,12 @@ const Main = (props) => {
                 </a>
             </div>
         </div>
-        <div class="gallery-pics inner-wrap">
+        <div class="gallery-pics inner-wrap" >
      
 
-        <div class="pic-wrap"onSubmit={onSubmit} onDoubleClick={() => {
-        setOpenModal(true);
-      }}>
+        <div class="pic-wrap"onSubmit={onSubmit} >
           
-        {openModal && (
-          <Modal
-          
-         
-            setOpenModal={setOpenModal}
-            openModal={openModal}
-         
-            
-          />
-        )}
+      
           {renderCards}   
           
           
