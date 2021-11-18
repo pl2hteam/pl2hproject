@@ -86,8 +86,8 @@ const Main = (props) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
-      !profilecontent 
-      
+      !profilecontent
+
     ) {
       return alert("fill all the fields first!");
     }
@@ -96,14 +96,14 @@ const Main = (props) => {
     const variables = {
       //seller: user.userData._id,
       content: profilecontent,
-   
+
     };
 
     Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
         console.log('props.user 는 : ', response);
         if (response.data.success) {
-   
+
           alert("Product Successfully Uploaded");
           props.history.push("/sns");
         } else {
@@ -127,88 +127,88 @@ const Main = (props) => {
 
     getPosts(variables);
     setSkip(skip);
-  };const [openModal, setOpenModal] = useState(false);
+  }; const [openModal, setOpenModal] = useState(false);
 
   const renderCards = Posts.map((postData, index) => {
-    if ( postData || postData.HashtagId ) {
+    if (postData || postData.HashtagId) {
       console.log(postData);
       return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
         setOpenModal(true);
       }}>
-      <Card hoverable={true}>
-        <article>
+        <Card hoverable={true}>
+          <article>
 
-        <header>
-          {/* 사용자 정보 */}
-          <div class="profile-of-article">
-            <span class="userID main-id point-span">
-              {/* <Meta description={`${postData.UserId.image}`} /> */}
-              <Meta description={`${postData.UserId.name}`} />
-            </span>
-          </div>
+            <header>
+              {/* 사용자 정보 */}
+              <div class="profile-of-article">
+                <span class="userID main-id point-span">
+                  {/* <Meta description={`${postData.UserId.image}`} /> */}
+                  <Meta description={`${postData.UserId.name}`} />
+                </span>
+              </div>
 
-          {/* 추가 정보 *** */}
-          <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
-          
-        </header>
+              {/* 추가 정보 *** */}
+              <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
 
-        {/* 이미지 정보 */}
-        <div class="main-image">
-          <ImageSlider images={postData} />
-        </div>
+            </header>
 
-        {/* 좋아요, 댓글 더보기, 공유, 북마크 */}
-        <div class="icons-react">
-          <div class="icons-left">
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선"/>
-            <img class="icon-react" src="img/dm.png" alt="DM"/>  
-          </div>
-          <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크"/>
-        </div>
-       
-        {/* 본문 */}
-        <div class="reaction">
-          {/* 좋아요 개수 표기 */}
-          <div class="liked-people">
-            <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
-          </div>
-
-          {/* 설명 */}
-          <div class="description">
-            <p> <Meta description={`설명 글란 : ${postData.content}`} /> 🌱</p>
-          </div>
-
-          {/* 댓글 란 Comment 안에 넣기 */}
-          <div class="comment-section">
-            <ul class="comments">
-              <li>
-                <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                <div>
-                  <img class="comment-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more"/>
-                  <div class="comment-like">
-                    <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"/>
-                    <img class="comment-heart-liked" src="img/liked.png" alt="좋아요된하트"/>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            {/* 몇 분전인지 표기 */}
-            <div class="time-log">
-              <span>32분 전</span>
+            {/* 이미지 정보 */}
+            <div class="main-image">
+              <ImageSlider images={postData} />
             </div>
 
-          </div>
+            {/* 좋아요, 댓글 더보기, 공유, 북마크 */}
+            <div class="icons-react">
+              <div class="icons-left">
+                <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트" />
+                <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선" />
+                <img class="icon-react" src="img/dm.png" alt="DM" />
+              </div>
+              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크" />
+            </div>
 
-        </div>
+            {/* 본문 */}
+            <div class="reaction">
+              {/* 좋아요 개수 표기 */}
+              <div class="liked-people">
+                <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
+              </div>
 
-        <div class="hl"></div>
-        <Comment postData={postData}/>
+              {/* 설명 */}
+              <div class="description">
+                <p> <Meta description={`설명 글란 : ${postData.content}`} /> 🌱</p>
+              </div>
 
-      </article>
-      </Card>
-    </Col>;
+              {/* 댓글 란 Comment 안에 넣기 */}
+              <div class="comment-section">
+                <ul class="comments">
+                  <li>
+                    <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
+                    <div>
+                      <img class="comment-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
+                      <div class="comment-like">
+                        <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트" />
+                        <img class="comment-heart-liked" src="img/liked.png" alt="좋아요된하트" />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                {/* 몇 분전인지 표기 */}
+                <div class="time-log">
+                  <span>32분 전</span>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="hl"></div>
+            <Comment postData={postData} />
+
+          </article>
+        </Card>
+      </Col>;
     } else {
       return null;
     }
@@ -256,17 +256,17 @@ const Main = (props) => {
         </div>
       ) : (
         // 상품 있으면 목록 출력
-       <div>  {openModal && (
+        <div>  {openModal && (
           <Modal
-          
+
             setOpenModal={setOpenModal}
             openModal={openModal}
-           
-            
+
+
           />
         )}
           {renderCards}
-       </div>
+        </div>
       )}
       <br />
       {PostSize >= Limit && (

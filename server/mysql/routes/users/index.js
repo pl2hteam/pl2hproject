@@ -14,11 +14,13 @@ router.get("/auth", auth, (req, res) => {
         email: req.user.email,
         name: req.user.name,
         role: req.user.role,
-        image: req.user.img,
+        image: req.user.image,
         address: req.user.address,
         gender: req.user.gender,
         phone: req.user.phone,
         birth: req.user.birth,
+        couple_code: req.user.couple_code,
+        message: req.user.message,
     });
 });
 

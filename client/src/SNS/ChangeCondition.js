@@ -1,132 +1,11 @@
-
-
-
-
-import React, { useState } from "react";
-import Axios from "axios";
-import { useSelector } from "react-redux";
-import { Typography, Button, Form, message, Input } from "antd";
-import { withRouter } from "react-router";
-
-// import {
-
-//   MdMailOutline,
-//   MdLocationOn,
-//   MdPhoneIphone,
-// } from "react-icons/md";
-// import { publicUrl } from "../../Common/components/utils"
-
-
-
-
-const { Title } = Typography;
-const { TextArea } = Input;
-
-
-
-
-
-
-
-
-const ChangeConditon = (props) => {
-
-
-
-
-  const [ProfileContent, setProfileContent] = useState("");
-
-
-
-
-  const onProfileContent = (event) => {
-    setProfileContent(event.currentTarget.value);
-
-  };
-
-
-  const user = useSelector(state => state.user);
-  const onSubmit = (event) => {
-    // event.preventDefault();  // antd 자체 적용
-
-    if (
-
-      !ProfileContent
-
-    ) {
-      return alert("fill all the fields first!");
-    }
-
-    // console.log('props id 는 : ', props.user.userData._id);
-    const variables = {
-      //seller: user.userData._id,
-
-      content: ProfileContent,
-
-
-    };
-
-    Axios.post("/api/mysql/profiles/write", variables)
-      .then((response) => {
-        console.log('props.user 는 : ', response);
-        if (response.data.success) {
-
-          alert("Product Successfully Uploaded");
-          props.history.push("/sns/main");
-        } else {
-          console.log(response.data)
-          alert("Failed to upload Product");
-        }
-      });
-  };
-
-
-
-
-
-
-  return (
-
-
-    <Form onSubmit={onSubmit}>
-      {/* DropZone */}
-
-
-
-
-
-      <label>내용</label>
-      <Input onChange={onProfileContent} value={ProfileContent} />
-
-
-
-
-      <Button onClick={onSubmit}>편지보내기</Button>
-    </Form>
-
-
-  );
-};
-export default withRouter(ChangeConditon);
-
-
-
-
-
-
-
-
-
 import styled from "styled-components";
 import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-import ContentProfile from './ContentProfile';
-import UpdateProfile from "./UpdateProfile";
-import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
-
+import { Button, Form, Input } from "antd";
+import MovieFileUpload from './MovieFileUpload'
 
 
 ////////////////////////////////////////
@@ -146,10 +25,7 @@ import {
   MdPhoneIphone,
 } from "react-icons/md";
 import { publicUrl } from "../Common/components/utils"
-import ChangeConditon from "./ChangeConditon";
-const Mini = styled.div`
-width: 100%;
-`;
+
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -230,62 +106,133 @@ const ProfileSection = styled.section`
   }
 `;
 
-const LinkTitle = styled.p`
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  &:first-of-type {
-    margin-top: 20px;
-  }
-  &:last-of-type {
-    margin-bottom: 20px;
-  }
-  cursor: pointer;
-  svg {
-    margin-right: 5px;
-    color: #666;
-    font-size: 1.2rem;
-  }
-  &:hover {
-    color: green;
-  }
-`;
-const { Meta } = Card;
 
 
-const Home = () => {
-  const [userCondition, setUserCondition] = useState([]);
-
+const ChangeCondition = (props) => {
+  //const [userCondition, setUserCondition] = useState([]);
+  console.log(props);
+  console.log(props.user.userData)
   const userInfo = useSelector((state) => state.user);
   console.log(userInfo);
+
+  const [ChangeMyImage, setChangeMyImage] = useState("");
+  const [ChangeCoupleCode, setChangeCoupleCode] = useState("");
+  const [ChangeMessage, setChangeMessage] = useState("");
 
 
 
   // 내 상태 불러오기
-  const getCondion = (body) => {
+  const getCondition = () => {
 
-
-    Axios.post("/api/mysql/condions/read", body)
+    Axios.post("/api/mysql/conditions/read")
       .then((response) => {
 
-        console.log(body, "바디");
-        if (response.data.success) {
-          console.log(response.data, "데이터");
+        // if (response.data.success) {
+        //   console.log(response.data, "데이터");
 
-          setUserCondition([...userCondition, ...response.data.userCondionData]);
+        //   setUserCondition([...userCondition, ...response.data.userConditionData]);
+        //   console.log("response.data.userConditionData", response.data.userConditionData);
+        //   console.log(12321323213, response.data.userConditionData[0].message);
+        //   //console.log(userConditionData);
+        // } else {
+        //   console.log("내 상태 변경이 안되었네,,,");
+        //   alert("내 상태 변경이 안되었네,,,");
+        // }
+      });
+  };
+
+  //updateImages
+  const updateImages = (newImages) => {
+    setChangeMyImage(newImages);
+  };
+
+  const onChangeCoupleCode = (event) => {
+    setChangeCoupleCode(event.currentTarget.value);
+  };
+
+  const onChangeMessage = (event) => {
+    setChangeMessage(event.currentTarget.value);
+  };
+
+
+
+  const onSubmit = () => {
+
+    //리액트 서버에서 보내주는 데이터
+    const variables = {
+      //seller: user.userData._id,
+      id: userInfo.userData.id,
+      image: ChangeMyImage,
+      couple_code: ChangeCoupleCode,
+      message: ChangeMessage,
+    };
+
+    Axios.post("/api/mysql/conditions/update", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+
+        if (response.data.success) {
+
+          alert("정보가 변경되었습니다.");
+          props.history.push("/sns/Main");
         } else {
-          console.log("내 상태 변경이 안되었네,,,");
-          alert("내 상태 변경이 안되었네,,,");
+          console.log(response.data)
+          alert("정보 변경에 실패하였습니다.");
         }
       });
   };
 
+
+
+  //////////////////////////////////////////////////////////////////////////////
+
+  // const renderCards = Posts.map((postData, index) => {
+  //   if (postData || postData.HashtagId) {
+  //     console.log(postData);
+  //     return (
+  //       <Card >
+  //         <article>
+
+  //           <header>
+  //             {/* 사용자 정보 */}
+  //             <div class="profile-of-article">
+  //               <span class="userID main-id point-span">
+  //                 <Meta description={`${postData.UserId.name}`} />
+  //               </span>
+  //             </div>
+  //           </header>
+
+  //           {/* 이미지 정보 */}
+  //           <div class="main-image">
+  //           </div>
+
+  //           {/* 본문 */}
+  //           <div class="reaction">
+  //             {/* 설명 */}
+  //             <div class="description">
+  //               <p> <Meta description={`설명 글란 : ${postData.content}`} />🌱</p>
+  //             </div>
+  //           </div>
+  //         </article>
+  //       </Card>);
+  //   } else {
+  //     return null;
+  //   }
+  // });
+
+  ////////////////////////////////////////////////////////////////////////////
+
+
   useEffect(() => {
 
-    getCondion();
+    getCondition();
   }, []);
 
-
+  let postvideo = {
+    updateImages,
+    // updateVideoPath,
+    // updateDuration
+  }
 
   return (
     <Layout>
@@ -295,10 +242,16 @@ const Home = () => {
             <ProfileSection>
               <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
               {/* <div>{userCondionData.message}</div> */}
-              <Link to={'/ChangeConditon'}>내 상태변경</Link>
-
             </ProfileSection>
-            <ProfileSection>
+          </FlexWrapper>
+        </Cards>
+      </Sidebar>
+      <Content>
+        <Cards>
+          <ContentSection>
+
+            <div style={{ width: "75%", margin: "3rem auto" }}>
+              <h2>MY CONDITION</h2>
               <p>
                 <span className="my-name">{userInfo.userData.name}</span>
                 <span className="my-sex">({userInfo.userData.gender})</span>
@@ -316,20 +269,35 @@ const Home = () => {
                 <MdLocationOn />
                 {userInfo.userData.address}
               </p>
-            </ProfileSection>
-          </FlexWrapper>
-        </Cards>
-      </Sidebar>
-      <Content>
+
+              {/* ----------------------------------------------------------------------------- */}
+              <Form onSubmit={onSubmit}>
+                {/* DropZone */}
+                <MovieFileUpload refresh={postvideo} />
+                {/* <p>
+                  <label>프로필 이미지</label>
+                  <Input onChange={onChangeMyImage} value={ChangeMyImage} />
+                </p> */}
+                <p>
+                  <label>커플코드</label>
+                  <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} />
+                </p>
+                <p>
+                  <label>상태메세지</label>
+                  <Input onChange={onChangeMessage} value={ChangeMessage} />
+                </p>
 
 
-        <Cards>
+                <Button onClick={onSubmit}>수정</Button>
+              </Form>
 
-
+            </div>
+          </ContentSection>
         </Cards>
       </Content>
     </Layout>
 
   );
 };
-export default withRouter(Home);
+
+export default withRouter(ChangeCondition);

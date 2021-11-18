@@ -4,15 +4,15 @@ const router = express.Router();
 
 const write = require('./write');
 const read = require('./read');
+const update = require('./update');
 const uploadimage = require('./uploadimage');
 
 
 
-/* 내 상태 작성 */
-router.use('/write', write);
 
-/* 내 상태 메인 */
+router.use('/write', write);
 router.use('/read', read);
+router.use('/update', update);
 router.use('/uploadimage', uploadimage);
 
 

@@ -135,37 +135,91 @@ const LinkTitle = styled.p`
 const { Meta } = Card;
 
 
-const Home = () => {
-  const [userCondition, setUserCondition] = useState([]);
+const Home = (props) => {
+  const [userConditionData, setuserConditionData] = useState([]);
 
-  const userInfo = useSelector((state) => state.user);
+  const userInfo = useSelector(state => state.user);
   console.log(userInfo);
 
 
 
-  // 내 상태 불러오기
-  const getCondion = (body) => {
+  // // 내 상태 불러오기
+  // // const getCondition = () => {
+  // const renderCards =
+  //   Axios.post("/api/mysql/conditions/read")
+  //     .then((response) => {
+  //       console.log(response);
+  //       console.log(response.data.userConditionData);
+  //       console.log(response.data.userConditionData[0]);
+  //       console.log(response.data.userConditionData[0].image);
 
 
-    Axios.post("/api/mysql/condions/read", body)
+  //       // console.log(body, "바디");
+  //       // if (response.data.success) {
+  //       //   console.log(response.data, "데이터");
+
+  //       //   setUserCondition([...userCondition, ...response.data.userConditionData]);
+  //       // } else {
+  //       //   console.log("내 상태 변경이 안되었네,,,");
+  //       //   alert("내 상태 변경이 안되었네,,,");
+  //       // }
+  //     });
+  // // };
+
+  // // useEffect(() => {
+
+  // //   getCondition();
+  // // }, []);
+
+
+  const getCondition = () => {
+
+    Axios.post("/api/mysql/conditions/read")
       .then((response) => {
 
-        console.log(body, "바디");
-        if (response.data.success) {
-          console.log(response.data, "데이터");
+        // if (response.data.success) {
+        //   console.log(response.data, "데이터");
 
-          setUserCondition([...userCondition, ...response.data.userCondionData]);
-        } else {
-          console.log("내 상태 변경이 안되었네,,,");
-          alert("내 상태 변경이 안되었네,,,");
-        }
+        //   setUserCondition([...userCondition, ...response.data.userConditionData]);
+        //   console.log("response.data.userConditionData", response.data.userConditionData);
+        //   console.log(12321323213, response.data.userConditionData[0].message);
+        //   //console.log(userConditionData);
+        // } else {
+        //   console.log("내 상태 변경이 안되었네,,,");
+        //   alert("내 상태 변경이 안되었네,,,");
+        // }
       });
   };
 
   useEffect(() => {
 
-    getCondion();
+    getCondition();
   }, []);
+
+  const renderMyImage = 1;
+  //Products.map((product, index) => {
+  //   return (
+  //     <div className="shop-main-content-item_box">
+  //       <a href={`/shop/product/${product._id}`}>
+  //         <img
+  //           className="shop-main-content-item_box-img"
+  //           src={`http://localhost:5000/${product.images[0]}`}
+  //           alt="productImage"
+  //         />
+  //         <div className="shop-main-content-item_box-info">
+  //           <div className="shop-main-content-item_box-info-name">
+  //             {product.pdName}
+  //           </div>
+  //           <div className="shop-main-content-item_box-info-price">
+  //             <img className="purse" src={Purse} alt="money" />
+  //             {product.price.toLocaleString("ko-KR")}
+  //           </div>
+  //         </div>
+  //       </a>
+  //     </div>
+  //   );
+  // });
+
 
 
 
@@ -175,14 +229,18 @@ const Home = () => {
         <Cards>
           <FlexWrapper>
             <ProfileSection>
-              <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
-              {/* <div>{userCondionData.message}</div> */}
-              <Link to={'/ChangeConditon'}>내 상태변경</Link>
+              {/* <img src={publicUrl + { } alt="profile" /> */}
+              {/* <div>{userConditionData.message}</div> */}
+              {renderMyImage}
+              <Link to={'/ChangeCondition'}>내 상태변경</Link>
+
+              <p>{userInfo.userData.message}</p>
 
             </ProfileSection>
             <ProfileSection>
               <p>
                 <span className="my-name">{userInfo.userData.name}</span>
+
                 <span className="my-sex">({userInfo.userData.gender})</span>
                 <span className="my-brthdy">{userInfo.userData.birth}</span>
               </p>
