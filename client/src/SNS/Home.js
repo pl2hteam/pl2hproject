@@ -148,6 +148,9 @@ const { Meta } = Card;
 
 
 const Home = (props) => {
+  const [CC1, setCC1] = useState([])
+  const [CC2, setCC2] = useState([])
+
   console.log(props);
 
   //const [userConditionData, setUserConditionData] = useState([]);
@@ -157,7 +160,7 @@ const Home = (props) => {
 
   let userImg
   if (props.user.userData) {
-    userImg = props.user.userData.image
+    userImg = props.user.userData.name
     console.log(props.user.userData.image);
   }
 
@@ -209,8 +212,6 @@ const Home = (props) => {
 
   // }
 
-
-
   const getCondition = () => {
 
     // console.log("UserInfo", userInfo);
@@ -246,8 +247,45 @@ const Home = (props) => {
         //   setUserConditionData([...userConditionData]);
         // }
       });
+
+
   };
 
+  const getCouple = () => {
+
+
+    Axios.post("/api/mysql/couples/read")
+      .then((response) => {
+        console.log(99999999999, response);
+        console.log(99999999999, response.data.allUser);
+
+        const arr = response.data.allUser;
+        console.log(arr);
+
+        for (let i = 0; i < arr.length; i++) {
+
+          if (arr[i].couple_code === userInfo.userData.couple_code) {
+            if (arr[i].name !== userInfo.userData.name) {
+              console.log(arr[i].couple_code);
+            console.log(userInfo.userData.couple_code);
+            setCC1(userInfo.userData.name)
+            setCC2(arr[i].name)
+            }
+            
+            
+            
+          } else {
+            
+            
+          }
+          
+
+        }
+
+
+      });
+  }
+console.log(9987666666666);
 
   useEffect(() => {
 
@@ -274,7 +312,18 @@ const Home = (props) => {
 
               <Link to={'/ChangeCondition'}>내 상태변경</Link>
               <hr />
+            
               <h2>상태메세지</h2>
+
+              <br/>
+              <br/>
+              <br/>
+              
+  <div className="couple">
+              <h2>커플</h2>
+              <p>{CC1}♥️{CC2}</p>
+              </div>
+
               <p>{userInfo.userData.message}</p>
 
             </ProfileSection>
@@ -311,6 +360,7 @@ const Home = (props) => {
           </Mini>
           <ContentSection>
             <h2>한 줄 감성</h2>
+                 <p>{getCouple()}</p>
             <Link to={'/ContentProfile'}>방명록</Link>
 
             <UpdateProfile />
