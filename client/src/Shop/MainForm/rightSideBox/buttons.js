@@ -7,10 +7,10 @@ import styled from 'styled-components';
 
 const buttons = (props) => {
   const logoutHandler = () => {
-    Axios.get(`/api/mysql/users/logout`).then(response => {
+    Axios.get(`/api/mongo/users/logout`).then(response => {
       console.log(response);
       if (response.status === 200) {
-        props.history.push("/sns");
+        props.history.push("/shop");
       } else {
         alert('Log Out Failed')
       }
