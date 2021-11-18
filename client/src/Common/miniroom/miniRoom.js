@@ -22,7 +22,7 @@ const Header = styled.div`
 `;
 
 const MyMiniroom = styled.div`
-  height: 234px;
+  height: 460px;
   min-height: 230px;
   border: 1px solid #bfbfbf;
   background-image: url(${(props) =>

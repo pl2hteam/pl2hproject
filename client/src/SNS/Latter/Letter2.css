@@ -1,0 +1,104 @@
+
+  * {
+    font-family: 'Poor Story', cursive;
+}
+
+
+
+.envelope {
+    background-image: url("https://pngimg.com/uploads/envelope/envelope_PNG18366.png");
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 200px;
+    margin: 200px auto 0 auto;
+    cursor: pointer;
+}
+
+.envelope-msg {
+    text-align: center;
+    color: white;
+}
+
+.letter-open {
+    display: none;
+}
+
+.letter-close {
+    display: block;
+}
+
+.IU {
+    /*background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/xmas/rtan.gif");*/
+    background-image: url("https://1.bp.blogspot.com/-kKUZrX4ijzA/X8CLohExjbI/AAAAAAAFPkQ/sXxVWMbbO0sea7Gaie4BiASRbpLxOQSSACLcBGAsYHQ/s0/2.gif");
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 200px;
+    margin: 100px auto 0 auto;
+    background-color: white;
+    border-radius: 100px;
+    border: 5px solid white;
+    box-shadow: 0px 0px 10px 0px white;
+}
+
+.letter-title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    text-align: center;
+}
+
+.msgbox {
+    background-color: ivory;
+    width: 400px;
+    margin: auto;
+    color: brown;
+    padding: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    box-shadow: 0px 0px 10px 0px white;
+}
+
+.from {
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+.music {
+    width: 400px;
+    height: 35px;
+    margin: 10px auto auto auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.music iframe {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2000px;
+    border: none;
+}
+
+@media screen and (max-width: 760px) {
+    .msgbox {
+        width: 280px;
+        padding: 20px;
+    }
+
+    .rtan {
+        width: 150px;
+        height: 150px;
+        margin: 70px auto 0px auto;
+    }
+
+    .letter-title {
+        font-size: 28px;
+    }
+
+    .envelope {
+        margin: 150px auto 0px auto;
+    }
+
+}

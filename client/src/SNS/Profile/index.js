@@ -9,19 +9,16 @@ import Intro from './Intro';
 import Favorite from './Favorite';
 import Write from './Write';
 import { withRouter } from 'react-router';
+import { useState } from 'react';
 
 
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
     {
-      id: 1,
-      title: '👩‍💻내 소개',
-      url: '/intro',
-      child: [
-        { id: 1, title: '마이페이지', url: '/default' },
-        { id: 3, title: '내 짝궁소개', url: '/dev' },
-      ],
+      id: 3,
+      title: 'dadadad',
+      url: '/Dev',
     },
     {
       id: 3,
@@ -29,6 +26,11 @@ const Profile = () => {
       url: '/Write',
     },
   ];
+const [mbti, setMbti] = useState([]);
+
+  const onMbti = (type) => {
+    setMbti(type)
+  }
 
   return (
     <Layout>
@@ -40,6 +42,7 @@ const Profile = () => {
       <Content>
         <Card>
           <Switch>
+            
             <Route exact path={`${match.path}`} component={Intro} />
             <Route exact path={`${match.path}/intro`} component={Intro} />
             <Route path={`${match.path}/intro/:type`} component={Intro} />

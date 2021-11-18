@@ -5,13 +5,14 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-
+import Letter2 from '../Letter2.css'
 import { withRouter } from "react-router";
 
 
 const { Meta } = Card;
 
 const Main = () => {
+ 
 
     const [Letters, setProfiles] = useState([]);
     const [Skip, setSkip] = useState(0);
@@ -22,6 +23,7 @@ const Main = () => {
     // 상품목록 불러오기
     const getProfiles = (body) => {
       
+
      
       Axios.post("/api/mysql/letters/read", body).then((response) => {
        
@@ -48,14 +50,40 @@ const Main = () => {
     
  
     const renderCards = Letters.map((fullLetter, index) => {
+
+
+      function open_letter() {
+        document.getElementsByClassName("letter-close")[0].style.display = 'none'
+        document.getElementsByClassName("letter-open")[0].style.display = 'block'
+    }
       return (
         <Col lg={3} md={4} xs={8}>
-            <Meta description={`$${fullLetter.to}`} />
-            <Meta description={`$${fullLetter.title}`} />
-            <Meta description={`$${fullLetter.content}`} />
-            <Meta description={`$${fullLetter.from}`} />
-            <Meta description={`$${fullLetter.ps}`} />
-            <hr/>
+          
+           <div class="letter-close"onClick={() => {
+                open_letter(true)}}>
+        <div class="envelope" onClick={() => {
+                open_letter(true)}}></div>
+        <h2 class="envelope-msg">봉투를 열어봐</h2>
+        <h3 class="envelope-msg">음악이 나오니 볼륨을 조정해주세요</h3>
+    </div>
+
+    <div class="letter-open" >
+        <div class="IU"  ></div>
+        <h1 class="letter-title">사랑해♥️</h1>
+
+        <div class="msgbox">
+        <p class="from">   <Meta description={`${fullLetter.to}`} />가</p>
+       
+            <Meta description={`${fullLetter.title}`} />
+            <Meta description={`${fullLetter.content}`} />
+
+            내 친구  <Meta description={`${fullLetter.ps}`} /> <br />
+            <p class="from"> <Meta description={`${fullLetter.from}`} /></p>
+        </div>
+        <button onClick={() => {
+                open_letter(false)}}>닫기</button>
+
+    </div>
         </Col>
       );
     });
