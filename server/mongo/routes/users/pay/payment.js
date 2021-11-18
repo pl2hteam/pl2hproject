@@ -11,17 +11,6 @@ router.post("/successBuy", (req, res) => {
   let history = [];
   let transactionData = {};
 
-  let ID;
-  if (req.user.gender) {
-    ID = req.user.id
-  } else {
-    ID = req.user._id
-  }
-
-  console.log(222222222222);
-  console.log(ID);
-  console.log(333333333333);
-
   req.body.cartDetail.forEach((item) => {
     history.push({
       dateOfPurchase: Date(),
@@ -34,16 +23,24 @@ router.post("/successBuy", (req, res) => {
     });
   });
 
-  transactionData.user = {
-    id: ID,
-    name: req.user.name,
-    email: req.user.email,
-  };
+  if (req.user.gender) {
+    transactionData.user = {
+      name: req.user.name,
+      email: req.user.email,
+    };
+  
+  } else {
+    transactionData.user = {
+      id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+    };
+  
+  }
 
   transactionData.data = req.body.paymentData;
   transactionData.product = history;
-  
-  console.log(req.user);
+
   if (req.user.gender) {
     Cart.findOneAndUpdate(
       { email: req.user.email },

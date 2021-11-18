@@ -178,6 +178,7 @@ export function getCart(data) {
 }
 
 export function getHistory(data) {
+  console.log(data);
   let request = axios
       .get(`${MONGO_USER_SERVER}/sns/getHistory`, data)
       .then((response) => response.data);

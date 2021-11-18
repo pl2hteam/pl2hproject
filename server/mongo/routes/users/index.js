@@ -10,6 +10,7 @@ const userCartInfo = require("./cart/userCartInfo");
 const payment = require("./pay/payment");
 const addCart = require("./sns/addCart");
 const getCart = require("./sns/getCart");
+const getHistory = require("./sns/getHistory");
 
 const { auth } = require("../../middleware/auth");
 
@@ -27,6 +28,7 @@ router.use("/logout", auth, logout);
 
 router.use("/sns/addCart", addCart);
 router.use("/sns/getCart", getCart);
+router.use("/sns/getHistory", getHistory);
 
 /* 장바구니 */
 router.use("/addToCart", addToCart);
