@@ -1,16 +1,9 @@
 {
   "development": {
-<<<<<<< HEAD
-    "username": "root",
-    "password": "1234",
-    "database": "pl2h1212",
-    "host": "127.0.0.1",
-=======
     "username": "admin",
     "password": "diary1234",
     "database": "pl2h",
     "host": "teamdiary.ciszsojgfruj.ap-northeast-2.rds.amazonaws.com",
->>>>>>> origin/minjoo
     "dialect": "mysql"
   },
   "test": {
