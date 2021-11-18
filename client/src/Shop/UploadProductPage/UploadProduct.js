@@ -99,36 +99,45 @@ const UploadProductPage = (props) => {
   return (
     <UploadStyle>
       <div style={{ maxWidth: "700px", margin: "0rem auto" }}>
+        <h1 className="title">아이템 등록</h1>
         <Form onSubmit={onSubmit}>
           <MovieFileUpload refreshImgFunction={video} />
-          <div className="item">
-            <label>물품명 : </label>
-            <Input onChange={onPdNameChange} value={PdNameValue} />
+          <div className="upload-item-list">
+            <div className="item">
+              <label>아이템명</label>
+              <Input onChange={onPdNameChange} value={PdNameValue} />
+            </div>
+            <div className="item">
+              <label>브랜드</label>
+              <Input onChange={onBrandChange} value={BrandValue} />
+            </div>
+            <div className="item">
+              <label>상세정보</label>
+              <TextArea
+                onChange={onDescriptionChange}
+                value={DescriptionValue}
+              />
+            </div>
+            <div className="item">
+              <label>가 격</label>
+              <Input
+                onChange={onPriceChange}
+                value={PriceValue}
+                type="number"
+              />
+            </div>
+            <div className="item">
+              <label>종 류 </label>
+              <select onChange={onItemNumberSelectChange} value={ItemNumber}>
+                {Subject.map((item) => (
+                  <option key={item.key} value={item.key}>
+                    {item.value}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <Button onClick={onSubmit}>아이템 등록하기</Button>
           </div>
-          <div className="item">
-            <label>브랜드 : </label>
-            <Input onChange={onBrandChange} value={BrandValue} />
-          </div>
-          <div className="item">
-            <label>상세정보 : </label>
-            <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
-          </div>
-          <div className="item">
-            <label>가 격 : </label>
-            <Input onChange={onPriceChange} value={PriceValue} type="number" />
-          </div>
-          <div className="item">
-            <label>종 류 : </label>
-            <select onChange={onItemNumberSelectChange} value={ItemNumber}>
-              {Subject.map((item) => (
-                <option key={item.key} value={item.key}>
-                  {item.value}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <Button onClick={onSubmit}>아이템 등록하기</Button>
         </Form>
       </div>
     </UploadStyle>

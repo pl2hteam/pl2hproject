@@ -14,14 +14,16 @@ const BorderWrapper = styled.div`
 `;
 //책 안
 const BgWrapper = styled.div`
+  color: white;
   z-index: 1;
   position: relative;
   display: flex;
   height: 100%;
   padding: 20px 8px 8px;
   background: #f2f8fa;
-  border: 2px dashed black;
+  border: 2px dashed white;
   border-radius: 10px;
+  background-color: rgb(51, 58, 100);
 `;
 
 const Wrapper = styled.div`

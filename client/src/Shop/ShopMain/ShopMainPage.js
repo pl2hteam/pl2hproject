@@ -147,7 +147,7 @@ const ShopMainPage = (pdFilter) => {
   return (
     <div>
       <div className="shop-main-title">
-        <h1 style={{ fontSize: "2rem" }}>상점</h1>
+        <h1 style={{ fontSize: "2rem", color: "white" }}>상점</h1>
       </div>
       <div className="shop-main">
         {/* 상품, 가격 필터 */}
