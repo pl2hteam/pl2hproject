@@ -1,10 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
-import MusicPlayer from './rightSideBox/rightSideBox';
+import MusicPlayer from './Music';
 
 const Wrapper = styled.div`
-  min-width: 250px;
   width: 20%;
   font-size: 0.9rem;
   & > div {
@@ -17,7 +16,7 @@ const Wrapper = styled.div`
 const Setting = () => {
   return (
     <Wrapper>
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
     </Wrapper>
   );
 };

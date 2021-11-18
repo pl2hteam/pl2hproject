@@ -8,6 +8,8 @@ import ContentProfile from './ContentProfile';
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
+import VisitorWriting from "./visitor/VisitorWriting";
+
 
 
 
@@ -292,9 +294,11 @@ const Home = (props) => {
           <ContentSection>
             <h2>한 줄 감성</h2>
             <Link to={'/ContentProfile'}>방명록</Link>
-            <ul>
-              <UpdateProfile />
-            </ul>
+
+            <UpdateProfile />
+
+
+
           </ContentSection>
         </Cards>
       </Content>

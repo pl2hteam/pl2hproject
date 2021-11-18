@@ -5,7 +5,7 @@ import MainMenu from "../Menu/MainMenu";
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 75%;
   h1 {
     color: black;
     font-weight: bold;

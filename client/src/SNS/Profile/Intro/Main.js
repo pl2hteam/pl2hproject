@@ -7,11 +7,11 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
-import Comment from "../Comment/Comment";
+// import Comment from "../Comment/Comment";
 import Feed from './feed.css'
 ////////////////////////////////////////
 import { Typography, Button, Form, message, Input } from "antd";
-
+import Delete from "./delete";
 /////////////
 
 const Wrapper = styled.div`
@@ -129,13 +129,6 @@ const Main = (props) => {
     setSkip(skip);
   }; const [openModal, setOpenModal] = useState(false);
 
-  // let userImg
-  // if (props.user.userData) {
-  //   userImg = props.user.userData.image
-  //   console.log(props.user.userData.image);
-  // }
-
-
   const renderCards = Posts.map((postData, index) => {
     if (postData || postData.HashtagId) {
       console.log(postData);
@@ -143,6 +136,7 @@ const Main = (props) => {
         setOpenModal(true);
       }}>
         <Card hoverable={true}>
+          {/* <Delete delete={postData}/> */}
           <article>
 
             <header>
@@ -152,11 +146,20 @@ const Main = (props) => {
                 <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
               </div>
 
-
               {/* 추가 정보 *** */}
               <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
 
             </header>
+            {openModal && (
+              <Modal
+                modal={postData}
+
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+
+
+              />
+            )}
 
             {/* 이미지 정보 */}
             <div class="main-image">
@@ -212,9 +215,9 @@ const Main = (props) => {
             <div class="hl"></div>
             <Comment postData={postData} />
 
-          </article>
-        </Card>
-      </Col>;
+          </article >
+        </Card >
+      </Col >;
     } else {
       return null;
     }
@@ -262,15 +265,7 @@ const Main = (props) => {
         </div>
       ) : (
         // 상품 있으면 목록 출력
-        <div>  {openModal && (
-          <Modal
-
-            setOpenModal={setOpenModal}
-            openModal={openModal}
-
-
-          />
-        )}
+        <div>
           {renderCards}
         </div>
       )}

@@ -25,7 +25,10 @@ router.post('/', async (req, res, next) => {
       let imgData = [];
       for (let j = 0; j < Images.length; j++) {
         if(fullPost[i].dataValues.id === Images[j].dataValues.PostId) {
-          imgData.push(Images[j].src);
+          imgData.push(
+            // PostId:Images[j].PostId,
+            Images[j].src,
+            );
         }
       }
 
@@ -39,7 +42,8 @@ router.post('/', async (req, res, next) => {
         // duration: null,
         createdAt: fullPost[i].dataValues.createdAt,
         updatedAt: fullPost[i].dataValues.updatedAt,
-        UserId: fullPost[i].dataValues.User
+        UserId: fullPost[i].dataValues.User,
+        // PostId:fullPost[i].dataValues.
       })
     }
 

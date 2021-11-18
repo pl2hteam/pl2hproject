@@ -8,6 +8,7 @@ import Content from '../Layout/Content';
 import Intro from './Intro';
 import RoomMate from './roomMate';
 
+
 import LandingPage from './roomMate/LandingPage';
 import ResultPage from './roomMate/ResultPage';
 
@@ -35,8 +36,18 @@ const Mind = () => {
       //   { id: 3, url: '/result' },
       // ],
     },
+    {
+      id: 2,
+      title: 'Mbti 찾기',
+      url: '/Mbti',
+      // child: [
+      //   { id: 1, url: '/all' },
+      //   { id: 2, url: '/makers' },
+      //   { id: 3, url: '/result' },
+      // ],
+    },
   ];
-
+ 
   return (
     <>
       <Layout>
@@ -48,8 +59,10 @@ const Mind = () => {
         <Content>
           <Card>
             <Switch>
+        
               <Route exact path={`${match.path}/intro`} component={Intro} />
               <Route exact path={`${match.path}/roomMate`} component={LandingPage} />
+     
               <Route
                 exact
                 path={`${match.path}/roomMate/:type`}

@@ -8,20 +8,34 @@ const ProductInfo = (props) => {
     setProduct(props.detail);
   }, [props.detail]);
 
-  console.log(props.detail._id);
   const addToCarthandler = () => {
     props.addToCart(props.detail._id);
   };
 
   return (
     <div>
-      <div>
-        <div>금화 : {props.detail.price.toLocaleString("ko-KR")}</div>
-        <div>브랜드 : {Product.brand}</div>
-        <div> 수량 : {Product.quantity}</div>
-        {/* <div> {Product.seller}</div> */}
-        <div> 설명 : {Product.description}</div>
-      </div>
+      <Descriptions title="Product Info">
+        <Descriptions.Item label="Price">
+          금화 : {Product.price}
+        </Descriptions.Item>
+        <Descriptions.Item label="Brand">
+          브랜드 : {Product.brand}
+        </Descriptions.Item>
+        <Descriptions.Item label="quantity">
+          {" "}
+          수량 : {Product.quantity}
+        </Descriptions.Item>
+        {/* <Descriptions.Item label="Seller"> {Product.seller}</Descriptions.Item> */}
+        <Descriptions.Item label="Description">
+          {" "}
+          설명 : {Product.description}
+        </Descriptions.Item>
+      </Descriptions>
+      {/* <div className="price">가격 : {Product.price} 원</div>
+      <div className="brand">브랜드명 : {Product.brand}</div>
+      <div className="quantity">수량 : {Product.quantity}</div>
+      <div className="seller">판매자 : {Product.seller}</div>
+      <div className="description">상세정보 : {Product.description}</div> */}
 
       <br />
       <br />
