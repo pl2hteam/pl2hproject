@@ -28,9 +28,8 @@ const Nav = styled.nav`
   }
 `;
 
-function MainMenu(props) {
+function MainMenu() {
   const userInfo = useSelector(state => state.user);
-  console.log(userInfo,313199999);
 
 
 

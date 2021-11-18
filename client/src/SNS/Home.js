@@ -270,6 +270,7 @@ const Home = (props) => {
             console.log(userInfo.userData.couple_code);
             setCC1(userInfo.userData.name)
             setCC2(arr[i].name)
+            break;
             }
             
             
