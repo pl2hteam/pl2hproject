@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Main from "./Intro/Main";
 import Feed from "./feed.css";
+import Delete from "./Intro/delete";
 
 import { Typography, Button, message, Input } from "antd";
 const Modal = (props) => {
@@ -127,35 +128,9 @@ const Modal = (props) => {
             </div>
           </div>
         </article>
+        <Delete modal={props} />
       </Form>
     </div>
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Main from './Intro/Main'
-import Feed from './Intro/feed.css'
-import Delete from './Intro/delete'
-
-import { Typography, Button, message, Input } from "antd";
-const Modal = (props) => {
-  console.log(props,31313131);
-  
-  const {
-    
-    setOpenModal,
-  
-  } = props;
-  return (<Form>
-<Close
-      onClick={() => {
-         setOpenModal(false);
-       }}
-     >
-       닫기
-   </Close>
-
-<Delete modal={props}/>
-  </Form>
-   
   );
 };
 
