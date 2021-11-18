@@ -26,6 +26,10 @@ const cartSchema = mongoose.Schema({
       type: Array,
       default: [],
     },
+    history: {
+      type: Array,
+      default: [],
+    },
   }, { timestamps: true }
 );
 
