@@ -9,6 +9,8 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
+
+  
   const [PostTitle, setPostTitle] = useState("");
   const [PostContent, setPostContent] = useState("");
   const [PostImg, setPostImg] = useState("");
@@ -63,6 +65,29 @@ const UploadProductPage2 = (props) => {
       videos: VideoPath,
       duration: Duration,
     };
+
+
+
+
+
+
+
+
+    // Axios.delete(`/api/mysql/posts/write/delete`)
+    // .then((response) => {
+    //  console.log('props.user 는 : ', response);
+    //  if (response.data.success) {
+    
+    //    alert("Product Successfully Uploaded");
+    //    props.history.push("/sns");
+    //  } else {
+    //    console.log(response.data)
+    //    alert("Failed to upload Product");
+    //  }
+    // });
+
+
+
 
     Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {

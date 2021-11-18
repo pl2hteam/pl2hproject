@@ -1,5 +1,4 @@
 const express = require("express");
-const { User } = require("../../schemas/User");
 const { Product } = require("../../schemas/Product");
 const router = express.Router();
 
@@ -13,8 +12,6 @@ router.get("/", (req, res) => {
   let type = req.query.type;
   let pdnumbers = req.query.id;
 
-  console.log("req.query.id", req.query.id);
-
   if (type === "array") {
     let ids = req.query.id.split(",");
     pdnumbers = [];
@@ -23,9 +20,6 @@ router.get("/", (req, res) => {
     });
   }
 
-  console.log("pdnumbers", pdnumbers);
-
-  //we need to find the product information that belong to product Id
   Product.find({ _id: { $in: pdnumbers } })
     .populate("seller")
     .exec((err, product) => {

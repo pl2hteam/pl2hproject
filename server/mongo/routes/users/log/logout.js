@@ -1,20 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require("../../schemas/User");
+const { User } = require("../../../schemas/User");
 
 /////////////////////////////////////////////////////
 /*                                                 */
-/*          /api/mongo/users/register              */
+/*           /api/mongo/users/logout               */
 /*                                                 */
 /////////////////////////////////////////////////////
 
-router.post("/", (req, res) => {
-  const user = new User(req.body);
-  console.log(req.body);
-
-  user.save((err, doc) => {
+router.get("/", (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
       if (err) return res.json({ success: false, err });
-      return res.status(200).json({
+      return res.status(200).send({
           success: true
       });
   });

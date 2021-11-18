@@ -8,7 +8,7 @@ const BorderWrapper = styled.div`
   width: 75%;
   height: 95vh;
   padding: 25px;
-  background: RGBA(0, 0, 0, 0.3);
+  background: rgb(84, 92, 143);
   border: 3px solid black;
   border-radius: 10px;
 `;

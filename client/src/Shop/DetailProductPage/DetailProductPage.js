@@ -4,7 +4,6 @@ import ProductImage from "./Sections/ProductImage";
 import ProductInfo from "./Sections/ProductInfo";
 import { addToCart } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
-// import Subscriber from "./Sections/Subscriber";
 import Comment from "./Sections/Comment";
 import MainForm from "../MainForm/MainForm";
 import "./DetailProductPage.css";
