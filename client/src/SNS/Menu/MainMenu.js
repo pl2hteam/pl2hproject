@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 //버튼색
 const Nav = styled.nav`
   z-index: -1;
@@ -27,50 +28,81 @@ const Nav = styled.nav`
   }
 `;
 
-function MainMenu() {
-  return (
+function MainMenu(props) {
+  const userInfo = useSelector(state => state.user);
+  console.log(userInfo,313199999);
+
+
+
+if(userInfo.userData.couple_code !==null){return (
+  <Nav>
+    <ul>
+      <li>
+        <NavLink exact to="/sns/main" activeClassName="selected">
+          홈
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/profile" activeClassName="selected">
+          SNS
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/Jam" activeClassName="selected">
+          놀거리
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/Latter" activeClassName="selected">
+          편지
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/Mind" activeClassName="selected">
+          심리
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/Pic" activeClassName="selected">
+          사진첩
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/Calendar" activeClassName="selected">
+          캘린더
+        </NavLink>
+      </li>
+    
+     
+    </ul>
+  </Nav>
+);}else{
+  return(
     <Nav>
-      <ul>
-        <li>
-          <NavLink exact to="/sns/main" activeClassName="selected">
-            홈
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sns/profile" activeClassName="selected">
-            SNS
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sns/Jam" activeClassName="selected">
-            놀거리
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sns/Latter" activeClassName="selected">
-            편지
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sns/Mind" activeClassName="selected">
-            심리
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sns/Pic" activeClassName="selected">
-            사진첩
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sns/Calendar" activeClassName="selected">
-            캘린더
-          </NavLink>
-        </li>
-      
-       
-      </ul>
-    </Nav>
-  );
+    <ul>
+      <li>
+        <NavLink exact to="/sns/main" activeClassName="selected">
+          홈
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/profile" activeClassName="selected">
+          SNS
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sns/Jam" activeClassName="selected">
+          놀거리
+        </NavLink>
+      </li>
+     
+    
+     
+    </ul>
+  </Nav>
+  )
+}
+ 
 }
 
 export default MainMenu;
