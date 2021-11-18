@@ -129,6 +129,13 @@ const Main = (props) => {
     setSkip(skip);
   }; const [openModal, setOpenModal] = useState(false);
 
+  // let userImg
+  // if (props.user.userData) {
+  //   userImg = props.user.userData.image
+  //   console.log(props.user.userData.image);
+  // }
+
+
   const renderCards = Posts.map((postData, index) => {
     if (postData || postData.HashtagId) {
       console.log(postData);
@@ -141,11 +148,10 @@ const Main = (props) => {
             <header>
               {/* 사용자 정보 */}
               <div class="profile-of-article">
-                <span class="userID main-id point-span">
-                  {/* <Meta description={`${postData.UserId.image}`} /> */}
-                  <Meta description={`${postData.UserId.name}`} />
-                </span>
+                <img class="img-profile pic" src={`http://localhost:5000/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
+                <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
               </div>
+
 
               {/* 추가 정보 *** */}
               <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
