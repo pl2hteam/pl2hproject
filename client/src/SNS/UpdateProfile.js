@@ -4,13 +4,13 @@
 ////////////////////////////////////////
 
 import styled from "styled-components";
-import m1 from "./visitor/img/minime/1.png"
-import m2 from "./visitor/img/minime/2.png";
-import m3 from "./visitor/img/minime/3.png";
-import m4 from "./visitor/img/minime/4.png";
-import m5 from "./visitor/img/minime/5.png";
-import m6 from "./visitor/img/minime/6.png";
-import DropdownMinime from "./visitor/dropdownMinime"
+// import m1 from "./visitor/img/minime/1.png"
+// import m2 from "./visitor/img/minime/2.png";
+// import m3 from "./visitor/img/minime/3.png";
+// import m4 from "./visitor/img/minime/4.png";
+// import m5 from "./visitor/img/minime/5.png";
+// import m6 from "./visitor/img/minime/6.png";
+// import DropdownMinime from "./visitor/dropdownMinime"
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
@@ -104,9 +104,9 @@ const SaveBtn = styled.button`
 const { Meta } = Card;
 
 const UpdateProfile = () => {
-  const [isShow, setIsShow] = useState(false);
-  const [minime, setMinime] = useState(0);
-  const mArr = [m1, m2, m3, m4, m5, m6];
+  // const [isShow, setIsShow] = useState(false);
+  // const [minime, setMinime] = useState(0);
+  // const mArr = [m1, m2, m3, m4, m5, m6];
 
     const [Profiles, setProfiles] = useState([]);
     const [Skip, setSkip] = useState(0);
