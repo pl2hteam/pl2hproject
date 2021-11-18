@@ -7,7 +7,7 @@ import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
-// import Comment from "../Comment/Comment";
+import Comment from "../Comment/Comment";
 import Feed from './feed.css'
 ////////////////////////////////////////
 import { Typography, Button, Form, message, Input } from "antd";
@@ -142,10 +142,8 @@ const Main = (props) => {
             <header>
               {/* 사용자 정보 */}
               <div class="profile-of-article">
-                <span class="userID main-id point-span">
-                  {/* <Meta description={`${postData.UserId.image}`} /> */}
-                  <Meta description={`${postData.UserId.name}`} />
-                </span>
+                <img class="img-profile pic" src={`http://localhost:5000/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
+                <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
               </div>
 
               {/* 추가 정보 *** */}
@@ -153,15 +151,15 @@ const Main = (props) => {
 
             </header>
             {openModal && (
-          <Modal
-          modal={postData}
+              <Modal
+                modal={postData}
 
-            setOpenModal={setOpenModal}
-            openModal={openModal}
+                setOpenModal={setOpenModal}
+                openModal={openModal}
 
 
-          />
-        )}
+              />
+            )}
 
             {/* 이미지 정보 */}
             <div class="main-image">
@@ -215,11 +213,11 @@ const Main = (props) => {
             </div>
 
             <div class="hl"></div>
-            {/* <Comment postData={postData} /> */}
+            <Comment postData={postData} />
 
-          </article>
-        </Card>
-      </Col>;
+          </article >
+        </Card >
+      </Col >;
     } else {
       return null;
     }
@@ -267,7 +265,7 @@ const Main = (props) => {
         </div>
       ) : (
         // 상품 있으면 목록 출력
-        <div>  
+        <div>
           {renderCards}
         </div>
       )}

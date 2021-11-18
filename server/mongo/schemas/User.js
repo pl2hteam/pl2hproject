@@ -26,6 +26,10 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  gender: { // 판매자 구분 용도
+    type: Number,
+    default: 0,
+  },
   cart: {
     type: Array,
     default: [],

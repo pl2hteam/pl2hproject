@@ -1,84 +1,108 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
 import Axios from 'axios';
-import SingleComment from './SingleComment';
-import ReplyComment from './ReplyComment';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import '../Intro/feed.css';
 
 const Comment = (props) => {
+  const user = useSelector(state => state.user)
+
+  const [OpenReply, setOpenReply] = useState(false)
+  const [commentValue, setcommentValue] = useState("");
   const [Comments, setComments] = useState([]);
-  console.log(props);
-  useEffect(() => {
-    console.log(333333333333333);
-      let id = {
-        postId: props.postId,
-      }
+
+  const onClickReplyOpen = () => {
+    setOpenReply(!OpenReply);
+  }
+
+  const variables = {
+    postId: props.postData.id,
+  }
   
-      Axios.post('/api/mysql/posts/comment/getComment', id)
+  useEffect(() => {
+    getComment(variables);
+  }, [])
+
+  const getComment = (variables) => {
+    Axios.post('/api/mysql/posts/comment/getComment', variables)
       .then(response => {
-        if (response.data.success) {
-          console.log(response.data.comments);
-          setComments("")
+        if(response.data.success) {
           setComments(response.data.comments);
+          setcommentValue("");
         } else {
-          alert('댓글 정보를 가져오지 못했습니다.');
+          alert('댓글을 가져오지 못했습니다.')
         }
       })
-  }, []);
-
-  console.log(Comments);
-  const [commentValue, setCommentValue] = useState("");
+  }
 
   const handleClick = (event) => {
-    setCommentValue(event.currentTarget.value)
+    setcommentValue(event.currentTarget.value)
   }
 
   const onSubmit = (event) => {
     event.preventDefault();
-    
+
     const variables = {
       content: commentValue,
-      writer: props.UserId,
-      postId: props.id,
+      writer: user.userData.id,
+      postId: props.postData.id,
     }
 
     Axios.post('/api/mysql/posts/comment/saveComment', variables)
-      .then(response => {
-        if (response.data.success) {
-          console.log(response.data.commentsInfo);
-          setCommentValue("")
-          setComments(response.data.commentsInfo)
-        } else {
-          alert('댓글을 저장하지 못했습니다.');
-        }
-      })
+    .then(response => {
+     if (response.data.success) {
+      getComment(variables);
+     } else {
+       alert('댓글을 저장하지 못했습니다.')
+     } 
+    })
   }
+  const CommentsInfo = Comments.map((info, index) => {
+    console.log(info);
+    return (
+      <div>
+        <div>
+          {/* <span>{info.User.image}</span> */}
+          <span>{info.User.name} : </span>
+          <span>{info.content}</span>
+        </div>
+        <div>
+          {/* 몇시간 전? */}
+        </div>
+      </div>
+    )
+  })
+
   return (
     <div>
       <br />
-      <p>댓글</p>
-      <hr />
-      
-      {Comments && Comments.map((comment, index) => (
-                (!comment.responseTo &&
-                    <React.Fragment>
-                        <SingleComment comment={comment} postId={props.postData.id} refreshFunction={props.refreshFunction} />
-                        {/* <ReplyComment CommentLists={props.commentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} /> */}
-                    </React.Fragment>
-                )
-            ))}
+      <p onClick={onClickReplyOpen} >댓글 {Comments.length} 모두 보기</p>
+      <br />
 
-      <from style={{ display: 'flex' }} onSubmit={onSubmit} >
-        <textarea
-          style={{ width: '100%', borderRadius: '5px' }}
+      {/* 가장 추천 많이 받은 댓글 2개 보이기 */}
+      {/* 모든 댓글 */}
+      {OpenReply &&
+        <div>
+          {CommentsInfo}
+        </div>
+      }
+      
+      {/* feed.css 의 선 스타일 적용 */}
+      <div class="hl"></div>
+      
+      <form style={{ display:'flex' }} onSubmit={onSubmit}>
+        <textarea 
+          style={{ width: '100x%', borderRadius: '5px' }}
           onChange={handleClick}
           value={commentValue}
-          placeholder='댓글을 적어주세요.'
+          placeholder="댓글 달기..."
         />
-        <br/>
-        <button style={{ width: '20%', height: '52px' }} onClick={onSubmit} >작성하기</button>
-      </from>
+        <br />
+        <button style={{ width: '20%', height: '37px' }} onClick={onSubmit} >게시</button>
+
+      </form>
     </div>
-  );
+  )
 };
 
 export default Comment;

@@ -7,6 +7,7 @@ import {
   GET_CART_ITEMS_USER,
   REMOVE_CART_ITEM_USER,
   ON_SUCCESS_BUY_USER,
+  CHANGE_MY_CONDITION
 } from "../_actions/types";
 
 export default function (state = {}, action) {
@@ -49,6 +50,14 @@ export default function (state = {}, action) {
           cart: action.payload.cart,
         },
         cartDetail: action.payload.cartDetail,
+      };
+    case CHANGE_MY_CONDITION:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          myCondition: action.payload,
+        },
       };
 
     default:

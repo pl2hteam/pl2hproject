@@ -3,13 +3,11 @@ const router = express.Router();
 
 let ffmpeg = require('fluent-ffmpeg');
 
-
 /////////////////////////////////////////////////////
 /*                                                 */
-/*      /api/mongo/product/video/thumbnail         */
+/*         /api/mongo/product/thumbnail            */
 /*                                                 */
 /////////////////////////////////////////////////////
-
 
 router.post('/', (req, res) => {
   let filePath = "";
@@ -26,12 +24,10 @@ router.post('/', (req, res) => {
   ffmpeg(req.body.url)  // 클라이언트에서 온 비디오 정보
     .on('filenames', (filenames) => {
       console.log('Will generate' + filenames.join(', '));
-      console.log(filenames);
 
       filePath = "uploads/thumbnails/" + filenames[0];
     })
     .on('end', () => {
-      console.log('Screenshots taken');
       return res.json({ success: true, url: filePath, fileDuration: fileDuration });
     })
     .on('error', (err) => {

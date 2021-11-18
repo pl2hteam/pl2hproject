@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import Axios from "axios";
+import styled from "styled-components";
+
+const UploadStyle_MovieFileUpload = styled.div`
+  .add_photo_btn:hover {
+    border: rgb(6, 214, 160) 3px solid;
+  }
+`;
 
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
@@ -13,9 +20,9 @@ function FileUpload(props) {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
-    
+
     if (files[0].type == "video/mp4") {
-      Axios.post("/api/mongo/product/video/uploadfiles", formData, config).then(
+      Axios.post("/api/mongo/product/uploadfiles", formData, config).then(
         (response) => {
           if (response.data.success) {
             console.log(response.data);
@@ -31,7 +38,7 @@ function FileUpload(props) {
               response.data.url,
             ]);
 
-            Axios.post("/api/mongo/product/video/thumbnail", variable).then(
+            Axios.post("/api/mongo/product/thumbnail", variable).then(
               (response) => {
                 console.log(response);
                 if (response.data.success) {
@@ -83,45 +90,32 @@ function FileUpload(props) {
   console.log(props);
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <div
-        style={{
-          display: "flex",
-          width: "350px",
-          height: "240px",
-          overflowX: "scroll",
-        }}
-      >
+    <div
+      className="dropzone_box"
+      style={{ display: "block", justifyContent: "space-between" }}
+    >
+      <div className="dropzone-image_box">
         {Images.map((image, index) => (
           <div onClick={() => onDelete(image)}>
             <img
-              style={{ minWidth: "300px", width: "300px", height: "240px" }}
+              className="dropzone-image_box-img"
+              style={{ width: "100%", height: "240px" }}
               src={`http://localhost:5000/${image}`}
               alt={`productImg-${index}`}
             />
           </div>
         ))}
       </div>
-      <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
-        {({ getRootProps, getInputProps }) => (
-          <div
-            style={{
-              width: "200px",
-              height: "50px",
-              border: "1px solid lightgray",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            {...getRootProps()}
-          >
-            <input {...getInputProps()} />
-            사진 등록
-          </div>
-        )}
-      </Dropzone>
-
-      
+      <div>
+        <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              <div className="add_photo_btn">사진 추가</div>
+            </div>
+          )}
+        </Dropzone>
+      </div>
     </div>
   );
 }

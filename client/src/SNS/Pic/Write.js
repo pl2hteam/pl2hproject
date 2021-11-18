@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 
 const Write = () => {
   const user = useSelector(state => state.user);
-  
+
   return (
     <Wrapper>
       <UpdatePic user={user} />

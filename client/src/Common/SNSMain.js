@@ -14,6 +14,7 @@ import LatterWrite from "../SNS/Latter/LatterWrite";
 import SnsLoginPage from "../SNS/Main/SnsLogin";
 import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
+import ChangeCondition from "../SNS/ChangeCondition";
 
 function SNSMain() {
   return (
@@ -49,6 +50,10 @@ function SNSMain() {
           <Route
             path="/sns/Latter/LatterWrite"
             component={Auth(LatterWrite, true, true)}
+          />
+          <Route
+            path="/ChangeCondition"
+            component={Auth(ChangeCondition, true, true)}
           />
         </Switch>
       </div>
