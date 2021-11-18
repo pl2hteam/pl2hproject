@@ -3,10 +3,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logoutIcon from '../../../Common/img/log/logout.png';
 import GoToShop from '../../../Common/img/log/gotosns.png';
+import styled from 'styled-components';
 
 const buttons = (props) => {
-  console.log(22222222222222222222222222);
-
   const logoutHandler = () => {
     Axios.get(`/api/mysql/users/logout`).then(response => {
       console.log(response);
@@ -18,11 +17,17 @@ const buttons = (props) => {
     });
   };
 
+  const LinkButton = styled.div`
+    .btn-style:hover {
+      opacity: 0.7;
+    }
+  `
+
   return (
-    <div>
-      <a onClick={logoutHandler}><img src={logoutIcon} /></a>
-      <a href="/sns" ><img src={GoToShop} /></a>
-    </div>
+    <LinkButton>
+      <a onClick={logoutHandler}><img className="btn-style" src={logoutIcon} /></a>
+      <a href="/sns" ><img className="btn-style" src={GoToShop} /></a>
+    </LinkButton>
   )
 };
 

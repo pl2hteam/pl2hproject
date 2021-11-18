@@ -16,11 +16,18 @@ const buttons = (props) => {
     });
   };
 
+  
+  const LinkButton = styled.div`
+    .btn-style:hover {
+      opacity: 0.7;
+    }
+  `
+
   return (
-    <div>
-      <a onClick={logoutHandler}><img src={logoutIcon} /></a>
-      <a href="/shop/main" ><img src={GoToShop} /></a>
-    </div>
+    <LinkButton>
+      <a onClick={logoutHandler}><img className="btn-style" src={logoutIcon} /></a>
+      <a href="/shop/main" ><img className="btn-style" src={GoToShop} /></a>
+    </LinkButton>
   )
 };
 
