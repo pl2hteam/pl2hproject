@@ -20,7 +20,9 @@ const Wrapper = styled.div`
 const Favorite = () => {
   return (
     <Wrapper>
-    <a href="국내여행지도.jpg" target="" download> <img src="국내여행지도.jpg"></img>  </a>
+    <a href="https://s3.amazonaws.com/nxcache/all/css/all.css"  download> <img src="/https://s3.amazonaws.com/nxcache/all/css/all.css"></img>  </a>
+    <link href="https://s3.amazonaws.com/nxcache/all/css/all.css" rel="stylesheet"/>
+
     </Wrapper>
   );
 };

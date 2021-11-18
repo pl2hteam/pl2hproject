@@ -273,9 +273,10 @@ const Main = (props) => {
         {openModal && (
           <Modal
           
+         
             setOpenModal={setOpenModal}
             openModal={openModal}
-           
+         
             
           />
         )}

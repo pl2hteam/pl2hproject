@@ -6,6 +6,6 @@ const getComment = require('./getComments');
 
 //라우터 추가시 반영
 router.use('/saveComment', saveComment);
-router.use('/getComment', getComment);
+// router.use('/getComment', getComment);
 
 module.exports = router;

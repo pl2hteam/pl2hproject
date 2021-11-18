@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import Main from './Intro/Main'
 import Feed from'./Intro/css/feed.css'
 import ImageSlider from '../../Common/components/SNSImageSlider ';
+import { useSelector } from 'react-redux';
 
 import { Typography, Button, message, Input } from "antd";
-const Modal = (props,postData) => {
-  
+const Modal = (props) => {
+  const user = useSelector(state => state.user)
   const {
     
     setOpenModal,
@@ -20,10 +21,12 @@ const Modal = (props,postData) => {
          setOpenModal(false);
        }}
      >
+
+
        
        닫기
    </Close>
-   <ImageSlider   images={postData}/>
+ {/* <ImageSlider images={postDate}/> */}
 
  
   </Form>

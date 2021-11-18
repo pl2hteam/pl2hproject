@@ -8,6 +8,8 @@ import ContentProfile from './ContentProfile'
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
+import VisitorWriting from "./visitor/VisitorWriting";
+
 
 
 ////////////////////////////////////////
@@ -132,9 +134,9 @@ const LinkTitle = styled.p`
 `;
 const { Meta } = Card;
 const Home = (props) => {
-  console.log(props);
+  
   const userInfo = useSelector((state) => state.user);
-  console.log(userInfo);
+  
 
   // category 는 체크박스랑 라디오 박스를 나누기 위한 것
 
@@ -150,7 +152,6 @@ const Home = (props) => {
           <FlexWrapper>
             <ProfileSection>
               <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
-
             </ProfileSection>
             <ProfileSection>
               <p>
@@ -182,9 +183,11 @@ const Home = (props) => {
           <ContentSection>
             <h2>한 줄 감성</h2>
             <Link to={'/ContentProfile'}>방명록</Link>
-            <ul>
+           
               <UpdateProfile />
-            </ul>
+          
+
+        
           </ContentSection>
         </Cards>
       </Content>

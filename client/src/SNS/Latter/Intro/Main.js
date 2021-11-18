@@ -56,13 +56,6 @@ const Main = () => {
         document.getElementsByClassName("letter-close")[0].style.display = 'none'
         document.getElementsByClassName("letter-open")[0].style.display = 'block'
     }
-    
-    // function go_iu() {
-    //     alert('드디어 기다림의 이유를 만나러')
-    //     window.location.href = 'https://www.youtube.com/c/dlwlrma/featured'
-    // }
-
-
       return (
         <Col lg={3} md={4} xs={8}>
           
@@ -74,7 +67,7 @@ const Main = () => {
         <h3 class="envelope-msg">음악이 나오니 볼륨을 조정해주세요</h3>
     </div>
 
-    <div class="letter-open">
+    <div class="letter-open" >
         <div class="IU"  ></div>
         <h1 class="letter-title">사랑해♥️</h1>
 
@@ -86,9 +79,6 @@ const Main = () => {
 
             내 친구  <Meta description={`${fullLetter.ps}`} /> <br />
             <p class="from"> <Meta description={`${fullLetter.from}`} /></p>
-        </div>
-        <div class="music">
-            <iframe src="https://www.youtube.com/embed/w14rSMl35ro?autoplay=1" allow="autoplay"></iframe>
         </div>
         <button onClick={() => {
                 open_letter(false)}}>닫기</button>

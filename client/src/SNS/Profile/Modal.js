@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Main from './Intro/Main'
 import Feed from './Intro/feed.css'
+import Delete from './Intro/delete'
 
 import { Typography, Button, message, Input } from "antd";
 const Modal = (props) => {
+  console.log(props,31313131);
   
   const {
     
@@ -20,7 +22,7 @@ const Modal = (props) => {
        닫기
    </Close>
 
-
+<Delete modal={props}/>
   </Form>
    
   );
