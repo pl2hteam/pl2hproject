@@ -9,33 +9,59 @@ import UserCardBlock from "./Sections/UserCardBlock";
 import { Result } from "antd";
 import Paypal from "../../Common/components/Paypal";
 import { CartStyle } from './style/cartstyle';
+import { getCart } from "../../Common/_actions/user_actions";
 
 function CartPage(props) {
   const user = useSelector((state) => state.user);
   console.log(props);
   const dispatch = useDispatch();
-  // 합계 state
+  
   const [Total, setTotal] = useState(0);
   const [ShowTotal, setShowTotal] = useState(false);
   const [ShowSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
-    let cartItems = [];
-    
-    if (user.userData && user.userData.cart) {
-      if (user.userData.cart.length > 0) {
-        user.userData.cart.forEach((item) => {
-          cartItems.push(item.id);
-        });
-        dispatch(getCartItems(cartItems, user.userData.cart)).then(
-          (response) => {
-            if (response.payload.length > 0) {
-              calculateTotal(response.payload);
+    if (user.userData) {
+      if (user.userData.gender) {
+        dispatch(getCart(user.userData.email))
+          .then((response) => {
+            let userCart = response.payload.cart;
+
+            let cartItems = [];
+            if (userCart && userCart.cart) {
+              if (userCart.cart.length > 0) {
+                userCart.cart.forEach((item) => {
+                  cartItems.push(item.id);
+                });
+                dispatch(getCartItems(cartItems, userCart.cart)).then(
+                  (response) => {
+                    if (response.payload.length > 0) {
+                      calculateTotal(response.payload);
+                    }
+                  }
+                );
+              }
             }
+          });
+      } else {
+        let cartItems = [];
+      
+        if (user.userData && user.userData.cart) {
+          if (user.userData.cart.length > 0) {
+            user.userData.cart.forEach((item) => {
+              cartItems.push(item.id);
+            });
+            dispatch(getCartItems(cartItems, user.userData.cart)).then(
+              (response) => {
+                if (response.payload.length > 0) {
+                  calculateTotal(response.payload);
+                }
+              }
+            );
           }
-        );
+        }
       }
-    }
+    } 
   }, [user.userData]);
 
   // 장바구니 총액 계산

@@ -42,7 +42,6 @@ const DetailProductPage = (props) => {
   }
 
   const addToCartHandler = (pd_id) => {
-    console.log(pd_id);
     dispatch(addToCart(pd_id));
   };
 

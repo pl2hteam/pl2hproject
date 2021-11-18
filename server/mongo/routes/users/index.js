@@ -9,6 +9,7 @@ const removeFromCart = require("./cart/removeFromCart");
 const userCartInfo = require("./cart/userCartInfo");
 const payment = require("./pay/payment");
 const addCart = require("./sns/addCart");
+const getCart = require("./sns/getCart");
 
 const { auth } = require("../../middleware/auth");
 
@@ -25,6 +26,7 @@ router.use("/login", login);
 router.use("/logout", auth, logout);
 
 router.use("/sns/addCart", addCart);
+router.use("/sns/getCart", getCart);
 
 /* 장바구니 */
 router.use("/addToCart", addToCart);

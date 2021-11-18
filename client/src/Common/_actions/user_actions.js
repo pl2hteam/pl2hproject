@@ -80,7 +80,6 @@ export function logoutUser() {
 }
 
 export function addToCart(_id) {
-  console.log(_id);
   const request = axios
     .get(`${MONGO_USER_SERVER}/addToCart?productId=${_id}`)
     .then((response) => response.data);
@@ -154,6 +153,17 @@ export function registerCart(data) {
 
   return {
     type: ON_SUCCESS_BUY_USER,
+    payload: request,
+  };
+}
+
+export function getCart(data) {
+  let request = axios
+      .get(`${MONGO_USER_SERVER}/sns/getCart`, data)
+      .then((response) => response.data);
+
+  return {
+    type: AUTH_USER,
     payload: request,
   };
 }

@@ -12,7 +12,6 @@ const { Product } = require("../../../schemas/Product");
 
 router.get("/", (req, res) => {
   if (req.user.gender) {
-    console.log(111111111);
     Cart.findOneAndUpdate(
       { email: req.user.email },
       {
