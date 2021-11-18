@@ -15,11 +15,12 @@ import SnsLoginPage from "../SNS/Main/SnsLogin";
 import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
 import ChangeCondition from "../SNS/ChangeCondition";
+import "./SNSMain.css";
 
 function SNSMain() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div>
+      <div className="sns_main-container">
         <Switch>
           {/* SNS */}
           <Route

@@ -19,11 +19,11 @@
   height: 100%;
 }
 .main-image_box {
-  background-color: black;
   width: calc(100% - 350px);
   height: 100%;
 }
 .main-image_box .pic {
+  background-color: black;
   object-fit: contain;
   width: 100%;
   height: 100%;
