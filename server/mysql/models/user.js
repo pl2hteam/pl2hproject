@@ -78,6 +78,6 @@ module.exports = class User extends Sequelize.Model {
         db.User.hasMany(db.Comment);
         db.User.belongsToMany(db.Comment, { through: "commentRecommends", as: "commentRecommenders" });
         db.User.belongsToMany(db.Post, { through: "Recommends", as: "recommenders" });
-        db.User.hasMany(db.Couple);
+        // db.User.hasMany(db.Couple);
     }
 };
