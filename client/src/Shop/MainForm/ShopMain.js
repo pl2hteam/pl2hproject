@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../../Common/hoc/auth";
 
-import ShopLoginPage from "../LoginMainPage/ShopMainLogin";
 import ShopMainWrapper from "../ShopMain/ShopMainWrapper";
 import EasterEgg from "../LoginMainPage/EasterEgg/EasterEgg";
 import UploadWrapper from "../UploadProductPage/UploadWrapper";
@@ -19,11 +18,6 @@ function ShopMain() {
         <div>
           <Switch>
             {/* SHOP */}
-            <Route
-              exact
-              path="/shop"
-              component={Auth(ShopLoginPage, false, false)}
-            />
             <Route
               exact
               path="/shop/main"
