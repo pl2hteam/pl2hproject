@@ -90,7 +90,7 @@ export function logoutUser(dataToSubmit) {
 
 export function addToCart(_id) {
   const request = axios
-    .get(`${MONGO_USER_SERVER}/cart/addToCart?productId=${_id}`)
+    .get(`${MONGO_USER_SERVER}/addToCart?productId=${_id}`)
     .then((response) => response.data);
 
   return {
@@ -125,7 +125,7 @@ export function getCartItems(cartItems, userCart) {
 
 export function removeCartItem(id) {
   const request = axios
-    .get(`/api/mongo/users/cart/removeFromCart?_id=${id}`)
+    .get(`/api/mongo/users/removeFromCart?_id=${id}`)
     .then((response) => {
       response.data.cart.forEach((item) => {
         response.data.cartDetail.forEach((k, i) => {
@@ -150,6 +150,40 @@ export function onSuccessBuy(data) {
 
   return {
     type: ON_SUCCESS_BUY_USER,
+    payload: request,
+  };
+}
+
+export function registerCart(data) {
+  console.log(data);
+  const request = axios
+    .post(`${MONGO_USER_SERVER}/sns/addCart`, data)
+    .then((response) => response.data);
+
+  return {
+    type: ON_SUCCESS_BUY_USER,
+    payload: request,
+  };
+}
+
+export function getCart(data) {
+  let request = axios
+      .get(`${MONGO_USER_SERVER}/sns/getCart`, data)
+      .then((response) => response.data);
+
+  return {
+    type: AUTH_USER,
+    payload: request,
+  };
+}
+
+export function getHistory(data) {
+  let request = axios
+      .get(`${MONGO_USER_SERVER}/sns/getHistory`, data)
+      .then((response) => response.data);
+
+  return {
+    type: AUTH_USER,
     payload: request,
   };
 }

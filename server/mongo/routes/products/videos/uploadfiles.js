@@ -5,7 +5,7 @@ const multer = require("multer");
 
 /////////////////////////////////////////////////////
 /*                                                 */
-/*      /api/mongo/product/video/uploadfiles       */
+/*         /api/mongo/product/uploadfiles          */
 /*                                                 */
 /////////////////////////////////////////////////////
 
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
     if (err) {
       return res.json({ success: false, err })
     }
-    console.log(res.req);
+    
     return res.json({ 
       success: true, 
       url: res.req.file.path, 

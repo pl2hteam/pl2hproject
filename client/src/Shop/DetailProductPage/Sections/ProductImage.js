@@ -13,11 +13,11 @@ const ProductImage = (props) => {
           videos.push(item);
         });
     }
-      setVideo(videos);
+    setVideo(videos);
   }, [props.detail]);
 
   return (
-    <div>
+    <div className="postPage-content-image_slider">
       {Video.length === 0 ? (
         <div>
           <ImageSlider detail={props.detail} />
@@ -37,6 +37,6 @@ const ProductImage = (props) => {
       )}
     </div>
   );
-}
+};
 
 export default ProductImage;

@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const user = require('./users');
-const product = require("./products");
+const { Cart } = require("../../../schemas/Cart");
 
 /////////////////////////////////////////////////////
 /*                                                 */
-/*                  /api/mongo                     */
+/*          /api/mongo/users/sns/getCart           */
 /*                                                 */
 /////////////////////////////////////////////////////
 
-/* 사용자 정보 */
-router.use("/users", user);
-
-/* 메인 상품 정보 */
-router.use("/product", product);
+router.get("/", (req, res) => {
+  Cart.findOne({ email: req.user.email }, (err, cart) => {
+    res.status(200).json({ cart });
+  });
+});
 
 module.exports = router;

@@ -16,7 +16,6 @@ import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
 import ChangeCondition from "../SNS/ChangeCondition";
 
-
 function SNSMain() {
   return (
     <Suspense fallback={<div>Loading...</div>}>

@@ -47,22 +47,6 @@ router.post('/', async (req, res, next) => {
       })
     }
 
-    // const comments = await Comment.findAll({
-    //   include: {
-    //     model: User,
-    //     attribute: ['id', 'name', 'image'],
-    //   },
-    //   where: {
-    //     PostId: req.body.postId
-    //   },
-    //   order: [['id', 'DESC']],
-    // });
-
-    // return res.json({
-    //   success: true,
-    //   comments
-    // });
-
     res.status(201).json({ success: true, postData });
   } catch (error) {
     console.error(error);
