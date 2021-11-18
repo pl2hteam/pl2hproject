@@ -11,7 +11,6 @@ import Pic from "../SNS/Pic";
 import Jam from "../SNS/Jam";
 import Write from "../SNS/Profile/Write";
 import LatterWrite from "../SNS/Latter/LatterWrite";
-import SnsLoginPage from "../SNS/Main/SnsLogin";
 import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
 import ChangeCondition from "../SNS/ChangeCondition";
@@ -23,11 +22,6 @@ function SNSMain() {
       <div className="sns_main-container">
         <Switch>
           {/* SNS */}
-          <Route
-            exact
-            path="/sns"
-            component={Auth(SnsLoginPage, false, true)}
-          />
           <Route exact path="/sns/main" component={Auth(Home, true, true)} />
           <Route path="/sns/profile" component={Auth(Profile, true, true)} />
           <Route path="/sns/Jam" component={Auth(Jam, true, true)} />

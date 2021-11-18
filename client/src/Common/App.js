@@ -1,7 +1,7 @@
 import React from "react";
 import SNSMain from "./SNSMain";
 import ShopMain from "../Shop/MainForm/ShopMain";
-import MainPage from "./MainPage";
+import MainPage from "./AllLoingPage";
 
 function App() {
   return (
