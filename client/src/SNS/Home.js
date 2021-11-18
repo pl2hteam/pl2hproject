@@ -136,10 +136,21 @@ const { Meta } = Card;
 
 
 const Home = (props) => {
-  const [userConditionData, setuserConditionData] = useState([]);
+  console.log(props);
+
+  //const [userConditionData, setUserConditionData] = useState([]);
 
   const userInfo = useSelector(state => state.user);
   console.log(userInfo);
+
+  let userImg
+  if (props.user.userData) {
+    userImg = props.user.userData.image
+    console.log(props.user.userData.image);
+  }
+
+
+
 
 
 
@@ -172,10 +183,40 @@ const Home = (props) => {
   // // }, []);
 
 
+
+
+  // const renderMyImage = () => {
+  //   // return (
+  //   //   <img
+  //   //     className="shop-main-content-item_box-img"
+  //   //     src={`http://localhost:5000/${product.images[0]}`}
+  //   //     alt="productImage"
+  //   //   />
+
+  //   // )
+
+  // }
+
+
+
   const getCondition = () => {
+
+    // console.log("UserInfo", userInfo);
+
+    // const variables = {
+    //   //seller: user.userData._id,
+    //   id: userInfo.userData.id,
+    // };
+
+    // console.log(variables);
+
 
     Axios.post("/api/mysql/conditions/read")
       .then((response) => {
+        // console.log(response);
+        // console.log(response.config);
+        // console.log(response.config.data);
+        //console.log(response.config.data.id);
 
         // if (response.data.success) {
         //   console.log(response.data, "데이터");
@@ -188,38 +229,18 @@ const Home = (props) => {
         //   console.log("내 상태 변경이 안되었네,,,");
         //   alert("내 상태 변경이 안되었네,,,");
         // }
+        //console.log(response.data);
+        // if (response.data.success) {
+        //   setUserConditionData([...userConditionData]);
+        // }
       });
   };
+
 
   useEffect(() => {
 
     getCondition();
   }, []);
-
-  const renderMyImage = 1;
-  //Products.map((product, index) => {
-  //   return (
-  //     <div className="shop-main-content-item_box">
-  //       <a href={`/shop/product/${product._id}`}>
-  //         <img
-  //           className="shop-main-content-item_box-img"
-  //           src={`http://localhost:5000/${product.images[0]}`}
-  //           alt="productImage"
-  //         />
-  //         <div className="shop-main-content-item_box-info">
-  //           <div className="shop-main-content-item_box-info-name">
-  //             {product.pdName}
-  //           </div>
-  //           <div className="shop-main-content-item_box-info-price">
-  //             <img className="purse" src={Purse} alt="money" />
-  //             {product.price.toLocaleString("ko-KR")}
-  //           </div>
-  //         </div>
-  //       </a>
-  //     </div>
-  //   );
-  // });
-
 
 
 
@@ -229,11 +250,14 @@ const Home = (props) => {
         <Cards>
           <FlexWrapper>
             <ProfileSection>
-              {/* <img src={publicUrl + { } alt="profile" /> */}
+              <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               {/* <div>{userConditionData.message}</div> */}
-              {renderMyImage}
-              <Link to={'/ChangeCondition'}>내 상태변경</Link>
+              {/* {renderMyImage} */}
 
+
+              <Link to={'/ChangeCondition'}>내 상태변경</Link>
+              <hr />
+              <h2>상태메세지</h2>
               <p>{userInfo.userData.message}</p>
 
             </ProfileSection>

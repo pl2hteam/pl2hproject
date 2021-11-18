@@ -182,6 +182,13 @@ const ChangeCondition = (props) => {
       });
   };
 
+  let userImg
+  if (props.user.userData) {
+    userImg = props.user.userData.image
+    console.log(props.user.userData.image);
+  }
+
+
 
 
   //////////////////////////////////////////////////////////////////////////////
@@ -240,8 +247,11 @@ const ChangeCondition = (props) => {
         <Cards>
           <FlexWrapper>
             <ProfileSection>
-              <img src={publicUrl + "/resources/img/memo_.jpg"} alt="profile" />
-              {/* <div>{userCondionData.message}</div> */}
+              <img src={`http://localhost:5000/${userImg}`} alt="profile" />
+              <hr />
+              <h2>상태메세지</h2>
+              <p>{userInfo.userData.message}</p>
+
             </ProfileSection>
           </FlexWrapper>
         </Cards>
