@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import logoutIcon from '../../Common/img/log/logout.png';
 import GoToShop from '../../Common/img/log/gotoshop.png';
+import styled from 'styled-components';
 
 const buttons = (props) => {
   const logoutHandler = () => {
@@ -15,7 +16,6 @@ const buttons = (props) => {
       }
     });
   };
-
   
   const LinkButton = styled.div`
     .btn-style:hover {
