@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { publicUrl } from '../../Common/components/utils'
+import MapContainer from "./MapContainer"
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ const People = () => {
     <Wrapper>
       <img src={publicUrl + '/resources/img/assa.jfif'} alt="assa" />
       <p>By::sorewa_melon</p>
+      <MapContainer/>
     </Wrapper>
   );
 };
