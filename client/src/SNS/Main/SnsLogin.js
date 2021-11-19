@@ -39,7 +39,10 @@ class MainLogin extends React.Component {
     return (
       <div className="MainLogin pl2h-main">
         <div className="login">
-          <div className="container" ref={(ref) => (this.container = ref)}>
+          <div
+            className="container register_container"
+            ref={(ref) => (this.container = ref)}
+          >
             <h1 className="login_page_title">PL2H WORLD</h1>
             {isLogginActive && (
               <LoginPage containerRef={(ref) => (this.current = ref)} />
