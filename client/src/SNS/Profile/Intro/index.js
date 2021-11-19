@@ -1,7 +1,7 @@
 import React from 'react';
 import ScrollToTop from '../../Layout/ScrollToTop';
 import Main from './Main';
-import Info from './Info';
+
 import Dev from './Dev';
 import { withRouter } from 'react-router';
 
@@ -14,10 +14,6 @@ const Intro = ({ match }) => {
     {
       type: 'main',
       component: <Main />,
-    },
-    {
-      type: 'default',
-      component: <Info title="기본정보" />,
     },
     {
       type: 'dev',

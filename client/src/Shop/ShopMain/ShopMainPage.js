@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from '../../Common/components/ImageSlider';
-import CheckBox from './Section/CheckBox';
-import { itemNumber } from './Section/itemDatas';
-import Radiobox from './Section/RadioBox';
-import { price } from './Section/priceDatas';
-import SearchFeature from './Section/SearchFeature';
+import CheckBox from "./Section/CheckBox";
+import { itemNumber } from "./Section/itemDatas";
+import Radiobox from "./Section/RadioBox";
+import { price } from "./Section/priceDatas";
+import SearchFeature from "./Section/SearchFeature";
+import ImageShadow from "react-image-shadow";
+import "react-image-shadow/assets/index.css";
+import "./ShopMainPage.css";
+import acorn from "../images/acorn.png";
 
 const { Meta } = Card;
 
-const ShopMainPage = () => {
+const ShopMainPage = (pdFilter) => {
+  console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
-  const [Limit, setLimit] = useState(2);
+  const [Limit, setLimit] = useState(12);
   const [PostSize, setPostSize] = useState(0);
   const [Filters, setFilters] = useState({
     itemNumber: [],
@@ -25,6 +29,7 @@ const ShopMainPage = () => {
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
       if (response.data.success) {
+        console.log(response.data);
         if (body.loadMore) {
           setProducts([...Products, ...response.data.products]);
         } else {
@@ -55,21 +60,27 @@ const ShopMainPage = () => {
 
   const renderCards = Products.map((product, index) => {
     return (
-      <Col lg={3} md={4} xs={8}>
-        <Card
-          hoverable={true}
-          cover={
-            <a href={`/shop/product/${product._id}`}>
-              {" "}
-              <ImageSlider images={product.images} />
-            </a>
-          }
-        >
-          <Meta title={product.title} description={`$${product.price}`} />
-        </Card>
-      </Col>
+      <div className="shop-main-content-item_box">
+        <a href={`/shop/product/${product._id}`}>
+          <img
+            className="shop-main-content-item_box-img"
+            src={`http://localhost:5000/${product.images[0]}`}
+            alt="productImage"
+          />
+          <div className="shop-main-content-item_box-info">
+            <div className="shop-main-content-item_box-info-name">
+              {product.pdName}
+            </div>
+            <div className="shop-main-content-item_box-info-price">
+              <img className="acorn" src={acorn} alt="money" />
+              {product.price.toLocaleString("ko-KR")}
+            </div>
+          </div>
+        </a>
+      </div>
     );
   });
+
   const showFilteredResults = (filters) => {
     let body = {
       skip: 0, // 처음엔 아무 선택 없음
@@ -109,19 +120,19 @@ const ShopMainPage = () => {
     setFilters(newFilters);
   };
 
-  // 텍스트 검색
-  const updateSearchTerm = (newSearchTerm) => {
-    let body = {
-      skip: 0,
-      limit: Limit,
-      filters: Filters,
-      searchTerm: newSearchTerm,
-    };
+  // // 텍스트 검색
+  // const updateSearchTerm = (newSearchTerm) => {
+  //   let body = {
+  //     skip: 0,
+  //     limit: Limit,
+  //     filters: Filters,
+  //     searchTerm: newSearchTerm,
+  //   };
 
-    setSkip(0);
-    setSearchTerm(newSearchTerm);
-    getProducts(body);
-  };
+  //   setSkip(0);
+  //   setSearchTerm(newSearchTerm);
+  //   getProducts(body);
+  // };
 
   // default
   useEffect(() => {
@@ -134,29 +145,29 @@ const ShopMainPage = () => {
   }, []);
 
   return (
-    <div style={{ width: "75%", margin: "3rem auto" }}>
-      <div style={{ textAlign: "center" }}>
-        <h2>상품 메인 화면</h2>
+    <div>
+      <div className="shop-main-title">
+        <h1 style={{ fontSize: "2rem", color: "white" }}>상점</h1>
       </div>
-
-      {/* 상품, 가격 필터 */}
-      <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}>
-          <CheckBox
-            list={itemNumber}
-            handleFilters={(filters) => handleFilters(filters, "itemNumber")}
-          />
-        </Col>
-        <Col lg={12} xs={24}>
-          <Radiobox
-            list={price}
-            handleFilters={(filters) => handleFilters(filters, "price")}
-          />
-        </Col>
-      </Row>
-
-      {/* 검색란 */}
-      <div
+      <div className="shop-main">
+        {/* 상품, 가격 필터 */}
+        <div className="shop-main-sidebar">
+          <div>
+            <CheckBox
+              list={itemNumber}
+              handleFilters={(filters) => handleFilters(filters, "itemNumber")}
+            />
+          </div>
+          <div>
+            <Radiobox
+              list={price}
+              handleFilters={(filters) => handleFilters(filters, "price")}
+            />
+          </div>
+        </div>
+        <div className="shop-main-content">
+          {/* 검색란 */}
+          {/* <div
         style={{
           display: "flex",
           justifyContent: "flex-end",
@@ -164,31 +175,25 @@ const ShopMainPage = () => {
         }}
       >
         <SearchFeature refreshFunction={updateSearchTerm} />
+      </div> */}
+
+          {/* 등록된 상품이 0개면 "상품없다고 출력  */}
+          {Products.length === 0 ? (
+            <div className="no_item">
+              <h2>등록된 아이템이 없읍니다</h2>
+            </div>
+          ) : (
+            // 상품 있으면 목록 출력
+            <div className="shop-main-content-item_list">{renderCards}</div>
+          )}
+
+          {PostSize >= Limit && (
+            <div className="load_more">
+              <button onClick={loadMoreHandler}>더보기</button>
+            </div>
+          )}
+        </div>
       </div>
-
-      {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-      {Products.length === 0 ? (
-        <div
-          style={{
-            display: "flex",
-            height: "300px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h2>등록된 상품이 없읍니다</h2>
-        </div>
-      ) : (
-        // 상품 있으면 목록 출력
-        <Row gutter={[16, 16]}>{renderCards}</Row>
-      )}
-      <br />
-
-      {PostSize >= Limit && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={loadMoreHandler}>더보기</button>
-        </div>
-      )}
     </div>
   );
 };

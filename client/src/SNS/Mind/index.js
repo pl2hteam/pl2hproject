@@ -6,54 +6,77 @@ import SubMenu from '../Menu/SubMenu';
 import Sidebar from '../Layout/Sidebar';
 import Content from '../Layout/Content';
 import Intro from './Intro';
-import People from './People';
-import Favorite from './Favorite';
+import RoomMate from './roomMate';
 
-const Profile = () => {
+
+import LandingPage from './roomMate/LandingPage';
+import ResultPage from './roomMate/ResultPage';
+
+
+const Mind = () => {
   const match = useRouteMatch();
   const list = [
+    // {
+    //   id: 1,
+    //   title: '👩‍💻심리테스트',
+    //   url: '/intro',
+    //   child: [
+    //     { id: 1, title: '기본정보', url: '/default' },
+    //     { id: 2, title: '기술 및 히스토리', url: '/dev' },
+    //     { id: 3, title: 'TMI 자문자답', url: '/qna' },
+    //   ],
+    // },
     {
       id: 1,
-      title: '👩‍💻내 소개',
-      url: '/intro',
-      child: [
-        { id: 1, title: '기본정보', url: '/default' },
-        { id: 3, title: '기술 및 히스토리', url: '/dev' },
-        { id: 4, title: 'TMI 자문자답', url: '/qna' },
-      ],
+      title: '⭐룸메이트 찾기',
+      url: '/roomMate',
+      // child: [
+      //   { id: 1, url: '/all' },
+      //   { id: 2, url: '/makers' },
+      //   { id: 3, url: '/result' },
+      // ],
     },
     {
       id: 2,
-      title: '👭내 인맥',
-      url: '/people',
-    },
-    {
-      id: 3,
-      title: '⭐내 즐겨찾기',
-      url: '/favorite',
+      title: 'Mbti 찾기',
+      url: '/Mbti',
+      // child: [
+      //   { id: 1, url: '/all' },
+      //   { id: 2, url: '/makers' },
+      //   { id: 3, url: '/result' },
+      // ],
     },
   ];
-
+ 
   return (
-    <Layout>
-      <Sidebar>
-        <Card>
-          <SubMenu title="Profile" list={list} />
-        </Card>
-      </Sidebar>
-      <Content>
-        <Card>
-          <Switch>
-            <Route exact path={`${match.path}`} component={Intro} />
-            <Route exact path={`${match.path}/intro`} component={Intro} />
-            <Route path={`${match.path}/intro/:type`} component={Intro} />
-            <Route path={`${match.path}/people`} component={People} />
-            <Route path={`${match.path}/favorite`} component={Favorite} />
-          </Switch>
-        </Card>
-      </Content>
-    </Layout>
+    <>
+      <Layout>
+        <Sidebar>
+          <Card>
+            <SubMenu title="Mind" list={list} />
+          </Card>
+        </Sidebar>
+        <Content>
+          <Card>
+            <Switch>
+        
+              <Route exact path={`${match.path}/intro`} component={Intro} />
+              <Route exact path={`${match.path}/roomMate`} component={LandingPage} />
+     
+              <Route
+                exact
+                path={`${match.path}/roomMate/:type`}
+                component={RoomMate} />
+              <Route
+                exact
+                path={`${match.path}/roomMate/result/:finalType`}
+                component={ResultPage} />
+            </Switch>
+          </Card>
+        </Content>
+      </Layout>
+    </>
   );
 };
 
-export default Profile;
+export default Mind;

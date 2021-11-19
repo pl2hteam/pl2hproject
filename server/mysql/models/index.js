@@ -7,6 +7,10 @@ const Post = require('./post');
 const Comment = require('./comment');
 const Image = require('./image');
 const Hashtag = require('./hashtag');
+const Profile = require('./profile');
+const Letter = require('./letter');
+const Jam =require('./jam')
+//const Couple = require('./couple');
 
 const db = {};
 const sequelize = new Sequelize(
@@ -19,6 +23,10 @@ db.Post = Post;
 db.Comment = Comment;
 db.Hashtag = Hashtag;
 db.Image = Image;
+db.Profile = Profile;
+db.Letter = Letter;
+db.Jam = Jam;
+//db.Couple = Couple;
 
 
 Object.keys(db).forEach(modelName => {

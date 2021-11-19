@@ -29,17 +29,17 @@ const productSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
-    quantity: {
-      type: Number,
-      default: 0,
+    videos: {
+      type: Array,
+      default: [],
+    },
+    duration: {
+      type: Array,
+      default: [],
     },
     itemNumber: {
       type: Number,
       default: 1,
-    },
-    views: {
-      type: Number,
-      default: 0,
     },
   },
   { timestamps: true }

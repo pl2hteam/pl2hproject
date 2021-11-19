@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
-import FileUpload from "../../Common/components/FileUpload";
+import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -9,74 +9,106 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
-  const [PdNameValue, setPdNameValue] = useState("");
-  const [BrandValue, setBrandValue] = useState("");
-  const [DescriptionValue, setDescriptionValue] = useState("");
-  const [PriceValue, setPriceValue] = useState(0);
-  const [QuantityValue, setQuantityValue] = useState(1);
-  const [Images, setImages] = useState([]);
 
-  const onPdNameChange = (event) => {
-    setPdNameValue(event.currentTarget.value);
-  };
-  const onBrandChange = (event) => {
-    setBrandValue(event.currentTarget.value);
-  };
+  
+  const [PostTitle, setPostTitle] = useState("");
+  const [PostContent, setPostContent] = useState("");
+  const [PostImg, setPostImg] = useState("");
+  const [PostViews, setPostViews] = useState(0);
+  const [VideoPath, setVideoPath] = useState([]);
+  const [Duration, setDuration] = useState([]);
 
-  const onDescriptionChange = (event) => {
-    setDescriptionValue(event.currentTarget.value);
+  const onPostTitle = (event) => {
+    setPostTitle(event.currentTarget.value);
   };
-
-  const onPriceChange = (event) => {
-    setPriceValue(parseInt(event.currentTarget.value));
-  };
-
-  const onQuantityChange = (event) => {
-    setQuantityValue(event.currentTarget.value);
+  const onPostContent = (event) => {
+    setPostContent(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
-    setImages(newImages);
+    setPostImg(newImages);
   };
 
+  const onPostViews = (event) => {
+    setPostViews(parseInt(event.currentTarget.value));
+  };
+
+  const updateVideoPath = (newVideoPath) => {
+    setVideoPath(newVideoPath);
+  };
+
+  const updateDuration = (newDuration) => {
+    setDuration(newDuration);
+  }
 
   const user = useSelector(state => state.user);
+  console.log(user);
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
-      !PdNameValue ||
-      !BrandValue ||
-      !DescriptionValue ||
-      !PriceValue ||
-      !QuantityValue ||
-      !Images
+      !PostTitle ||
+      !PostContent ||
+      // !PostImg ||
+      !PostViews
     ) {
       return alert("fill all the fields first!");
     }
 
-    // console.log('props id 는 : ', props.user.userData._id);
+    console.log(props.user.userData.id);
     const variables = {
-      seller: user.userData._id,
-      pdName: PdNameValue,
-      brandName: BrandValue,
-      description: DescriptionValue,
-      price: PriceValue,
-      quantity: QuantityValue,
-      images: Images,
+      seller: props.user.userData.id,
+      title: PostTitle,
+      content: PostContent,
+      img: PostImg,
+      views: PostViews,
+      videos: VideoPath,
+      duration: Duration,
     };
 
-    Axios.post("/api/mongo/product/uploadProduct", variables)
+
+
+
+
+
+
+
+    // Axios.delete(`/api/mysql/posts/write/delete`)
+    // .then((response) => {
+    //  console.log('props.user 는 : ', response);
+    //  if (response.data.success) {
+    
+    //    alert("Product Successfully Uploaded");
+    //    props.history.push("/sns");
+    //  } else {
+    //    console.log(response.data)
+    //    alert("Failed to upload Product");
+    //  }
+    // });
+
+
+
+
+    Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
-        console.log('props.user 는 : ', response);
+        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+        console.log(response);
+        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         if (response.data.success) {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/profile");
         } else {
+          console.log(response.data)
           alert("Failed to upload Product");
         }
       });
   };
+
+  let postvideo = {
+    updateImages, 
+    updateVideoPath, 
+    updateDuration
+  }
 
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
@@ -86,32 +118,28 @@ const UploadProductPage2 = (props) => {
 
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
-        <FileUpload refreshFunction={updateImages} />
+        <MovieFileUpload refresh={postvideo} />
 
         <br />
         <br />
-        <label>물품명</label>1
-        <Input onChange={onPdNameChange} value={PdNameValue} />
+        <label>물품명</label>
+        <Input onChange={onPostTitle} value={PostTitle} />
         <br />
         <br />
         <label>브랜드</label>
-        <Input onChange={onBrandChange} value={BrandValue} />
+        <Input onChange={onPostContent} value={PostContent} />
         <br />
         <br />
-        <label>상세정보</label>
-        <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
+        {/* <label>상세정보</label>
+        <TextArea onChange={onPostImg} value={PostImg} />
         <br />
-        <br />
+        <br /> */}
         <label>가격</label>
-        <Input onChange={onPriceChange} value={PriceValue} type="number" />
+        <Input onChange={onPostViews} value={PostViews} type="number" />
         <br />
         <br />
         <label>수량</label>
-        <Input
-          onChange={onQuantityChange}
-          value={QuantityValue}
-          type="number"
-        />
+       
         <br />
         <br />
 

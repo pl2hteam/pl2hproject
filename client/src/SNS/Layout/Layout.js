@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import RigthtSideBox from '../rightSideBox/rightSideBox'
 
 
 // const Wrapper = styled.div`
@@ -32,12 +33,15 @@ const BgWrapper = styled.div`
 
 const Layout = ({ children }) => {
   return (
-    // <Wrapper>
-      <BorderWrapper>
-        <BgWrapper>{children}</BgWrapper>
-      </BorderWrapper>
+   
+    <BorderWrapper>
+      <BgWrapper>
+        {children}
+      </BgWrapper>
+      <RigthtSideBox/>
+    </BorderWrapper>
 
-    // </Wrapper>
+    
   );
 };
 

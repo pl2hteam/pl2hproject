@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Descriptions } from "antd";
 
-function ProductInfo(props) {
+const ProductInfo = (props) => {
   const [Product, setProduct] = useState({});
 
   useEffect(() => {
@@ -14,15 +14,13 @@ function ProductInfo(props) {
 
   return (
     <div>
-      <Descriptions title="Product Info">
-        <Descriptions.Item label="Price"> {Product.price}</Descriptions.Item>
-        <Descriptions.Item label="Brand"> {Product.brand}</Descriptions.Item>
-        <Descriptions.Item label="Seller"> {Product.seller}</Descriptions.Item>
-        <Descriptions.Item label="Description">
-          {" "}
-          {Product.description}
-        </Descriptions.Item>
-      </Descriptions>
+      <div>
+        <div>금화 : {props.detail.price.toLocaleString("ko-KR")}</div>
+        <div>브랜드 : {Product.brand}</div>
+        <div> 수량 : {Product.quantity}</div>
+        {/* <div> {Product.seller}</div> */}
+        <div> 설명 : {Product.description}</div>
+      </div>
 
       <br />
       <br />
@@ -34,11 +32,11 @@ function ProductInfo(props) {
           type="danger"
           onClick={addToCarthandler}
         >
-          Add to Cart
+          장바구니 추가
         </Button>
       </div>
     </div>
   );
-}
+};
 
 export default ProductInfo;
