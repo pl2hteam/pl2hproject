@@ -8,8 +8,10 @@ import Cards from "./Layout/Card";
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
-import img from "../Common/img/minime/연인.png"
+import img from "../Common/img/minime/연인.png";
 import VisitorWriting from "./visitor/VisitorWriting";
+import ContentProfile from './ContentProfile';
+
 
 
 
@@ -24,13 +26,14 @@ import { withRouter } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
-
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
+  MdEdit,
 } from "react-icons/md";
-import { publicUrl } from "../Common/components/utils"
-import ChangeCondition from "./ChangeCondition";
+
+import ChangeCondition from "./MyPage/ChangeCondition";
+import TodayIs from "./TodayIs";
 const Mini = styled.div`
 width: 100%;
 `;
@@ -260,7 +263,7 @@ const Home = (props) => {
         for (let i = 0; i < arr.length; i++) {
 
           if (arr[i].couple_code === userInfo.userData.couple_code) {
-            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== null) {
               console.log(arr[i].couple_code);
               console.log(userInfo.userData.couple_code);
               setCC1(userInfo.userData.name)
@@ -282,10 +285,10 @@ const Home = (props) => {
   const couplelove = () => {
     if (userInfo.userData.couple_code === "9999" && userInfo.userData.couple_code === "9999") {
       return <div>(♀)</div>
-    } else  if(userInfo.userData.couple_code !== "9999" && userInfo.userData.couple_code !== "9999") {
+    } else if (userInfo.userData.couple_code !== "9999" && userInfo.userData.couple_code !== "9999") {
       return <div className="couple">
-      <img src={img}/>
-      <p>{CC1}♥️{CC2}</p>
+        <img src={img} />
+        <p>{CC1}♥️{CC2}</p>
       </div>
     }
   };
@@ -300,35 +303,18 @@ const Home = (props) => {
     <Layout>
       <Sidebar>
         <Cards>
+          <TodayIs />
           <FlexWrapper>
             <ProfileSection >
-              <FlexWrapperImage>
-                <img src={`http://localhost:5000/${userImg}`} alt="profile" />
-              </FlexWrapperImage>
-
-              <Link to={'/ChangeCondition'}>내 상태변경</Link>
-              <hr />
-
-              <h2>상태메세지</h2>
-
-              <br />
-              <br />
-              <br />
-
+              <ContentProfile props={props} />
               <div className="couple">
-              {couplelove()}
+                {couplelove()}
               </div>
-
-              <p>{userInfo.userData.message}</p>
-
             </ProfileSection>
-
-
-
+            <Link to={'/ChangeCondition'}><MdEdit />eidt</Link>
             <ProfileSection>
               <p>
                 <span className="my-name">{userInfo.userData.name}</span>
-
                 <span className="my-sex">{genderImoticon()}</span>
                 <span className="my-brthdy">{userInfo.userData.birth}</span>
               </p>
@@ -356,7 +342,7 @@ const Home = (props) => {
           <ContentSection>
             <h2>한 줄 감성</h2>
             <p>{getCouple()}</p>
-            <VisitorWriting/>
+            <VisitorWriting />
 
             <UpdateProfile />
 
