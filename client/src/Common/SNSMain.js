@@ -11,7 +11,7 @@ import Pic from "../SNS/Pic";
 import Jam from "../SNS/Jam";
 import Write from "../SNS/Profile/Write";
 import LatterWrite from "../SNS/Latter/LatterWrite";
-import ContentProfile from "../SNS/ContentProfile";
+
 import UpdateProfile from "../SNS/UpdateProfile";
 import ChangeCondition from "../SNS/MyPage/ChangeCondition";
 import "./SNSMain.css";
@@ -33,10 +33,6 @@ function SNSMain() {
           <Route
             path="/sns/profile/Write"
             component={Auth(Write, true, true)}
-          />
-          <Route
-            path="/ContentProfile"
-            component={Auth(ContentProfile, true, true)}
           />
           <Route
             path="/UpdateProfile"

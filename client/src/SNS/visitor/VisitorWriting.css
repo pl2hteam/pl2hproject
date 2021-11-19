@@ -1,0 +1,8 @@
+.VisitMsgBox *{
+  min-width: none;
+  min-height: none;
+}
+.VisitMsgBox-ImageBox {
+  width: 100px;
+  height: 100px;
+}
