@@ -56,7 +56,7 @@ function MusicPlayer() {
         frameBorder="no"
         allow="autoplay"
         src={
-          "https://w.soundcloud.com/player/?url=https://soundcloud.com/alexthelee/freestyle-y-please-tell-me-why&show_user=false"
+          "https://youtu.be/_3A-jr1xC9o"
         }
       ></iframe>
     </Container>
