@@ -6,6 +6,7 @@ import Cards from "../Layout/Card";
 import { useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
 import MovieFileUpload from './MovieFileUpload'
+import Couplecode from "./dist/couplecode";
 
 
 ////////////////////////////////////////
@@ -250,6 +251,7 @@ const ChangeCondition = (props) => {
           </FlexWrapper>
         </Cards>
       </Sidebar>
+   
       <Content>
         <Cards>
           <ContentSection>
@@ -308,7 +310,8 @@ const ChangeCondition = (props) => {
                 </p>
               </div>
               <Button onClick={onSubmitUserInfo}>회원정보 변경</Button>
-            </Form>
+            </Form>   
+            {/* <Couplecode/> */}
           </ContentSection>
         </Cards>
       </Content>

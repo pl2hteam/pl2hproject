@@ -4,7 +4,7 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-
+import  "./button.css"
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
@@ -305,8 +305,9 @@ const Home = (props) => {
               <FlexWrapperImage>
                 <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
-
-              <Link to={'/ChangeCondition'}>내 상태변경</Link>
+              <div class="multi-button">
+  <button>  <Link to={'/ChangeCondition'}>내 상태변경</Link></button>
+</div>
               <hr />
 
               <h2>상태메세지</h2>

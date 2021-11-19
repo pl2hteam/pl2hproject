@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Layout from '../Layout/Layout'
 import Card from '../Layout/Card';
@@ -9,9 +9,36 @@ import Intro from './Intro';
 import People from './People';
 import Favorite from './Favorite';
 import Write from './Write';
+import List from "./list"
 
-const Profile = () => {
+
+
+
+////////////////////////////////////////d
+
+import Axios from "axios";
+
+
+import { useSelector } from "react-redux";
+
+const { Meta } = Card;
+
+const Profile = (props) => {
   const match = useRouteMatch();
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
   const list = [
   
     {
@@ -35,6 +62,7 @@ const Profile = () => {
     <Layout>
       <Sidebar>
         <Card>
+          <List/>
           <SubMenu title="Profile" list={list} />
         </Card>
       </Sidebar>
@@ -55,3 +83,6 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+// import React from "react";
