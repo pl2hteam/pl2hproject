@@ -1,30 +1,33 @@
+/* 기본틀 */
 .pl2h-main {
   margin-top: -30px;
-  width: 1600px;
-  height: 970px;
+  width: 1920px;
+  height: 1000px;
   background-image: url("../img/main_BG.png");
-  background-repeat: repeat;
+  background-repeat: initial;
   background-size: contain;
 }
 .link_btn {
   font-family: initial;
   font-size: 2rem;
   position: fixed;
-  width: 248px;
-  height: 494px;
+  width: 254px;
+  height: 508px;
   background-color: transparent;
   transition-duration: 0.3s;
 }
 .link_btn-line {
   position: fixed;
-  z-index: 1;
-  transform: translate(733px, 413px);
+  z-index: 2;
+  transform: translate(758px, 429px);
   height: 100px;
-  border: solid 2px rgba(119, 119, 119, 0.384);
+  border: solid 2px rgb(192, 192, 192);
   border-radius: 5px;
 }
 .sns {
-  transform: translate(490px, 218px);
+  border: solid rgb(192, 192, 192);
+  border-width: 5px 0px 5px 5px;
+  transform: translate(506px, 225px);
   border-radius: 248px 0px 0px 248px;
 }
 .sns:hover {
@@ -32,10 +35,129 @@
   background-color: #b8e6f2;
 }
 .shop {
-  transform: translate(735px, 218px);
+  border: solid rgb(192, 192, 192);
+  border-width: 5px 5px 5px 0px;
+  transform: translate(760px, 225px);
   border-radius: 0px 248px 248px 0px;
 }
 .shop:hover {
   cursor: pointer;
   background-color: rgb(84, 92, 143);
+}
+.blank_box {
+  height: 80px;
+}
+.login_page_title {
+  font-size: 2.7rem;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+/* SNS페이지 */
+.MainLogin > .login {
+  width: 508px;
+  height: 508px;
+  min-width: 508px;
+  min-height: 508px;
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  transform: translate(506px, 225px);
+  /*  */
+  /* background-color: rgba(100, 100, 100, 0.5); */
+  /*  */
+}
+.MainLogin .login .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+}
+.MainLogin .login .container .form-group input {
+  width: 100%;
+  height: 3rem;
+  border: rgb(192, 192, 192) solid 2px;
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-size: 18px;
+}
+.MainLogin .login .container .app {
+  width: 100%;
+}
+.MainLogin .login .container .content .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.MainLogin .login .container .content .form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.MainLogin .login .container .content .form .form-group div:nth-child(1) {
+  display: flex;
+  justify-content: center;
+}
+.MainLogin .login .container .content .form div:nth-child(3) {
+  height: 1.2rem;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rememberMe_box {
+  width: 60%;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rememberMe_box input {
+  width: 20px;
+  height: 20px;
+}
+.rememberMe_box label {
+  width: 6rem;
+}
+
+.MainLogin
+  > .login
+  > .container
+  .content
+  .form
+  .form-group
+  div:nth-child(1)
+  label {
+  width: 80px;
+  margin: auto;
+}
+.MainLogin .login .container .content .input-feedback {
+  margin: 2px auto;
+  min-height: 1.2rem;
+  color: rgb(179, 34, 34);
+  font-weight: bold;
+}
+.footer .login-form-button {
+  width: 60%;
+  height: 3rem;
+  border-radius: 25px;
+  transition-duration: 0.3s;
+  background-color: #4e4e4e;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+}
+.MainLogin .login .container .footer .login-form-button:hover {
+  background-color: #333333;
+  cursor: pointer;
+}
+.MainLogin .login .container .inner-container:hover {
+  cursor: pointer;
 }
