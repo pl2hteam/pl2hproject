@@ -9,6 +9,7 @@ const Image = require('./image');
 const Hashtag = require('./hashtag');
 const Profile = require('./profile');
 const Letter = require('./letter');
+const Jam =require('./jam')
 //const Couple = require('./couple');
 
 const db = {};
@@ -24,6 +25,7 @@ db.Hashtag = Hashtag;
 db.Image = Image;
 db.Profile = Profile;
 db.Letter = Letter;
+db.Jam = Jam;
 //db.Couple = Couple;
 
 

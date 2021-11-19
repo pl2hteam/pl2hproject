@@ -11,6 +11,7 @@ const Container = styled.div`
   position: absolute;
   top: 32px;
   right: 36px;
+  z-index: 1;
 `;
 
 function RightSideBox() {

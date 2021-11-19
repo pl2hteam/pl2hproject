@@ -3,7 +3,7 @@ import ScrollToTop from '../../Layout/ScrollToTop'
 import Main from './Main';
 import Info from './Info';
 import Dev from './Dev';
-import Qna from './Qna';
+
 
 const Intro = ({ match }) => {
   let { type } = match.params;
@@ -22,10 +22,7 @@ const Intro = ({ match }) => {
       type: 'dev',
       component: <Dev title="기술 및 히스토리" />,
     },
-    {
-      type: 'qna',
-      component: <Qna title="TMI 자문자답" />,
-    },
+   
   ];
   const { component } = intros.find(item => item.type === type);
 

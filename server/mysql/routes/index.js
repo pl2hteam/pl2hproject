@@ -7,7 +7,7 @@ const letter = require('./letters');
 const album = require('./album');
 const condition = require('./conditions')
 const couple = require('./couple')
-const play = require('./play');
+const jam = require('./jam')
 
 // 라우터
 router.use('/users', user);
@@ -17,7 +17,7 @@ router.use('/letters', letter);
 router.use('/album', album);
 router.use('/conditions', condition);
 router.use('/couples', couple);
-router.use('/play', play);
+router.use('/jams', jam);
 
 
 module.exports = router;
