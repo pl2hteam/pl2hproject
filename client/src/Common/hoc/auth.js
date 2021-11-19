@@ -59,7 +59,7 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
           }
         });
       }
-    }, [dispatch, props.history, user.googleAuth]);
+    }, [dispatch, props.history]);
 
     return <ComposedClass {...props} user={user} />;
   }

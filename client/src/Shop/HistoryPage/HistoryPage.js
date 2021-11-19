@@ -17,7 +17,7 @@ function HistoryPage() {
         console.log(user.userData.email);
         dispatch(getHistory(user.userData.email))
           .then((response) => {
-            setHistory(response.payload.cart.history)
+            setHistory(response.payload.user.history)
           });
       } else {
         userData = user.userData;

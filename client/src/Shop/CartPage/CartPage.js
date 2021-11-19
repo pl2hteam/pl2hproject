@@ -25,7 +25,7 @@ function CartPage(props) {
       if (user.userData.gender) {
         dispatch(getCart(user.userData.email))
           .then((response) => {
-            let userCart = response.payload.cart;
+            let userCart = response.payload.user;
 
             let cartItems = [];
             if (userCart && userCart.cart) {
