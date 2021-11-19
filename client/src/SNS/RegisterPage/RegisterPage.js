@@ -84,7 +84,8 @@ function RegisterPage(props) {
             gender: values.gender,
             phone: values.phone,
             birth: values.birth,
-            image: 'uploads\img\default_profile_image.png',
+            image: `uploads/img/default_profile_image.png`,
+
             db: true, // MySQL
           };
 
