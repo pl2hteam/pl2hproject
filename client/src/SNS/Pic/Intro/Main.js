@@ -184,7 +184,7 @@ const Main = (props) => {
 
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-      {userInfo.userData.couple_code === null && userInfo.userData.couple_code === undefined ? (
+      {userInfo.userData.couple_code === "9999"  ? (
         <div
           style={{
             display: "flex",
@@ -193,7 +193,7 @@ const Main = (props) => {
             alignItems: "center",
           }}
         >
-          <h2>등록된 상품이 없읍니다</h2>
+          <h2>커플이 아닙니다 사진을 못봐요</h2>
         </div>
       ) : (
         

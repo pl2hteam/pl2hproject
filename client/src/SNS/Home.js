@@ -8,6 +8,7 @@ import ContentProfile from './ContentProfile';
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
+import img from "../Common/img/minime/연인.png"
 // import VisitorWriting from "./visitor/VisitorWriting";
 
 
@@ -285,13 +286,13 @@ const Home = (props) => {
   }, []);
 
   const couplelove = () => {
-    if (userInfo.userData.couple_code !== null && userInfo.userData.couple_code !==undefined) {
+    if (userInfo.userData.couple_code === "9999" && userInfo.userData.couple_code === "9999") {
+      return <div>(♀)</div>
+    } else  if(userInfo.userData.couple_code !== "9999" && userInfo.userData.couple_code !== "9999") {
       return <div className="couple">
-      <h2>커플</h2>
+      <img src={img}/>
       <p>{CC1}♥️{CC2}</p>
       </div>
-    } else {
-      return <div>(♂)</div>
     }
   };
   const genderImoticon = () => {
