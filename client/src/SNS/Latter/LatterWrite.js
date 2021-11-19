@@ -33,6 +33,8 @@ const { TextArea } = Input;
 
 
 const LetterWrite = (props) => {
+  const userInfo = useSelector(state => state.user);
+  console.log(userInfo,199)
 
 
 
@@ -106,10 +108,8 @@ const LetterWrite = (props) => {
 
 
 
-  
-
-  return (
-    <div id="wrap"> 
+  if(userInfo.userData.couple_code !== null){
+    return   <div id="wrap"> 
     <div id='form_wrap'>
       
        <Form onSubmit={onSubmit}>
@@ -141,6 +141,11 @@ const LetterWrite = (props) => {
   
     </div>
     </div>
-  );
+
+  }else{
+    return <div><p>폄지를 못써요</p></div>
+  }
+
+  
 };
 export default withRouter(LetterWrite);

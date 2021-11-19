@@ -160,7 +160,7 @@ const Home = (props) => {
 
   let userImg
   if (props.user.userData) {
-    userImg = props.user.userData.name
+    userImg = props.user.userData.image
     console.log(props.user.userData.image);
   }
 
@@ -265,7 +265,7 @@ const Home = (props) => {
         for (let i = 0; i < arr.length; i++) {
 
           if (arr[i].couple_code === userInfo.userData.couple_code) {
-            if (arr[i].name !== userInfo.userData.name) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
               console.log(arr[i].couple_code);
             console.log(userInfo.userData.couple_code);
             setCC1(userInfo.userData.name)
