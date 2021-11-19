@@ -4,11 +4,13 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-import ContentProfile from './ContentProfile';
+
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
-//import VisitorWriting from "./visitor/VisitorWriting";
+import img from "../Common/img/minime/연인.png";
+import VisitorWriting from "./visitor/VisitorWriting";
+import ContentProfile from './ContentProfile';
 
 
 
@@ -24,13 +26,14 @@ import { withRouter } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
-
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
+  MdEdit,
 } from "react-icons/md";
-import { publicUrl } from "../Common/components/utils"
-import ChangeCondition from "./ChangeCondition";
+
+import ChangeCondition from "./MyPage/ChangeCondition";
+import TodayIs from "./TodayIs";
 const Mini = styled.div`
 width: 100%;
 `;
@@ -39,6 +42,15 @@ const FlexWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
+`;
+const FlexWrapperImage = styled.div`
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    width: 250px;
+    height: 250px;
+
 `;
 
 const ContentSection = styled.section`
@@ -53,13 +65,7 @@ const ContentSection = styled.section`
     h2 {
       margin-bottom: 5px;
     }
-    div {
-      width: 100%;
-      min-height: 200px;
-      img {
-        width: 100%;
-      }
-    }
+    
   }
   &:last-of-type {
     margin-top: 20px;
@@ -134,10 +140,15 @@ const LinkTitle = styled.p`
     color: green;
   }
 `;
+
+
 const { Meta } = Card;
 
 
 const Home = (props) => {
+  const [CC1, setCC1] = useState([]);
+  const [CC2, setCC2] = useState([]);
+
   console.log(props);
 
   //const [userConditionData, setUserConditionData] = useState([]);
@@ -199,8 +210,6 @@ const Home = (props) => {
 
   // }
 
-
-
   const getCondition = () => {
 
     // console.log("UserInfo", userInfo);
@@ -236,38 +245,77 @@ const Home = (props) => {
         //   setUserConditionData([...userConditionData]);
         // }
       });
+
+
   };
 
+  const getCouple = () => {
+
+
+    Axios.post("/api/mysql/couples/read")
+      .then((response) => {
+        console.log(99999999999, response);
+        console.log(99999999999, response.data.allUser);
+
+        const arr = response.data.allUser;
+        console.log(arr);
+
+        for (let i = 0; i < arr.length; i++) {
+
+          if (arr[i].couple_code === userInfo.userData.couple_code) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== null) {
+              console.log(arr[i].couple_code);
+              console.log(userInfo.userData.couple_code);
+              setCC1(userInfo.userData.name)
+              setCC2(arr[i].name)
+              break;
+            }
+          } else {
+          }
+        }
+      });
+  }
+  console.log(9987666666666);
 
   useEffect(() => {
 
     getCondition();
   }, []);
 
-
-
+  const couplelove = () => {
+    if (userInfo.userData.couple_code === "9999" && userInfo.userData.couple_code === "9999") {
+      return <div>(♀)</div>
+    } else if (userInfo.userData.couple_code !== "9999" && userInfo.userData.couple_code !== "9999") {
+      return <div className="couple">
+        <img src={img} />
+        <p>{CC1}♥️{CC2}</p>
+      </div>
+    }
+  };
+  const genderImoticon = () => {
+    if (userInfo.userData.gender == 1) {
+      return <div>(♀)</div>
+    } else {
+      return <div>(♂)</div>
+    }
+  }
   return (
     <Layout>
       <Sidebar>
         <Cards>
+          <TodayIs />
           <FlexWrapper>
-            <ProfileSection>
-              <img src={`http://localhost:5000/${userImg}`} alt="profile" />
-              {/* <div>{userConditionData.message}</div> */}
-              {/* {renderMyImage} */}
-
-
-              <Link to={'/ChangeCondition'}>내 상태변경</Link>
-              <hr />
-              <h2>상태메세지</h2>
-              <p>{userInfo.userData.message}</p>
-
+            <ProfileSection >
+              <ContentProfile props={props} />
+              <div className="couple">
+                {couplelove()}
+              </div>
             </ProfileSection>
+            <Link to={'/ChangeCondition'}><MdEdit />eidt</Link>
             <ProfileSection>
               <p>
                 <span className="my-name">{userInfo.userData.name}</span>
-
-                <span className="my-sex">({userInfo.userData.gender})</span>
+                <span className="my-sex">{genderImoticon()}</span>
                 <span className="my-brthdy">{userInfo.userData.birth}</span>
               </p>
               <p>
@@ -293,7 +341,8 @@ const Home = (props) => {
           </Mini>
           <ContentSection>
             <h2>한 줄 감성</h2>
-            <Link to={'/ContentProfile'}>방명록</Link>
+            <p>{getCouple()}</p>
+            <VisitorWriting />
 
             <UpdateProfile />
 

@@ -73,7 +73,7 @@ const UpdatePic = (props) => {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/pic");
         } else {
-          console.log(response.data)
+          console.log(response.data,314141)
           alert("Failed to upload Product");
         }
       });

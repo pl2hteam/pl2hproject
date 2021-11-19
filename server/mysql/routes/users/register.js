@@ -20,6 +20,7 @@ router.post('/', async (req, res, next) => {
       email: req.body.email,
       name: req.body.name,
       password: hashedPassword,
+      image: req.body.image,
       address: req.body.address,
       gender: req.body.gender,
       role: req.body.role,

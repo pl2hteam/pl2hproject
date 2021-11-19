@@ -13,13 +13,10 @@
 }
 
 .pic img{
-    height: 200px;
+    height: 100%;
     vertical-align: middle;
 }
 
-.pic:hover img{
-    opacity: 0.6;
-}
 
 .pic:hover .icons{
     display: flex;
