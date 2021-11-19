@@ -268,7 +268,7 @@ const Home = (props) => {
             if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
               console.log(arr[i].couple_code);
             console.log(userInfo.userData.couple_code);
-            setCC1(userInfo.userData.name)
+            setCC1(userInfo.userData.name,setCC2(arr[i].name))
             setCC2(arr[i].name)
             break;
             }
@@ -293,6 +293,16 @@ console.log(9987666666666);
     getCondition();
   }, []);
 
+  const couplelove = () => {
+    if (userInfo.userData.couple_code !== null && userInfo.userData.couple_code !==undefined) {
+      return <div className="couple">
+      <h2>커플</h2>
+      <p>{CC1}♥️{CC2}</p>
+      </div>
+    } else {
+      return <div>(♂)</div>
+    }
+  };
   const genderImoticon = () => {
     if (userInfo.userData.gender == 1) {
       return <div>(♀)</div>
@@ -300,7 +310,6 @@ console.log(9987666666666);
       return <div>(♂)</div>
     }
   }
-
   return (
     <Layout>
       <Sidebar>
@@ -321,8 +330,7 @@ console.log(9987666666666);
               <br/>
               
   <div className="couple">
-              <h2>커플</h2>
-              <p>{CC1}♥️{CC2}</p>
+            {couplelove()}
               </div>
 
               <p>{userInfo.userData.message}</p>
