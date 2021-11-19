@@ -118,6 +118,9 @@ const ChangeCondition = (props) => {
   const [ChangeMyImage, setChangeMyImage] = useState("");
   const [ChangeCoupleCode, setChangeCoupleCode] = useState("");
   const [ChangeMessage, setChangeMessage] = useState("");
+  const [ChangeEmail, setChangeEmail] = useState("");
+  const [ChangePhone, setChangePhone] = useState("");
+  const [ChangeAddress, setChangeAddress] = useState("");
 
 
 
@@ -153,6 +156,15 @@ const ChangeCondition = (props) => {
   const onChangeMessage = (event) => {
     setChangeMessage(event.currentTarget.value);
   };
+  const onChangeEmail = (event) => {
+    setChangeEmail(event.currentTarget.value);
+  };
+  const onChangePhone = (event) => {
+    setChangePhone(event.currentTarget.value);
+  };
+  const onChangeAddress = (event) => {
+    setChangeAddress(event.currentTarget.value);
+  };
 
 
 
@@ -160,7 +172,6 @@ const ChangeCondition = (props) => {
 
     //리액트 서버에서 보내주는 데이터
     const variables = {
-      //seller: user.userData._id,
       id: userInfo.userData.id,
       image: ChangeMyImage,
       couple_code: ChangeCoupleCode,
@@ -172,62 +183,47 @@ const ChangeCondition = (props) => {
         console.log('props.user 는 : ', response);
 
         if (response.data.success) {
-
           alert("정보가 변경되었습니다.");
           props.history.push("/sns/Main");
         } else {
-          console.log(response.data)
           alert("정보 변경에 실패하였습니다.");
         }
       });
   };
+
+  const onSubmitUserInfo = () => {
+
+    //리액트 서버에서 보내주는 데이터
+    const variables = {
+      id: userInfo.userData.id,
+      image: ChangeMyImage,
+      couple_code: ChangeCoupleCode,
+      message: ChangeMessage,
+      email: ChangeEmail,
+      phone: ChangePhone,
+      address: ChangeAddress,
+
+    };
+
+    Axios.post("/api/mysql/conditions/update", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+
+        if (response.data.success) {
+          alert("정보가 변경되었습니다.");
+          props.history.push("/sns/Main");
+        } else {
+          alert("정보 변경에 실패하였습니다.");
+        }
+      });
+  };
+
 
   let userImg
   if (props.user.userData) {
     userImg = props.user.userData.image
     console.log(props.user.userData.image);
   }
-
-
-
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  // const renderCards = Posts.map((postData, index) => {
-  //   if (postData || postData.HashtagId) {
-  //     console.log(postData);
-  //     return (
-  //       <Card >
-  //         <article>
-
-  //           <header>
-  //             {/* 사용자 정보 */}
-  //             <div class="profile-of-article">
-  //               <span class="userID main-id point-span">
-  //                 <Meta description={`${postData.UserId.name}`} />
-  //               </span>
-  //             </div>
-  //           </header>
-
-  //           {/* 이미지 정보 */}
-  //           <div class="main-image">
-  //           </div>
-
-  //           {/* 본문 */}
-  //           <div class="reaction">
-  //             {/* 설명 */}
-  //             <div class="description">
-  //               <p> <Meta description={`설명 글란 : ${postData.content}`} />🌱</p>
-  //             </div>
-  //           </div>
-  //         </article>
-  //       </Card>);
-  //   } else {
-  //     return null;
-  //   }
-  // });
-
-  ////////////////////////////////////////////////////////////////////////////
 
 
   useEffect(() => {
@@ -269,40 +265,52 @@ const ChangeCondition = (props) => {
                 </p> */}
               <p>
                 <label>커플코드</label>
-                <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} />
+                <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} placeholder={userInfo.userData.couple_code} />
               </p>
               <p>
                 <label>상태메세지</label>
-                <Input onChange={onChangeMessage} value={ChangeMessage} />
+                <Input onChange={onChangeMessage} value={ChangeMessage} placeholder={userInfo.userData.message} />
               </p>
-
-
               <Button onClick={onSubmit}>수정</Button>
             </Form>
             {/* ----------------------------------------------------------------------------- */}
+            <Form onSubmit={onSubmitUserInfo}>
+              <div style={{ width: "75%", margin: "3rem auto" }}>
+                <h2>MY CONDITION</h2>
+                <p>
+                  <label>이메일</label>
+                  <MdMailOutline />
+                  <Input onChange={onChangeEmail} value={ChangeEmail} placeholder={userInfo.userData.email} />
+                  <Input onChange={onChangeEmail} value={userInfo.userData.email} hidden />
+                </p>
 
-            <div style={{ width: "75%", margin: "3rem auto" }}>
-              <h2>MY CONDITION</h2>
-              <p>
-                <span className="my-name">{userInfo.userData.name}</span>
-                <span className="my-sex">({userInfo.userData.gender})</span>
-                <span className="my-brthdy">{userInfo.userData.birth}</span>
-              </p>
-              <p>
-                <MdMailOutline />
-                {userInfo.userData.email}
-              </p>
-              <p>
-                <MdPhoneIphone />
-                {userInfo.userData.phone}
-              </p>
-              <p>
-                <MdLocationOn />
-                {userInfo.userData.address}
-              </p>
-
-
-            </div>
+                <p>
+                  <label>연락처</label>
+                  <MdPhoneIphone />
+                  <Input onChange={onChangePhone} value={ChangePhone} placeholder={userInfo.userData.phone} />
+                  <Input onChange={onChangePhone} value={userInfo.userData.phone} hidden />
+                </p>
+                <p>
+                  <label>주소</label>
+                  <MdLocationOn />
+                  <Input onChange={onChangeAddress} value={ChangeAddress} placeholder={userInfo.userData.address} />
+                  <Input onChange={onChangeAddress} value={userInfo.userData.address} hidden />
+                </p>
+                <p>
+                  <label>이름</label>
+                  {userInfo.userData.name}
+                </p>
+                <p>
+                  <label>성별</label>
+                  {userInfo.userData.gender}
+                </p>
+                <p>
+                  <label>생년월일</label>
+                  {userInfo.userData.birth}
+                </p>
+              </div>
+              <Button onClick={onSubmitUserInfo}>회원정보 변경</Button>
+            </Form>
           </ContentSection>
         </Cards>
       </Content>
