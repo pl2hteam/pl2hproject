@@ -8,6 +8,7 @@ import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Modal from "../Modal"
+import { useSelector } from "react-redux";
 
 
 
@@ -172,7 +173,7 @@ const Main = (props) => {
 
     getPosts(variables);
   }, []);
-  
+  const userInfo = useSelector(state => state.user);
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
@@ -183,7 +184,7 @@ const Main = (props) => {
 
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-      {Posts.length === 0 ? (
+      {userInfo.userData.couple_code === null && userInfo.userData.couple_code === undefined ? (
         <div
           style={{
             display: "flex",
