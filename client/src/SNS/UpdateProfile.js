@@ -18,7 +18,10 @@ import Delete from './RegisterPage/delete'
 import { withRouter } from "react-router";
 
 
-
+import m1 from "../Common/img/minime/1.png"
+import m2 from "../Common/img/minime/2.png"
+import m3 from "../Common/img/minime/3.png"
+import VisitItem from "./visitor/visitItem";
 
 
 const Container = styled.div`
@@ -88,6 +91,12 @@ const VisitMsg = styled.textarea`
   color: #525252;
 `;
 
+const Item = styled.li`
+  color: #525252;
+  margin-top: 36px;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf;
+`;
 const Footer = styled.div`
   text-align: right;
   padding: 5px 0;
@@ -147,10 +156,17 @@ const UpdateProfile = () => {
     return (
 
       <easy>
-
-        <easy>{fullProfile.content}</easy>
+  <Item>
+          <VisitItem
+            num={1}
+            img={m1}
+            name={"신지은"}
+            txt={
+              <easy>{fullProfile.content}</easy>
+            }
+          />
         <Delete profile={fullProfile} />
-        <hr />
+        </Item>
       </easy>
 
 

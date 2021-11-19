@@ -4,12 +4,12 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-import ContentProfile from './ContentProfile';
+
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
 import img from "../Common/img/minime/연인.png"
-// import VisitorWriting from "./visitor/VisitorWriting";
+import VisitorWriting from "./visitor/VisitorWriting";
 
 
 
@@ -62,13 +62,7 @@ const ContentSection = styled.section`
     h2 {
       margin-bottom: 5px;
     }
-    div {
-      width: 100%;
-      min-height: 200px;
-      img {
-        width: 100%;
-      }
-    }
+    
   }
   &:last-of-type {
     margin-top: 20px;
@@ -362,7 +356,7 @@ const Home = (props) => {
           <ContentSection>
             <h2>한 줄 감성</h2>
             <p>{getCouple()}</p>
-            <Link to={'/ContentProfile'}>방명록</Link>
+            <VisitorWriting/>
 
             <UpdateProfile />
 
