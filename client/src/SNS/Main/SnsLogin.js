@@ -2,6 +2,7 @@ import React from "react";
 
 import LoginPage from "../Login/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
+import cyworld from "../../Common/img/cyworld.png";
 
 class MainLogin extends React.Component {
   constructor(props) {
@@ -39,7 +40,11 @@ class MainLogin extends React.Component {
     return (
       <div className="MainLogin pl2h-main">
         <div className="login">
-          <div className="container" ref={(ref) => (this.container = ref)}>
+          <div
+            className="container register_container"
+            ref={(ref) => (this.container = ref)}
+          >
+            <img src={cyworld} style={{ width: "100px" }} />
             <h1 className="login_page_title">PL2H WORLD</h1>
             {isLogginActive && (
               <LoginPage containerRef={(ref) => (this.current = ref)} />

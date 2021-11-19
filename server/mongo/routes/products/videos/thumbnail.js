@@ -15,16 +15,12 @@ router.post('/', (req, res) => {
 
   // 비디오 정보 가져오기
   ffmpeg.ffprobe(req.body.url, (err, metadata) => {
-    console.dir(metadata);
-    console.log(metadata.format.duration);
     fileDuration = metadata.format.duration;
   });
 
   // 썸내일 생성
   ffmpeg(req.body.url)  // 클라이언트에서 온 비디오 정보
     .on('filenames', (filenames) => {
-      console.log('Will generate' + filenames.join(', '));
-
       filePath = "uploads/thumbnails/" + filenames[0];
     })
     .on('end', () => {

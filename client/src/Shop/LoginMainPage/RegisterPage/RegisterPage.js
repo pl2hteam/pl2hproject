@@ -1,15 +1,11 @@
 import React from "react";
 import moment from "moment";
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { Formik } from "formik";
+import * as Yup from "yup";
 import { registerUser } from "../../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 
-import {
-  Form,
-  Input,
-  Button,
-} from 'antd';
+import { Form, Input, Button } from "antd";
 import { withRouter } from "react-router";
 
 const formItemLayout = {
@@ -40,26 +36,24 @@ function RegisterPage(props) {
   return (
     <Formik
       initialValues={{
-        email: '',
-        lastName: '',
-        name: '',
-        password: '',
-        confirmPassword: ''
+        email: "",
+        lastName: "",
+        name: "",
+        password: "",
+        confirmPassword: "",
       }}
       validationSchema={Yup.object().shape({
-        name: Yup.string()
-          .required('Name is required'),
-        lastName: Yup.string()
-          .required('Last Name is required'),
+        name: Yup.string().required("이름써"),
+        lastName: Yup.string().required("이름!"),
         email: Yup.string()
-          .email('Email is invalid')
-          .required('Email is required'),
+          .email("이메일 형식 맞춰라")
+          .required("이메일 적어라"),
         password: Yup.string()
-          .min(6, 'Password must be at least 6 characters')
-          .required('Password is required'),
+          .min(6, "여섯자가 안되잖아!")
+          .required("비밀버노 써"),
         confirmPassword: Yup.string()
-          .oneOf([Yup.ref('password'), null], 'Passwords must match')
-          .required('Confirm Password is required')
+          .oneOf([Yup.ref("password"), null], "비밀번호 둘이 안맞잖아")
+          .required("비번확인!!!"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -72,19 +66,19 @@ function RegisterPage(props) {
             db: false, // MongoDB
           };
 
-          dispatch(registerUser(dataToSubmit)).then(response => {
+          dispatch(registerUser(dataToSubmit)).then((response) => {
             if (response.payload.success) {
               window.location.replace("/shop");
             } else {
-              alert(response.payload.err)
+              alert(response.payload.err);
             }
-          })
+          });
 
           setSubmitting(false);
         }, 500);
       }}
     >
-      {props => {
+      {(props) => {
         const {
           values,
           touched,
@@ -99,17 +93,23 @@ function RegisterPage(props) {
         return (
           <div className="app">
             <h2>Sign up</h2>
-            <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
-              <Form.Item required label="Name">
+            <Form
+              style={{ minWidth: "375px" }}
+              {...formItemLayout}
+              onSubmit={handleSubmit}
+            >
+              <Form.Item required label="이름">
                 <Input
                   id="name"
-                  placeholder="Enter your name"
+                  placeholder="이름입력해용"
                   type="text"
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.name && touched.name ? 'text-input error' : 'text-input'
+                    errors.name && touched.name
+                      ? "text-input error"
+                      : "text-input"
                   }
                 />
                 {errors.name && touched.name && (
@@ -117,16 +117,18 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
+              <Form.Item required label="성">
                 <Input
                   id="lastName"
-                  placeholder="Enter your Last Name"
+                  placeholder="넌 무슨 씨니?"
                   type="text"
                   value={values.lastName}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.lastName && touched.lastName ? 'text-input error' : 'text-input'
+                    errors.lastName && touched.lastName
+                      ? "text-input error"
+                      : "text-input"
                   }
                 />
                 {errors.lastName && touched.lastName && (
@@ -134,16 +136,25 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+              <Form.Item
+                required
+                label="이멜"
+                hasFeedback
+                validateStatus={
+                  errors.email && touched.email ? "error" : "success"
+                }
+              >
                 <Input
                   id="email"
-                  placeholder="Enter your Email"
+                  placeholder="이메일을 입력해용"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.email && touched.email ? 'text-input error' : 'text-input'
+                    errors.email && touched.email
+                      ? "text-input error"
+                      : "text-input"
                   }
                 />
                 {errors.email && touched.email && (
@@ -151,16 +162,25 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+              <Form.Item
+                required
+                label="비밀버농"
+                hasFeedback
+                validateStatus={
+                  errors.password && touched.password ? "error" : "success"
+                }
+              >
                 <Input
                   id="password"
-                  placeholder="Enter your password"
+                  placeholder="비밀번호도 쓰자"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.password && touched.password ? 'text-input error' : 'text-input'
+                    errors.password && touched.password
+                      ? "text-input error"
+                      : "text-input"
                   }
                 />
                 {errors.password && touched.password && (
@@ -168,16 +188,18 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Confirm" hasFeedback>
+              <Form.Item required label="비밀버노 화긴" hasFeedback>
                 <Input
                   id="confirmPassword"
-                  placeholder="Enter your confirmPassword"
+                  placeholder="비밀번호 함 더 쓰자"
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.confirmPassword && touched.confirmPassword ? 'text-input error' : 'text-input'
+                    errors.confirmPassword && touched.confirmPassword
+                      ? "text-input error"
+                      : "text-input"
                   }
                 />
                 {errors.confirmPassword && touched.confirmPassword && (
@@ -186,8 +208,12 @@ function RegisterPage(props) {
               </Form.Item>
 
               <Form.Item {...tailFormItemLayout}>
-                <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                  Submit
+                <Button
+                  onClick={handleSubmit}
+                  type="primary"
+                  disabled={isSubmitting}
+                >
+                  가입시켜줭ㅎㅎㅎㅎ
                 </Button>
               </Form.Item>
             </Form>
@@ -196,7 +222,6 @@ function RegisterPage(props) {
       }}
     </Formik>
   );
-};
-
+}
 
 export default withRouter(RegisterPage);

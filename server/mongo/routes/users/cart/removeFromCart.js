@@ -11,30 +11,6 @@ const { Product } = require("../../../schemas/Product");
 /////////////////////////////////////////////////////
 
 router.get("/", (req, res) => {
-  if (req.user.gender) {
-    Cart.findOneAndUpdate(
-      { email: req.user.email },
-      {
-        $pull: { cart: { id: req.query._id } },
-      },
-      { new: true },
-      (err, userInfo) => {
-        let cart = userInfo.cart;
-        let array = cart.map((item) => {
-          return item.id;
-        });
-  
-        Product.find({ _id: { $in: array } })
-          .populate("seller")
-          .exec((err, cartDetail) => {
-            return res.status(200).json({
-              cartDetail,
-              cart,
-            });
-          });
-      }
-    );
-  } else {
     User.findOneAndUpdate(
       { _id: req.user._id },
       {
@@ -57,8 +33,6 @@ router.get("/", (req, res) => {
           });
       }
     );
-  }
-  
 });
 
 module.exports = router;

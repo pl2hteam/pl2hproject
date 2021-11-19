@@ -135,10 +135,10 @@ export function onSuccessBuy(data) {
   };
 }
 
-export function registerCart(data) {
+export function registerMysql(data) {
   console.log(data);
   const request = axios
-    .post(`${MONGO_USER_SERVER}/sns/addCart`, data)
+    .post(`${MONGO_USER_SERVER}/register`, data)
     .then((response) => response.data);
 
   return {
@@ -149,7 +149,7 @@ export function registerCart(data) {
 
 export function getCart(data) {
   let request = axios
-      .get(`${MONGO_USER_SERVER}/sns/getCart`, data)
+      .get(`${MONGO_USER_SERVER}/sns/getMongo`, data)
       .then((response) => response.data);
 
   return {
@@ -161,7 +161,7 @@ export function getCart(data) {
 export function getHistory(data) {
   console.log(data);
   let request = axios
-      .get(`${MONGO_USER_SERVER}/sns/getHistory`, data)
+      .get(`${MONGO_USER_SERVER}/sns/getMongo`, data)
       .then((response) => response.data);
 
   return {

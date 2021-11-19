@@ -18,7 +18,7 @@ function RightSideBox() {
   return (
     <Container>
       <ActivityStatus />
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
       <Button />
     </Container>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UploadStyle } from "./style/uploadstyle";
 import { Button, Form, Input } from "antd";
 import MovieFileUpload from "./Section/MovieFileUpload";
@@ -20,6 +20,7 @@ const UploadProductPage = (props) => {
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
   const [ItemNumber, setItemNumber] = useState(1);
+  const [Writer, setWriter] = useState("");
 
   const onItemNumberSelectChange = (event) => {
     setItemNumber(event.currentTarget.value);
@@ -51,6 +52,22 @@ const UploadProductPage = (props) => {
   const updateDuration = (newDuration) => {
     setDuration(newDuration);
   };
+  
+  useEffect(() => {
+    const userData = { userInfo : user.userData };
+    if (user.userData.gender) {
+      Axios.get('/api/mongo/users/sns/getMongo', userData)
+        .then(response => {
+          if (response.data.success) {
+            setWriter(response.data.user[0]._id);
+          } else {
+            alert('Failed')
+          }
+      })
+    } else {
+      setWriter(user.userData._id);
+    }
+  }, [user.userData])
 
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
@@ -66,7 +83,7 @@ const UploadProductPage = (props) => {
     }
 
     const variables = {
-      seller: user.userData._id,
+      seller: Writer,
       pdName: PdNameValue,
       brandName: BrandValue,
       description: DescriptionValue,
