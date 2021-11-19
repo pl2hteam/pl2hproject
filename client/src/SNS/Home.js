@@ -321,8 +321,7 @@ const Home = (props) => {
               <br />
 
               <div className="couple">
-                <h2>커플</h2>
-                <p>{CC1}♥️{CC2}</p>
+              {couplelove()}
               </div>
 
               <p>{userInfo.userData.message}</p>
