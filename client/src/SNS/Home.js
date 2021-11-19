@@ -8,8 +8,10 @@ import Cards from "./Layout/Card";
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
-import img from "../Common/img/minime/연인.png"
+import img from "../Common/img/minime/연인.png";
 import VisitorWriting from "./visitor/VisitorWriting";
+import ContentProfile from './ContentProfile';
+
 
 
 
@@ -24,13 +26,12 @@ import { withRouter } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
-
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
   MdEdit,
 } from "react-icons/md";
-import { publicUrl } from "../Common/components/utils"
+
 import ChangeCondition from "./MyPage/ChangeCondition";
 import TodayIs from "./TodayIs";
 const Mini = styled.div`
@@ -306,21 +307,14 @@ const Home = (props) => {
           <FlexWrapper>
             <ProfileSection >
               <ContentProfile props={props} />
-              <Link to={'/ChangeCondition'}><MdEdit />eidt</Link>
-
               <div className="couple">
                 {couplelove()}
               </div>
-
-
             </ProfileSection>
-
-
-
+            <Link to={'/ChangeCondition'}><MdEdit />eidt</Link>
             <ProfileSection>
               <p>
                 <span className="my-name">{userInfo.userData.name}</span>
-
                 <span className="my-sex">{genderImoticon()}</span>
                 <span className="my-brthdy">{userInfo.userData.birth}</span>
               </p>
