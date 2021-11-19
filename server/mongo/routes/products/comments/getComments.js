@@ -11,11 +11,11 @@ const { Comment } = require("../../../schemas/Comment");
 
 router.post("/", (req, res) => {
   Comment.find({ "postId": req.body.postId })
-      .populate('writer')
-      .exec((err, comment) => {
-          if (err) return res.status(400).send(err)
-          res.status(200).json({ success: true, comment })
-      })
+    .populate('writer')
+    .exec((err, comment) => {
+      if (err) return res.status(400).send(err)
+      res.status(200).json({ success: true, comment })
+    })
 });
 
 module.exports = router;
