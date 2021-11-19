@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { registerCart, registerUser } from "../../Common/_actions/user_actions";
+import { registerMysql, registerUser } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 
 import {
@@ -84,21 +84,13 @@ function RegisterPage(props) {
             gender: values.gender,
             phone: values.phone,
             birth: values.birth,
-            //image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
             db: true, // MySQL
           };
 
-          let dataToMongo = {
-            email: values.email,
-            name: values.name,
-            address: values.address,
-            gender: values.gender,
-            phone: values.phone,
-          }
-
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              dispatch(registerCart(dataToMongo))
+              dispatch(registerMysql(dataToSubmit))
                 .then(response => {
                   if (response.payload.success) {
                     window.location.replace("/sns");

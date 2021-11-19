@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
     role: req.user.role,
     image: req.user.image,
     cart: req.user.cart,
+    gender: req.user.gender,
     history: req.user.history,
   });
 });

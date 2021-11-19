@@ -135,10 +135,10 @@ export function onSuccessBuy(data) {
   };
 }
 
-export function registerCart(data) {
+export function registerMysql(data) {
   console.log(data);
   const request = axios
-    .post(`${MONGO_USER_SERVER}/sns/addCart`, data)
+    .post(`${MONGO_USER_SERVER}/register`, data)
     .then((response) => response.data);
 
   return {

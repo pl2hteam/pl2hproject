@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Input } from "antd";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -9,23 +9,39 @@ const { TextArea } = Input;
 const Comments = (props) => {
   const user = useSelector((state) => state.user);
   const [Comment, setComment] = useState("");
+  const [Writer, setWriter] = useState("");
 
   const handleChange = (event) => {
     setComment(event.currentTarget.value);
   };
 
+  useEffect(() => {
+    const userData = { userInfo : user.userData };
+    if (user.userData.gender) {
+      axios.get('/api/mongo/users/sns/getMongo', userData)
+        .then(response => {
+          if (response.data.success) {
+            setWriter(response.data.user[0]._id);
+          } else {
+            alert('Failed')
+          }
+      })
+    } else {
+      setWriter(user.userData._id);
+    }
+  }, [user.userData])
+
   const onSubmit = (event) => {
     event.preventDefault();
-
+   
     const variables = {
       content: Comment,
-      writer: user.userData._id,
+      writer: Writer,
       postId: props.postId,
     };
 
     axios.post("/api/mongo/product/saveComment", variables).then((response) => {
       if (response.data.success) {
-        console.log(response.data.result);
         setComment("");
         props.refreshFunction(response.data.result);
       } else {
