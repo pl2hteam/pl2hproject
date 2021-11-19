@@ -85,95 +85,96 @@ const LoginPage = (props) => {
                 <h1 className="login_page_title">SHOP</h1>
                 <div className="app">
                   <form onSubmit={handleSubmit}>
-                    {/* <div className="base-container" ref={this.props.containerRef}> */}
-                    <div className="base-container">
-                      <div className="content">
-                        <div className="image"></div>
-                        <div className="form">
-                          <div className="form-group">
-                            {/* <label htmlFor="username"></label> */}
-                            <input
-                              id="email"
-                              placeholder="너 이메일 넣어"
-                              type="email"
-                              value={values.email}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              className={
-                                errors.email && touched.email
-                                  ? "text-input error"
-                                  : "text-input"
-                              }
-                            />
-                            {errors.email && touched.email ? (
-                              <div className="input-feedback">
-                                {errors.email}
-                              </div>
-                            ) : (
-                              <div className="input-feedback"></div>
-                            )}
-                          </div>
-                          <div className="form-group">
-                            {/* <label htmlFor="password"></label> */}
-                            <input
-                              id="password"
-                              placeholder="Enter your password"
-                              type="password"
-                              value={values.password}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              className={
-                                errors.password && touched.password
-                                  ? "text-input error"
-                                  : "text-input"
-                              }
-                            />
-                            {errors.password && touched.password ? (
-                              <div className="input-feedback">
-                                {errors.password}
-                              </div>
-                            ) : (
-                              <div className="input-feedback"></div>
-                            )}
-                          </div>
-                          {formErrorMessage && formErrorMessage !== "" ? (
-                            <div className="input-feedback">
-                              {formErrorMessage}
+                    <div className="base-container" ref={props.containerRef}>
+                      <div className="base-container">
+                        <div className="content">
+                          <div className="image"></div>
+                          <div className="form">
+                            <div className="form-group">
+                              {/* <label htmlFor="username"></label> */}
+                              <input
+                                id="email"
+                                placeholder="너 이메일 넣어"
+                                type="email"
+                                value={values.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={
+                                  errors.email && touched.email
+                                    ? "text-input error"
+                                    : "text-input"
+                                }
+                              />
+                              {errors.email && touched.email ? (
+                                <div className="input-feedback">
+                                  {errors.email}
+                                </div>
+                              ) : (
+                                <div className="input-feedback"></div>
+                              )}
                             </div>
-                          ) : (
-                            <div className="input-feedback"></div>
-                          )}
-                          <div className="rememberMe_box">
-                            <input
-                              type="checkbox"
-                              id="rememberMe"
-                              onChange={handleRememberMe}
-                              checked={rememberMe}
-                            />
-                            <label>ID 기억하기</label>
+                            <div className="form-group">
+                              {/* <label htmlFor="password"></label> */}
+                              <input
+                                id="password"
+                                placeholder="Enter your password"
+                                type="password"
+                                value={values.password}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={
+                                  errors.password && touched.password
+                                    ? "text-input error"
+                                    : "text-input"
+                                }
+                              />
+                              {errors.password && touched.password ? (
+                                <div className="input-feedback">
+                                  {errors.password}
+                                </div>
+                              ) : (
+                                <div className="input-feedback"></div>
+                              )}
+                            </div>
+                            {formErrorMessage && formErrorMessage !== "" ? (
+                              <div className="input-feedback">
+                                {formErrorMessage}
+                              </div>
+                            ) : (
+                              <div className="input-feedback"></div>
+                            )}
+                            <div className="rememberMe_box">
+                              <input
+                                type="checkbox"
+                                id="rememberMe"
+                                onChange={handleRememberMe}
+                                checked={rememberMe}
+                              />
+                              <label>ID 기억하기</label>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="footer">
-                        <button
-                          type="primary"
-                          htmlType="submit"
-                          className="login-form-button"
-                          disabled={isSubmitting}
-                          onSubmit={handleSubmit}
-                        >
-                          샵 로그인
-                        </button>
-                      </div>
+                        <div className="footer">
+                          <button
+                            type="primary"
+                            htmlType="submit"
+                            className="login-form-button"
+                            disabled={isSubmitting}
+                            onSubmit={handleSubmit}
+                          >
+                            샵 로그인
+                          </button>
+                        </div>
 
-                      <a
+                        {/* <a
                         className="login-form-forgot"
                         href="/reset_user"
                         style={{ float: "right" }}
                       >
                         forgot password
                       </a>
-                      <a href="/register"> 회원가입</a>
+                      <a href="/register"> 회원가입</a> */}
+                      </div>
                     </div>
                   </form>
                 </div>

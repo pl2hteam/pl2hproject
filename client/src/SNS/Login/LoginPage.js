@@ -157,14 +157,6 @@ const SnsLoginPage = (props) => {
                     로그인
                   </button>
                 </div>
-                {/* <a
-                  className="login-form-forgot"
-                  href="/reset_user"
-                  style={{ float: "right" }}
-                >
-                  forgot password
-                </a>
-                <a href="/register"> 회원가입</a> */}
               </div>
             </form>
           </div>
