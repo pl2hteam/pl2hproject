@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Layout from "./Layout/Layout";
-import Sidebar from "./Layout/Sidebar";
-import Content from "./Layout/Content";
-import Cards from "./Layout/Card";
+import Layout from "../Layout/Layout";
+import Sidebar from "../Layout/Sidebar";
+import Content from "../Layout/Content";
+import Cards from "../Layout/Card";
 import { useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
 import MovieFileUpload from './MovieFileUpload'
@@ -19,12 +19,10 @@ import { withRouter } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
-
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
 } from "react-icons/md";
-import { publicUrl } from "../Common/components/utils"
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -229,7 +227,7 @@ const ChangeCondition = (props) => {
   useEffect(() => {
 
     getCondition();
-  }, []);
+  }, ["phone"]);
 
   let postvideo = {
     updateImages,

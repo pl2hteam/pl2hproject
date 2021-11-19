@@ -18,7 +18,7 @@ const Comment = (props) => {
   const variables = {
     postId: props.postData.id,
   }
-  
+
   useEffect(() => {
     getComment(variables);
   }, [])
@@ -26,7 +26,7 @@ const Comment = (props) => {
   const getComment = (variables) => {
     Axios.post('/api/mysql/posts/comment/getComment', variables)
       .then(response => {
-        if(response.data.success) {
+        if (response.data.success) {
           setComments(response.data.comments);
           setcommentValue("");
         } else {
@@ -49,13 +49,13 @@ const Comment = (props) => {
     }
 
     Axios.post('/api/mysql/posts/comment/saveComment', variables)
-    .then(response => {
-     if (response.data.success) {
-      getComment(variables);
-     } else {
-       alert('댓글을 저장하지 못했습니다.')
-     } 
-    })
+      .then(response => {
+        if (response.data.success) {
+          getComment(variables);
+        } else {
+          alert('댓글을 저장하지 못했습니다.')
+        }
+      })
   }
   const CommentsInfo = Comments.map((info, index) => {
     console.log(info);
@@ -86,12 +86,12 @@ const Comment = (props) => {
           {CommentsInfo}
         </div>
       }
-      
+
       {/* feed.css 의 선 스타일 적용 */}
       <div class="hl"></div>
-      
-      <form style={{ display:'flex' }} onSubmit={onSubmit}>
-        <textarea 
+
+      <form style={{ display: 'flex' }} onSubmit={onSubmit}>
+        <textarea
           style={{ width: '100x%', borderRadius: '5px' }}
           onChange={handleClick}
           value={commentValue}

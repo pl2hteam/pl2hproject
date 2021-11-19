@@ -13,7 +13,7 @@ import Write from "../SNS/Profile/Write";
 import LatterWrite from "../SNS/Latter/LatterWrite";
 import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
-import ChangeCondition from "../SNS/ChangeCondition";
+import ChangeCondition from "../SNS/MyPage/ChangeCondition";
 import "./SNSMain.css";
 
 function SNSMain() {
