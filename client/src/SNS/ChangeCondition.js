@@ -259,6 +259,27 @@ const ChangeCondition = (props) => {
       <Content>
         <Cards>
           <ContentSection>
+            {/* ----------------------------------------------------------------------------- */}
+            <Form onSubmit={onSubmit}>
+              {/* DropZone */}
+              <MovieFileUpload refresh={postvideo} />
+              {/* <p>
+                  <label>프로필 이미지</label>
+                  <Input onChange={onChangeMyImage} value={ChangeMyImage} />
+                </p> */}
+              <p>
+                <label>커플코드</label>
+                <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} />
+              </p>
+              <p>
+                <label>상태메세지</label>
+                <Input onChange={onChangeMessage} value={ChangeMessage} />
+              </p>
+
+
+              <Button onClick={onSubmit}>수정</Button>
+            </Form>
+            {/* ----------------------------------------------------------------------------- */}
 
             <div style={{ width: "75%", margin: "3rem auto" }}>
               <h2>MY CONDITION</h2>
@@ -280,26 +301,6 @@ const ChangeCondition = (props) => {
                 {userInfo.userData.address}
               </p>
 
-              {/* ----------------------------------------------------------------------------- */}
-              <Form onSubmit={onSubmit}>
-                {/* DropZone */}
-                <MovieFileUpload refresh={postvideo} />
-                {/* <p>
-                  <label>프로필 이미지</label>
-                  <Input onChange={onChangeMyImage} value={ChangeMyImage} />
-                </p> */}
-                <p>
-                  <label>커플코드</label>
-                  <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} />
-                </p>
-                <p>
-                  <label>상태메세지</label>
-                  <Input onChange={onChangeMessage} value={ChangeMessage} />
-                </p>
-
-
-                <Button onClick={onSubmit}>수정</Button>
-              </Form>
 
             </div>
           </ContentSection>

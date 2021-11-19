@@ -148,8 +148,8 @@ const { Meta } = Card;
 
 
 const Home = (props) => {
-  const [CC1, setCC1] = useState([])
-  const [CC2, setCC2] = useState([])
+  const [CC1, setCC1] = useState([]);
+  const [CC2, setCC2] = useState([]);
 
   console.log(props);
 
@@ -267,26 +267,17 @@ const Home = (props) => {
           if (arr[i].couple_code === userInfo.userData.couple_code) {
             if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
               console.log(arr[i].couple_code);
-            console.log(userInfo.userData.couple_code);
-            setCC1(userInfo.userData.name,setCC2(arr[i].name))
-            setCC2(arr[i].name)
-            break;
+              console.log(userInfo.userData.couple_code);
+              setCC1(userInfo.userData.name)
+              setCC2(arr[i].name)
+              break;
             }
-            
-            
-            
           } else {
-            
-            
           }
-          
-
         }
-
-
       });
   }
-console.log(9987666666666);
+  console.log(9987666666666);
 
   useEffect(() => {
 
@@ -322,15 +313,16 @@ console.log(9987666666666);
 
               <Link to={'/ChangeCondition'}>내 상태변경</Link>
               <hr />
-            
+
               <h2>상태메세지</h2>
 
-              <br/>
-              <br/>
-              <br/>
-              
-  <div className="couple">
-            {couplelove()}
+              <br />
+              <br />
+              <br />
+
+              <div className="couple">
+                <h2>커플</h2>
+                <p>{CC1}♥️{CC2}</p>
               </div>
 
               <p>{userInfo.userData.message}</p>
@@ -369,7 +361,7 @@ console.log(9987666666666);
           </Mini>
           <ContentSection>
             <h2>한 줄 감성</h2>
-                 <p>{getCouple()}</p>
+            <p>{getCouple()}</p>
             <Link to={'/ContentProfile'}>방명록</Link>
 
             <UpdateProfile />

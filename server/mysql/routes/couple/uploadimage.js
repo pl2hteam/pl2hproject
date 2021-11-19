@@ -10,10 +10,10 @@ const box = multer.diskStorage({
   },
   filename(req, file, done) {
     const ext = path.extname(file.originalname);
-    const basename = path.basename (file.originalname, ext);
+    const basename = path.basename(file.originalname, ext);
     done(null, basename + "_" + new Date().getTime() + ext);
   },
-},);
+});
 
 const upload = multer({ storage: box }).single("file");
 

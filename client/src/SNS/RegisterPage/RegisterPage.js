@@ -84,7 +84,8 @@ function RegisterPage(props) {
             gender: values.gender,
             phone: values.phone,
             birth: values.birth,
-            //image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            image: `uploads/img/default_profile_image.png`,
+
             db: true, // MySQL
           };
 

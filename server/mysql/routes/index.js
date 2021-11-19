@@ -15,7 +15,7 @@ router.use('/profiles', profile);
 router.use('/letters', letter);
 router.use('/album', album);
 router.use('/conditions', condition);
-router.use('/couples',couple);
+router.use('/couples', couple);
 
 
 module.exports = router;
