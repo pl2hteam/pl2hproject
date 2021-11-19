@@ -7,7 +7,7 @@ class MainLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogginActive: true
+      isLogginActive: true,
     };
   }
 
@@ -27,7 +27,9 @@ class MainLogin extends React.Component {
       this.rightSide.classList.add("right");
     }
 
-    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
+    this.setState((prevState) => ({
+      isLogginActive: !prevState.isLogginActive,
+    }));
   }
 
   render() {
@@ -35,29 +37,30 @@ class MainLogin extends React.Component {
     const current = isLogginActive ? "회원가입" : "로그인";
     const currentActive = isLogginActive ? "로그인" : "회원가입";
     return (
-      <div className="MainLogin">
+      <div className="MainLogin pl2h-main">
         <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
+          <div className="container" ref={(ref) => (this.container = ref)}>
+            <h1 className="login_page_title">PL2H WORLD</h1>
             {isLogginActive && (
-              <LoginPage containerRef={ref => (this.current = ref)} />
+              <LoginPage containerRef={(ref) => (this.current = ref)} />
             )}
             {!isLogginActive && (
-              <RegisterPage containerRef={ref => (this.current = ref)} />
+              <RegisterPage containerRef={(ref) => (this.current = ref)} />
             )}
+            <RightSide
+              current={current}
+              currentActive={currentActive}
+              containerRef={(ref) => (this.rightSide = ref)}
+              onClick={this.changeState.bind(this)}
+            />
           </div>
-          <RightSide
-            current={current}
-            currentActive={currentActive}
-            containerRef={ref => (this.rightSide = ref)}
-            onClick={this.changeState.bind(this)}
-          />
         </div>
       </div>
     );
   }
 }
 
-const RightSide = props => {
+const RightSide = (props) => {
   return (
     <div
       className="right-side"
