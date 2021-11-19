@@ -15,6 +15,7 @@
   height: 508px;
   background-color: transparent;
   transition-duration: 0.3s;
+  z-index: 1;
 }
 .link_btn-line {
   position: fixed;
