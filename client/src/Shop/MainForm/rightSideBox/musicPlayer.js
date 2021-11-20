@@ -14,7 +14,7 @@ const NowPlaying = styled.div`
 
 const PlayWrap = styled.div`
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100%;
   margin-left: 7px;
 `;
@@ -48,17 +48,16 @@ function MusicPlayer() {
           <Music>프리스타일-Y</Music>
         </PlayWrap>
       </NowPlaying>
-      <iframe
-        title="soundcloud"
-        width="100%"
-        height="100"
-        scrolling="no"
-        frameBorder="no"
-        allow="autoplay"
-        src={
-          "https://w.soundcloud.com/player/?url=https://soundcloud.com/alexthelee/freestyle-y-please-tell-me-why&show_user=false"
-        }
-      ></iframe>
+      <div>
+        <iframe
+          width="240"
+          height="100"
+          src="https://www.youtube.com/embed/_3A-jr1xC9o?loop=1&controls=1&autoplay=1&mute=0&disablekb=1&fs=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+          gyroscope; picture-in-picture;"
+        ></iframe>
+      </div>
     </Container>
   );
 }
