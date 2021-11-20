@@ -20,17 +20,21 @@ const SingleComment = (props) => {
 
     useEffect(() => {
       const userData = { userInfo : user.userData };
-      if (user.userData.gender) {
-        Axios.get('/api/mongo/users/sns/getMongo', userData)
-          .then(response => {
-            if (response.data.success) {
-              setWriter(response.data.user[0]._id);
-            } else {
-              alert('Failed')
-            }
-        })
+      if (user.userData) {
+        if (user.userData.gender) {
+          Axios.get('/api/mongo/users/sns/getMongo', userData)
+            .then(response => {
+              if (response.data.success) {
+                setWriter(response.data.user[0]._id);
+              } else {
+                alert('Failed')
+              }
+          })
+        }
       } else {
-        setWriter(user.userData._id);
+        if (user.userData) {
+          setWriter(user.userData._id);
+        }
       }
     }, [user.userData])
     

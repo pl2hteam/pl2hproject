@@ -34,15 +34,11 @@ const EHWrap = styled.div`
 //`;
 
 function ProfileContents(props) {
-  console.log(props);
-
   const userInfo = useSelector(state => state.user);
-  console.log(userInfo);
 
-  let userImg
+  let userImg;
   if (userInfo.userData) {
-    userImg = userInfo.userData.image
-    console.log(userInfo.userData.image);
+    userImg = userInfo.userData.image;
   }
   return (
     <Container>

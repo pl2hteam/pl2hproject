@@ -146,17 +146,12 @@ const Home = (props) => {
   const [CC1, setCC1] = useState([]);
   const [CC2, setCC2] = useState([]);
 
-  console.log(props);
-
   //const [userConditionData, setUserConditionData] = useState([]);
 
   const userInfo = useSelector(state => state.user);
-  console.log(userInfo);
-
-  let userImg
+  let userImg;
   if (props.user.userData) {
-    userImg = props.user.userData.image
-    console.log(props.user.userData.image);
+    userImg = props.user.userData.image;
   }
 
 

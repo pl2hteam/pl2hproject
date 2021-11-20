@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCartItems,
-  removeCartItem,
-  onSuccessBuy,
-} from "../../Common/_actions/user_actions";
+import { getCartItems, removeCartItem, onSuccessBuy } from "../../Common/_actions/user_actions";
 import UserCardBlock from "./Sections/UserCardBlock";
 import { Result } from "antd";
 import Paypal from "../../Common/components/Paypal";
 import { CartStyle } from './style/cartstyle';
 import { getCart } from "../../Common/_actions/user_actions";
 
-const CartPage = (props) => {
+const CartPage = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   
@@ -42,23 +38,6 @@ const CartPage = (props) => {
               }
             }
           });
-      } else {
-        let cartItems = [];
-      
-        if (user.userData && user.userData.cart) {
-          if (user.userData.cart.length > 0) {
-            user.userData.cart.forEach((item) => {
-              cartItems.push(item.id);
-            });
-            dispatch(getCartItems(cartItems, user.userData.cart)).then(
-              (response) => {
-                if (response.payload.length > 0) {
-                  calculateTotal(response.payload);
-                }
-              }
-            );
-          }
-        }
       }
     } 
   }, [user.userData]);
@@ -86,6 +65,7 @@ const CartPage = (props) => {
     });
   };
 
+  // 결제
   const transactionSuccess = (data) => {
     dispatch(
       onSuccessBuy({
@@ -100,10 +80,12 @@ const CartPage = (props) => {
     });
   };
 
+  // 결제 실패
   const transactionError = () => {
     console.log("Paypal error");
   };
 
+  // 결제 취소
   const transactionCanceled = () => {
     console.log("Transaction canceled");
   };
@@ -136,7 +118,7 @@ const CartPage = (props) => {
           )}
         </div>
 
-        {/* Paypal Button */}
+        {/* Paypal 버튼 */}
         {ShowTotal && (
           <Paypal
             toPay={Total}

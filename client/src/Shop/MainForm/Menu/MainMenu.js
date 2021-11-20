@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 /* 버튼색 */
 const Nav = styled.nav`
@@ -29,6 +30,15 @@ const Nav = styled.nav`
 `;
 
 const MainMenu = () => {
+  const user = useSelector(state => state.user);
+  const [Gender, setGender] = useState("");
+
+  useEffect(() => {
+    if (user.userData) {
+      setGender(user.userData.gender);
+    }
+  }, [user.userData])
+
   return (
     <Nav>
       <ul>
@@ -37,16 +47,20 @@ const MainMenu = () => {
             상점
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/shop/purch" activeClassName="selected">
-            구매내역
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/shop/cart" activeClassName="selected">
-            장바구니
-          </NavLink>
-        </li>
+        {Gender !== 0 && 
+          <>
+            <li>
+            <NavLink to="/shop/purch" activeClassName="selected">
+              구매내역
+            </NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop/cart" activeClassName="selected">
+                장바구니
+              </NavLink>
+            </li>
+          </>
+        }
         <li>
           <NavLink to="/shop/upload" activeClassName="selected">
             아이템등록

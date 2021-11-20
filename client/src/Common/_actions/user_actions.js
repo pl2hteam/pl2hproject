@@ -133,7 +133,6 @@ export function onSuccessBuy(data) {
 }
 
 export function registerMysql(data) {
-  console.log(data);
   const request = axios
     .post(`${MONGO_USER_SERVER}/register`, data)
     .then((response) => response.data);
@@ -156,7 +155,6 @@ export function getCart(data) {
 }
 
 export function getHistory(data) {
-  console.log(data);
   let request = axios
       .get(`${MONGO_USER_SERVER}/payment/getHistory`, data)
       .then((response) => response.data);

@@ -1,13 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../../../schemas/User");
-const { Cart } = require("../../../schemas/Cart");
 const { Product } = require("../../../schemas/Product");
 const { Payment } = require("../../../schemas/Payment");
 
 const async = require("async");
 
-router.post("/successBuy", (req, res) => {
+router.post("/", (req, res) => {
   let history = [];
   let transactionData = {};
 
@@ -83,15 +82,6 @@ router.post("/successBuy", (req, res) => {
       });
     }
   );
-});
-
-router.get("/getHistory", (req, res) => {
-  console.log(req.user.email);
-  User.findOne({ email: req.user.email }, (err, doc) => {
-    let history = doc.history;
-    if (err) return res.status(400).send(err);
-    return res.status(200).json({ success: true, history });
-  });
 });
 
 module.exports = router;

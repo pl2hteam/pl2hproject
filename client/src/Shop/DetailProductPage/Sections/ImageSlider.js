@@ -2,14 +2,14 @@ import React from "react";
 import { Carousel } from "react-carousel-minimal";
 
 const ImageSlider = (props) => {
-  const { images, brandName, description, pdName, seller, price } =
-    props.detail;
+  const { images, brandName, description } = props.detail;
+  
   const captionStyle = {
     fontSize: "2em",
     fontWeight: "bold",
   };
+
   const slideNumberStyle = {
-    // 좌측 상단 숫자 스타일
     display: "none",
   };
 
