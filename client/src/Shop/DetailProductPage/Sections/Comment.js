@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import SingleComment from "./SingleComment";
 import ReplyComment from "./ReplyComment";
-import './Comment.css';
+import './style/Comment.css';
 
 const { TextArea } = Input;
 

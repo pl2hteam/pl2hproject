@@ -8,7 +8,6 @@ const ImageSlider = (props) => {
     fontSize: "2em",
     fontWeight: "bold",
   };
-  console.log(props);
   const slideNumberStyle = {
     // 좌측 상단 숫자 스타일
     display: "none",
@@ -22,7 +21,6 @@ const ImageSlider = (props) => {
       })
     );
   }
-  console.log(data);
 
   return (
     <div>

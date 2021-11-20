@@ -11,7 +11,7 @@ import HistoryPageWrapper from "../HistoryPage/HistoryPageWrapper";
 import styled from "styled-components";
 import { ShopFont } from "./ShopFont";
 
-function ShopMain() {
+const ShopMain = () => {
   return (
     <ShopFont>
       <Suspense fallback={<div>Loading...</div>}>

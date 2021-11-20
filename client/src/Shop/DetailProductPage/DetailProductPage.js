@@ -5,7 +5,7 @@ import ProductInfo from "./Sections/ProductInfo";
 import { addToCart } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 import Comment from "./Sections/Comment";
-import "./DetailProductPage.css";
+import "./style/DetailProductPage.css";
 
 const DetailProductPage = (props) => {
   const dispatch = useDispatch();

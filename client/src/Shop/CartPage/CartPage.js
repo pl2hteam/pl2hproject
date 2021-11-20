@@ -11,9 +11,8 @@ import Paypal from "../../Common/components/Paypal";
 import { CartStyle } from './style/cartstyle';
 import { getCart } from "../../Common/_actions/user_actions";
 
-function CartPage(props) {
+const CartPage = (props) => {
   const user = useSelector((state) => state.user);
-  console.log(props);
   const dispatch = useDispatch();
   
   const [Total, setTotal] = useState(0);
@@ -32,7 +31,6 @@ function CartPage(props) {
               if (userCart[0].cart.length > 0) {
                 userCart[0].cart.forEach((item) => {
                   cartItems.push(item.id);
-                  console.log(cartItems);
                 });
                 dispatch(getCartItems(cartItems, userCart[0].cart)).then(
                   (response) => {

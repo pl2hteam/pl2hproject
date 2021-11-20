@@ -8,13 +8,12 @@ import { price } from "./Section/priceDatas";
 import SearchFeature from "./Section/SearchFeature";
 import ImageShadow from "react-image-shadow";
 import "react-image-shadow/assets/index.css";
-import "./ShopMainPage.css";
+import "./style/ShopMainPage.css";
 import acorn from "../images/acorn.png";
 
 const { Meta } = Card;
 
 const ShopMainPage = (pdFilter) => {
-  console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(12);
@@ -29,7 +28,6 @@ const ShopMainPage = (pdFilter) => {
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
       if (response.data.success) {
-        console.log(response.data);
         if (body.loadMore) {
           setProducts([...Products, ...response.data.products]);
         } else {
@@ -88,7 +86,6 @@ const ShopMainPage = (pdFilter) => {
       filters: filters,
     };
     getProducts(body);
-    console.log(body);
     setSkip(0);
   };
 
@@ -113,7 +110,6 @@ const ShopMainPage = (pdFilter) => {
     if (category === "price") {
       let priceValues = handlePrice(filters);
       newFilters[category] = priceValues;
-      console.log(newFilters);
     }
 
     showFilteredResults(newFilters);

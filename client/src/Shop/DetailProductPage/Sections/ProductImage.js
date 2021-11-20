@@ -3,7 +3,6 @@ import ImageSlider from "./ImageSlider";
 
 const ProductImage = (props) => {
   const [Video, setVideo] = useState([]);
-  console.log(props.detail);
 
   useEffect(() => {
     let videos = [];
