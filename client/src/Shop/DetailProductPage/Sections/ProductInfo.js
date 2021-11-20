@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Descriptions } from "antd";
+import "./ProductInfo.css";
 
 const ProductInfo = (props) => {
   const [Product, setProduct] = useState({});
@@ -14,26 +14,22 @@ const ProductInfo = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="Explanation">
         <div>금화 : {props.detail.price.toLocaleString("ko-KR")}</div>
         <div>브랜드 : {Product.brand}</div>
-        <div> 수량 : {Product.quantity}</div>
-        {/* <div> {Product.seller}</div> */}
-        <div> 설명 : {Product.description}</div>
+        <div>설명 : {Product.description}</div>
       </div>
-
-      <br />
-      <br />
-      <br />
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button
+      
+      <div className="Cart-Box">
+        <button
+          className="Cart-Button"
           size="large"
           shape="round"
           type="danger"
           onClick={addToCarthandler}
         >
           장바구니 추가
-        </Button>
+        </button>
       </div>
     </div>
   );

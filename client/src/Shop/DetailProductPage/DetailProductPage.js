@@ -5,7 +5,6 @@ import ProductInfo from "./Sections/ProductInfo";
 import { addToCart } from "../../Common/_actions/user_actions";
 import { useDispatch } from "react-redux";
 import Comment from "./Sections/Comment";
-import MainForm from "../MainForm/MainForm";
 import "./DetailProductPage.css";
 
 const DetailProductPage = (props) => {
@@ -40,13 +39,12 @@ const DetailProductPage = (props) => {
 
   const addToCartHandler = (pd_id) => {
     dispatch(addToCart(pd_id));
+    alert("장바구니에 담겼습니다.");
   };
 
   if (Product.seller) {
     return (
-      <div className="postPage" style={{ width: "100%", padding: "3rem 4rem" }}>
-        {/* <Subscriber /> */}
-        <br />
+      <div className="postPage" style={{ width: "100%" }}>
         <div className="postPage-content">
           <ProductImage detail={Product} />
           <ProductInfo addToCart={addToCartHandler} detail={Product} />

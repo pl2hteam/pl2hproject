@@ -12,7 +12,7 @@ const { Product } = require("../../../schemas/Product");
 
 router.get("/", (req, res) => {
     User.findOneAndUpdate(
-      { _id: req.user._id },
+      { email: req.user.email },
       {
         $pull: { cart: { id: req.query._id } },
       },

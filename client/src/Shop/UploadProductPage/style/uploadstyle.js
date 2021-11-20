@@ -120,4 +120,8 @@ export const UploadStyle = styled.div`
     height: 2rem;
     padding: 4px;
   }
+  video {
+    width: 300px;
+    margin-top: 1000px;
+  }
 `;

@@ -4,6 +4,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import SingleComment from "./SingleComment";
 import ReplyComment from "./ReplyComment";
+import './Comment.css';
+
 const { TextArea } = Input;
 
 const Comments = (props) => {
@@ -52,8 +54,7 @@ const Comments = (props) => {
 
   return (
     <div className="postPage-comment">
-      <br />
-      <p>댓글</p>
+      <p className="comment-text">댓글</p>
       <hr />
       {props.commentLists &&
         props.commentLists.map(
@@ -75,15 +76,14 @@ const Comments = (props) => {
             )
         )}
 
-      <form style={{ display: "flex" }} onSubmit={onSubmit}>
+      <form className="comment-form" onSubmit={onSubmit}>
         <TextArea
-          style={{ width: "100%", borderRadius: "5px" }}
+          className="comment-textarea"
           onChange={handleChange}
           value={Comment}
           placeholder="댓글을 적어주세요."
         />
-        <br />
-        <Button style={{ width: "20%", height: "52px" }} onClick={onSubmit}>
+        <Button className="comment-button" onClick={onSubmit}>
           작성하기
         </Button>
       </form>

@@ -28,12 +28,13 @@ function CartPage(props) {
             let userCart = response.payload.user;
 
             let cartItems = [];
-            if (userCart && userCart.cart) {
-              if (userCart.cart.length > 0) {
-                userCart.cart.forEach((item) => {
+            if (userCart[0] && userCart[0].cart) {
+              if (userCart[0].cart.length > 0) {
+                userCart[0].cart.forEach((item) => {
                   cartItems.push(item.id);
+                  console.log(cartItems);
                 });
-                dispatch(getCartItems(cartItems, userCart.cart)).then(
+                dispatch(getCartItems(cartItems, userCart[0].cart)).then(
                   (response) => {
                     if (response.payload.length > 0) {
                       calculateTotal(response.payload);
