@@ -13,7 +13,6 @@ class MainLogin extends React.Component {
   }
 
   componentDidMount() {
-    //Add .right by default
     this.rightSide.classList.add("right");
   }
 

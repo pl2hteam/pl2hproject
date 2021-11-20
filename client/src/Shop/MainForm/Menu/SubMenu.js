@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
-//사이드 바 색
+
 const ListDiv = styled.div`
   h2 {
     padding-bottom: 10px;
