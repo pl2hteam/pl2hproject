@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import styled from 'styled-components';
-import DetailPage from '../Detail/DetailPage';
+// import DetailPage from '../Detail/DetailPage';
 import Avartar from '../Detail/DetailFunction/Avartar';
 import LikeInterest from '../Detail/DetailFunction/Like_Interest';
 
@@ -107,7 +107,7 @@ const Picture = forwardRef(
 
         return (
             <>
-                <DetailPage
+                {/* <DetailPage
                     open={isModalOpen}
                     close={onClose}
                     id={id}
@@ -127,7 +127,7 @@ const Picture = forwardRef(
                     username={username}
                     address={address}
                     uid={uid}
-                />
+                /> */}
                 <Box>
                     <ImageContainer>
                         <Image

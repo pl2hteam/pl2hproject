@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 import Picture from './Picture';
 
 //import FlipMove from 'react-flip-move';
