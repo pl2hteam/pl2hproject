@@ -9,12 +9,21 @@ module.exports = class Jam extends Sequelize.Model {
           type: Sequelize.STRING(15),
           allowNull: false,
           unique: true,
-        }, img: {
+        },
+        img: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
+        },
+        mood: {
+          type: Sequelize.STRING(15),
+          allowNull: true,
+        },
+        review: {
           type: Sequelize.STRING(200),
           allowNull: true,
         },
       },
-      
+
       {
         sequelize,
         timestamps: true,

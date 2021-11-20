@@ -4,13 +4,14 @@ import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import Atmosphere from './Atmosphere';
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
 const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");
-  const [PostContent, setPostContent] = useState("");
+  const [PostMood, setPostMood] = useState("");
   const [PostImg, setPostImg] = useState("");
   const [PostViews, setPostViews] = useState(0);
   const [VideoPath, setVideoPath] = useState([]);
@@ -19,9 +20,9 @@ const UpdatePic = (props) => {
   const onPostTitle = (event) => {
     setPostTitle(event.currentTarget.value);
   };
-  // const onPostContent = (event) => {
-  //   setPostContent(event.currentTarget.value);
-  // };
+  const onPostMood = (event) => {
+    setPostMood(event.currentTarget.value);
+  };
 
   const updateImages = (newImages) => {
     setPostImg(newImages);
@@ -46,9 +47,9 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-     
+
       // !PostImg ||
-      
+
     ) {
       return alert("fill all the fields first!");
     }
@@ -57,6 +58,7 @@ const UpdatePic = (props) => {
     const variables = {
       seller: props.user.userData.id,
       title: PostTitle,
+      mood: PostMood,
       // content: PostContent,
       img: PostImg,
       // views: PostViews,
@@ -73,15 +75,15 @@ const UpdatePic = (props) => {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/jam");
         } else {
-          console.log(response.data,314141)
+          console.log(response.data, 314141)
           alert("Failed to upload Product");
         }
       });
   };
 
   let postvideo = {
-    updateImages, 
-    updateVideoPath, 
+    updateImages,
+    updateVideoPath,
     updateDuration
   }
 
@@ -97,10 +99,14 @@ const UpdatePic = (props) => {
 
         <br />
         <br />
-        <label>물품명</label>
+        <label>타이틀</label>
         <Input onChange={onPostTitle} value={PostTitle} />
+        <label>무드</label>
+        <Input onChange={onPostMood} value={PostMood} />
         <br />
-   
+        {/* <Atmosphere /> */}
+
+
         <br />
         <br />
 

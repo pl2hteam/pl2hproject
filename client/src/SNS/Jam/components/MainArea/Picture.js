@@ -1,8 +1,8 @@
 import React, { useState, forwardRef } from 'react';
 import styled from 'styled-components';
 import DetailPage from '../Detail/DetailPage';
-import Avartar from '../Detail/DetailFunction/Avartar';
-import LikeInterest from '../Detail/DetailFunction/Like_Interest';
+//import Avartar from '../Detail/DetailFunction/Avartar';
+//import LikeInterest from '../Detail/DetailFunction/Like_Interest';
 
 const LeftBottomContainer = styled.div`
     position: absolute;
@@ -79,27 +79,32 @@ const TextBox = styled.label`
 const Picture = forwardRef(
     (
         {
-            advertising,
-            area,
-            avatar,
-            heart,
+            //advertising,
+            //area,
+            //avatar,
+            //heart,
             imageUrl,
-            latitude,
-            longitude,
+            //latitude,
+            //longitude,
             mood,
-            novelty,
-            rating,
+            //novelty,
+            //rating,
             review,
-            timestamp,
+            //timestamp,
             title,
-            username,
-            address,
+            //username,
+            //address,
             id,
-            uid,
+            //uid,
         },
         ref
     ) => {
         const [isModalOpen, setIsModalOpen] = useState(false);
+        console.log(imageUrl);
+        console.log(mood);
+        console.log(review);
+        console.log(title);
+        console.log(id);
 
         const onClose = () => {
             setIsModalOpen(false);
@@ -111,43 +116,46 @@ const Picture = forwardRef(
                     open={isModalOpen}
                     close={onClose}
                     id={id}
-                    advertising={advertising}
-                    area={area}
-                    avatar={avatar}
-                    heart={heart}
+                    //advertising={advertising}
+                    //area={area}
+                    //avatar={avatar}
+                    //heart={heart}
+                    //imageUrl={`http://localhost:5000/${imageUrl}`}
                     imageUrl={imageUrl}
-                    latitude={latitude}
-                    longitude={longitude}
+                    //latitude={latitude}
+                    //longitude={longitude}
                     mood={mood}
-                    novelty={novelty}
-                    rating={rating}
+                    //novelty={novelty}
+                    //rating={rating}
                     review={review}
-                    timestamp={timestamp}
+                    //timestamp={timestamp}
                     title={title}
-                    username={username}
-                    address={address}
-                    uid={uid}
+                //username={username}
+                //address={address}
+                //uid={uid}
                 />
                 <Box>
                     <ImageContainer>
                         <Image
                             onClick={() => setIsModalOpen(true)}
                             ref={ref}
-                            src={imageUrl}
+                            src={`http://localhost:5000/${imageUrl}`}
                             alt=""
                         />
                         <LeftBottomContainer>
-                            <Avartar uid={uid} Type="MainArea" />
-                            <TextBox>{username}</TextBox>
+                            {/* <Avartar uid={uid} Type="MainArea" /> */}
+                            {/* <TextBox>{username}</TextBox> */}
+                            <TextBox>{title}</TextBox>
                         </LeftBottomContainer>
-                        <LikeInterest postId={id} />
+                        {/* <LikeInterest postId={id} /> */}
                         <RightBottomContainer>
                             <img
                                 style={{ marginRight: '4px' }}
-                                src="/images/location.png"
+                                src="../../client/src/SNS/images/location.png"
                                 alt=""
                             />
-                            <TextBox>{area}</TextBox>
+                            {/* <TextBox>{area}</TextBox> */}
+                            <TextBox>{mood}</TextBox>
                         </RightBottomContainer>
                     </ImageContainer>
                     <ImageTitle>{title}</ImageTitle>
@@ -159,3 +167,5 @@ const Picture = forwardRef(
 );
 
 export default Picture;
+
+

@@ -33,72 +33,70 @@ function MainMenu() {
 
 
 
-if(userInfo.userData.couple_code ==="9999"){return (
-  <Nav>
-    <ul>
-      <li>
-        <NavLink exact to="/sns/main" activeClassName="selected">
-          홈
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/profile" activeClassName="selected">
-          SNS
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/Jam" activeClassName="selected">
-          놀거리
-        </NavLink>
-      </li>     
-    </ul>
-  </Nav>
-);}else if(userInfo.userData.couple_code !=="9999"){
-  return(
-    <Nav>
-    <ul>
-      <li>
-        <NavLink exact to="/sns/main" activeClassName="selected">
-          홈
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/profile" activeClassName="selected">
-          SNS
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/Jam" activeClassName="selected">
-          놀거리
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/Latter" activeClassName="selected">
-          편지
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/Mind" activeClassName="selected">
-          심리
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/Pic" activeClassName="selected">
-          사진첩
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/sns/Calendar" activeClassName="selected">
-          캘린더
-        </NavLink>
-      </li>
-    
-     
-    </ul>
-  </Nav>
-  )
-}
- 
+  if (userInfo.userData.couple_code === "9999") {
+    return (
+      <Nav>
+        <ul>
+          <li>
+            <NavLink exact to="/sns/main" activeClassName="selected">
+              홈
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/profile" activeClassName="selected">
+              SNS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/Jam" activeClassName="selected">
+              놀거리
+            </NavLink>
+          </li>
+        </ul>
+      </Nav>
+    );
+  } else if (userInfo.userData.couple_code !== "9999") {
+    return (
+      <Nav>
+        <ul>
+          <li>
+            <NavLink exact to="/sns/main" activeClassName="selected">
+              홈
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/profile" activeClassName="selected">
+              SNS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/Jam" activeClassName="selected">
+              놀거리
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/Latter" activeClassName="selected">
+              편지
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/Mind" activeClassName="selected">
+              심리
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sns/Pic" activeClassName="selected">
+              사진첩
+            </NavLink>
+          </li>
+
+
+
+        </ul>
+      </Nav>
+    )
+  }
+
 }
 
 export default MainMenu;

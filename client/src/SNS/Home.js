@@ -260,7 +260,7 @@ const Home = (props) => {
         for (let i = 0; i < arr.length; i++) {
 
           if (arr[i].couple_code === userInfo.userData.couple_code) {
-            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== null) {
               console.log(arr[i].couple_code);
               console.log(userInfo.userData.couple_code);
               setCC1(userInfo.userData.name)
@@ -282,10 +282,10 @@ const Home = (props) => {
   const couplelove = () => {
     if (userInfo.userData.couple_code === "9999" && userInfo.userData.couple_code === "9999") {
       return <div>(♀)</div>
-    } else  if(userInfo.userData.couple_code !== "9999" && userInfo.userData.couple_code !== "9999") {
+    } else if (userInfo.userData.couple_code !== "9999" && userInfo.userData.couple_code !== "9999") {
       return <div className="couple">
-      <img src={img}/>
-      <p>{CC1}♥️{CC2}</p>
+        <img src={img} />
+        <p>{CC1}♥️{CC2}</p>
       </div>
     }
   };
@@ -316,7 +316,7 @@ const Home = (props) => {
               <br />
 
               <div className="couple">
-              {couplelove()}
+                {couplelove()}
               </div>
 
               <p>{userInfo.userData.message}</p>
@@ -356,7 +356,7 @@ const Home = (props) => {
           <ContentSection>
             <h2>한 줄 감성</h2>
             <p>{getCouple()}</p>
-            <VisitorWriting/>
+            <VisitorWriting />
 
             <UpdateProfile />
 

@@ -14,6 +14,7 @@ router.post('/', async (req, res, next) => { // POST /post
 
     const jam = await Jam.create({
       title: req.body.title,
+      mood: req.body.mood,
       UserId: req.body.seller,
     });
 
