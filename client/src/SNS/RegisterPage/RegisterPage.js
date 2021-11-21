@@ -78,17 +78,18 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              dispatch(registerMysql(dataToSubmit))
-                .then(response => {
-                  if (response.payload.success) {
+              //dispatch(registerMysql(dataToSubmit))
+                //.then(response => {
+                  //if (response.payload.success) {
                     window.location.replace("/sns");
-                  } else {
+                  } 
+                  else {
                     alert(response.payload.err)
                   }
-                })
-            } else {
-              alert(response.payload.err);
-            }
+            //     })
+            // } else {
+            //   alert(response.payload.err);
+            // }
           });
 
           setSubmitting(false);
