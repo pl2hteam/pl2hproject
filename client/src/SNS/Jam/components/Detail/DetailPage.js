@@ -63,17 +63,7 @@ export default function DetailPage(props) {
                                     </div>
                                 </LeftBottomContainer>
                                 <RightTopContainer>
-                                <div>
-                                    <ClearTwoToneIcon
-                                        fontSize="large"
-                                        style={{
-                                            cursor: 'pointer',
-                                            marginTop: '-20%',
-                                            marginRight: '-28px',
-                                        }}
-                                        onClick={props.close}
-                                    />
-                                </div>
+
                                 </RightTopContainer>
                                 <RightBottomContainer>
                                     <div
@@ -106,6 +96,17 @@ export default function DetailPage(props) {
                             </ImageContainer>
 
                         </LeftContainer>
+                        <div>
+                                    <ClearTwoToneIcon
+                                        fontSize="large"
+                                        style={{
+                                            cursor: 'pointer',
+                                            marginTop: '-20%',
+                                            marginRight: '-28px',
+                                        }}
+                                        onClick={props.close}
+                                    />
+                                </div>
                         <RightContainer>
                             <div
                                 style={{

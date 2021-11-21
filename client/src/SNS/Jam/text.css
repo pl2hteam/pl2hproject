@@ -1,0 +1,30 @@
+h1 {
+    width: 80%;
+    max-width: 480px;
+    margin: 1.6em 2em;
+    font-family: "Playfair Display", serif;
+    font-size: 2.2em;
+    line-height: 1.4em;
+    font-weight: 700;
+    color: #333333;
+  }
+  
+  /* Underline */
+  .underline {
+    line-height: 0.5em; /* Positive value. */
+    vertical-align: 0.5em; /* Positive value. */
+    border-bottom: 0.4em solid transparent;
+    -moz-border-image: -moz-linear-gradient(left, #a8dbed 0%, #e291e6 100%);
+    -webkit-border-image: -webkit-linear-gradient(left, #a8dbed 0%, #e291e6 100%);
+    border-image: linear-gradient(to right, #a8dbed 0%, #e291e6 100%);
+    border-image-slice: 1;
+  }
+  
+  .underline span {
+    vertical-align: -0.4em;
+  }
+  
+  /* Highlight */
+  *::selection {
+    background: rgba(226, 145, 230, 0.2);
+  }
