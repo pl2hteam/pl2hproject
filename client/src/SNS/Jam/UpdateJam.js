@@ -92,8 +92,6 @@ const UpdatePic = (props) => {
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
         <MovieFileUpload refresh={postvideo} />
-        <br />
-        <br />
         <label>타이틀</label>
         <Input onChange={onPostTitle} value={PostTitle} />
         <label>무드</label>
@@ -102,8 +100,6 @@ const UpdatePic = (props) => {
         <Input onChange={onPostReview} value={PostReview} />
         <br />
         {/* <Atmosphere /> */}
-        <br />
-        <br />
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>

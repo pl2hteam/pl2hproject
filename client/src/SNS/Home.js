@@ -3,20 +3,15 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
 import img from "../Common/img/minime/연인.png"
 import VisitorWriting from "./visitor/VisitorWriting";
-
-////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-
 import { withRouter } from "react-router-dom";
 
-////////////////////////////////////////
 import { Link } from "react-router-dom";
 import {
   MdMailOutline,

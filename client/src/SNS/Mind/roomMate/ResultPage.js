@@ -3,12 +3,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Parser from 'html-react-parser';
 import CopyToClipboard from "react-copy-to-clipboard";
-
 import results from './contents/results';
 import WarningPage from '../roomMate/WarningPage';
 import ButtonComponent from '../../../Common/components/sns/mind/ButtonComponent';
-//import KakaoShareBtn from '../../../Common/components/sns/mind/Kakao';
-//import LinkCopyBtn from '../../assets/btn/btn_kakao.svg';
 
 const Wrapper = styled.div`
     display: flex;
@@ -252,9 +249,7 @@ function ResultPage({ match }) {
                     <FlexLayout>
                         <ShareSquare>
                             <FlexLayout>
-                                {/* <KakaoShareBtn _sub={results[finalType].title} _title={results[finalType].name} _imageUrl={results[finalType].img} _finalType={finalType} /> */}
                                 <CopyToClipboard text={link}>
-                                    {/* <Button onClick={alertMessage}><Img src={LinkCopyBtn} /></Button> */}
                                 </CopyToClipboard>
                             </FlexLayout>
                             <BtnToPage exact to='/'><ButtonComponent type={'result-activated'} text={'테스트 다시 하기'} /></BtnToPage>

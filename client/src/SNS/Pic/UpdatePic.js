@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { UploadStyle } from "./style/uploadstyle";
-
-const { Title } = Typography;
-const { TextArea } = Input;
 
 const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");
@@ -20,17 +17,9 @@ const UpdatePic = (props) => {
   const onPostTitle = (event) => {
     setPostTitle(event.currentTarget.value);
   };
-  // const onPostContent = (event) => {
-  //   setPostContent(event.currentTarget.value);
-  // };
-
   const updateImages = (newImages) => {
     setPostImg(newImages);
   };
-
-  // const onPostViews = (event) => {
-  //   setPostViews(parseInt(event.currentTarget.value));
-  // };
 
   const updateVideoPath = (newVideoPath) => {
     setVideoPath(newVideoPath);
@@ -47,9 +36,6 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-
-      // !PostImg ||
-
     ) {
       return alert("fill all the fields first!");
     }
@@ -83,21 +69,6 @@ const UpdatePic = (props) => {
   }
 
   return (
-    // <UploadStyle>
-    //   <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-    //     <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-    //       <Title level={4}>사진첩</Title>
-    //     </div>
-
-    //     <Form onSubmit={onSubmit}>
-    //       {/* DropZone */}
-    //       <MovieFileUpload refresh={postvideo} />
-    //       <label>#</label>
-    //       <Input onChange={onPostTitle} value={PostTitle} />
-    //       <Button onClick={onSubmit}>더하기</Button>
-    //     </Form>
-    //   </div>
-    // </UploadStyle>
     <UploadStyle>
       <div style={{ maxWidth: "700px", margin: "0rem auto" }}>
         <h1 className="title">사진 더하기</h1>

@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Typography, Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 
 const { Title } = Typography;
-const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
-
-
   const [PostTitle, setPostTitle] = useState("");
   const [PostContent, setPostContent] = useState("");
   const [PostImg, setPostImg] = useState("");
@@ -49,7 +46,6 @@ const UploadProductPage2 = (props) => {
     if (
       !PostTitle ||
       !PostContent ||
-      // !PostImg ||
       !PostViews
     ) {
       return alert("fill all the fields first!");
@@ -68,9 +64,6 @@ const UploadProductPage2 = (props) => {
 
     Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-        console.log(response);
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         if (response.data.success) {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/profile");
@@ -107,9 +100,13 @@ const UploadProductPage2 = (props) => {
         <Input onChange={onPostContent} value={PostContent} />
         <br />
         <br />
-
-        {/* <Input onChange={onPostViews} value={PostViews} type="number" /> */}
-
+        <label>가격</label>
+        <Input onChange={onPostViews} value={PostViews} type="number" />
+        <br />
+        <br />
+        <label>수량</label>
+        <br />
+        <br />
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>

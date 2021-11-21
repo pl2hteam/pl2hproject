@@ -2,8 +2,6 @@ import kahyun from '../../../assets/developers/kahyun.png';
 import sayyoung from '../../../assets/developers/sayyoung.png';
 import mihye from '../../../assets/developers/mihye.png';
 
-
-
 const developers = [
     {
         title: '넷플릭스와 맥주에 빠져사는<br/>활발한 집순이',

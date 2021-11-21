@@ -8,12 +8,10 @@ import m5 from "../../Common/img/minime/5.png";
 import m6 from "../../Common/img/minime/6.png";
 import DropdownMinime from "./dropdownMinime";
 import "./VisitorWriting.css"
-
-
 import Axios from "axios";
 import { useSelector } from "react-redux";
-import { Typography, Button, Form, message, Input } from "antd";
-import { withRouter } from "react-router-dom";
+import { Button, Form } from "antd";
+
 const Container = styled.div`
   padding: 15px 15px 0;
   background-color: #efefef;
@@ -79,44 +77,28 @@ const SaveBtn = styled.button`
   color: #525252;
 `;
 
-
-function VisitorWriting(props) {
-  const userInfo = useSelector(state => state.user);
-  const [User, setUser] = useState({});
-
+function VisitorWriting() {
+  const user = useSelector(state => state.user);
   const [isShow, setIsShow] = useState(false);
   const [minime, setMinime] = useState(0);
   const mArr = [m1, m2, m3, m4, m5, m6];
-
   const [ProfileContent, setProfileContent] = useState("");
-
-  useEffect(() => {
-    if (userInfo) {
-      if (userInfo.userData) {
-        setUser(userInfo.userData);
-      }
-    }
-  }, [userInfo.userData]);
-
-  const onProfileContent = (event) => {
+ 
+  const onProfileContent= (event) => {
     setProfileContent(event.currentTarget.value);
   };
-
-
-
+ 
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
-      !ProfileContent
+      !ProfileContent 
     ) {
       return alert("fill all the fields first!");
     }
 
     const variables = {
-      content: ProfileContent,
-      visitor: userInfo.userData.id,
-
+      content:ProfileContent,
     };
 
     console.log(variables);
@@ -134,32 +116,28 @@ function VisitorWriting(props) {
       });
   };
 
-
-
   return (
-    <Form onSubmit={onSubmit}>
-      <Container>
-        <Wrap className="VisitMsgBox">
-          <ShowMiniMe className="VisitMsgBox-ImageBox">
-            <img src={mArr[minime]} alt={"미니미"} />
-            <SettingMinime onClick={() => setIsShow(!isShow)}>
-              미니미
-            </SettingMinime>
-            <DropdownMinime
-              isShow={isShow}
-              setIsShow={setIsShow}
-              setMinime={setMinime}
-              mArr={mArr}
-            />
-          </ShowMiniMe>
-          <VisitMsg onChange={onProfileContent} value={ProfileContent} />
+  <Form onSubmit={onSubmit}>
+    <Container>
+      <Wrap className="VisitMsgBox">
+        <ShowMiniMe className="VisitMsgBox-ImageBox">
+          <img src={mArr[minime]} alt={"미니미"} />
+          <SettingMinime onClick={() => setIsShow(!isShow)}>
+                미니미
+          </SettingMinime>
+          <DropdownMinime
+                isShow={isShow}
+                setIsShow={setIsShow}
+                setMinime={setMinime}
+                mArr={mArr}
+              />
+        </ShowMiniMe>
+          <VisitMsg  onChange={onProfileContent} value={ProfileContent}/>
           <Button onClick={onSubmit}>편지보내기</Button>
-        </Wrap>
-      </Container> </Form>
-
+      </Wrap>
+    </Container> 
+  </Form>
   );
 }
 
-export default withRouter(VisitorWriting);
-
-
+export default VisitorWriting;
