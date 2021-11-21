@@ -64,10 +64,10 @@ const ShopMainPage = (pdFilter) => {
             <div className="shop-main-content-item_box-info-name">
               {product.pdName}
             </div>
-            <div className="shop-main-content-item_box-info-price">
+            {/* <div className="shop-main-content-item_box-info-price">
               <img className="acorn" src={acorn} alt="money" />
               {product.price.toLocaleString("ko-KR")}
-            </div>
+            </div> */}
           </div>
         </a>
       </div>
