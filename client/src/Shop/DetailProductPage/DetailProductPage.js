@@ -16,6 +16,7 @@ const DetailProductPage = (props) => {
   useEffect(() => {
     Axios.get(`/api/mongo/product/products_by_id?id=${pd_id}&type=single`).then(
       (response) => {
+        console.log(response);
         setProduct(response.data[0]);
       }
     );
@@ -25,6 +26,7 @@ const DetailProductPage = (props) => {
     };
 
     Axios.post("/api/mongo/product/getComments", postId).then((response) => {
+      console.log(response);
       if (response.data.success) {
         setComments(response.data.comment);
       } else {

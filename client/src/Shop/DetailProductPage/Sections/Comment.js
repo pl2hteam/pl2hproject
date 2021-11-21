@@ -19,10 +19,15 @@ const Comments = (props) => {
 
   useEffect(() => {
     const userData = { userInfo : user.userData };
+    console.log(444444444444444444444);
     if (user.userData) {
+      console.log(user.userData);
       if (user.userData.gender) {
-        axios.get('/api/mongo/users/sns/getMongo', userData)
+        console.log(user.userData.gender);
+        console.log(userData);
+        axios.post('/api/mongo/users/sns/getMongo', userData)
           .then(response => {
+            console.log(response);
             if (response.data.success) {
               setWriter(response.data.user[0]._id);
             } else {
@@ -47,6 +52,7 @@ const Comments = (props) => {
     };
 
     axios.post("/api/mongo/product/saveComment", variables).then((response) => {
+      console.log(response);
       if (response.data.success) {
         setComment("");
         props.refreshFunction(response.data.result);
