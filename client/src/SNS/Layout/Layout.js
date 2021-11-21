@@ -18,7 +18,7 @@ const BgWrapper = styled.div`
   display: flex;
   height: 100%;
   padding: 20px 8px 8px;
-  background: #f2f8fa;
+  background: #fff;
   border: 2px dashed black;
   border-radius: 10px;
 `;
