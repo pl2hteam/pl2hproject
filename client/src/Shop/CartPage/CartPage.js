@@ -92,7 +92,7 @@ const CartPage = () => {
 
   return (
     <CartStyle>
-      <div style={{ width: "85%", margin: "0 0 0 350px" }} className="cartBox">
+      <div style={{ width: "85%", margin: "0 0 0 470px" }} className="cartBox">
         <h1>장바구니</h1>
         <div>
           <UserCardBlock products={user.cartDetail} removeItem={removeFromCart} />

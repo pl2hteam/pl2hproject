@@ -16,6 +16,11 @@ export const HistoryStyle = styled.div`
   }
 
   table {
-    margin-left: 100px;
+    margin-left: 250px;
+  }
+
+  td {
+    padding-left: 27px;
+    padding-bottom: 20px;
   }
 `;

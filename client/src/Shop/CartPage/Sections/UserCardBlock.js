@@ -1,4 +1,5 @@
 import React from "react";
+import './UserCardBlock.css';
 
 const UserCardBlock = (props) => {
   const renderCartImage = (images) => {
@@ -20,7 +21,7 @@ const UserCardBlock = (props) => {
         <td>{product.quantity} 개</td>
         <td>금화 {product.price}</td>
         <td>
-          <button onClick={() => props.removeItem(product._id)}>Remove </button>{" "}
+          <button className="removeButton" onClick={() => props.removeItem(product._id)}>Remove </button>{" "}
         </td>
       </tr>
     ));
