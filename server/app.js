@@ -15,11 +15,7 @@ const mysqlRouter = require("./mysql/routes");
 const mongoRouter = require("./mongo/routes");
 const passport = require("passport");
 
-const app = express();
-const http=require('http').createServer(app);
-http.listen(5000,function(){
-  console.log(`listening on 5000`);
-})
+
 
 passportConfig();
 const cors = require("cors");
@@ -85,7 +81,11 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   return res.status(400).send(err);
 });
-
+const app = express();
+const http=require('http').createServer(app);
+http.listen(5000,function(){
+  console.log(`listening on 5000`);
+})
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
 });
