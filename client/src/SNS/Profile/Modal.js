@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Main from "./Intro/Main";
-import Feed from "./feed.css";
+import "./feed.css";
 import Delete from "./Intro/delete";
 
-import { Typography, Button, message, Input } from "antd";
 const Modal = (props) => {
   const { setOpenModal } = props;
   return (
@@ -29,8 +27,6 @@ const Modal = (props) => {
           <div className="main-reaction_box">
             <header>
               <div class="profile-of-article">
-                {/* <img class="img-profile pic" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/28434316_190831908314778_1954023563480530944_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=srwTEwYMC28AX8gftqw&oh=98c7bf39e441e622c9723ae487cd26a0&oe=5F68C630" alt="dlwlrma님의 프로필 사진"/> */}
-                {/* <span class="userID main-id point-span"><Meta description={`${postData.HashtagId}`} /></span> */}
               </div>
               <img
                 class="icon-react icon-more"
@@ -73,7 +69,6 @@ const Modal = (props) => {
                 </p>
               </div>
               <div class="description">
-                {/* <p> <Meta description={`111${postData.content}`} /> 🌱</p> */}
               </div>
               <div class="comment-section">
                 <ul class="comments">
@@ -109,22 +104,6 @@ const Modal = (props) => {
               </div>
             </div>
             <div class="comment">
-              {/*       
- <Form >
- 
-  
- 
-   <br />
-   <br />
-   <label>물품명</label>1
-   <Input onChange={onPostTitle} value={profilecontent} />
-   <br />
- 
- 
-   <Button onClick={onSubmit}>Submit</Button>
- </Form> */}
-              {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-       <button type="submit" class="submit-comment" disabled>게시</button> */}
             </div>
           </div>
         </article>

@@ -62,12 +62,10 @@ const Comment = (props) => {
     return (
       <div>
         <div>
-          {/* <span>{info.User.image}</span> */}
           <span>{info.User.name} : </span>
           <span>{info.content}</span>
         </div>
         <div>
-          {/* 몇시간 전? */}
         </div>
       </div>
     )
@@ -79,15 +77,12 @@ const Comment = (props) => {
       <p onClick={onClickReplyOpen} >댓글 {Comments.length} 모두 보기</p>
       <br />
 
-      {/* 가장 추천 많이 받은 댓글 2개 보이기 */}
-      {/* 모든 댓글 */}
       {OpenReply &&
         <div>
           {CommentsInfo}
         </div>
       }
 
-      {/* feed.css 의 선 스타일 적용 */}
       <div class="hl"></div>
 
       <form style={{ display: 'flex' }} onSubmit={onSubmit}>

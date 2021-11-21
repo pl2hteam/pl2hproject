@@ -1,60 +1,15 @@
-// import React from "react";
-import styled from "styled-components";
 import Modal from "../Modal";
-////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
-import Feed from './feed.css'
-////////////////////////////////////////
-import { Typography, Button, Form, message, Input } from "antd";
-import Delete from "./delete";
-/////////////
-
-const Wrapper = styled.div`
-  padding: 10px 0;
-  font-family: serif;
-  font-weight: bold;
-  img {
-    width: 100%;
-    margin: 5px 0;
-  }
-  h2 {
-    color: #a7a7a7;
-    font-size: 1.2rem;
-  }
-  .at {
-    color: #cec6a0;
-    font-size: 0.9rem;
-  }
-  .warn {
-    text-align: right;
-    color: #d9d9d9;
-    text-decoration: line-through;
-    font-weight: bold;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-`;
-
-const TxtWrapper = styled.div`
-  padding: 40px;
-  text-align: center;
-  .txt {
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: normal;
-  }
-`;
 
 const { Meta } = Card;
 
 const Main = (props) => {
   const [Posts, setPosts] = useState([]);
-  // const [Images, setImages] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
@@ -76,34 +31,25 @@ const Main = (props) => {
     });
   };
 
-
   const [profilecontent, setPostTitle] = useState("");
 
-  const onPostTitle = (event) => {
-    setPostTitle(event.currentTarget.value);
-  };
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
       !profilecontent
-
     ) {
       return alert("fill all the fields first!");
     }
 
-    // console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      //seller: user.userData._id,
       content: profilecontent,
-
     };
 
     Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
         console.log('props.user 는 : ', response);
         if (response.data.success) {
-
           alert("Product Successfully Uploaded");
           props.history.push("/sns");
         } else {
@@ -112,7 +58,6 @@ const Main = (props) => {
         }
       });
   };
-
 
   // 더보기 버튼
   const loadMoreHandler = () => {
@@ -136,9 +81,7 @@ const Main = (props) => {
         setOpenModal(true);
       }}>
         <Card hoverable={true}>
-          {/* <Delete delete={postData}/> */}
           <article>
-
             <header>
               {/* 사용자 정보 */}
               <div class="profile-of-article">
@@ -153,11 +96,8 @@ const Main = (props) => {
             {openModal && (
               <Modal
                 modal={postData}
-
                 setOpenModal={setOpenModal}
                 openModal={openModal}
-
-
               />
             )}
 
@@ -207,9 +147,7 @@ const Main = (props) => {
                 <div class="time-log">
                   <span>32분 전</span>
                 </div>
-
               </div>
-
             </div>
 
             <div class="hl"></div>
@@ -222,10 +160,6 @@ const Main = (props) => {
       return null;
     }
   });
-  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
-
-  // 텍스트 검색
-
 
   // default
   useEffect(() => {
@@ -249,8 +183,6 @@ const Main = (props) => {
         <Col lg={12} xs={24}></Col>
       </Row>
 
-
-
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
       {Posts.length === 0 ? (
         <div
@@ -264,7 +196,6 @@ const Main = (props) => {
           <h2>등록된 상품이 없읍니다</h2>
         </div>
       ) : (
-        // 상품 있으면 목록 출력
         <div>
           {renderCards}
         </div>

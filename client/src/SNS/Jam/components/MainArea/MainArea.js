@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import Picture from './Picture';
-
-//import FlipMove from 'react-flip-move';
-
 import styled from 'styled-components';
-import Loader from './Loader';
 import './MainGrid.css';
+import Axios from "axios";
 
 const MarginContainer = styled.div`
     max-width: 1440px;
@@ -64,105 +60,36 @@ const Container = styled.div`
 
 export default () => {
     const [posts, setPosts] = useState([]);
-    // const [last, setLast] = useState(null);
     const [mood, setMood] = useState('');
-    // const [hasMore, setHasMore] = useState(true);
-    const moods = ['도시', '자연', '몽환', '여유', '고요', '활기', '낭만'];
-
-    // useEffect(() => {
-    //     const unsubscribe = db
-    //         .collection('posts')
-    //         .orderBy('timestamp', 'desc')
-    //         .limit(10)
-    //         .onSnapshot((snapshot) => {
-    //             setPosts(
-    //                 snapshot.docs.map((doc) => ({
-    //                     id: doc.id,
-    //                     post: doc.data(),
-    //                 }))
-    //             );
-    //             setLast(snapshot.docs[snapshot.docs.length - 1]);
-    //         });
-
-    //     return () => {
-    //         unsubscribe();
-    //     };
-    // }, []);
-
-    // const next = () => {
-    //     if (last) {
-    //         db.collection('posts')
-    //             .orderBy('timestamp', 'desc')
-    //             .startAfter(last)
-    //             .limit(10)
-    //             .onSnapshot((snapshot) => {
-    //                 if (snapshot.empty) {
-    //                     setHasMore(false);
-
-    //                     return;
-    //                 }
-    //                 setPosts([
-    //                     ...posts,
-    //                     ...snapshot.docs.map((doc) => ({
-    //                         id: doc.id,
-    //                         post: doc.data(),
-    //                     })),
-    //                 ]);
-    //                 setLast(snapshot.docs[snapshot.docs.length - 1]);
-    //             });
-    //     }
-    // };
-
-    // const moodNext = () => {
-    //     if (last) {
-    //         db.collection('posts')
-    //             .orderBy('timestamp', 'desc')
-    //             .where('mood', '==', mood)
-    //             .startAfter(last)
-    //             .limit(10)
-    //             .onSnapshot((snapshot) => {
-    //                 if (snapshot.empty) {
-    //                     setHasMore(false);
-
-    //                     return;
-    //                 }
-    //                 setPosts([
-    //                     ...posts,
-    //                     ...snapshot.docs.map((doc) => ({
-    //                         id: doc.id,
-    //                         post: doc.data(),
-    //                     })),
-    //                 ]);
-    //                 setLast(snapshot.docs[snapshot.docs.length - 1]);
-    //             });
-    //     }
-    // };
+    const moods = ['영화', '공연', '축제', '여행', '맛집', '기타'];
 
     const onMoodChange = (e) => {
+
         setMood(e.currentTarget.innerText);
         setPosts([]);
 
 
+        const variables = {
+            mood: e.currentTarget.innerText,
+        }
+        console.log(e.currentTarget.innerText);
 
-        // db.collection('posts')
-        //     .orderBy('timestamp', 'desc')
-        //     .where('mood', '==', e.currentTarget.innerText)
-        //     .limit(10)
-        //     .onSnapshot((snapshot) => {
-        //         setPosts(
-        //             snapshot.docs.map((doc) => ({
-        //                 id: doc.id,
-        //                 post: doc.data(),
-        //             }))
-        //         );
-        //         setLast(snapshot.docs[snapshot.docs.length - 1]);
-        //     });
+        Axios.post("/api/mysql/jams/read/mood", variables)
+            .then((response) => {
+                if (response.data.success) {
+                    setPosts(response.data.jams);
+
+                } else {
+                    alert("Failed to fectch product datas");
+                }
+            });
     };
+
 
     return (
         <MarginContainer>
             <HeaderContainer>
-                <Title>위치</Title>
+                <Title>🎪🎉🎏</Title>
                 <MoodList>
                     {moods.map((moodText) => (
                         <Mood
@@ -175,42 +102,18 @@ export default () => {
                     ))}
                 </MoodList>
             </HeaderContainer>
-
-            {/* <InfiniteScroll
-                // dataLength={posts.length}
-                // next={(mood && moodNext) || next}
-                // hasMore={hasMore}
-                loader={<Loader />}
-            > */}
             <Container>
-                아린ㅇ라ㅣ나리너ㅣㅓ
-                {/* <FlipMove>
-                    애내내오니도ㅓ료ㅕ냘ㄷ
-                    {/* {posts.map(({ post, id }) => (
-                            <Picture
-                                uid={post.uid}
-                                id={id}
-                                key={id}
-                                advertising={post.advertising}
-                                area={post.area}
-                                avatar={post.avatar}
-                                heart={post.heart}
-                                imageUrl={post.imageUrl}
-                                latitude={post.latitude}
-                                longitude={post.longitude}
-                                mood={post.mood}
-                                novelty={post.novelty}
-                                rating={post.rating}
-                                review={post.review}
-                                timestamp={post.timestamp}
-                                title={post.title}
-                                username={post.username}
-                                address={post.address}
-                            />
-                        ))}
-                </FlipMove> */}
+                {posts.map((post) => (
+                    <Picture
+                        id={post.id}
+                        key={post.id}
+                        imageUrl={post.images[0]}
+                        mood={post.mood}
+                        review={post.review}
+                        title={post.title}
+                    />
+                ))}
             </Container>
-            {/* </InfiniteScroll> */}
         </MarginContainer>
     );
 };

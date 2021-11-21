@@ -20,17 +20,21 @@ const SingleComment = (props) => {
 
     useEffect(() => {
       const userData = { userInfo : user.userData };
-      if (user.userData.gender) {
-        Axios.get('/api/mongo/users/sns/getMongo', userData)
-          .then(response => {
-            if (response.data.success) {
-              setWriter(response.data.user[0]._id);
-            } else {
-              alert('Failed')
-            }
-        })
+      if (user.userData) {
+        if (user.userData.gender) {
+          Axios.get('/api/mongo/users/sns/getMongo', userData)
+            .then(response => {
+              if (response.data.success) {
+                setWriter(response.data.user[0]._id);
+              } else {
+                alert('Failed')
+              }
+          })
+        }
       } else {
-        setWriter(user.userData._id);
+        if (user.userData) {
+          setWriter(user.userData._id);
+        }
       }
     }, [user.userData])
     
@@ -80,15 +84,14 @@ const SingleComment = (props) => {
               />
 
               {OpenReply &&
-                  <form style={{ display: 'flex' }} onSubmit={onSubmit}>
+                  <form className="comment-form" onSubmit={onSubmit}>
                       <TextArea
-                          style={{ width: '100%', borderRadius: '5px' }}
-                          onChange={handleChange}
-                          value={CommentValue}
-                          placeholder="댓글을 적어주세요."
+                        className="comment-textarea"
+                        onChange={handleChange}
+                        value={CommentValue}
+                        placeholder="댓글을 적어주세요."
                       />
-                      <br />
-                      <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>작성하기</Button>
+                      <Button className="comment-button" onClick={onSubmit}>작성하기</Button>
                   </form>
               }
           </div>

@@ -1,57 +1,96 @@
 const express = require("express");
 const router = express.Router();
-const { User, Post, Image, Jam } = require("../../models");
+const { User, Image, Jam } = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
-    const fullPost = await Jam.findAll({
-
+    const fulljam = await Jam.findAll({
       order: [['id', 'DESC']],
     });
 
     const Images = await Image.findAll({
       include: {
         model: Jam,
-        attribute: ["id", "src", "PostId", "HashTagId"],
+        attribute: ["id", "src", "PostId", "HashTagId", "JamId"],
       },
       order: [["id", "DESC"]],
     });
 
-    // const ImageOne = await Hashtag.findAll({
-    //   include: {
-    //     model: Image,
-    //     attribute: ["HashTagId"],
-    //   },
-    //   order: [["id", "DESC"]],
-    // })
-
-
-    let postData = [];
-    for (let i = 0; i < fullPost.length; i++) {
+    let jams = [];
+    for (let i = 0; i < fulljam.length; i++) {
       let imgData = [];
       for (let j = 0; j < Images.length; j++) {
-        if (fullPost[i].dataValues.id === Images[j].dataValues.HashtagId) {
+        if (fulljam[i].dataValues.id === Images[j].dataValues.JamId) {
           imgData.push(Images[j].src);
         }
       }
 
-
-
-      postData.push({
-        id: fullPost[i].dataValues.id,
-        title: fullPost[i].dataValues.title,
-        content: fullPost[i].dataValues.content,
+      jams.push({
+        id: fulljam[i].dataValues.id,
+        title: fulljam[i].dataValues.title,
+        mood: fulljam[i].dataValues.mood,
+        review: fulljam[i].dataValues.review,
         images: imgData,
         // videos: null,
         // duration: null,
-        createdAt: fullPost[i].dataValues.createdAt,
-        updatedAt: fullPost[i].dataValues.updatedAt,
+        createdAt: fulljam[i].dataValues.createdAt,
+        updatedAt: fulljam[i].dataValues.updatedAt,
+      })
+    }
+    res.status(201).json({ success: true, jams });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+router.post('/mood', async (req, res, next) => {
+  try {
+    let keyWord = req.body.mood
+
+    const fulljam = await Jam.findAll({
+      include: {
+        model: User,
+        attribute: ["id", "name"],
+      },
+      where: {
+        mood: keyWord,
+      },
+      order: [['id', 'DESC']],
+    });
+
+    const Images = await Image.findAll({
+      include: {
+        model: Jam,
+        attribute: ["id", "src", "PostId", "HashTagId", "JamId"],
+      },
+    });
+
+    let jams = [];
+    for (let i = 0; i < fulljam.length; i++) {
+      let imgData = [];
+      for (let j = 0; j < Images.length; j++) {
+        if (fulljam[i].dataValues.id === Images[j].dataValues.JamId) {
+          imgData.push(Images[j].src);
+        }
+      }
+
+      jams.push({
+        id: fulljam[i].dataValues.id,
+        title: fulljam[i].dataValues.title,
+        mood: fulljam[i].dataValues.mood,
+        review: fulljam[i].dataValues.review,
+        updater: fulljam[i].dataValues.UserId,
+        images: imgData,
+        // videos: null,
+        // duration: null,
+        createdAt: fulljam[i].dataValues.createdAt,
+        updatedAt: fulljam[i].dataValues.updatedAt,
       })
     }
 
-    res.status(201).json({ success: true, postData });
+    res.status(201).json({ success: true, jams });
   } catch (error) {
-    console.error(error);
     next(error);
   }
 });

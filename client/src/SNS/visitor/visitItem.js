@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import Comments from "../comment/comments";
-// import ViewComments from "../comment/viewComments";
 
 const Container = styled.div``;
 
@@ -79,8 +77,6 @@ function VisitItem(props) {
         </ShowMiniMe>
         <Text>{props.txt}</Text>
       </InnerContainer>
-      {/* <ViewComments></ViewComments> */}
-      {/* <Comments /> */}
     </Container>
   );
 }

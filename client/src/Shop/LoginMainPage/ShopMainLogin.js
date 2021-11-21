@@ -13,7 +13,6 @@ class MainLogin extends React.Component {
   }
 
   componentDidMount() {
-    //Add .right by default
     this.rightSide.classList.add("right");
   }
 
@@ -45,7 +44,7 @@ class MainLogin extends React.Component {
             ref={(ref) => (this.container = ref)}
           >
             <img src={cyworld} style={{ width: "100px" }} />
-            <h1 className="login_page_title">PL2H WORLD</h1>
+            <h1 className="login_page_title">PL2H SHOP</h1>
             {isLogginActive && (
               <LoginPage containerRef={(ref) => (this.current = ref)} />
             )}

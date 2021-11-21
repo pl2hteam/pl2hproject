@@ -11,7 +11,6 @@ import Write from './Write';
 import { withRouter } from 'react-router';
 import { useState } from 'react';
 
-
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
@@ -42,13 +41,11 @@ const [mbti, setMbti] = useState([]);
       <Content>
         <Card>
           <Switch>
-            
             <Route exact path={`${match.path}`} component={Intro} />
             <Route exact path={`${match.path}/intro`} component={Intro} />
             <Route path={`${match.path}/intro/:type`} component={Intro} />
             <Route path={`${match.path}/favorite`} component={Favorite} />
             <Route path={`${match.path}/Write`} component={Write} />
-
           </Switch>
         </Card>
       </Content>

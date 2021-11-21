@@ -1,35 +1,33 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Typography, Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 
 const { Title } = Typography;
-const { TextArea } = Input;
 
 const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");
-  const [PostContent, setPostContent] = useState("");
+  const [PostMood, setPostMood] = useState("");
   const [PostImg, setPostImg] = useState("");
-  const [PostViews, setPostViews] = useState(0);
+  const [PostReview, setPostReview] = useState("");
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
 
   const onPostTitle = (event) => {
     setPostTitle(event.currentTarget.value);
   };
-  // const onPostContent = (event) => {
-  //   setPostContent(event.currentTarget.value);
-  // };
+  const onPostMood = (event) => {
+    setPostMood(event.currentTarget.value);
+  };
+  const onPostReview = (event) => {
+    setPostReview(event.currentTarget.value);
+  };
 
   const updateImages = (newImages) => {
     setPostImg(newImages);
   };
-
-  // const onPostViews = (event) => {
-  //   setPostViews(parseInt(event.currentTarget.value));
-  // };
 
   const updateVideoPath = (newVideoPath) => {
     setVideoPath(newVideoPath);
@@ -46,22 +44,22 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-     
-      // !PostImg ||
-      
     ) {
       return alert("fill all the fields first!");
     }
 
     console.log(props.user.userData.id);
     const variables = {
-      seller: props.user.userData.id,
+      updater: props.user.userData.id,
       title: PostTitle,
+      mood: PostMood,
+      review: PostReview,
       // content: PostContent,
       img: PostImg,
       // views: PostViews,
       videos: VideoPath,
       duration: Duration,
+
     };
 
     Axios.post("/api/mysql/jams/write", variables)
@@ -73,15 +71,15 @@ const UpdatePic = (props) => {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/jam");
         } else {
-          console.log(response.data,314141)
+          console.log(response.data, 314141)
           alert("Failed to upload Product");
         }
       });
   };
 
   let postvideo = {
-    updateImages, 
-    updateVideoPath, 
+    updateImages,
+    updateVideoPath,
     updateDuration
   }
 
@@ -94,16 +92,14 @@ const UpdatePic = (props) => {
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
         <MovieFileUpload refresh={postvideo} />
-
-        <br />
-        <br />
-        <label>물품명</label>
+        <label>타이틀</label>
         <Input onChange={onPostTitle} value={PostTitle} />
+        <label>무드</label>
+        <Input onChange={onPostMood} value={PostMood} />
+        <label>리뷰</label>
+        <Input onChange={onPostReview} value={PostReview} />
         <br />
-   
-        <br />
-        <br />
-
+        {/* <Atmosphere /> */}
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>

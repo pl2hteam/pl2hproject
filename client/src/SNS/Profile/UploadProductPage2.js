@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Typography, Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 
 const { Title } = Typography;
-const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
-
-  
   const [PostTitle, setPostTitle] = useState("");
   const [PostContent, setPostContent] = useState("");
   const [PostImg, setPostImg] = useState("");
@@ -49,7 +46,6 @@ const UploadProductPage2 = (props) => {
     if (
       !PostTitle ||
       !PostContent ||
-      // !PostImg ||
       !PostViews
     ) {
       return alert("fill all the fields first!");
@@ -66,34 +62,8 @@ const UploadProductPage2 = (props) => {
       duration: Duration,
     };
 
-
-
-
-
-
-
-
-    // Axios.delete(`/api/mysql/posts/write/delete`)
-    // .then((response) => {
-    //  console.log('props.user 는 : ', response);
-    //  if (response.data.success) {
-    
-    //    alert("Product Successfully Uploaded");
-    //    props.history.push("/sns");
-    //  } else {
-    //    console.log(response.data)
-    //    alert("Failed to upload Product");
-    //  }
-    // });
-
-
-
-
     Axios.post("/api/mysql/posts/write", variables)
       .then((response) => {
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-        console.log(response);
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         if (response.data.success) {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/profile");
@@ -105,8 +75,8 @@ const UploadProductPage2 = (props) => {
   };
 
   let postvideo = {
-    updateImages, 
-    updateVideoPath, 
+    updateImages,
+    updateVideoPath,
     updateDuration
   }
 
@@ -122,27 +92,21 @@ const UploadProductPage2 = (props) => {
 
         <br />
         <br />
-        <label>물품명</label>
+        <label>제목</label>
         <Input onChange={onPostTitle} value={PostTitle} />
         <br />
         <br />
-        <label>브랜드</label>
+        <label>내용</label>
         <Input onChange={onPostContent} value={PostContent} />
         <br />
         <br />
-        {/* <label>상세정보</label>
-        <TextArea onChange={onPostImg} value={PostImg} />
-        <br />
-        <br /> */}
         <label>가격</label>
         <Input onChange={onPostViews} value={PostViews} type="number" />
         <br />
         <br />
         <label>수량</label>
-       
         <br />
         <br />
-
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>
