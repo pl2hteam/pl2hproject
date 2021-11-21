@@ -5,10 +5,6 @@ const { Image, Hashtag } = require("../../models");
 router.post('/', async (req, res, next) => {
   try {
     const fullPost = await Hashtag.findAll({
-      include: {
-        model: Image,
-        attribute: ["id", "src", "PostId", "HashTagId"],
-      },
       order: [['id', 'DESC']],
     });
 
@@ -34,7 +30,6 @@ router.post('/', async (req, res, next) => {
         title: fullPost[i].dataValues.title,
         content: fullPost[i].dataValues.content,
         images: imgData,
-        HashtagID: imgData.HashtagId,
         // videos: null,
         // duration: null,
         createdAt: fullPost[i].dataValues.createdAt,

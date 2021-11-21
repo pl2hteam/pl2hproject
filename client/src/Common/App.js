@@ -10,7 +10,7 @@ function App() {
       <MainPage />
       <SNSMain />
       <ShopMain />
-      <Test />
+      {/* <Test /> */}
     </div>
   );
 }
