@@ -88,7 +88,7 @@ const FileUpload = (props) => {
             <img
               className="dropzone-image_box-img"
               style={{ width: "100%", height: "240px" }}
-              src={`http://13.124.13.37:5000/${image}`}
+              src={`13.124.13.37:5000/${image}`}
               alt={`productImg-${index}`}
             />
           </div>
