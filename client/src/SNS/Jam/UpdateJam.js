@@ -13,7 +13,8 @@ const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");
   const [PostMood, setPostMood] = useState("");
   const [PostImg, setPostImg] = useState("");
-  const [PostViews, setPostViews] = useState(0);
+  const [PostReview, setPostReview] = useState("");
+  //const [PostViews, setPostViews] = useState(0);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
 
@@ -22,6 +23,9 @@ const UpdatePic = (props) => {
   };
   const onPostMood = (event) => {
     setPostMood(event.currentTarget.value);
+  };
+  const onPostReview = (event) => {
+    setPostReview(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
@@ -56,14 +60,16 @@ const UpdatePic = (props) => {
 
     console.log(props.user.userData.id);
     const variables = {
-      seller: props.user.userData.id,
+      updater: props.user.userData.id,
       title: PostTitle,
       mood: PostMood,
+      review: PostReview,
       // content: PostContent,
       img: PostImg,
       // views: PostViews,
       videos: VideoPath,
       duration: Duration,
+
     };
 
     Axios.post("/api/mysql/jams/write", variables)
@@ -96,20 +102,14 @@ const UpdatePic = (props) => {
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
         <MovieFileUpload refresh={postvideo} />
-
-        <br />
-        <br />
         <label>타이틀</label>
         <Input onChange={onPostTitle} value={PostTitle} />
         <label>무드</label>
         <Input onChange={onPostMood} value={PostMood} />
+        <label>리뷰</label>
+        <Input onChange={onPostReview} value={PostReview} />
         <br />
         {/* <Atmosphere /> */}
-
-
-        <br />
-        <br />
-
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>

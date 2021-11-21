@@ -66,12 +66,18 @@ router.post('/mood', async (req, res, next) => {
     let keyWord = req.body.mood
 
     const fulljam = await Jam.findAll({
+      include: {
+        model: User,
+        attribute: ["id", "name"],
+      },
       where: {
         mood: keyWord,
-      }
+      },
+      order: [['id', 'DESC']],
     });
 
-    console.log(fulljam);
+    console.log(fulljam, 34242342);
+    console.log(fulljam.User, 1134242342);
 
     const Images = await Image.findAll({
       include: {
@@ -95,6 +101,7 @@ router.post('/mood', async (req, res, next) => {
         title: fulljam[i].dataValues.title,
         mood: fulljam[i].dataValues.mood,
         review: fulljam[i].dataValues.review,
+        updater: fulljam[i].dataValues.UserId,
         images: imgData,
         // videos: null,
         // duration: null,

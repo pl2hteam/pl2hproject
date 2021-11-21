@@ -70,7 +70,7 @@ export default () => {
     //const [last, setLast] = useState(null);
     const [mood, setMood] = useState('');
     // const [hasMore, setHasMore] = useState(true);
-    const moods = ['도시', '자연', '여유', '고요', '활기', '낭만'];
+    const moods = ['영화', '공연', '축제', '여행', '맛집', '기타'];
 
     const [please, setPlease] = useState([]);
 

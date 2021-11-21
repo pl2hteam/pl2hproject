@@ -4,6 +4,7 @@ import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import { UploadStyle } from "./style/uploadstyle";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -12,7 +13,7 @@ const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");
   const [PostContent, setPostContent] = useState("");
   const [PostImg, setPostImg] = useState("");
-  const [PostViews, setPostViews] = useState(0);
+
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
 
@@ -46,9 +47,9 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-     
+
       // !PostImg ||
-      
+
     ) {
       return alert("fill all the fields first!");
     }
@@ -66,47 +67,52 @@ const UpdatePic = (props) => {
 
     Axios.post("/api/mysql/album/write", variables)
       .then((response) => {
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-        console.log(response);
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         if (response.data.success) {
-          alert("Product Successfully Uploaded");
+          alert("사진이 더해졌습니다!");
           props.history.push("/sns/pic");
         } else {
-          console.log(response.data,314141)
-          alert("Failed to upload Product");
+          alert("사진이 안 올라갔어요ㅠㅠ");
         }
       });
   };
 
   let postvideo = {
-    updateImages, 
-    updateVideoPath, 
+    updateImages,
+    updateVideoPath,
     updateDuration
   }
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Title level={2}>커플 상품</Title>
+    // <UploadStyle>
+    //   <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+    //     <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+    //       <Title level={4}>사진첩</Title>
+    //     </div>
+
+    //     <Form onSubmit={onSubmit}>
+    //       {/* DropZone */}
+    //       <MovieFileUpload refresh={postvideo} />
+    //       <label>#</label>
+    //       <Input onChange={onPostTitle} value={PostTitle} />
+    //       <Button onClick={onSubmit}>더하기</Button>
+    //     </Form>
+    //   </div>
+    // </UploadStyle>
+    <UploadStyle>
+      <div style={{ maxWidth: "700px", margin: "0rem auto" }}>
+        <h1 className="title">사진 더하기</h1>
+        <Form onSubmit={onSubmit}>
+          <MovieFileUpload refresh={postvideo} />
+          <div className="upload-item-list">
+            <div className="item">
+              <label>해시태그</label>
+              <Input onChange={onPostTitle} value={PostTitle} />
+            </div>
+            <Button onClick={onSubmit}>사진 더하기</Button>
+          </div>
+        </Form>
       </div>
-
-      <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-        <MovieFileUpload refresh={postvideo} />
-
-        <br />
-        <br />
-        <label>물품명</label>
-        <Input onChange={onPostTitle} value={PostTitle} />
-        <br />
-   
-        <br />
-        <br />
-
-        <Button onClick={onSubmit}>Submit</Button>
-      </Form>
-    </div>
+    </UploadStyle>
   );
 }
 
