@@ -9,7 +9,7 @@ router.post('/', async (req, res, next) => {
     res.status(201).json({ success: true, fullProfile });
   } catch (error) {
     console.error(error);
-    next(error);
+    return res.status(400).send(err);
   }
 });
 

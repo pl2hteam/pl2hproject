@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => { // POST /post
     res.status(201).json({ success: true, fullProfile });
   } catch (error) {
     console.error(error);
-    next(error);
+    return res.status(400).send(err);
   }
 });
 
@@ -30,7 +30,7 @@ router.delete('/delete/:id', async (req, res, next) => {
     res.status(200).json({ success: true });
   } catch (err) {
     console.error(error);
-    next(error);
+    return res.status(400).send(err);
   }
 })
 

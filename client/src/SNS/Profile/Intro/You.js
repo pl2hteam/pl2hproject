@@ -8,7 +8,7 @@ import Comment from "../Comment/Comment";
 
 const { Meta } = Card;
 
-const Main = (props) => {
+const You = (props) => {
   const [Posts, setPosts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
@@ -210,4 +210,4 @@ const Main = (props) => {
   );
 };
 
-export default withRouter(Main);
+export default withRouter(You);

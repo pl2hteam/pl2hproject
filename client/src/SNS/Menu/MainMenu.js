@@ -96,9 +96,7 @@ if(CoupleCode ==="9999"){return (
         <NavLink to="/sns/Pic" activeClassName="selected">
           사진첩
         </NavLink>
-      </li>
-
-     
+      </li>     
     </ul>
   </Nav>
   )

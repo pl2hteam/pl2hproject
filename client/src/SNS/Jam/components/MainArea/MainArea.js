@@ -64,22 +64,27 @@ export default () => {
     const moods = ['영화', '공연', '축제', '여행', '맛집', '기타'];
 
     const onMoodChange = (e) => {
+
         setMood(e.currentTarget.innerText);
         setPosts([]);
+
 
         const variables = {
             mood: e.currentTarget.innerText,
         }
+        console.log(e.currentTarget.innerText);
 
         Axios.post("/api/mysql/jams/read/mood", variables)
             .then((response) => {
                 if (response.data.success) {
                     setPosts(response.data.jams);
+
                 } else {
                     alert("Failed to fectch product datas");
                 }
             });
     };
+
 
     return (
         <MarginContainer>

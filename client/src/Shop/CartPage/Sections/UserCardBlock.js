@@ -1,10 +1,9 @@
 import React from "react";
-import './UserCardBlock.css';
 
 const UserCardBlock = (props) => {
   const renderCartImage = (images) => {
     let image = images[0];
-    return `13.124.13.37:5000/${image}`;
+    return `http://localhost:5000/${image}`;
   };
   
   const renderItems = () =>
@@ -21,7 +20,7 @@ const UserCardBlock = (props) => {
         <td>{product.quantity} 개</td>
         <td>금화 {product.price}</td>
         <td>
-          <button className="removeButton" onClick={() => props.removeItem(product._id)}>Remove </button>{" "}
+          <button onClick={() => props.removeItem(product._id)}>Remove </button>{" "}
         </td>
       </tr>
     ));

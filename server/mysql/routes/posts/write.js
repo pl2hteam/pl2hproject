@@ -40,7 +40,7 @@ router.delete('/delete/:id',async(req,res,next)=>{
     res.status(200).json({ success: true });
   } catch (err) {
     console.error(error);
-    next(error);
+    return res.status(400).send(err);
   }``
 });
 module.exports = router;

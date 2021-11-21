@@ -16,7 +16,7 @@ router.post('/', async (req, res, next) => { // POST /post
     res.status(201).json({ success: true, fullLetter });
   } catch (error) {
     console.error(error);
-    next(error);
+    return res.status(400).send(err);
   }
 });
 

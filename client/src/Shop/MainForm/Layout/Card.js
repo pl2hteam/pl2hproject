@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   z-index: 10;
-  overflow-y: auto;
+  overflow-y: scroll;
   width: 100%;
   height: 96%;
   margin-top: 10px;
@@ -15,8 +15,17 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
   }
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     display: none;
+  } */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: grey;
   }
 `;
 
