@@ -31,6 +31,7 @@ import {
 } from "react-icons/md";
 import { publicUrl } from "../Common/components/utils"
 import ChangeCondition from "../SNS/MyPage/ChangeCondition";
+import TodayIs from "./TodayIs";
 const Mini = styled.div`
 width: 100%;
 `;
@@ -303,6 +304,7 @@ const Home = (props) => {
           <FlexWrapper>
             <ProfileSection >
               <FlexWrapperImage>
+                {/* <TodayIs /> */}
                 <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
 

@@ -39,5 +39,7 @@ module.exports = class Jam extends Sequelize.Model {
 
   static associate(db) {
     db.Jam.hasMany(db.Image);
+    db.Jam.belongsTo(db.User);
+    db.Jam.belongsToMany(db.User, { through: "Recommends", as: "recommendPost" });
   }
 };
