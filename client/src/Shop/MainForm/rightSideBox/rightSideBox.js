@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ActivityStatus from "./activityStatus";
-import MusicPlayer from "./musicPlayer";
+import MusicPlayer from "../../../Common/components/musicPlayer";
 import Button from "./buttons";
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ function RightSideBox() {
   return (
     <Container>
       <ActivityStatus />
-      {/* <MusicPlayer /> */}
+      <MusicPlayer />
       <Button />
     </Container>
   );
