@@ -66,10 +66,7 @@ function VisitItem(props) {
     <Container>
       <Header>
         <Index>
-          NO.<span>{props.num}</span>
         </Index>
-        <VisitorName>{props.name}</VisitorName>
-        <VisitDate>(2020.12.24 00:34)</VisitDate>
       </Header>
       <InnerContainer>
         <ShowMiniMe>

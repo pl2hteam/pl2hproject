@@ -121,9 +121,9 @@ const UpdateProfile = () => {
       <easy>
         <Item>
           <VisitItem
-            num={1}
+          
             img={m1}
-            name={"신지은"}
+
             txt={
               <easy>{fullProfile.content}</easy>
             }
@@ -149,6 +149,8 @@ const UpdateProfile = () => {
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
       {Profiles.length === 0 ? (
         <div>
+          <br/>
+          <br/>
           <h2>등록된 댓글이 없습니다</h2>
         </div>
       ) : (
