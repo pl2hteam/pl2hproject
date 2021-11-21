@@ -24,6 +24,9 @@ import {
   MdLocationOn,
   MdPhoneIphone,
 } from "react-icons/md";
+import { publicUrl } from "../Common/components/utils"
+import ChangeCondition from "../SNS/MyPage/ChangeCondition";
+import TodayIs from "./TodayIs";
 const Mini = styled.div`
 width: 100%;
 `;
@@ -161,7 +164,7 @@ const Home = (props) => {
 
         for (let i = 0; i < arr.length; i++) {
           if (arr[i].couple_code === CoupleCode) {
-            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== null) {
               setCC1(userInfo.userData.name)
               setCC2(arr[i].name)
               break;
@@ -175,10 +178,10 @@ const Home = (props) => {
   const couplelove = () => {
     if (CoupleCode === "9999" && CoupleCode === "9999") {
       return <div>(♀)</div>
-    } else  if(CoupleCode !== "9999" && CoupleCode !== "9999") {
+    } else if (CoupleCode !== "9999" && CoupleCode !== "9999") {
       return <div className="couple">
-      <img src={img}/>
-      <p>{CC1}♥️{CC2}</p>
+        <img src={img} />
+        <p>{CC1}♥️{CC2}</p>
       </div>
     }
   };
@@ -198,6 +201,7 @@ const Home = (props) => {
           <FlexWrapper>
             <ProfileSection >
               <FlexWrapperImage>
+                {/* <TodayIs /> */}
                 <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
               <Link to={'/ChangeCondition'}>내 상태변경</Link>
@@ -207,7 +211,7 @@ const Home = (props) => {
               <br />
               <br />
               <div className="couple">
-              {couplelove()}
+                {couplelove()}
               </div>
               <p>{User.message}</p>
             </ProfileSection>
@@ -242,7 +246,7 @@ const Home = (props) => {
           <ContentSection>
             <h2>한 줄 감성</h2>
             <p>{getCouple()}</p>
-            <VisitorWriting/>
+            <VisitorWriting />
             <UpdateProfile />
           </ContentSection>
         </Cards>

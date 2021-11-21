@@ -15,7 +15,8 @@ router.post('/', async (req, res, next) => { // POST /post
     const jam = await Jam.create({
       title: req.body.title,
       mood: req.body.mood,
-      UserId: req.body.seller,
+      review: req.body.review,
+      UserId: req.body.updater,
     });
 
     for (let i = 0; i < IMGARR.length; i++) {

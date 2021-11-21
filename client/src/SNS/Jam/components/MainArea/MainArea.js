@@ -61,7 +61,7 @@ const Container = styled.div`
 export default () => {
     const [posts, setPosts] = useState([]);
     const [mood, setMood] = useState('');
-    const moods = ['도시', '자연', '여유', '고요', '활기', '낭만'];
+    const moods = ['영화', '공연', '축제', '여행', '맛집', '기타'];
 
     const onMoodChange = (e) => {
 
