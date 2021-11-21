@@ -37,13 +37,14 @@ const ImageSlider = (props) => {
         slideNumberStyle={slideNumberStyle}
         captionPosition="bottom"
         automatic={false}
-        dots={true}
+        dots={false}
         pauseIconColor="white"
         pauseIconSize="40px"
         slideBackgroundColor="darkgrey"
         slideImageFit="contain"
         thumbnails={false}
         thumbnailWidth="0px"
+        showNavBtn={false}
       />
     </div>
   );
