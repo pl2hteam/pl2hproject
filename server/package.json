@@ -10,8 +10,9 @@
   "scripts": {
     "start": "nodemon app",
     "backend": "nodemon app",
+    "client": "cd .. && cd client && yarn start",
     "frontend": "npm run start --prefix client",
-    "dev": "concurrently \"npm run backend\" \"yarn start --prefix client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn start\" \"npm run client\""
   },
   "author": "pl2h",
   "license": "ISC",

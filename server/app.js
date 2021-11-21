@@ -18,7 +18,7 @@ passportConfig();
 const cors = require("cors");
 app.set("port", process.env.PORT || 5000);
 
-/* 시퀄라이즈 연결 *///
+/* 시퀄라이즈 연결 */
 sequelize
   .sync({ focus: false })
   .then(() => {
@@ -42,9 +42,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
 }
-// app.get('/favico.ico', (req, res) => {
-//   res.sendStatus(404);
-// });
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -73,8 +71,6 @@ app.use((req, res, next) => {
   next(error);
 });
 
-
-/* error 처리 */
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
