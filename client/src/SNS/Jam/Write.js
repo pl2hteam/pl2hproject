@@ -2,9 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
-import { publicUrl } from '../../Common/components/utils'
 import UpdateJam from './UpdateJam';
-
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,52 +1,37 @@
-// import React from "react";
 import styled from "styled-components";
-import style from './css/style.css'
-////////////////////////////////////////
 import React, { useEffect, useState } from "react";
+import style from './css/style.css'
 import Axios from "axios";
-import { Col, Card, Row } from "antd";
-import ImageSlider from "../../../Common/components/SNSImageSlider "
 import { withRouter } from "react-router";
 import Modal from "../Modal"
 import { useSelector } from "react-redux";
 
-
-
-
-
-const Wrapper = styled.div`
-  padding: 10px 0;
-  font-family: serif;
-  font-weight: bold;
-  img {
-    width: 100%;  
-    margin: 5px 0;
-  }
-  h2 {
-    color: #a7a7a7;
-    font-size: 1.2rem;
-  }
-  .at {
-    color: #cec6a0;
-    font-size: 0.9rem;
-  }
-  .warn {
-    text-align: right;
-    color: #d9d9d9;
-    text-decoration: line-through;
-    font-weight: bold;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-`;
-const { Meta } = Card;
-
 const Main = (props) => {
+  const userInfo = useSelector(state => state.user);
   const [Posts, setPosts] = useState([]);
-  
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
+  const [profilecontent, setPostTitle] = useState("");
+  const [Code, setCode] = useState("");
+
+  // default
+  useEffect(() => {
+    let variables = {
+      skip: Skip,
+      limit: Limit,
+    };
+
+    if (userInfo) {
+      if (userInfo.userData) {
+        if (userInfo.userData.couple_code) {
+          setCode(userInfo.userData.couple_code);
+        }
+      }
+    }
+
+    getPosts(variables);
+  }, []);
 
   // 상품목록 불러오기
   const getPosts = (body) => {
@@ -65,25 +50,17 @@ const Main = (props) => {
     });
   };
 
-
-  const [profilecontent, setPostTitle] = useState("");
-
-
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
     if (
       !profilecontent 
-      
     ) {
       return alert("fill all the fields first!");
     }
 
-    // console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      //seller: user.userData._id,
       content: profilecontent,
-   
     };
 
     Axios.post("/api/mysql/album/write", variables)
@@ -100,31 +77,23 @@ const Main = (props) => {
       });
   };
 
-
   // 더보기 버튼
   const loadMoreHandler = () => {
     let skip = Skip + Limit;
-
     let variables = {
       skip: skip,
       limit: Limit,
       loadMore: true,
-
     };
 
     getPosts(variables);
     setSkip(skip); 
   };const [openModal, setOpenModal] = useState(false);
  
-  const renderCards = Posts.map((postData, index) => {
-    
-    console.log(postData,3710379170);
-  
+  const renderCards = Posts.map((postData) => {
     return (
-       
       <div class="pic" >
-        
-             <div class="opacity-overlay" onDoubleClick={() => {
+      <div class="opacity-overlay" onDoubleClick={() => {
         setOpenModal(true);
       }}>
           {openModal && (
@@ -146,45 +115,21 @@ const Main = (props) => {
       </div>
       
       <div class="icons">
-   <i class="fa fa-heart">200m</i>
-   <i class="fa fa-comment">2m</i>
+      <i class="fa fa-heart">200m</i>
+      <i class="fa fa-comment">2m</i>
     </div>
-    
     </div>
-      
-    
-
-
-
     );
   });
-
-  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
-
-  // 텍스트 검색
-
-
-  // default
-  useEffect(() => {
-    let variables = {
-      skip: Skip,
-      limit: Limit,
-    };
-
-    getPosts(variables);
-  }, []);
-  const userInfo = useSelector(state => state.user);
+  
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
         <h2>사 진 첩</h2>
       </div>
-    
-
-
 
       {/* 등록된 상품이 0개면 "상품없다고 출력  */}
-      {userInfo.userData.couple_code === "9999"  ? (
+      {Code === "9999"  ? (
         <div
           style={{
             display: "flex",

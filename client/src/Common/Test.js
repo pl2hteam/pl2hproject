@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 function Test() {
   const [CodeCode, setCodeCode] = useState("");
-  const [Length, setLength] = useState("");
-  const [LowerCheck, setLowerCheck] = useState();
-  const [UpperCheck, setUpperCheck] = useState();
-  const [NumberCheck, setNumberCheck] = useState();
-  const [SymbolCheck, setSymbolCheck] = useState();
+  const [Length, setLength] = useState("8");
+  const [LowerCheck, setLowerCheck] = useState(true);
+  const [UpperCheck, setUpperCheck] = useState(true);
+  const [NumberCheck, setNumberCheck] = useState(true);
+  const [SymbolCheck, setSymbolCheck] = useState(false);
 
   const inputLength = (e) => {
     setLength(e.target.value);
@@ -91,15 +91,6 @@ function Test() {
   // 그럼 (true인 옵션 수) * (입력한 길이) 의 결과물이 나오고
   // 결과물에서 입력했던 길이만큼만 잘라낸다 ((옵션수*길이)-길이) 만큼의 코드는 버리게 됨
 
-  // function CodeCodeCreator() {
-  //   if (Length < 8) {
-  //     alert("코드가 너무 적어요 8자 이상으로 해주세요");
-  //   } else {
-  //     setCodeCode(
-  //       generateCode(Length, LowerCheck, UpperCheck, NumberCheck, SymbolCheck)
-  //     );
-  //   }
-  // }
   function CodeCodeCreator() {
     if (Length < 8) {
       alert("코드가 너무 적어요 8자 이상으로 해주세요");
@@ -114,28 +105,6 @@ function Test() {
 
   return (
     <div style={{ margin: "300px 300px" }}>
-      <input
-        style={{ width: "70px" }}
-        type="number"
-        onChange={inputLength}
-        value={Length}
-      />
-      개의 코드를 생성합니다
-      <br />
-      옵션
-      <br />
-      <input type="checkbox" onChange={LowerCheckSwitch} />
-      소문자
-      <br />
-      <input type="checkbox" onChange={UpperCheckSwitch} />
-      대문자
-      <br />
-      <input type="checkbox" onChange={NumberCheckSwitch} />
-      숫자
-      <br />
-      <input type="checkbox" onChange={SymbolCheckSwitch} />
-      특수문자
-      <br />
       <button onClick={CodeCodeCreator}>코드생성버튼</button>
       <div>
         <br />

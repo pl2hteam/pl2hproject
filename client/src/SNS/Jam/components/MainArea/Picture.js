@@ -1,8 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import styled from 'styled-components';
 import DetailPage from '../Detail/DetailPage';
-//import Avartar from '../Detail/DetailFunction/Avartar';
-//import LikeInterest from '../Detail/DetailFunction/Like_Interest';
 
 const LeftBottomContainer = styled.div`
     position: absolute;
@@ -79,23 +77,11 @@ const TextBox = styled.label`
 const Picture = forwardRef(
     (
         {
-            //advertising,
-            //area,
-            //avatar,
-            //heart,
             imageUrl,
-            //latitude,
-            //longitude,
             mood,
-            //novelty,
-            //rating,
             review,
-            //timestamp,
             title,
-            //username,
-            //address,
             id,
-            //uid,
         },
         ref
     ) => {
@@ -116,23 +102,10 @@ const Picture = forwardRef(
                     open={isModalOpen}
                     close={onClose}
                     id={id}
-                    //advertising={advertising}
-                    //area={area}
-                    //avatar={avatar}
-                    //heart={heart}
-                    //imageUrl={`http://localhost:5000/${imageUrl}`}
                     imageUrl={imageUrl}
-                    //latitude={latitude}
-                    //longitude={longitude}
                     mood={mood}
-                    //novelty={novelty}
-                    //rating={rating}
                     review={review}
-                    //timestamp={timestamp}
                     title={title}
-                //username={username}
-                //address={address}
-                //uid={uid}
                 />
                 <Box>
                     <ImageContainer>
@@ -143,18 +116,14 @@ const Picture = forwardRef(
                             alt=""
                         />
                         <LeftBottomContainer>
-                            {/* <Avartar uid={uid} Type="MainArea" /> */}
-                            {/* <TextBox>{username}</TextBox> */}
                             <TextBox>{title}</TextBox>
                         </LeftBottomContainer>
-                        {/* <LikeInterest postId={id} /> */}
                         <RightBottomContainer>
                             <img
                                 style={{ marginRight: '4px' }}
                                 src="../../client/src/SNS/images/location.png"
                                 alt=""
                             />
-                            {/* <TextBox>{area}</TextBox> */}
                             <TextBox>{mood}</TextBox>
                         </RightBottomContainer>
                     </ImageContainer>

@@ -175,11 +175,6 @@
 }
 
 /* 회원가입페이지 */
-/* .register_container {
-  background-color: white;
-  border-radius: 254px;
-  height: 1016px;
-} */
 .register_form {
   display: flex;
   flex-direction: column;

@@ -5,19 +5,12 @@ import Content from "../Layout/Content";
 import Cards from "../Layout/Card";
 import { useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
-import MovieFileUpload from './MovieFileUpload'
-
-
-////////////////////////////////////////
+import MovieFileUpload from './MovieFileUpload';
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Col, Card } from "antd";
 
 import { withRouter } from "react-router-dom";
 
-////////////////////////////////////////
-
-import { Link } from "react-router-dom";
 import {
   MdMailOutline,
   MdLocationOn,
@@ -107,11 +100,7 @@ const ProfileSection = styled.section`
 
 
 const ChangeCondition = (props) => {
-  //const [userCondition, setUserCondition] = useState([]);
-  console.log(props);
-  console.log(props.user.userData)
   const userInfo = useSelector((state) => state.user);
-  console.log(userInfo);
 
   const [ChangeMyImage, setChangeMyImage] = useState("");
   const [ChangeCoupleCode, setChangeCoupleCode] = useState("");
@@ -120,37 +109,12 @@ const ChangeCondition = (props) => {
   const [ChangePhone, setChangePhone] = useState("");
   const [ChangeAddress, setChangeAddress] = useState("");
 
-
-
-  // 내 상태 불러오기
-  const getCondition = () => {
-
-    Axios.post("/api/mysql/conditions/read")
-      .then((response) => {
-
-        // if (response.data.success) {
-        //   console.log(response.data, "데이터");
-
-        //   setUserCondition([...userCondition, ...response.data.userConditionData]);
-        //   console.log("response.data.userConditionData", response.data.userConditionData);
-        //   console.log(12321323213, response.data.userConditionData[0].message);
-        //   //console.log(userConditionData);
-        // } else {
-        //   console.log("내 상태 변경이 안되었네,,,");
-        //   alert("내 상태 변경이 안되었네,,,");
-        // }
-      });
-  };
-
-  //updateImages
   const updateImages = (newImages) => {
     setChangeMyImage(newImages);
   };
-
   const onChangeCoupleCode = (event) => {
     setChangeCoupleCode(event.currentTarget.value);
   };
-
   const onChangeMessage = (event) => {
     setChangeMessage(event.currentTarget.value);
   };
@@ -164,11 +128,7 @@ const ChangeCondition = (props) => {
     setChangeAddress(event.currentTarget.value);
   };
 
-
-
   const onSubmit = () => {
-
-    //리액트 서버에서 보내주는 데이터
     const variables = {
       id: userInfo.userData.id,
       image: ChangeMyImage,
@@ -178,8 +138,6 @@ const ChangeCondition = (props) => {
 
     Axios.post("/api/mysql/conditions/update", variables)
       .then((response) => {
-        console.log('props.user 는 : ', response);
-
         if (response.data.success) {
           alert("정보가 변경되었습니다.");
           props.history.push("/sns/Main");
@@ -190,8 +148,6 @@ const ChangeCondition = (props) => {
   };
 
   const onSubmitUserInfo = () => {
-
-    //리액트 서버에서 보내주는 데이터
     const variables = {
       id: userInfo.userData.id,
       image: ChangeMyImage,
@@ -200,13 +156,10 @@ const ChangeCondition = (props) => {
       email: ChangeEmail,
       phone: ChangePhone,
       address: ChangeAddress,
-
     };
 
     Axios.post("/api/mysql/conditions/update", variables)
       .then((response) => {
-        console.log('props.user 는 : ', response);
-
         if (response.data.success) {
           alert("정보가 변경되었습니다.");
           props.history.push("/sns/Main");
@@ -216,23 +169,14 @@ const ChangeCondition = (props) => {
       });
   };
 
-
-  let userImg
+  let userImg;
   if (props.user.userData) {
     userImg = props.user.userData.image
     console.log(props.user.userData.image);
   }
 
-
-  useEffect(() => {
-
-    getCondition();
-  }, ["phone"]);
-
   let postvideo = {
     updateImages,
-    // updateVideoPath,
-    // updateDuration
   }
 
   return (
@@ -253,14 +197,8 @@ const ChangeCondition = (props) => {
       <Content>
         <Cards>
           <ContentSection>
-            {/* ----------------------------------------------------------------------------- */}
             <Form onSubmit={onSubmit}>
-              {/* DropZone */}
               <MovieFileUpload refresh={postvideo} />
-              {/* <p>
-                  <label>프로필 이미지</label>
-                  <Input onChange={onChangeMyImage} value={ChangeMyImage} />
-                </p> */}
               <p>
                 <label>커플코드</label>
                 <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} placeholder={userInfo.userData.couple_code} />
@@ -271,7 +209,6 @@ const ChangeCondition = (props) => {
               </p>
               <Button onClick={onSubmit}>수정</Button>
             </Form>
-            {/* ----------------------------------------------------------------------------- */}
             <Form onSubmit={onSubmitUserInfo}>
               <div style={{ width: "75%", margin: "3rem auto" }}>
                 <h2>MY CONDITION</h2>
@@ -313,7 +250,6 @@ const ChangeCondition = (props) => {
         </Cards>
       </Content>
     </Layout>
-
   );
 };
 
