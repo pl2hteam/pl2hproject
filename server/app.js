@@ -8,7 +8,6 @@ const { sequelize } = require("./mysql/models");
 const passportConfig = require("./mysql/passport");
 dotenv.config();
 
-
 /* DB 라우터 */
 const mysqlRouter = require("./mysql/routes");
 const mongoRouter = require("./mongo/routes");
