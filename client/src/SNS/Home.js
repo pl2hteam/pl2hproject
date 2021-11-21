@@ -3,7 +3,6 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-import  "./button.css"
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
@@ -200,16 +199,6 @@ const Home = (props) => {
               </FlexWrapperImage>
 
               <Message><p>{User.message}</p></Message>
-              <div class="multi-button">
-                <button>  <Link to={'/ChangeCondition'}>내 상태변경</Link></button>
-              </div>
-              <hr />
-
-              <h2>상태메세지</h2>
-
-              <br />
-              <br />
-              <br />
 
               <div className="couple">
                 {couplelove()}
@@ -244,7 +233,7 @@ const Home = (props) => {
             <MiniRoom />
           </Mini>
           <ContentSection>
-            <h2>한 줄 감성</h2>
+            <h2>방명록</h2>
             <p>{getCouple()}</p>
             <VisitorWriting />
             <UpdateProfile />
