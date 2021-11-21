@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 function Test() {
   const [CodeCode, setCodeCode] = useState("");
-  const [Length, setLength] = useState("");
-  const [LowerCheck, setLowerCheck] = useState();
-  const [UpperCheck, setUpperCheck] = useState();
-  const [NumberCheck, setNumberCheck] = useState();
-  const [SymbolCheck, setSymbolCheck] = useState();
+  const [Length, setLength] = useState("8");
+  const [LowerCheck, setLowerCheck] = useState(true);
+  const [UpperCheck, setUpperCheck] = useState(true);
+  const [NumberCheck, setNumberCheck] = useState(true);
+  const [SymbolCheck, setSymbolCheck] = useState(false);
 
   const inputLength = (e) => {
     setLength(e.target.value);
@@ -114,7 +114,7 @@ function Test() {
 
   return (
     <div style={{ margin: "300px 300px" }}>
-      <input
+      {/* <input
         style={{ width: "70px" }}
         type="number"
         onChange={inputLength}
@@ -135,7 +135,7 @@ function Test() {
       <br />
       <input type="checkbox" onChange={SymbolCheckSwitch} />
       특수문자
-      <br />
+      <br /> */}
       <button onClick={CodeCodeCreator}>코드생성버튼</button>
       <div>
         <br />
