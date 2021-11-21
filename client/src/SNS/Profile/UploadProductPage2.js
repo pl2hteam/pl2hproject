@@ -9,8 +9,6 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
-
-
   const [PostTitle, setPostTitle] = useState("");
   const [PostContent, setPostContent] = useState("");
   const [PostImg, setPostImg] = useState("");
@@ -39,20 +37,20 @@ const UploadProductPage2 = (props) => {
 
   const updateDuration = (newDuration) => {
     setDuration(newDuration);
-  }
+  };
 
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
   console.log(user);
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
-
-    if (
-      !PostTitle ||
-      !PostContent ||
-      // !PostImg ||
-      !PostViews
-    ) {
-      return alert("fill all the fields first!");
+    if (!PostTitle && !PostContent && !PostImg) {
+      return alert("아무것도 안썼잖아 이자식아");
+    } else if (!PostTitle) {
+      return alert("제목을 입력해라 이자식아");
+    } else if (!PostContent) {
+      return alert("내용을 입력해라 이자식아");
+    } else if (!PostImg) {
+      return alert("사진을 첨부해라 이자식아");
     }
 
     console.log(props.user.userData.id);
@@ -66,26 +64,25 @@ const UploadProductPage2 = (props) => {
       duration: Duration,
     };
 
-    Axios.post("/api/mysql/posts/write", variables)
-      .then((response) => {
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-        console.log(response);
-        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-        if (response.data.success) {
-          alert("Product Successfully Uploaded");
-          props.history.push("/sns/profile");
-        } else {
-          console.log(response.data)
-          alert("Failed to upload Product");
-        }
-      });
+    Axios.post("/api/mysql/posts/write", variables).then((response) => {
+      console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+      console.log(response);
+      console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+      if (response.data.success) {
+        alert("업로드 하였읍니다");
+        props.history.push("/sns/profile");
+      } else {
+        console.log(response.data);
+        alert("업로드에 실패하였읍니다");
+      }
+    });
   };
 
   let postvideo = {
     updateImages,
     updateVideoPath,
-    updateDuration
-  }
+    updateDuration,
+  };
 
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
@@ -114,6 +111,6 @@ const UploadProductPage2 = (props) => {
       </Form>
     </div>
   );
-}
+};
 
 export default withRouter(UploadProductPage2);
