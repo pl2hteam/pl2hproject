@@ -5,7 +5,7 @@ import { getHistory } from "../../Common/_actions/user_actions";
 
 import Moment from "react-moment";
 
-function HistoryPage() {
+const HistoryPage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [History, setHistory] = useState([]);
@@ -14,10 +14,9 @@ function HistoryPage() {
   useEffect(() => {
     if (user.userData) {
       if (user.userData.gender) {
-        console.log(user.userData.email);
         dispatch(getHistory(user.userData.email))
           .then((response) => {
-            setHistory(response.payload.user.history)
+            setHistory(response.payload.history)
           });
       } else {
         userData = user.userData;

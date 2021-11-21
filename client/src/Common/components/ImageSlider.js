@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-// import { Carousel } from 'react-responsive-carousel';
-// import Carousel from 'react-material-ui-carousel'
+import React from "react";
 import { Carousel } from 'react-carousel-minimal';
-// import Slider from 'react-slick'
 
 const ImageSlider = (props) => {
-  console.log(props);
   const captionStyle = {
     fontSize: '2em',
     fontWeight: 'bold',
@@ -21,7 +17,6 @@ const ImageSlider = (props) => {
       image: `http://localhost:5000/${image}`
     })
   ))}
-  console.log(data);
   
   return (
     <div>

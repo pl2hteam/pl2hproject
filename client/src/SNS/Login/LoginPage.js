@@ -4,26 +4,15 @@ import { loginUser } from "../../Common/_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import '../../Common/style/login.css';
 
 const SnsLoginPage = (props) => {
   const dispatch = useDispatch();
-  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
-
   const [formErrorMessage, setFormErrorMessage] = useState("");
-  const [rememberMe, setRememberMe] = useState(rememberMeChecked);
-
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe);
-  };
-
-  const initialEmail = localStorage.getItem("rememberMe")
-    ? localStorage.getItem("rememberMe")
-    : "";
 
   return (
     <Formik
       initialValues={{
-        email: initialEmail,
         password: "",
       }}
       validationSchema={Yup.object().shape({
@@ -44,11 +33,6 @@ const SnsLoginPage = (props) => {
             .then((response) => {
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
-                if (rememberMe === true) {
-                  window.localStorage.setItem("rememberMe", values.id);
-                } else {
-                  localStorage.removeItem("rememberMe");
-                }
                 props.history.push("/sns/main");
               } else {
                 setFormErrorMessage("이메일 또는 비밀번호가 틀렸습니다.");
@@ -69,23 +53,19 @@ const SnsLoginPage = (props) => {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div className="app">
             <form onSubmit={handleSubmit}>
-              {/* <div className="base-container"  */}
               <div className="base-container" ref={props.containerRef}>
                 <div className="content">
                   <div className="form">
                     <div className="form-group">
                       <div>
-                        {/* <label htmlFor="username">E-mail</label> */}
                         <input
                           id="email"
                           placeholder=" 아이디 (이메일)"
@@ -108,7 +88,6 @@ const SnsLoginPage = (props) => {
                     </div>
                     <div className="form-group">
                       <div>
-                        {/* <label htmlFor="password">Password</label> */}
                         <input
                           id="password"
                           placeholder=" 비빔번호"
@@ -134,15 +113,6 @@ const SnsLoginPage = (props) => {
                     ) : (
                       <div className="input-feedback"></div>
                     )}
-                    <div className="rememberMe_box">
-                      <input
-                        type="checkbox"
-                        id="rememberMe"
-                        onChange={handleRememberMe}
-                        checked={rememberMe}
-                      />
-                      <label>ID 기억하기</label>
-                    </div>
                   </div>
                 </div>
 
@@ -156,6 +126,9 @@ const SnsLoginPage = (props) => {
                   >
                     로그인
                   </button>
+                  <div>
+                    <a className="back" href="/">뒤로가기</a>
+                  </div>
                 </div>
               </div>
             </form>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
-import Post from '../../Layout/Post';
 import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
@@ -32,8 +31,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Info = ({ props }) => {
-
+const Info = () => {
   const userInfo = useSelector((state) => state.user);
   return (
       <Wrapper>

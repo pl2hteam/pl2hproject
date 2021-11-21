@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-
 const { Jam, Image } = require('../../models');
-
 
 router.post('/', async (req, res, next) => { // POST /post
   try {
@@ -14,7 +9,9 @@ router.post('/', async (req, res, next) => { // POST /post
 
     const jam = await Jam.create({
       title: req.body.title,
-      UserId: req.body.seller,
+      mood: req.body.mood,
+      review: req.body.review,
+      UserId: req.body.updater,
     });
 
     for (let i = 0; i < IMGARR.length; i++) {
@@ -22,7 +19,6 @@ router.post('/', async (req, res, next) => { // POST /post
       await Image.create({
         src: IMGARR[i],
         JamId: jam.id
-
       })
     };
 

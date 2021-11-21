@@ -1,14 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import RigthtSideBox from '../rightSideBox/rightSideBox'
-
-
-// const Wrapper = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 20px;
-//   background: black;
-// `;
+import RigthtSideBox from '../rightSideBox/rightSideBox';
 
 //책 겉표지
 const BorderWrapper = styled.div`
@@ -33,15 +25,12 @@ const BgWrapper = styled.div`
 
 const Layout = ({ children }) => {
   return (
-   
     <BorderWrapper>
       <BgWrapper>
         {children}
       </BgWrapper>
       <RigthtSideBox/>
     </BorderWrapper>
-
-    
   );
 };
 

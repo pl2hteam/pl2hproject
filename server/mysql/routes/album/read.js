@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { User, Post, Image, Hashtag } = require("../../models");
+const { Image, Hashtag } = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
@@ -20,15 +20,6 @@ router.post('/', async (req, res, next) => {
       order: [["id", "DESC"]],
     });
 
-    // const ImageOne = await Hashtag.findAll({
-    //   include: {
-    //     model: Image,
-    //     attribute: ["HashTagId"],
-    //   },
-    //   order: [["id", "DESC"]],
-    // })
-
-
     let postData = [];
     for (let i = 0; i < fullPost.length; i++) {
       let imgData = [];
@@ -37,9 +28,7 @@ router.post('/', async (req, res, next) => {
           imgData.push(Images[j].src);
         }
       }
-
-
-
+      
       postData.push({
         id: fullPost[i].dataValues.id,
         title: fullPost[i].dataValues.title,

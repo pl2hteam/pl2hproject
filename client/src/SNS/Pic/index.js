@@ -40,7 +40,6 @@ const Profile = (props) => {
 
   
   const list = [
-  
     {
       id: 1,
       title: '👭내 인맥',

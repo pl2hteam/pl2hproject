@@ -38,7 +38,7 @@ const ReplyComment = (props) => {
             {ChildCommentNumber > 0 &&
                 <p style={{ fontSize: '14px', margin: 0, color: 'gray' }}
                     onClick={handleChange} >
-                    답글 {ChildCommentNumber} 개
+                    답글 {ChildCommentNumber} 개 보기
              </p>
             }
 

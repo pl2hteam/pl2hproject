@@ -1,0 +1,27 @@
+/* .postPage img {
+  width: 100px;
+  height: 100px;
+} */
+.postPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.postPage-content-image_slider .box div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 100px;
+}
+
+.postPage-content-image_slider .box div:nth-child(1) .carousel-item {
+  object-fit: contain;
+}
+
+.postPage-content-image_slider .box .thumbnails img {
+  width: 50px;
+  height: 50px;
+}
+
+.thumbnail {
+  margin-top: 10px;
+}

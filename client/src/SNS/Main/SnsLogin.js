@@ -1,5 +1,4 @@
 import React from "react";
-
 import LoginPage from "../Login/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import cyworld from "../../Common/img/cyworld.png";
@@ -13,7 +12,6 @@ class MainLogin extends React.Component {
   }
 
   componentDidMount() {
-    //Add .right by default
     this.rightSide.classList.add("right");
   }
 

@@ -2,6 +2,7 @@ import React from "react";
 import SNSMain from "./SNSMain";
 import ShopMain from "../Shop/MainForm/ShopMain";
 import MainPage from "./AllLoingPage";
+import Test from "./Test";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <MainPage />
       <SNSMain />
       <ShopMain />
+      <Test />
     </div>
   );
 }
