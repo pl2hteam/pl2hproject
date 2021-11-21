@@ -11,6 +11,7 @@ const { Comment } = require("../../../schemas/Comment");
 
 router.post("/", (req, res) => {
   const comment = new Comment(req.body)
+  console.log(req.body);
   
   comment.save((err, comment) => {
       if (err) return res.json({ success: false, err })
