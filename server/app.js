@@ -42,9 +42,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
 }
-app.get('/favico.ico', (req, res) => {
-  res.sendStatus(404);
-});
+// app.get('/favico.ico', (req, res) => {
+//   res.sendStatus(404);
+// });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
