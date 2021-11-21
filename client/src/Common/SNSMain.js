@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../Common/hoc/auth";
-
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
 import Latter from "../SNS/Latter";
