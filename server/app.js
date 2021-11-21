@@ -18,7 +18,7 @@ passportConfig();
 const cors = require("cors");
 app.set("port", process.env.PORT || 5000);
 
-/* 시퀄라이즈 연결 */
+/* 시퀄라이즈 연결 *///
 sequelize
   .sync({ focus: false })
   .then(() => {
