@@ -4,16 +4,14 @@ import Auth from "../Common/hoc/auth";
 
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
-import Calendar from "../SNS/Calendar";
 import Latter from "../SNS/Latter";
 import Mind from "../SNS/Mind";
 import Pic from "../SNS/Pic";
 import Jam from "../SNS/Jam";
 import Write from "../SNS/Profile/Write";
 import LatterWrite from "../SNS/Latter/LatterWrite";
-import ContentProfile from "../SNS/ContentProfile";
 import UpdateProfile from "../SNS/UpdateProfile";
-import ChangeCondition from "../SNS/ChangeCondition";
+import ChangeCondition from "../SNS/MyPage/ChangeCondition";
 import "./SNSMain.css";
 
 function SNSMain() {
@@ -25,7 +23,6 @@ function SNSMain() {
           <Route exact path="/sns/main" component={Auth(Home, true, true)} />
           <Route path="/sns/profile" component={Auth(Profile, true, true)} />
           <Route path="/sns/Jam" component={Auth(Jam, true, true)} />
-          <Route path="/sns/Calendar" component={Auth(Calendar, true, true)} />
           <Route path="/sns/Latter" component={Auth(Latter, true, true)} />
           <Route path="/sns/Mind" component={Auth(Mind, true, true)} />
           <Route path="/sns/Pic" component={Auth(Pic, true, true)} />
@@ -33,10 +30,6 @@ function SNSMain() {
           <Route
             path="/sns/profile/Write"
             component={Auth(Write, true, true)}
-          />
-          <Route
-            path="/ContentProfile"
-            component={Auth(ContentProfile, true, true)}
           />
           <Route
             path="/UpdateProfile"

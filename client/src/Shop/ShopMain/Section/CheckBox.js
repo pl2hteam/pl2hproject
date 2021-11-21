@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Collapse, Checkbox } from "antd";
 
-const { Panel } = Collapse;
-
 const CheckBox = (props) => {
   const [Checked, setChecked] = useState([]);
 

@@ -1,47 +1,33 @@
-
-import styled from "styled-components";
-import Layout from "../Layout/Layout";
-import Sidebar from "../Layout/Sidebar";
-import Content from "../Layout/Content";
-import Card from "../Layout/Card";
-import Letter from './Letter.css'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useSelector } from "react-redux";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import { withRouter } from "react-router";
 
-// import {
-
-//   MdMailOutline,
-//   MdLocationOn,
-//   MdPhoneIphone,
-// } from "react-icons/md";
-// import { publicUrl } from "../../Common/components/utils"
-
-
-
-
-const { Title } = Typography;
-const { TextArea } = Input;
-
-
-
-
-
-
-
-
 const LetterWrite = (props) => {
-
-
+  const userInfo = useSelector(state => state.user);
 
   const [LetterTo, setLetterTo] = useState("");
   const [LetterTitle, setLetterTitle] = useState("");
   const [LetterContent, setLetterContent] = useState("");
   const [LetterFrom, setLetterFrom] = useState("");
   const [LetterPs, setLetterPs] = useState("");
+  const [Code, setCode] = useState("");
+  const [Name, setName] = useState("");
 
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.userData) {
+        if (userInfo.userData.couple_code) {
+          setCode(userInfo.userData.couple_code);
+        }
+        if (userInfo.userData.name) {
+          setName(userInfo.userData.name);
+        }
+      }
+    }
+  }, [userInfo])
+  
   const onLetterTo= (event) => {
     setLetterTo(event.currentTarget.value);
   
@@ -78,15 +64,12 @@ const LetterWrite = (props) => {
       return alert("fill all the fields first!");
     }
 
-    // console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      //seller: user.userData._id,
       to: LetterTo,
       title:LetterTitle,
       content:LetterContent,
       from:LetterFrom,
-      ps:LetterPs
-   
+      ps:LetterPs,
     };
 
     Axios.post("/api/mysql/letters/write", variables)
@@ -103,44 +86,35 @@ const LetterWrite = (props) => {
       });
   };
 
-
-
-
-  
-
-  return (
-    <div id="wrap"> 
-    <div id='form_wrap'>
+  if (Code !== null && Code !== undefined) {
+    return   <div id="wrap"> 
+      <div id='form_wrap'>
+        <Form onSubmit={onSubmit}>
+          {/* DropZone */}
       
-       <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-       
-
-       
-     
-        <label>to</label>
-        <Input onChange={onLetterTo} value={LetterTo} />
-      
-        <label>제목</label>
-        <Input onChange={onLetterTitle} value={LetterTitle} />
-      
-        <label>내용</label>
-        <Input onChange={onLetterContent} value={LetterContent} />
-      
-        <label>~에게</label>
-        <Input onChange={onLetterFrom} value={LetterFrom} />
-      
-        <label>추신</label>
-        <Input onChange={onLetterPs} value={LetterPs} />
-        <br />
+          <label>to</label>
+          <Input onChange={onLetterTo} value={LetterTo}  />
         
-      
+          <label>제목</label>
+          <Input onChange={onLetterTitle} value={LetterTitle} />
+        
+          <label>내용</label>
+          <Input onChange={onLetterContent} value={LetterContent} />
+        
+          <label>~부터</label>
+          <Input onChange={onLetterFrom} value={LetterFrom} placeholder={Name}/>
+        
+          <label>추신</label>
+          <Input onChange={onLetterPs} value={LetterPs} />
+          <br />
 
-        <Button onClick={onSubmit}>편지보내기</Button>
-      </Form>
-  
+          <Button onClick={onSubmit}>편지보내기</Button>
+        </Form>
+      </div>
     </div>
-    </div>
-  );
+  } else {
+    return <div><p>폄지를 못써요</p></div>
+  }
 };
+
 export default withRouter(LetterWrite);

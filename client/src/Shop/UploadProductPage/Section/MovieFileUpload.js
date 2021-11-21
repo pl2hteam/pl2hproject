@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import Axios from "axios";
-import styled from "styled-components";
 
-const UploadStyle_MovieFileUpload = styled.div`
-  .add_photo_btn:hover {
-    border: rgb(6, 214, 160) 3px solid;
-  }
-`;
-
-function FileUpload(props) {
+const FileUpload = (props) => {
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState("");
   const [Duration, setDuration] = useState("");
@@ -25,8 +18,6 @@ function FileUpload(props) {
       Axios.post("/api/mongo/product/uploadfiles", formData, config).then(
         (response) => {
           if (response.data.success) {
-            console.log(response.data);
-
             let variable = {
               url: response.data.url,
               fileName: response.data.fileName,
@@ -40,7 +31,6 @@ function FileUpload(props) {
 
             Axios.post("/api/mongo/product/thumbnail", variable).then(
               (response) => {
-                console.log(response);
                 if (response.data.success) {
                   setDuration(response.data.fileDuration);
                   props.refreshImgFunction.updateDuration([
@@ -86,8 +76,6 @@ function FileUpload(props) {
     setImages(newImages);
     props.refreshImgFunction.updateImages(newImages);
   };
-
-  console.log(props);
 
   return (
     <div

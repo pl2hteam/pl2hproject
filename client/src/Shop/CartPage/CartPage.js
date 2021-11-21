@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCartItems,
-  removeCartItem,
-  onSuccessBuy,
-} from "../../Common/_actions/user_actions";
+import { getCartItems, removeCartItem, onSuccessBuy } from "../../Common/_actions/user_actions";
 import UserCardBlock from "./Sections/UserCardBlock";
 import { Result } from "antd";
 import Paypal from "../../Common/components/Paypal";
 import { CartStyle } from './style/cartstyle';
 import { getCart } from "../../Common/_actions/user_actions";
 
-function CartPage(props) {
+const CartPage = () => {
   const user = useSelector((state) => state.user);
-  console.log(props);
   const dispatch = useDispatch();
   
   const [Total, setTotal] = useState(0);
@@ -25,15 +20,15 @@ function CartPage(props) {
       if (user.userData.gender) {
         dispatch(getCart(user.userData.email))
           .then((response) => {
-            let userCart = response.payload.cart;
+            let userCart = response.payload.user;
 
             let cartItems = [];
-            if (userCart && userCart.cart) {
-              if (userCart.cart.length > 0) {
-                userCart.cart.forEach((item) => {
+            if (userCart[0] && userCart[0].cart) {
+              if (userCart[0].cart.length > 0) {
+                userCart[0].cart.forEach((item) => {
                   cartItems.push(item.id);
                 });
-                dispatch(getCartItems(cartItems, userCart.cart)).then(
+                dispatch(getCartItems(cartItems, userCart[0].cart)).then(
                   (response) => {
                     if (response.payload.length > 0) {
                       calculateTotal(response.payload);
@@ -43,23 +38,6 @@ function CartPage(props) {
               }
             }
           });
-      } else {
-        let cartItems = [];
-      
-        if (user.userData && user.userData.cart) {
-          if (user.userData.cart.length > 0) {
-            user.userData.cart.forEach((item) => {
-              cartItems.push(item.id);
-            });
-            dispatch(getCartItems(cartItems, user.userData.cart)).then(
-              (response) => {
-                if (response.payload.length > 0) {
-                  calculateTotal(response.payload);
-                }
-              }
-            );
-          }
-        }
       }
     } 
   }, [user.userData]);
@@ -87,6 +65,7 @@ function CartPage(props) {
     });
   };
 
+  // 결제
   const transactionSuccess = (data) => {
     dispatch(
       onSuccessBuy({
@@ -101,10 +80,12 @@ function CartPage(props) {
     });
   };
 
+  // 결제 실패
   const transactionError = () => {
     console.log("Paypal error");
   };
 
+  // 결제 취소
   const transactionCanceled = () => {
     console.log("Transaction canceled");
   };
@@ -137,7 +118,7 @@ function CartPage(props) {
           )}
         </div>
 
-        {/* Paypal Button */}
+        {/* Paypal 버튼 */}
         {ShowTotal && (
           <Paypal
             toPay={Total}

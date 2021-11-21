@@ -42,6 +42,9 @@ const userSchema = mongoose.Schema({
   token: {
     type: String,
   },
+  db: {
+    type: Boolean,
+  },
   tokenExp: {
     type: Number,
   },

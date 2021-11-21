@@ -1,0 +1,23 @@
+.Explanation {
+  padding: 100px;
+  font-size: 22px;
+  line-height: 35px;
+}
+
+.Cart-Box {
+  display: flex;
+  justify-content: center;
+}
+
+.Cart-Button {
+  width: 100px;
+  height: 45px;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: rgb(6, 214, 160);
+}
+
+.Cart-Button:hover {
+  background-color: rgb(81, 226, 189);
+  cursor: pointer;
+}

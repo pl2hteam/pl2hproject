@@ -53,6 +53,7 @@ module.exports = class User extends Sequelize.Model {
             couple_code: {
                 type: Sequelize.STRING(100),
                 allowNull: true,
+                defaultValue: 9999,
             },
             message: {
                 type: Sequelize.STRING(100),
@@ -77,7 +78,6 @@ module.exports = class User extends Sequelize.Model {
         db.User.hasMany(db.Comment);
         db.User.belongsToMany(db.Comment, { through: "commentRecommends", as: "commentRecommenders" });
         db.User.belongsToMany(db.Post, { through: "Recommends", as: "recommenders" });
-        //db.User.hasOne(db.User2nd, { foreignKey: 'UserIdOf2nd', sourceKey: 'id' });
-        //db.User.belongsTo(db.User2nd, { foreignKey: 'UserIdOf2nd', targetKey: 'id' });
+        // db.User.hasMany(db.Couple);
     }
 };

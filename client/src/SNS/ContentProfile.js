@@ -1,110 +1,56 @@
-
-
-
-
 import React, { useState } from "react";
-import Axios from "axios";
 import { useSelector } from "react-redux";
-import { Typography, Button, Form, message, Input } from "antd";
-import { withRouter } from "react-router";
+import styled from "styled-components";
+// import btnImg from "../SNS/images/EditAndHis.png";
 
-// import {
+const Container = styled.div`
+  min-height: 330px;
+`;
 
-//   MdMailOutline,
-//   MdLocationOn,
-//   MdPhoneIphone,
-// } from "react-icons/md";
-// import { publicUrl } from "../../Common/components/utils"
+const ImgWrap = styled.div`
+  max-width: 176px;
+  min-height: 100px;
+  max-height: 200px;
+  overflow: hidden;
+  margin: 10px 0;
+`;
 
+const ProfileP = styled.p`
+  height: 50px;
+  /* overflow: scroll; */
+  font-size: 15px;
+`;
 
+const EHWrap = styled.div`
+  margin-top: 5px;
+  border-bottom: 1px solid #bfbfbf;
+`;
 
+// const Button = styled.button`
+//   background: url(${btnImg}) no-repeat ${(props) => props.x || 0} -1px / 115px 20px;
+//   width: ${(props) => props.width || "50px"};
+//   height: 20px;
+//   border: none;
+//`;
 
-const { Title } = Typography;
-const { TextArea } = Input;
+function ProfileContents(props) {
+  const userInfo = useSelector(state => state.user);
 
-
-
-
-
-
-
-
-const ContentProfile = (props) => {
-
-
-
-  
-  const [ProfileContent, setProfileContent] = useState("");
- 
-  
-  
- 
-  const onProfileContent= (event) => {
-    setProfileContent(event.currentTarget.value);
-  
-  };
- 
-  
-  const user = useSelector(state => state.user);
-  const onSubmit = (event) => {
-    // event.preventDefault();  // antd 자체 적용
-
-    if (
-      
-      !ProfileContent 
-    
-    ) {
-      return alert("fill all the fields first!");
-    }
-
-    // console.log('props id 는 : ', props.user.userData._id);
-    const variables = {
-      //seller: user.userData._id,
-     
-      content:ProfileContent,
-      
-   
-    };
-
-    Axios.post("/api/mysql/profiles/write", variables)
-      .then((response) => {
-        console.log('props.user 는 : ', response);
-        if (response.data.success) {
-   
-          alert("Product Successfully Uploaded");
-          props.history.push("/sns/main");
-        } else {
-          console.log(response.data)
-          alert("Failed to upload Product");
-        }
-      });
-  };
-
-
-
-
-  
-
+  let userImg;
+  if (userInfo.userData) {
+    userImg = userInfo.userData.image;
+  }
   return (
-    
-      
-       <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-       
+    <Container>
+      <ImgWrap>
+        <img src={`http://localhost:5000/${userImg}`} alt="profile" />
+      </ImgWrap>
+      <ProfileP>
+        {userInfo.userData.message}
+      </ProfileP>
 
-       
-     
-     
-        <label>내용</label>
-        <Input onChange={onProfileContent} value={ProfileContent} />
-      
-   
-      
-
-        <Button onClick={onSubmit}>편지보내기</Button>
-      </Form>
-  
-   
+    </Container>
   );
- };
-export default withRouter(ContentProfile);
+}
+
+export default ProfileContents;

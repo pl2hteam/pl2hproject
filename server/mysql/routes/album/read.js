@@ -12,10 +12,19 @@ router.post('/', async (req, res, next) => {
     const Images = await Image.findAll({
       include: {
         model: Hashtag,
-        attribute: ["id"],
+        attribute: ["id", "src", "PostId", "HashTagId"],
       },
       order: [["id", "DESC"]],
     });
+
+    // const ImageOne = await Hashtag.findAll({
+    //   include: {
+    //     model: Image,
+    //     attribute: ["HashTagId"],
+    //   },
+    //   order: [["id", "DESC"]],
+    // })
+
 
     let postData = [];
     for (let i = 0; i < fullPost.length; i++) {
@@ -26,17 +35,17 @@ router.post('/', async (req, res, next) => {
         }
       }
 
+
+
       postData.push({
         id: fullPost[i].dataValues.id,
         title: fullPost[i].dataValues.title,
         content: fullPost[i].dataValues.content,
         images: imgData,
         // videos: null,
-        views: fullPost[i].dataValues.views,
         // duration: null,
         createdAt: fullPost[i].dataValues.createdAt,
         updatedAt: fullPost[i].dataValues.updatedAt,
-        HashtagId: fullPost[i].dataValues.HashtagId
       })
     }
 

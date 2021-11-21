@@ -1,22 +1,18 @@
-
 import styled from "styled-components";
 import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-import ContentProfile from './ContentProfile';
+
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
-//import VisitorWriting from "./visitor/VisitorWriting";
-
-
-
+import img from "../Common/img/minime/연인.png"
+import VisitorWriting from "./visitor/VisitorWriting";
 
 ////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Col, Card } from "antd";
 
 import { withRouter } from "react-router-dom";
 
@@ -24,13 +20,10 @@ import { withRouter } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
-
   MdMailOutline,
   MdLocationOn,
   MdPhoneIphone,
 } from "react-icons/md";
-import { publicUrl } from "../Common/components/utils"
-import ChangeCondition from "./ChangeCondition";
 const Mini = styled.div`
 width: 100%;
 `;
@@ -39,6 +32,15 @@ const FlexWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
+`;
+const FlexWrapperImage = styled.div`
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    width: 250px;
+    height: 250px;
+
 `;
 
 const ContentSection = styled.section`
@@ -53,13 +55,7 @@ const ContentSection = styled.section`
     h2 {
       margin-bottom: 5px;
     }
-    div {
-      width: 100%;
-      min-height: 200px;
-      img {
-        width: 100%;
-      }
-    }
+    
   }
   &:last-of-type {
     margin-top: 20px;
@@ -134,153 +130,105 @@ const LinkTitle = styled.p`
     color: green;
   }
 `;
-const { Meta } = Card;
-
 
 const Home = (props) => {
-  console.log(props);
-
-  //const [userConditionData, setUserConditionData] = useState([]);
-
   const userInfo = useSelector(state => state.user);
-  console.log(userInfo);
+  const [User, setUser] = useState({});
+  const [CoupleCode, setCoupleCode] = useState({});
+  const [CC1, setCC1] = useState([]);
+  const [CC2, setCC2] = useState([]);
 
-  let userImg
+  let userImg;
   if (props.user.userData) {
-    userImg = props.user.userData.image
-    console.log(props.user.userData.image);
+    userImg = props.user.userData.image;
   }
 
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.userData) {
+        setUser(userInfo.userData);
+        if (userInfo.userData.couple_code) {
+          setCoupleCode(userInfo.userData.couple_code);
+        }
+      }
+    }
+  }, [userInfo.userData]);
 
-
-
-
-
-  // // 내 상태 불러오기
-  // // const getCondition = () => {
-  // const renderCards =
-  //   Axios.post("/api/mysql/conditions/read")
-  //     .then((response) => {
-  //       console.log(response);
-  //       console.log(response.data.userConditionData);
-  //       console.log(response.data.userConditionData[0]);
-  //       console.log(response.data.userConditionData[0].image);
-
-
-  //       // console.log(body, "바디");
-  //       // if (response.data.success) {
-  //       //   console.log(response.data, "데이터");
-
-  //       //   setUserCondition([...userCondition, ...response.data.userConditionData]);
-  //       // } else {
-  //       //   console.log("내 상태 변경이 안되었네,,,");
-  //       //   alert("내 상태 변경이 안되었네,,,");
-  //       // }
-  //     });
-  // // };
-
-  // // useEffect(() => {
-
-  // //   getCondition();
-  // // }, []);
-
-
-
-
-  // const renderMyImage = () => {
-  //   // return (
-  //   //   <img
-  //   //     className="shop-main-content-item_box-img"
-  //   //     src={`http://localhost:5000/${product.images[0]}`}
-  //   //     alt="productImage"
-  //   //   />
-
-  //   // )
-
-  // }
-
-
-
-  const getCondition = () => {
-
-    // console.log("UserInfo", userInfo);
-
-    // const variables = {
-    //   //seller: user.userData._id,
-    //   id: userInfo.userData.id,
-    // };
-
-    // console.log(variables);
-
-
-    Axios.post("/api/mysql/conditions/read")
+  const getCouple = () => {
+    Axios.post("/api/mysql/couples/read")
       .then((response) => {
-        // console.log(response);
-        // console.log(response.config);
-        // console.log(response.config.data);
-        //console.log(response.config.data.id);
+        const arr = response.data.allUser;
 
-        // if (response.data.success) {
-        //   console.log(response.data, "데이터");
-
-        //   setUserCondition([...userCondition, ...response.data.userConditionData]);
-        //   console.log("response.data.userConditionData", response.data.userConditionData);
-        //   console.log(12321323213, response.data.userConditionData[0].message);
-        //   //console.log(userConditionData);
-        // } else {
-        //   console.log("내 상태 변경이 안되었네,,,");
-        //   alert("내 상태 변경이 안되었네,,,");
-        // }
-        //console.log(response.data);
-        // if (response.data.success) {
-        //   setUserConditionData([...userConditionData]);
-        // }
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].couple_code === CoupleCode) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !==null) {
+              setCC1(userInfo.userData.name)
+              setCC2(arr[i].name)
+              break;
+            }
+          } else {
+          }
+        }
       });
+  }
+
+  const couplelove = () => {
+    if (CoupleCode === "9999" && CoupleCode === "9999") {
+      return <div>(♀)</div>
+    } else  if(CoupleCode !== "9999" && CoupleCode !== "9999") {
+      return <div className="couple">
+      <img src={img}/>
+      <p>{CC1}♥️{CC2}</p>
+      </div>
+    }
   };
 
-
-  useEffect(() => {
-
-    getCondition();
-  }, []);
-
-
+  const genderImoticon = () => {
+    if (User.gender == 1) {
+      return <div>(♀)</div>
+    } else {
+      return <div>(♂)</div>
+    }
+  }
 
   return (
     <Layout>
       <Sidebar>
         <Cards>
           <FlexWrapper>
-            <ProfileSection>
-              <img src={`http://localhost:5000/${userImg}`} alt="profile" />
-              {/* <div>{userConditionData.message}</div> */}
-              {/* {renderMyImage} */}
-
-
+            <ProfileSection >
+              <FlexWrapperImage>
+                <img src={`http://localhost:5000/${userImg}`} alt="profile" />
+              </FlexWrapperImage>
               <Link to={'/ChangeCondition'}>내 상태변경</Link>
               <hr />
               <h2>상태메세지</h2>
-              <p>{userInfo.userData.message}</p>
-
+              <br />
+              <br />
+              <br />
+              <div className="couple">
+              {couplelove()}
+              </div>
+              <p>{User.message}</p>
             </ProfileSection>
             <ProfileSection>
               <p>
-                <span className="my-name">{userInfo.userData.name}</span>
+                <span className="my-name">{User.name}</span>
 
-                <span className="my-sex">({userInfo.userData.gender})</span>
-                <span className="my-brthdy">{userInfo.userData.birth}</span>
+                <span className="my-sex">{genderImoticon()}</span>
+                <span className="my-brthdy">{User.birth}</span>
               </p>
               <p>
                 <MdMailOutline />
-                {userInfo.userData.email}
+                {User.email}
               </p>
               <p>
                 <MdPhoneIphone />
-                {userInfo.userData.phone}
+                {User.phone}
               </p>
               <p>
                 <MdLocationOn />
-                {userInfo.userData.address}
+                {User.address}
               </p>
             </ProfileSection>
           </FlexWrapper>
@@ -293,12 +241,9 @@ const Home = (props) => {
           </Mini>
           <ContentSection>
             <h2>한 줄 감성</h2>
-            <Link to={'/ContentProfile'}>방명록</Link>
-
+            <p>{getCouple()}</p>
+            <VisitorWriting/>
             <UpdateProfile />
-
-
-
           </ContentSection>
         </Cards>
       </Content>
