@@ -8,7 +8,7 @@ const { sequelize } = require("./mysql/models");
 const passportConfig = require("./mysql/passport");
 dotenv.config();
 
-const http=require('http').createServer(app);
+
 http.listen(5000,function(){
   console.log(`listening on 5000`);
 })
@@ -18,6 +18,7 @@ const mongoRouter = require("./mongo/routes");
 const passport = require("passport");
 
 const app = express();
+const http=require('http').createServer(app);
 passportConfig();
 const cors = require("cors");
 app.set("port", process.env.PORT || 5000);
