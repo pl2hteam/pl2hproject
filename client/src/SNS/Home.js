@@ -24,9 +24,14 @@ import {
   MdLocationOn,
   MdPhoneIphone,
 } from "react-icons/md";
-import { publicUrl } from "../Common/components/utils"
-import ChangeCondition from "../SNS/MyPage/ChangeCondition";
 import TodayIs from "./TodayIs";
+
+
+const Message = styled.p`
+font-size: 1.5rem;
+align-items: center;
+`
+
 const Mini = styled.div`
 width: 100%;
 `;
@@ -41,8 +46,8 @@ const FlexWrapperImage = styled.div`
     /* display: flex;
     flex-direction: column;
     justify-content: space-between; */
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: auto;
 
 `;
 
@@ -123,14 +128,8 @@ const LinkTitle = styled.p`
   &:last-of-type {
     margin-bottom: 20px;
   }
-  cursor: pointer;
-  svg {
-    margin-right: 5px;
-    color: #666;
-    font-size: 1.2rem;
-  }
   &:hover {
-    color: green;
+    color: orange;
   }
 `;
 
@@ -177,7 +176,7 @@ const Home = (props) => {
 
   const couplelove = () => {
     if (CoupleCode === "9999" && CoupleCode === "9999") {
-      return <div>(♀)</div>
+      return <LinkTitle><p>빛이나는 솔로</p></LinkTitle>
     } else if (CoupleCode !== "9999" && CoupleCode !== "9999") {
       return <div className="couple">
         <img src={img} />
@@ -200,25 +199,22 @@ const Home = (props) => {
         <Cards>
           <FlexWrapper>
             <ProfileSection >
+              <TodayIs />
               <FlexWrapperImage>
                 {/* <TodayIs /> */}
                 <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
-              <Link to={'/ChangeCondition'}>내 상태변경</Link>
-              <hr />
-              <h2>상태메세지</h2>
-              <br />
-              <br />
-              <br />
+
+              <Message><p>{User.message}</p></Message>
+
               <div className="couple">
                 {couplelove()}
               </div>
-              <p>{User.message}</p>
             </ProfileSection>
+            <Link to={'/ChangeCondition'}>내 상태변경</Link>
             <ProfileSection>
               <p>
                 <span className="my-name">{User.name}</span>
-
                 <span className="my-sex">{genderImoticon()}</span>
                 <span className="my-brthdy">{User.birth}</span>
               </p>
