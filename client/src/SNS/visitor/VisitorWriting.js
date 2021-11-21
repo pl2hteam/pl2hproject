@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import m1 from "../../Common/img/minime/1.png"
 import m2 from "../../Common/img/minime/2.png";
@@ -13,7 +13,7 @@ import "./VisitorWriting.css"
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { Typography, Button, Form, message, Input } from "antd";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 const Container = styled.div`
   padding: 15px 15px 0;
   background-color: #efefef;
@@ -81,39 +81,26 @@ const SaveBtn = styled.button`
 
 
 function VisitorWriting(props) {
-
-
-
-
-
+  const userInfo = useSelector(state => state.user);
+  const [User, setUser] = useState({});
 
   const [isShow, setIsShow] = useState(false);
   const [minime, setMinime] = useState(0);
   const mArr = [m1, m2, m3, m4, m5, m6];
 
-
-
-
-
-
-
-
-
   const [ProfileContent, setProfileContent] = useState("");
- 
-  
-  
- 
-  const onProfileContent= (event) => {
+
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.userData) {
+        setUser(userInfo.userData);
+      }
+    }
+  }, [userInfo.userData]);
+
+  const onProfileContent = (event) => {
     setProfileContent(event.currentTarget.value);
-  
   };
- 
-  
-  const user = useSelector(state => state.user);
- 
-
-
 
 
 
@@ -121,27 +108,23 @@ function VisitorWriting(props) {
     // event.preventDefault();  // antd 자체 적용
 
     if (
-      
-      !ProfileContent 
-    
+      !ProfileContent
     ) {
       return alert("fill all the fields first!");
     }
 
-    // console.log('props id 는 : ', props.user.userData._id);
     const variables = {
-      //seller: user.userData._id,
-     
-      content:ProfileContent,
-      
-   
+      content: ProfileContent,
+      visitor: userInfo.userData.id,
+
     };
+
+    console.log(variables);
 
     Axios.post("/api/mysql/profiles/write", variables)
       .then((response) => {
-        console.log('props.user 는 : ', response);
+        console.log('props.userInfo 는 : ', response);
         if (response.data.success) {
-   
           alert("Product Successfully Uploaded");
           window.location.replace("/sns/main");
         } else {
@@ -152,38 +135,31 @@ function VisitorWriting(props) {
   };
 
 
+
   return (
-  
-
-<Form onSubmit={onSubmit}>
-
-<Container>
-  <Wrap className="VisitMsgBox">
-    <ShowMiniMe className="VisitMsgBox-ImageBox">
-      <img src={mArr[minime]} alt={"미니미"} />
-      <SettingMinime onClick={() => setIsShow(!isShow)}>
-            미니미
-      </SettingMinime>
-      <DropdownMinime
-            isShow={isShow}
-            setIsShow={setIsShow}
-            setMinime={setMinime}
-            mArr={mArr}
-          />
-    </ShowMiniMe>
-       
-     
-    
-      <VisitMsg  onChange={onProfileContent} value={ProfileContent}/>
-    
-      <Button onClick={onSubmit}>편지보내기</Button>
-   
-  </Wrap>
-</Container> </Form>
+    <Form onSubmit={onSubmit}>
+      <Container>
+        <Wrap className="VisitMsgBox">
+          <ShowMiniMe className="VisitMsgBox-ImageBox">
+            <img src={mArr[minime]} alt={"미니미"} />
+            <SettingMinime onClick={() => setIsShow(!isShow)}>
+              미니미
+            </SettingMinime>
+            <DropdownMinime
+              isShow={isShow}
+              setIsShow={setIsShow}
+              setMinime={setMinime}
+              mArr={mArr}
+            />
+          </ShowMiniMe>
+          <VisitMsg onChange={onProfileContent} value={ProfileContent} />
+          <Button onClick={onSubmit}>편지보내기</Button>
+        </Wrap>
+      </Container> </Form>
 
   );
 }
 
-export default VisitorWriting;
+export default withRouter(VisitorWriting);
 
 

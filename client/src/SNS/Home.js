@@ -17,7 +17,6 @@ import Axios from "axios";
 import { withRouter } from "react-router-dom";
 
 ////////////////////////////////////////
-
 import { Link } from "react-router-dom";
 import {
   MdMailOutline,
@@ -201,7 +200,6 @@ const Home = (props) => {
             <ProfileSection >
               <TodayIs />
               <FlexWrapperImage>
-                {/* <TodayIs /> */}
                 <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
 
@@ -211,7 +209,7 @@ const Home = (props) => {
                 {couplelove()}
               </div>
             </ProfileSection>
-            <Link to={'/ChangeCondition'}>내 상태변경</Link>
+            <Link to={'/ChangeCondition'}>🛠내 상태변경</Link>
             <ProfileSection>
               <p>
                 <span className="my-name">{User.name}</span>
