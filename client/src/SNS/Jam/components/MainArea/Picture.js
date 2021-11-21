@@ -97,7 +97,7 @@ const Picture = forwardRef(
                         <Image
                             onClick={() => setIsModalOpen(true)}
                             ref={ref}
-                            src={`http://localhost:5000/${imageUrl}`}
+                            src={`13.124.13.37:5000/${imageUrl}`}
                             alt=""
                         />
                         <LeftBottomContainer>

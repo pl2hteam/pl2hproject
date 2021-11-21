@@ -107,7 +107,7 @@ const Main = (props) => {
             )}
             <img
               style={{ width: "100%", maxHeight: "500px" }}
-              src={`http://localhost:5000/${postData.images}`}
+              src={`13.124.13.37:5000/${postData.images}`}
               alt="productImage"
               images={postData}/>
       </div>

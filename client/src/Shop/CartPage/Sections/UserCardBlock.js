@@ -4,7 +4,7 @@ import './UserCardBlock.css';
 const UserCardBlock = (props) => {
   const renderCartImage = (images) => {
     let image = images[0];
-    return `http://localhost:5000/${image}`;
+    return `13.124.13.37:5000/${image}`;
   };
   
   const renderItems = () =>

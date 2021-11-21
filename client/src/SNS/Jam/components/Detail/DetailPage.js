@@ -42,7 +42,7 @@ export default function DetailPage(props) {
                         <LeftContainer>
                             <ImageContainer>
                                 <img
-                                    src={`http://localhost:5000/${props.imageUrl}`}
+                                    src={`13.124.13.37:5000/${props.imageUrl}`}
 
                                     alt={'사진'}
                                     style={{

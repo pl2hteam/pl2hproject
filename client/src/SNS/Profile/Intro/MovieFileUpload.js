@@ -119,7 +119,7 @@ function FileUpload(props) {
           <div onClick={() => onDelete(image)}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`http://localhost:5000/${image}`}
+              src={`13.124.13.37/${image}`}
               alt={`productImg-${index}`}
             />
           </div>

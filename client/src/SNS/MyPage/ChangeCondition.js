@@ -185,7 +185,7 @@ const ChangeCondition = (props) => {
         <Cards>
           <FlexWrapper>
             <ProfileSection>
-              <img src={`http://localhost:5000/${userImg}`} alt="profile" />
+              <img src={`13.124.13.37:5000/${userImg}`} alt="profile" />
               <hr />
               <h2>상태메세지</h2>
               <p>{userInfo.userData.message}</p>

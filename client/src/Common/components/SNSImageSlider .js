@@ -9,7 +9,7 @@ function ImageSlider(props) {
           <div key={index}>
             <img
               style={{ width: "100%", maxHeight: "500px" }}
-              src={`http://localhost:5000/${image}`}
+              src={`13.124.13.37:5000/${image}`}
               alt="productImage"
             />
           </div>
