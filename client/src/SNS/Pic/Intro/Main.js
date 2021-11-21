@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
+import style from './css/style.css'
 import Axios from "axios";
 import { withRouter } from "react-router";
 import Modal from "../Modal"
