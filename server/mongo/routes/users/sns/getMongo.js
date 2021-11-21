@@ -8,8 +8,8 @@ const { User } = require("../../../schemas/User");
 /*                                                 */
 /////////////////////////////////////////////////////
 
-router.get("/", (req, res) => {
-  User.find({ "email": req.user.email })
+router.post("/", (req, res) => {
+  User.find({ "email": req.body.userInfo.email })
     .exec((err, user) => {
       if (err) return res.status(400).send(err)
       res.status(200).json({ success: true, user })

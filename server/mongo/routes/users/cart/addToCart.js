@@ -9,6 +9,9 @@ const { User } = require("../../../schemas/User");
 /////////////////////////////////////////////////////
 
 router.get("/", (req, res) => {
+  console.log(111111111111111111);
+  console.log(req);
+  console.log(11133333333333333333333);
     User.findOne({ email: req.user.email }, (err, userInfo) => {
       let duplicate = false;
   
