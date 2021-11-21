@@ -1,11 +1,7 @@
 import React from 'react'
 import MainGrid from '../components/MainArea/MainArea';
 
-
-
-function Main() {
-
-
+const Main = () => {
   return (
     <>
       <MainGrid />

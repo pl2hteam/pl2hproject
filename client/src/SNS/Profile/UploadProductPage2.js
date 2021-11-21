@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Typography, Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
@@ -7,7 +7,6 @@ import { withRouter } from "react-router";
 import "./UploadProductPage2.css";
 
 const { Title } = Typography;
-const { TextArea } = Input;
 
 const UploadProductPage2 = (props) => {
   const [PostTitle, setPostTitle] = useState("");
@@ -66,9 +65,6 @@ const UploadProductPage2 = (props) => {
     };
 
     Axios.post("/api/mysql/posts/write", variables).then((response) => {
-      console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-      console.log(response);
-      console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
       if (response.data.success) {
         alert("업로드 하였읍니다");
         props.history.push("/sns/profile");

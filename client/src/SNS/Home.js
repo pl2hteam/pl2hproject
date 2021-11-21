@@ -3,20 +3,14 @@ import Layout from "./Layout/Layout";
 import Sidebar from "./Layout/Sidebar";
 import Content from "./Layout/Content";
 import Cards from "./Layout/Card";
-
 import UpdateProfile from "./UpdateProfile";
 import MiniRoom from "../Common/miniroom/miniRoom";
 import { useSelector } from "react-redux";
 import img from "../Common/img/minime/연인.png"
 import VisitorWriting from "./visitor/VisitorWriting";
-
-////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-
 import { withRouter } from "react-router-dom";
-
-////////////////////////////////////////
 
 import { Link } from "react-router-dom";
 import {
@@ -201,7 +195,6 @@ const Home = (props) => {
             <ProfileSection >
               <TodayIs />
               <FlexWrapperImage>
-                {/* <TodayIs /> */}
                 <img src={`http://localhost:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
 
@@ -211,7 +204,7 @@ const Home = (props) => {
                 {couplelove()}
               </div>
             </ProfileSection>
-            <Link to={'/ChangeCondition'}>내 상태변경</Link>
+            <Link to={'/ChangeCondition'}>🛠내 상태변경</Link>
             <ProfileSection>
               <p>
                 <span className="my-name">{User.name}</span>
@@ -240,7 +233,7 @@ const Home = (props) => {
             <MiniRoom />
           </Mini>
           <ContentSection>
-            <h2>한 줄 감성</h2>
+            <h2>방명록</h2>
             <p>{getCouple()}</p>
             <VisitorWriting />
             <UpdateProfile />

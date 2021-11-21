@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-// import { Carousel } from 'react-responsive-carousel';
-// import Carousel from 'react-material-ui-carousel'
+import React from "react";
 import { Carousel } from 'react-carousel-minimal';
-// import Slider from 'react-slick'
 
 const ImageSlider = (props) => {
   const captionStyle = {

@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
 import { withRouter } from "react-router";
+import './Letter.css';
 
 const LetterWrite = (props) => {
   const userInfo = useSelector(state => state.user);

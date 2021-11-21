@@ -74,7 +74,6 @@ const SubDesc = styled.div`
 const ImgTag = styled.img`
 `
 
-
 function BoxComponent({ src, style, title, color, name, developer, subDesc, type, site }) {
 
     const goToSite = () => {

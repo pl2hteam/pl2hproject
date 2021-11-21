@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-// import btnImg from "../SNS/images/EditAndHis.png";
 
 const Container = styled.div`
   min-height: 330px;
@@ -26,14 +25,7 @@ const EHWrap = styled.div`
   border-bottom: 1px solid #bfbfbf;
 `;
 
-// const Button = styled.button`
-//   background: url(${btnImg}) no-repeat ${(props) => props.x || 0} -1px / 115px 20px;
-//   width: ${(props) => props.width || "50px"};
-//   height: 20px;
-//   border: none;
-//`;
-
-function ProfileContents(props) {
+function ProfileContents() {
   const userInfo = useSelector(state => state.user);
 
   let userImg;
@@ -48,7 +40,6 @@ function ProfileContents(props) {
       <ProfileP>
         {userInfo.userData.message}
       </ProfileP>
-
     </Container>
   );
 }

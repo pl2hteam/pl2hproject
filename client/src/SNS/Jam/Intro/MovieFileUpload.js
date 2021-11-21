@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import Axios from "axios";
 import Icon from "@ant-design/icons/lib/components/Icon";
+
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
   const [VideoPath, setVideoPath] = useState("");
@@ -18,10 +19,7 @@ function FileUpload(props) {
     if (files[0].type == "video/mp4") {
       Axios.post("/api/mysql/jams/write", formData, config).then(
         (response) => {
-          console.log(response);
           if (response.data.success) {
-            console.log(response.data);
-
             let variable = {
               url: response.data.url,
               fileName: response.data.fileName,
@@ -35,7 +33,6 @@ function FileUpload(props) {
 
             Axios.post("/api/mysql/product/thumbnail", variable).then(
               (response) => {
-                console.log(response);
                 if (response.data.success) {
                   setDuration(response.data.fileDuration);
                   props.refresh.updateDuration([
@@ -58,7 +55,6 @@ function FileUpload(props) {
         }
       );
     } else {
-      console.log("####################################");
       Axios.post("/api/mysql/jams/uploadimage", formData, config).then(
         (response) => {
           console.log(response.data.image);
@@ -77,16 +73,10 @@ function FileUpload(props) {
     }
   };
 
-  // 업로드 대기중인 상품이미지 클릭 시 삭제 함수
   const onDelete = (image) => {
-    //     현재인덱스   = 선택한 이미지의 인덱스 번호 ex) 3장 중 2번째 이미지는 인덱스1
     const currentIndex = Images.indexOf(image);
-    // newImages에 대기중인 이미지들을 담고
     let newImages = [...Images];
-    // 선택한 인덱스번호의 이미지 한장을 날려버리기
     newImages.splice(currentIndex, 1);
-
-    // 날리고 남은 이미지들을 useState로 갱신
     setImages(newImages);
     props.refresh.updateImages(newImages);
   };

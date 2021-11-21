@@ -4,6 +4,7 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import styled from 'styled-components';
 import { SubtitleFont } from './UploadStyled';
+
 const useStyles = makeStyles({
     root: {
         alignItems: 'center',

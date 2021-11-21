@@ -73,7 +73,6 @@ function RegisterPage(props) {
             phone: values.phone,
             birth: values.birth,
             image: `uploads/img/default_profile_image.png`,
-
             db: true, // MySQL
           };
 
@@ -101,12 +100,10 @@ function RegisterPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div className="app">

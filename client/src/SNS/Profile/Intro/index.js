@@ -1,10 +1,8 @@
 import React from 'react';
 import ScrollToTop from '../../Layout/ScrollToTop';
 import Main from './Main';
-
-import Dev from './Dev';
+// import Dev from './Dev';
 import { withRouter } from 'react-router';
-
 
 const Intro = ({ match }) => {
   let { type } = match.params;
@@ -15,11 +13,10 @@ const Intro = ({ match }) => {
       type: 'main',
       component: <Main />,
     },
-    {
-      type: 'dev',
-      component: <Dev title="기술 및 히스토리" />,
-    },
-
+    // {
+    //   type: 'dev',
+    //   component: <Dev title="기술 및 히스토리" />,
+    // },
   ];
   const { component } = intros.find(item => item.type === type);
 

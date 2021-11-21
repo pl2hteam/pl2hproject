@@ -9,7 +9,6 @@ const Container = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     height:100vh;
 `
 
@@ -41,7 +40,6 @@ const BtnToPage = styled(NavLink)`
 `
 
 function WarningPage() {
-
     return (
         <Container>
             <Text>앗! 룸미가 없는 빈 방을 발견하셨군요!</Text>
