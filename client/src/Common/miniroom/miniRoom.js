@@ -9,11 +9,6 @@ import room6 from "../img/room/miniroom6.jpeg";
 import room7 from "../img/room/miniroom7.jpeg";
 import DropdownRoom from "./dropdownRoom";
 
-const Container = styled.div`
-
-
-`;
-
 const Header = styled.div`
   font-size: 16px;
   font-weight: bold;
@@ -55,7 +50,7 @@ function MiniRoom() {
   const [miniroom, setMiniroom] = useState(0);
   const rArr = [room1, room2, room3, room4, room5, room6, room7];
   return (
-    <Container>
+    <div>
       <Header>Miniroom</Header>
       <MyMiniroom miniroom={rArr[miniroom]} />
       <Footer>
@@ -69,7 +64,7 @@ function MiniRoom() {
           setMiniroom={setMiniroom}
         />
       </Footer>
-    </Container>
+    </div>
   );
 }
 
