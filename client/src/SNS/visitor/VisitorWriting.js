@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import m1 from "../../Common/img/minime/1.png"
 import m2 from "../../Common/img/minime/2.png";
@@ -10,8 +10,13 @@ import DropdownMinime from "./dropdownMinime";
 import "./VisitorWriting.css"
 import Axios from "axios";
 import { useSelector } from "react-redux";
+<<<<<<< HEAD
 import { Button, Form } from "antd";
 
+=======
+import { Typography, Button, Form, message, Input } from "antd";
+import { withRouter } from "react-router-dom";
+>>>>>>> origin/minnnnnn
 const Container = styled.div`
   padding: 15px 15px 0;
   background-color: #efefef;
@@ -101,11 +106,12 @@ function VisitorWriting() {
       content:ProfileContent,
     };
 
+    console.log(variables);
+
     Axios.post("/api/mysql/profiles/write", variables)
       .then((response) => {
-        console.log('props.user 는 : ', response);
+        console.log('props.userInfo 는 : ', response);
         if (response.data.success) {
-   
           alert("Product Successfully Uploaded");
           window.location.replace("/sns/main");
         } else {

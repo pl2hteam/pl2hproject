@@ -75,8 +75,8 @@ const UploadProductPage2 = (props) => {
   };
 
   let postvideo = {
-    updateImages, 
-    updateVideoPath, 
+    updateImages,
+    updateVideoPath,
     updateDuration
   }
 
@@ -92,11 +92,11 @@ const UploadProductPage2 = (props) => {
 
         <br />
         <br />
-        <label>물품명</label>
+        <label>제목</label>
         <Input onChange={onPostTitle} value={PostTitle} />
         <br />
         <br />
-        <label>브랜드</label>
+        <label>내용</label>
         <Input onChange={onPostContent} value={PostContent} />
         <br />
         <br />
