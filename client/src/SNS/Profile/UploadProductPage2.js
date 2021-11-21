@@ -4,6 +4,7 @@ import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import "./UploadProductPage2.css";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -85,29 +86,37 @@ const UploadProductPage2 = (props) => {
   };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+    <div style={{ width: "100%", margin: "0" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Title level={2}>커플 상품</Title>
+        <Title className="sns-upload-title" level={2}>
+          게시물 작성
+        </Title>
       </div>
 
-      <Form onSubmit={onSubmit}>
+      <Form className="sns-uplaod_form" onSubmit={onSubmit}>
         {/* DropZone */}
         <MovieFileUpload refresh={postvideo} />
 
-        <br />
-        <br />
-        <label>제목</label>
-        <Input onChange={onPostTitle} value={PostTitle} />
-        <br />
-        <br />
-        <label>내용</label>
-        <Input onChange={onPostContent} value={PostContent} />
-        <br />
-        <br />
+        <div className="sns-upload-content_box">
+          <div className="sns-upload-content_box-title_box">
+            <label>제목</label>
+            <Input onChange={onPostTitle} value={PostTitle} />
+          </div>
+
+          <div className="sns-upload-content_box-content_box">
+            <label>내용</label>
+            <Input
+              style={{ width: "100%", height: "100%" }}
+              onChange={onPostContent}
+              value={PostContent}
+            />
+          </div>
+          <Button className="sns-upload-upload_btn" onClick={onSubmit}>
+            등록
+          </Button>
+        </div>
 
         {/* <Input onChange={onPostViews} value={PostViews} type="number" /> */}
-
-        <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>
   );
