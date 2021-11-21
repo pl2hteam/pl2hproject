@@ -102,8 +102,8 @@ const LetterWrite = (props) => {
           <label>내용</label>
           <Input onChange={onLetterContent} value={LetterContent} />
         
-          <label>~부터</label>
-          <Input onChange={onLetterFrom} value={LetterFrom} placeholder={Name}/>
+          <label>From</label>
+          <Input onChange={onLetterFrom} value={LetterFrom} />
         
           <label>추신</label>
           <Input onChange={onLetterPs} value={LetterPs} />

@@ -15,7 +15,7 @@ const Profile = () => {
   const list = [
     {
       id: 1,
-      title: '👭내 인맥',
+      title: '👭편지보기',
       url: '/people',
     },
     {
@@ -38,7 +38,7 @@ const Profile = () => {
             <Route exact path={`${match.path}`} component={Intro} />
             <Route exact path={`${match.path}/intro`} component={Intro} />
             <Route path={`${match.path}/intro/:type`} component={Intro} />
-            <Route path={`${match.path}/people`} component={People} />
+            <Route path={`${match.path}/people`} component={Intro} />
             <Route path={`${match.path}/favorite`} component={Favorite} />
             <Route path={`${match.path}/LatterWrite`} component={LatterWrite} />
           </Switch>

@@ -14,17 +14,17 @@ const Profile = () => {
   const list = [
     {
       id: 1,
-      title: '👭내 인맥',
+      title: '⭐모아보기',
       url: '/play',
     },
     {
       id: 2,
-      title: '⭐내 즐겨찾기',
+      title: '👭지도퍼즐',
       url: '/favorite',
     },
     {
       id: 3,
-      title: '⭐지도',
+      title: '⭐글쓰기',
       url: '/Write',
     },
   ];
