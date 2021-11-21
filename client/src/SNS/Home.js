@@ -157,7 +157,7 @@ const Home = (props) => {
 
         for (let i = 0; i < arr.length; i++) {
           if (arr[i].couple_code === CoupleCode) {
-            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== null) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== "9999") {
               setCC1(userInfo.userData.name)
               setCC2(arr[i].name)
               break;

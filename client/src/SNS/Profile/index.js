@@ -14,13 +14,9 @@ import { useState } from 'react';
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
+
     {
       id: 1,
-      title: '너',
-      url: '/You',
-    },
-    {
-      id: 3,
       title: '⭐sns글쓰기',
       url: '/Write',
     },
