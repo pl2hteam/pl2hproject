@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const TotalContainer = styled.div`
     height: auto;
     width: 1300px;

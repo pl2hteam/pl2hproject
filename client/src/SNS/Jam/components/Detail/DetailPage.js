@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import Message from './DetailFunction/Message';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+//import Message from './DetailFunction/Message';
+//import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+//import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 import {
     ImageContainer,
@@ -21,55 +21,56 @@ import {
 } from './DetailStyle';
 import { DetailContent, PostName } from './DetailFunction/Article';
 import ClearTwoToneIcon from '@material-ui/icons/ClearTwoTone';
-import ShowMoreText from 'react-show-more-text';
+//import ShowMoreText from 'react-show-more-text';
 // import { SubtitleFont } from '../Upload/UploadStyled';
-import FormControl from '@material-ui/core/FormControl';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
+//import FormControl from '@material-ui/core/FormControl';
+//import RadioGroup from '@material-ui/core/RadioGroup';
+//import FormControlLabel from '@material-ui/core/FormControlLabel';
+//import Radio from '@material-ui/core/Radio';
 // import { RatingFont } from '../Upload/UploadFunction/Rating';
-import ChatInput from './DetailFunction/ChatInput';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Subscribe from './DetailFunction/Subscribe';
-import Avartar from './DetailFunction/Avartar';
-import LikeInterest from './DetailFunction/Like_Interest';
+//import ChatInput from './DetailFunction/ChatInput';
+//import { makeStyles } from '@material-ui/core/styles';
+//import Button from '@material-ui/core/Button';
+//import Subscribe from './DetailFunction/Subscribe';
+//import Avartar from './DetailFunction/Avartar';
+//import LikeInterest from './DetailFunction/Like_Interest';
 
-const useStyles = makeStyles((theme) => ({
-    FollowBtn: {
-        color: '#FFFFFF',
+// const useStyles = makeStyles((theme) => ({
+//     FollowBtn: {
+//         color: '#FFFFFF',
 
-        border: '2px solid #FF534B',
-        height: '24px',
-        width: '55px',
-        fontWeight: 500,
-        fontSize: '13px',
-        lineHeight: '19px',
-        display: 'flex',
-        boxSizing: 'border-box',
-        borderRadius: '16px',
-        marginTop: '10px',
-    },
-    RatingBtn: {
-        width: '26px',
-        height: '21px',
-        fontWeight: '500',
-        fontSize: '14px',
-        lineHeight: '20px',
-        alignItems: 'center',
-        color: '#D84B45',
-        margin: 'auto 0',
-    },
-}));
+//         border: '2px solid #FF534B',
+//         height: '24px',
+//         width: '55px',
+//         fontWeight: 500,
+//         fontSize: '13px',
+//         lineHeight: '19px',
+//         display: 'flex',
+//         boxSizing: 'border-box',
+//         borderRadius: '16px',
+//         marginTop: '10px',
+//     },
+//     RatingBtn: {
+//         width: '26px',
+//         height: '21px',
+//         fontWeight: '500',
+//         fontSize: '14px',
+//         lineHeight: '20px',
+//         alignItems: 'center',
+//         color: '#D84B45',
+//         margin: 'auto 0',
+//     },
+// }));
+
 export default function DetailPage(props) {
-    const classes = useStyles();
-    const [roomDetails, setRoomDetails] = useState(null);
-    const [roomMessages, setRoomMessages] = useState([]);
-    const openMap = () => {
-        window.open(
-            `https://map.kakao.com/link/map/${props.address},${props.latitude},${props.longitude}`
-        );
-    };
+    //const classes = useStyles();
+    //const [roomDetails, setRoomDetails] = useState(null);
+    //const [roomMessages, setRoomMessages] = useState([]);
+    // const openMap = () => {
+    //     window.open(
+    //         `https://map.kakao.com/link/map/${props.address},${props.latitude},${props.longitude}`
+    //     );
+    // };
 
     //useEffect(() => {
     //     if (props.id) {
@@ -111,7 +112,8 @@ export default function DetailPage(props) {
                         <LeftContainer>
                             <ImageContainer>
                                 <img
-                                    src={props.imageUrl}
+                                    src={`http://localhost:5000/${props.imageUrl}`}
+
                                     alt={'사진'}
                                     style={{
                                         width: '100%',
@@ -121,22 +123,22 @@ export default function DetailPage(props) {
                                     }}
                                 />
                                 <LeftTopContainer style={{ left: '150px' }}>
-                                    <LikeInterest postId={props.id} />
+                                    {/* <LikeInterest postId={props.id} /> */}
                                 </LeftTopContainer>
                                 <LeftBottomContainer>
-                                    <Avartar uid={props.uid} Type="Detail" />
+                                    {/* <Avartar uid={props.uid} Type="Detail" /> */}
                                     <div
                                         style={{
                                             alignItems: 'left',
                                             textAlign: 'left',
                                         }}
                                     >
-                                        <TextBox>{props.username}</TextBox>
-                                        <Subscribe userTo={props.uid} />
+                                        {/* <TextBox>{props.username}</TextBox> */}
+                                        {/* <Subscribe userTo={props.uid} /> */}
                                     </div>
                                 </LeftBottomContainer>
                                 <RightTopContainer>
-                                    {props.advertising && (
+                                    {/* {props.advertising && (
                                         <div
                                             style={{
                                                 width: '72px',
@@ -154,10 +156,10 @@ export default function DetailPage(props) {
                                         >
                                             광고 포함
                                             {/*{props.advertising === false*/}
-                                            {/*    ? null*/}
-                                            {/*    : '광고 포함'}*/}
+                                    {/*    ? null*/}
+                                    {/*    : '광고 포함'}
                                         </div>
-                                    )}
+                                    )} */}
                                 </RightTopContainer>
                                 <RightBottomContainer>
                                     <div
@@ -165,7 +167,7 @@ export default function DetailPage(props) {
                                             display: 'flex',
                                             cursor: 'pointer',
                                         }}
-                                        onClick={openMap}
+                                    // onClick={openMap}
                                     >
                                         <img
                                             style={{
@@ -190,18 +192,17 @@ export default function DetailPage(props) {
                             </ImageContainer>
                             <PostName>{props.title}</PostName>
                             <DetailContent>
-                                <ShowMoreText
+                                {/* <ShowMoreText
                                     width={650}
-                                    /* Default options */
                                     lines={6}
                                     more={<ExpandMoreIcon fontSize="large" />}
                                     less={<ExpandLessIcon />}
                                     anchorClass=""
                                     onClick={executeOnClick}
                                     expanded={false}
-                                >
-                                    {props.review}
-                                </ShowMoreText>
+                                > */}
+                                {props.review}
+                                {/* </ShowMoreText> */}
                             </DetailContent>
                         </LeftContainer>
                         <RightContainer>
@@ -229,11 +230,11 @@ export default function DetailPage(props) {
                                 {/* <SubtitleFont style={{ marginBottom: '31px' }}>
                                     평점 주기
                                 </SubtitleFont> */}
-                                <FormControl
+                                {/* <FormControl
                                     component="fieldset"
                                     style={{ width: '100%' }}
-                                >
-                                    <RadioGroup
+                                > */}
+                                {/* <RadioGroup
                                         style={{
                                             width: '100%',
                                             justifyContent: 'space-between',
@@ -242,10 +243,10 @@ export default function DetailPage(props) {
                                         aria-label="position"
                                         name="position"
                                         defaultValue="top"
-                                    //  value={value}
-                                    // onChange={handleChange}
-                                    >
-                                        {/* <FormControlLabel
+                                      value={value}
+                                     onChange={handleChange}
+                                    > */}
+                                {/* <FormControlLabel
                                             value="1"
                                             control={<Radio color="primary" />}
                                             label={
@@ -254,7 +255,7 @@ export default function DetailPage(props) {
                                             labelPlacement="bottom"
                                         />
                                         <FormControlLabel */}
-                                        {/* value="2"
+                                {/* value="2"
                                         control={<Radio color="primary" />}
                                         label={
                                             <RatingFont>
@@ -287,11 +288,11 @@ export default function DetailPage(props) {
                                             }
                                             labelPlacement="bottom"
                                         /> */}
-                                        <Button className={classes.RatingBtn}>
-                                            완료
-                                        </Button>
-                                    </RadioGroup>
-                                </FormControl>
+                                {/* <Button className={classes.RatingBtn}>
+                                    완료
+                                </Button>
+                            </RadioGroup>
+                        </FormControl> */}
                             </div>
                             <CommentBox
                                 style={{
@@ -303,7 +304,7 @@ export default function DetailPage(props) {
                                     overflow: 'auto',
                                 }}
                             >
-                                {roomMessages.map(
+                                {/* {roomMessages.map(
                                     (
                                         {
                                             message,
@@ -323,17 +324,18 @@ export default function DetailPage(props) {
                                             uid={uid}
                                         />
                                     )
-                                )}
+                                )} */}
                             </CommentBox>
                             {/*안풋바 */}
-                            <ChatInput id={props.id} />
+                            {/* <ChatInput id={props.id} /> */}
                         </RightContainer>
                     </MainContentContainer>
                 </TotalContainer>
-            </DialogContent>
+            </DialogContent >
             <DialogActions>
                 {/*원래버튼있던자리 지만 저희 기능에선 사용할거없음*/}
             </DialogActions>
-        </Dialog>
+        </Dialog >
     );
 }
+

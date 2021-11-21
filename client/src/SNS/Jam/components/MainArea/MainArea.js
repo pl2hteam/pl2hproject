@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Picture from './Picture';
 
-//import FlipMove from 'react-flip-move';
+import FlipMove from 'react-flip-move';
 
 import styled from 'styled-components';
 import Loader from './Loader';
 import './MainGrid.css';
+
+
+import Axios from "axios";
 
 const MarginContainer = styled.div`
     max-width: 1440px;
@@ -64,105 +67,107 @@ const Container = styled.div`
 
 export default () => {
     const [posts, setPosts] = useState([]);
-    // const [last, setLast] = useState(null);
+    //const [last, setLast] = useState(null);
     const [mood, setMood] = useState('');
     // const [hasMore, setHasMore] = useState(true);
-    const moods = ['도시', '자연', '몽환', '여유', '고요', '활기', '낭만'];
+    const moods = ['도시', '자연', '여유', '고요', '활기', '낭만'];
+
+    const [please, setPlease] = useState([]);
+
 
     // useEffect(() => {
-    //     const unsubscribe = db
-    //         .collection('posts')
-    //         .orderBy('timestamp', 'desc')
-    //         .limit(10)
-    //         .onSnapshot((snapshot) => {
-    //             setPosts(
-    //                 snapshot.docs.map((doc) => ({
-    //                     id: doc.id,
-    //                     post: doc.data(),
-    //                 }))
-    //             );
-    //             setLast(snapshot.docs[snapshot.docs.length - 1]);
-    //         });
-
+    //     const getPlay = () => {
+    //         Axios.post("/api/mysql/jams/read/mood")
+    //             .then((response) => {
+    //                 // console.log(response);
+    //                 // console.log(response.data);
+    //                 // console.log(response.data.jams);
+    //                 // const arr = response.data.jams;
+    //                 // console.log(arr);
+    //                 setPosts([response.data.jams])
+    //             });
+    //         console.log(posts);
+    //     }
     //     return () => {
-    //         unsubscribe();
+    //         getPlay();
     //     };
     // }, []);
 
-    // const next = () => {
-    //     if (last) {
-    //         db.collection('posts')
-    //             .orderBy('timestamp', 'desc')
-    //             .startAfter(last)
-    //             .limit(10)
-    //             .onSnapshot((snapshot) => {
-    //                 if (snapshot.empty) {
-    //                     setHasMore(false);
 
-    //                     return;
-    //                 }
-    //                 setPosts([
-    //                     ...posts,
-    //                     ...snapshot.docs.map((doc) => ({
-    //                         id: doc.id,
-    //                         post: doc.data(),
-    //                     })),
-    //                 ]);
-    //                 setLast(snapshot.docs[snapshot.docs.length - 1]);
-    //             });
-    //     }
+    // const getPlay = () => {
+    //     Axios.post("/api/mysql/jams/read/mood").then((response) => {
+    //         if (response.data.success) {
+    //             setPosts(response.data.products);
+    //         } else {
+    //             alert("Failed to fectch product datas");
+    //         }
+    //     });
     // };
 
-    // const moodNext = () => {
-    //     if (last) {
-    //         db.collection('posts')
-    //             .orderBy('timestamp', 'desc')
-    //             .where('mood', '==', mood)
-    //             .startAfter(last)
-    //             .limit(10)
-    //             .onSnapshot((snapshot) => {
-    //                 if (snapshot.empty) {
-    //                     setHasMore(false);
+    useEffect(() => {
 
-    //                     return;
-    //                 }
-    //                 setPosts([
-    //                     ...posts,
-    //                     ...snapshot.docs.map((doc) => ({
-    //                         id: doc.id,
-    //                         post: doc.data(),
-    //                     })),
-    //                 ]);
-    //                 setLast(snapshot.docs[snapshot.docs.length - 1]);
-    //             });
-    //     }
-    // };
+        //onMoodChange();
+    }, []);
+
+
 
     const onMoodChange = (e) => {
+
         setMood(e.currentTarget.innerText);
         setPosts([]);
 
 
+        const variables = {
+            mood: e.currentTarget.innerText,
+        }
+        console.log(e.currentTarget.innerText);
 
-        // db.collection('posts')
-        //     .orderBy('timestamp', 'desc')
-        //     .where('mood', '==', e.currentTarget.innerText)
-        //     .limit(10)
-        //     .onSnapshot((snapshot) => {
-        //         setPosts(
-        //             snapshot.docs.map((doc) => ({
-        //                 id: doc.id,
-        //                 post: doc.data(),
-        //             }))
-        //         );
-        //         setLast(snapshot.docs[snapshot.docs.length - 1]);
-        //     });
+        Axios.post("/api/mysql/jams/read/mood", variables)
+            .then((response) => {
+                // console.log(response);
+                console.log(response.data);
+                // console.log(response.data.jams);
+                // const list = response.data.jams;
+                // console.log(list[0].mood);
+                // setPosts([...posts])
+                // console.log(posts);
+
+                // if (response.data.success) {
+                //     console.log(posts);
+                //     setPosts(response.data.jams)
+                //     console.log(1);
+                //     console.log(posts);
+
+                // } else {
+                //     setPosts(response.data.jams)
+                //     console.log(2);
+                // }
+                // console.log(posts[0]);
+
+                // const list = posts[0];
+
+                // console.log(list);
+                // setPlease(list)
+                // console.log(please);
+                if (response.data.success) {
+                    setPosts(response.data.jams);
+
+                } else {
+                    alert("Failed to fectch product datas");
+                }
+            });
+        console.log(posts);
+        console.log(posts.length);
+
+
+
     };
+
 
     return (
         <MarginContainer>
             <HeaderContainer>
-                <Title>위치</Title>
+                <Title>🎪🎉🎏</Title>
                 <MoodList>
                     {moods.map((moodText) => (
                         <Mood
@@ -177,38 +182,47 @@ export default () => {
             </HeaderContainer>
 
             {/* <InfiniteScroll
-                // dataLength={posts.length}
-                // next={(mood && moodNext) || next}
-                // hasMore={hasMore}
+                dataLength={posts.length}
+                //next={(mood && moodNext) || next}
+                //hasMore={hasMore}
                 loader={<Loader />}
             > */}
             <Container>
-                아린ㅇ라ㅣ나리너ㅣㅓ
-                {/* <FlipMove>
-                    애내내오니도ㅓ료ㅕ냘ㄷ
-                    {/* {posts.map(({ post, id }) => (
-                            <Picture
-                                uid={post.uid}
-                                id={id}
-                                key={id}
-                                advertising={post.advertising}
-                                area={post.area}
-                                avatar={post.avatar}
-                                heart={post.heart}
-                                imageUrl={post.imageUrl}
-                                latitude={post.latitude}
-                                longitude={post.longitude}
-                                mood={post.mood}
-                                novelty={post.novelty}
-                                rating={post.rating}
-                                review={post.review}
-                                timestamp={post.timestamp}
-                                title={post.title}
-                                username={post.username}
-                                address={post.address}
-                            />
-                        ))}
-                </FlipMove> */}
+                {/* <FlipMove> */}
+
+                {posts.map((post) => (
+                    <Picture
+                        //uid={post.uid}
+                        id={post.id}
+                        key={post.id}
+                        //advertising={post.advertising}
+                        //area={post.area}
+                        //avatar={post.avatar}
+                        //heart={post.heart}
+                        imageUrl={post.images[0]}
+                        //latitude={post.latitude}
+                        //longitude={post.longitude}
+                        mood={post.mood}
+                        //novelty={post.novelty}
+                        //rating={post.rating}
+                        review={post.review}
+                        //timestamp={post.timestamp}
+                        title={post.title}
+                    //username={post.username}
+                    //address={post.address}
+                    />
+                    // <div>
+                    //     <p>{post.id}</p>
+                    //     <p>{post.title}</p>
+                    //     <img
+                    //         src={`http://localhost:5000/${post.images[0]}`}
+                    //         alt="play" />
+                    //     <p>{post.mood}</p>
+                    //     <p>{post.createdAt}</p>
+                    // </div>
+                ))}
+                {/* {getPlay()} */}
+                {/* </FlipMove> */}
             </Container>
             {/* </InfiniteScroll> */}
         </MarginContainer>
