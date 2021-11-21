@@ -246,6 +246,7 @@ function RegisterPage(props) {
                       : "text-input"
                   }
                 />
+                
                 {errors.gender && touched.gender ? (
                   <div className="input-feedback">{errors.gender}</div>
                 ) : (

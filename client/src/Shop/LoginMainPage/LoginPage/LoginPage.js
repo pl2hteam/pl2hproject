@@ -4,26 +4,16 @@ import { loginUser } from "../../../Common/_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import '../../../Common/style/login.css';
 
 const LoginPage = (props) => {
   const dispatch = useDispatch();
-  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
   const [formErrorMessage, setFormErrorMessage] = useState("");
-  const [rememberMe, setRememberMe] = useState(rememberMeChecked);
-
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe);
-  };
-
-  const initialEmail = localStorage.getItem("rememberMe")
-    ? localStorage.getItem("rememberMe")
-    : "";
 
   return (
     <Formik
       initialValues={{
-        email: initialEmail,
         password: "",
       }}
       validationSchema={Yup.object().shape({
@@ -46,11 +36,6 @@ const LoginPage = (props) => {
             .then((response) => {
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
-                if (rememberMe === true) {
-                  window.localStorage.setItem("rememberMe", values.id);
-                } else {
-                  localStorage.removeItem("rememberMe");
-                }
                 props.history.push("/shop/main");
               } else {
                 setFormErrorMessage("틀렸잖아 다시 써");
@@ -71,23 +56,19 @@ const LoginPage = (props) => {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div className="app">
             <form onSubmit={handleSubmit}>
-              {/* <div className="base-container"  */}
               <div className="base-container" ref={props.containerRef}>
                 <div className="content">
                   <div className="form">
                     <div className="form-group">
                       <div>
-                        {/* <label htmlFor="username">E-mail</label> */}
                         <input
                           id="email"
                           placeholder="너 이메일 넣어"
@@ -110,10 +91,9 @@ const LoginPage = (props) => {
                     </div>
                     <div className="form-group">
                       <div>
-                        {/* <label htmlFor="password">Password</label> */}
                         <input
                           id="password"
-                          placeholder=" 비빔번호"
+                          placeholder=" 비밀번호"
                           type="password"
                           value={values.password}
                           onChange={handleChange}
@@ -136,18 +116,8 @@ const LoginPage = (props) => {
                     ) : (
                       <div className="input-feedback"></div>
                     )}
-                    <div className="rememberMe_box">
-                      <input
-                        type="checkbox"
-                        id="rememberMe"
-                        onChange={handleRememberMe}
-                        checked={rememberMe}
-                      />
-                      <label>ID 기억하기</label>
-                    </div>
                   </div>
                 </div>
-
                 <div className="footer">
                   <button
                     type="primary"
@@ -158,6 +128,9 @@ const LoginPage = (props) => {
                   >
                     샵 로그인
                   </button>
+                  <div>
+                    <a className="back" href="/">뒤로가기</a>
+                  </div>
                 </div>
               </div>
             </form>
