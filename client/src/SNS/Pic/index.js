@@ -13,7 +13,6 @@ import Write from './Write';
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
-  
     {
       id: 1,
       title: '👭내 인맥',

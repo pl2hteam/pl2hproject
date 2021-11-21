@@ -10,17 +10,12 @@ const ShareBtn = styled.button`
   outline: none;
   background: none;
   border: none;
-
   margin-right:1.6rem;
   margin-top: 1.6rem;
   margin-bottom: 1.6rem;
 `;
 
-const Img = styled.img`
-`
-
 function KaKao({ _title, _sub, _imageUrl, _finalType }) {
-
     let replaced_sub = _sub.replace('<br/>', ' ');
 
     let replaced_imageUrl = ''
@@ -31,7 +26,6 @@ function KaKao({ _title, _sub, _imageUrl, _finalType }) {
     }
 
     const onHandleShareKaKao = () => {
-
         Kakao.Link.sendDefault({
             objectType: 'feed',
             content: {

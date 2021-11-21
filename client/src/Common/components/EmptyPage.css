@@ -15,6 +15,7 @@
   height: 508px;
   background-color: transparent;
   transition-duration: 0.3s;
+  z-index: 1;
 }
 .link_btn-line {
   position: fixed;
@@ -56,20 +57,20 @@
 /* 로그인 페이지 */
 .MainLogin > .login {
   width: 508px;
-  height: 508px;
+  height: 708px;
   min-width: 508px;
   min-height: 508px;
   display: flex;
   position: fixed;
   z-index: 1;
-  transform: translate(506px, 225px);
+  transform: translate(506px, 125px);
   /*  */
   /* background-color: rgba(100, 100, 100, 0.5); */
   /*  */
 }
 .MainLogin .login .container {
   width: 100%;
-  height: 100%;
+  height: 508px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,6 +78,17 @@
   text-align: center;
   align-items: center;
 }
+.MainLogin .login .register_container {
+  width: 100%;
+  height: 708px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+}
+
 .MainLogin .login .container .form-group input {
   width: 100%;
   height: 3rem;
@@ -163,11 +175,6 @@
 }
 
 /* 회원가입페이지 */
-.register_container {
-  background-color: white;
-  border-radius: 254px;
-  height: 1016px;
-}
 .register_form {
   display: flex;
   flex-direction: column;

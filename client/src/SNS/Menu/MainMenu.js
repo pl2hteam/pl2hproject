@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -31,9 +31,19 @@ const Nav = styled.nav`
 function MainMenu() {
   const userInfo = useSelector(state => state.user);
 
+  const [CoupleCode, setCoupleCode] = useState({});
 
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.userData) {
+        if (userInfo.userData.couple_code) {
+          setCoupleCode(userInfo.userData.couple_code);
+        }
+      }
+    }
+  }, [userInfo])
 
-if(userInfo.userData.couple_code ==="9999"){return (
+if(CoupleCode ==="9999"){return (
   <Nav>
     <ul>
       <li>
@@ -53,7 +63,7 @@ if(userInfo.userData.couple_code ==="9999"){return (
       </li>     
     </ul>
   </Nav>
-);}else if(userInfo.userData.couple_code !=="9999"){
+);}else if(CoupleCode !=="9999"){
   return(
     <Nav>
     <ul>

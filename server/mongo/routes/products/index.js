@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const uploadProduct = require("./uploadproduct");
+const uploadProduct = require("./productInfo/uploadproduct");
 const uploadImage = require("./imgs/uploadimage");
-const getProducts = require("./getproduct");
-const productitem = require("./productitem");
-const subscribeNumber = require('./subscribeNumber');
+const getProducts = require("./productInfo/getproduct");
+const productitem = require("./productInfo/productitem");
 const saveComment = require('./comments/saveComment');
 const getComments = require('./comments/getComments');
 const uploadFiles = require('./videos/uploadfiles');
@@ -29,7 +28,6 @@ router.use('/thumbnail', thumbnail);      // 썸네일
 
 /* 상품 상세 */
 router.use("/products_by_id", productitem);
-router.use("/subscribeNumber", subscribeNumber);
 
 /* 댓글 */
 router.use("/saveComment", saveComment);

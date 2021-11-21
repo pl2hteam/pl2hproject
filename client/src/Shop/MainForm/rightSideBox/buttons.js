@@ -8,7 +8,6 @@ import styled from 'styled-components';
 const buttons = (props) => {
   const logoutHandler = () => {
     Axios.get(`/api/mongo/users/logout`).then(response => {
-      console.log(response);
       if (response.status === 200) {
         props.history.push("/shop");
       } else {

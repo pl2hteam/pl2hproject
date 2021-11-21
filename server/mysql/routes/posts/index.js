@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
-
 const { Post } = require("../../models");
-
 const write = require('./write');
 const read = require('./read');
 const uploadimage = require('./uploadimage');
 const comment = require('./comments');
-
 
 /* 게시물 작성 */
 router.use('/write', write);

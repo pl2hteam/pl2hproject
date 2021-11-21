@@ -3,7 +3,6 @@ import Auth from "./hoc/auth";
 import EmptyPage from "./components/EmptyPage";
 import { Route, Switch } from "react-router-dom";
 import SnsLoginPage from "../SNS/Main/SnsLogin";
-import ShopLoginPage from "../Shop/LoginMainPage/LoginPage/LoginPage";
 import ShopMainLogin from "../Shop/LoginMainPage/ShopMainLogin";
 
 const MainPage = () => (

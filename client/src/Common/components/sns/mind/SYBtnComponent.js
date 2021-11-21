@@ -15,12 +15,10 @@ const Button = styled.div`
                 : '4rem'
     };
     border-radius: 0.5rem;
-
     cursor:pointer;
     display:flex;
     justify-content:center;
     align-items:center;
-
     font-family:'Jalnan';
     font-weight: 400;
     font-size:1.6rem;
@@ -43,11 +41,9 @@ const Button = styled.div`
 `
 
 function SYBtnComponent({ type, text }) {
-
     return (
         <Button type={type}>{text}</Button>
     );
-
 }
 
 export default SYBtnComponent;

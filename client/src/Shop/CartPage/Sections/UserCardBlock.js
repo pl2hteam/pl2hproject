@@ -1,10 +1,11 @@
 import React from "react";
 
-function UserCardBlock(props) {
+const UserCardBlock = (props) => {
   const renderCartImage = (images) => {
     let image = images[0];
     return `http://localhost:5000/${image}`;
   };
+  
   const renderItems = () =>
     props.products &&
     props.products.map((product) => (
