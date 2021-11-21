@@ -86,11 +86,6 @@ const Picture = forwardRef(
         ref
     ) => {
         const [isModalOpen, setIsModalOpen] = useState(false);
-        console.log(imageUrl);
-        console.log(mood);
-        console.log(review);
-        console.log(title);
-        console.log(id);
 
         const onClose = () => {
             setIsModalOpen(false);

@@ -93,10 +93,7 @@ export default function DetailPage(props) {
                                     </div>
                                 </RightBottomContainer>
                             </ImageContainer>
-                            <PostName>{props.title}</PostName>
-                            <DetailContent>
-                                {props.review}
-                            </DetailContent>
+
                         </LeftContainer>
                         <RightContainer>
                             <div
@@ -106,7 +103,6 @@ export default function DetailPage(props) {
                                     justifyContent: 'space-between',
                                 }}
                             >
-                                <p>평점그래프</p>
                                 <div>
                                     <ClearTwoToneIcon
                                         fontSize="large"
@@ -131,6 +127,10 @@ export default function DetailPage(props) {
                                     overflow: 'auto',
                                 }}
                             >
+                            <PostName>{props.title}</PostName>
+                            <DetailContent>
+                                {props.review}
+                            </DetailContent>
                             </CommentBox>
                         </RightContainer>
                     </MainContentContainer>
