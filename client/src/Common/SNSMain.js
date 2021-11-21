@@ -4,7 +4,6 @@ import Auth from "../Common/hoc/auth";
 import Home from "../SNS/Home";
 import Profile from "../SNS/Profile";
 import Latter from "../SNS/Latter";
-import Mind from "../SNS/Mind";
 import Pic from "../SNS/Pic";
 import Jam from "../SNS/Jam";
 import Write from "../SNS/Profile/Write";
