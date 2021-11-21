@@ -5,7 +5,7 @@ import Content from "../Layout/Content";
 import Cards from "../Layout/Card";
 import { useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
-import MovieFileUpload from './MovieFileUpload';
+import MovieFileUpload from './MovieFileUpload'
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
@@ -194,6 +194,7 @@ const ChangeCondition = (props) => {
           </FlexWrapper>
         </Cards>
       </Sidebar>
+   
       <Content>
         <Cards>
           <ContentSection>
@@ -245,7 +246,7 @@ const ChangeCondition = (props) => {
                 </p>
               </div>
               <Button onClick={onSubmitUserInfo}>회원정보 변경</Button>
-            </Form>
+            </Form>   
           </ContentSection>
         </Cards>
       </Content>

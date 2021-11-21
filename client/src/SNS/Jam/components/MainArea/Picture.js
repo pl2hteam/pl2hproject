@@ -1,6 +1,5 @@
 import React, { useState, forwardRef } from 'react';
 import styled from 'styled-components';
-import DetailPage from '../Detail/DetailPage';
 
 const LeftBottomContainer = styled.div`
     position: absolute;
@@ -86,11 +85,6 @@ const Picture = forwardRef(
         ref
     ) => {
         const [isModalOpen, setIsModalOpen] = useState(false);
-        console.log(imageUrl);
-        console.log(mood);
-        console.log(review);
-        console.log(title);
-        console.log(id);
 
         const onClose = () => {
             setIsModalOpen(false);
@@ -98,15 +92,6 @@ const Picture = forwardRef(
 
         return (
             <>
-                <DetailPage
-                    open={isModalOpen}
-                    close={onClose}
-                    id={id}
-                    imageUrl={imageUrl}
-                    mood={mood}
-                    review={review}
-                    title={title}
-                />
                 <Box>
                     <ImageContainer>
                         <Image
