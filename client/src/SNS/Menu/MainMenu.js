@@ -97,7 +97,12 @@ if(CoupleCode ==="9999"){return (
           사진첩
         </NavLink>
       </li>
-
+      <li>
+        <NavLink to="/sns/Calendar" activeClassName="selected">
+          캘린더
+        </NavLink>
+      </li>
+    
      
     </ul>
   </Nav>

@@ -1,7 +1,7 @@
 {
-  "name": "react-boiler-plate",
+  "name": "pl2h",
   "version": "1.0.0",
-  "description": "PL2H",
+  "description": "pl2h",
   "main": "./server/app.js",
   "engine": {
     "node": "10.16.0",
@@ -10,11 +10,10 @@
   "scripts": {
     "start": "nodemon app",
     "backend": "nodemon app",
-    "client": "cd .. && cd client && yarn start",
     "frontend": "npm run start --prefix client",
-    "dev": "concurrently --kill-others-on-fail \"yarn start\" \"npm run client\""
+    "dev": "concurrently \"npm run backend\" \"yarn start --prefix client\""
   },
-  "author": "PL2H",
+  "author": "pl2h",
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

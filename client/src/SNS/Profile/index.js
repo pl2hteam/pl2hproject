@@ -15,9 +15,9 @@ const Profile = () => {
   const match = useRouteMatch();
   const list = [
     {
-      id: 3,
-      title: 'dadadad',
-      url: '/Dev',
+      id: 1,
+      title: '너',
+      url: '/You',
     },
     {
       id: 3,
@@ -25,17 +25,12 @@ const Profile = () => {
       url: '/Write',
     },
   ];
-const [mbti, setMbti] = useState([]);
-
-  const onMbti = (type) => {
-    setMbti(type)
-  }
 
   return (
     <Layout>
       <Sidebar>
         <Card>
-          <SubMenu title="마이페이지" list={list} />
+          <SubMenu title="STORY" list={list} />
         </Card>
       </Sidebar>
       <Content>

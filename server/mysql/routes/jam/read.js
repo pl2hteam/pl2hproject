@@ -40,7 +40,7 @@ router.post('/', async (req, res, next) => {
     res.status(201).json({ success: true, jams });
   } catch (error) {
     console.error(error);
-    next(error);
+    return res.status(400).send(err);
   }
 });
 
@@ -91,7 +91,7 @@ router.post('/mood', async (req, res, next) => {
 
     res.status(201).json({ success: true, jams });
   } catch (error) {
-    next(error);
+    return res.status(400).send(err);
   }
 });
 

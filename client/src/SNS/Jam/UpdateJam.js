@@ -4,7 +4,6 @@ import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
-import { Subject } from "./Intro/data";
 
 const { Title } = Typography;
 
@@ -65,10 +64,14 @@ const UpdatePic = (props) => {
 
     Axios.post("/api/mysql/jams/write", variables)
       .then((response) => {
+        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+        console.log(response);
+        console.log("답답답ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
         if (response.data.success) {
           alert("Product Successfully Uploaded");
           props.history.push("/sns/jam");
         } else {
+          console.log(response.data, 314141)
           alert("Failed to upload Product");
         }
       });
@@ -92,13 +95,7 @@ const UpdatePic = (props) => {
         <label>타이틀</label>
         <Input onChange={onPostTitle} value={PostTitle} />
         <label>무드</label>
-        <select onChange={onPostMood} value={PostMood}>
-          {Subject.map((item) => (
-            <option key={item.key} value={item.key}>
-              {item.value}
-            </option>
-          ))}
-        </select>
+        <Input onChange={onPostMood} value={PostMood} />
         <label>리뷰</label>
         <Input onChange={onPostReview} value={PostReview} />
         <br />

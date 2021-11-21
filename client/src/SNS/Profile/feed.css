@@ -90,9 +90,9 @@ header {
   border: 1px solid #fafafa;
   border-radius: 100%;
 }
-.main-image img {
-  width: 612px;
-}
+/* .thumbnails img {
+  display: none;
+} */
 .main-id {
   margin-left: 14px;
 }

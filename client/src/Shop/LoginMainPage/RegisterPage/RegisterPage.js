@@ -43,17 +43,17 @@ function RegisterPage(props) {
         confirmPassword: "",
       }}
       validationSchema={Yup.object().shape({
-        name: Yup.string().required("이름을 쓰시오."),
-        lastName: Yup.string().required("이름을 쓰시오"),
+        name: Yup.string().required("이름써"),
+        lastName: Yup.string().required("이름!"),
         email: Yup.string()
-          .email("이메일 형식을 맞춰주세요")
-          .required("이메일을 적어주세요"),
+          .email("이메일 형식 맞춰라")
+          .required("이메일 적어라"),
         password: Yup.string()
-          .min(6, "6자리 이상으로 해주세요.")
-          .required("비밀번호 써주세요."),
+          .min(6, "여섯자가 안되잖아!")
+          .required("비밀버노 써"),
         confirmPassword: Yup.string()
-          .oneOf([Yup.ref("password"), null], "비밀번호가 다릅니다.")
-          .required("비번확인해주세요"),
+          .oneOf([Yup.ref("password"), null], "비밀번호 둘이 안맞잖아")
+          .required("비번확인!!!"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -62,7 +62,7 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`, 
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`, // 나중에 기본 프로필로
             db: false, // MongoDB
           };
 
@@ -83,13 +83,16 @@ function RegisterPage(props) {
           values,
           touched,
           errors,
+          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
+          handleReset,
         } = props;
         return (
           <div className="app">
+            <h2>Sign up</h2>
             <Form
               style={{ minWidth: "375px" }}
               {...formItemLayout}
@@ -98,7 +101,7 @@ function RegisterPage(props) {
               <Form.Item required label="이름">
                 <Input
                   id="name"
-                  placeholder="이름입력해주세요"
+                  placeholder="이름입력해용"
                   type="text"
                   value={values.name}
                   onChange={handleChange}
@@ -117,7 +120,7 @@ function RegisterPage(props) {
               <Form.Item required label="성">
                 <Input
                   id="lastName"
-                  placeholder="성을 적어주세요"
+                  placeholder="넌 무슨 씨니?"
                   type="text"
                   value={values.lastName}
                   onChange={handleChange}
@@ -135,7 +138,7 @@ function RegisterPage(props) {
 
               <Form.Item
                 required
-                label="이메일"
+                label="이멜"
                 hasFeedback
                 validateStatus={
                   errors.email && touched.email ? "error" : "success"
@@ -143,7 +146,7 @@ function RegisterPage(props) {
               >
                 <Input
                   id="email"
-                  placeholder="이메일을 입력해주세요"
+                  placeholder="이메일을 입력해용"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -161,7 +164,7 @@ function RegisterPage(props) {
 
               <Form.Item
                 required
-                label="비밀번호"
+                label="비밀버농"
                 hasFeedback
                 validateStatus={
                   errors.password && touched.password ? "error" : "success"
@@ -169,7 +172,7 @@ function RegisterPage(props) {
               >
                 <Input
                   id="password"
-                  placeholder="비밀번호도 써주세요"
+                  placeholder="비밀번호도 쓰자"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -185,10 +188,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="비밀번호 확인" hasFeedback>
+              <Form.Item required label="비밀버노 화긴" hasFeedback>
                 <Input
                   id="confirmPassword"
-                  placeholder="비밀번호 한번더 적어주세요"
+                  placeholder="비밀번호 함 더 쓰자"
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
@@ -210,7 +213,7 @@ function RegisterPage(props) {
                   type="primary"
                   disabled={isSubmitting}
                 >
-                  가입하기
+                  가입시켜줭ㅎㅎㅎㅎ
                 </Button>
               </Form.Item>
             </Form>

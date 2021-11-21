@@ -3,7 +3,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 
-
 import {
     ImageContainer,
     LeftContainer,
@@ -42,7 +41,7 @@ export default function DetailPage(props) {
                         <LeftContainer>
                             <ImageContainer>
                                 <img
-                                    src={`13.124.13.37:5000/${props.imageUrl}`}
+                                    src={`http://localhost:5000/${props.imageUrl}`}
 
                                     alt={'사진'}
                                     style={{

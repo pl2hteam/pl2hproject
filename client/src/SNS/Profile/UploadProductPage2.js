@@ -4,6 +4,7 @@ import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import "./UploadProductPage2.css";
 
 const { Title } = Typography;
 
@@ -36,19 +37,20 @@ const UploadProductPage2 = (props) => {
 
   const updateDuration = (newDuration) => {
     setDuration(newDuration);
-  }
+  };
 
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
   console.log(user);
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
-
-    if (
-      !PostTitle ||
-      !PostContent ||
-      !PostViews
-    ) {
-      return alert("fill all the fields first!");
+    if (!PostTitle && !PostContent && !PostImg) {
+      return alert("아무것도 안썼잖아 이자식아");
+    } else if (!PostTitle) {
+      return alert("제목을 입력해라 이자식아");
+    } else if (!PostContent) {
+      return alert("내용을 입력해라 이자식아");
+    } else if (!PostImg) {
+      return alert("사진을 첨부해라 이자식아");
     }
 
     console.log(props.user.userData.id);
@@ -62,55 +64,58 @@ const UploadProductPage2 = (props) => {
       duration: Duration,
     };
 
-    Axios.post("/api/mysql/posts/write", variables)
-      .then((response) => {
-        if (response.data.success) {
-          alert("Product Successfully Uploaded");
-          props.history.push("/sns/profile");
-        } else {
-          console.log(response.data)
-          alert("Failed to upload Product");
-        }
-      });
+    Axios.post("/api/mysql/posts/write", variables).then((response) => {
+      if (response.data.success) {
+        alert("업로드 하였읍니다");
+        props.history.push("/sns/profile");
+      } else {
+        console.log(response.data);
+        alert("업로드에 실패하였읍니다");
+      }
+    });
   };
 
   let postvideo = {
     updateImages,
     updateVideoPath,
-    updateDuration
-  }
+    updateDuration,
+  };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+    <div style={{ width: "100%", margin: "0" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Title level={2}>커플 상품</Title>
+        <Title className="sns-upload-title" level={2}>
+          게시물 작성
+        </Title>
       </div>
 
-      <Form onSubmit={onSubmit}>
+      <Form className="sns-uplaod_form" onSubmit={onSubmit}>
         {/* DropZone */}
         <MovieFileUpload refresh={postvideo} />
 
-        <br />
-        <br />
-        <label>제목</label>
-        <Input onChange={onPostTitle} value={PostTitle} />
-        <br />
-        <br />
-        <label>내용</label>
-        <Input onChange={onPostContent} value={PostContent} />
-        <br />
-        <br />
-        <label>가격</label>
-        <Input onChange={onPostViews} value={PostViews} type="number" />
-        <br />
-        <br />
-        <label>수량</label>
-        <br />
-        <br />
-        <Button onClick={onSubmit}>Submit</Button>
+        <div className="sns-upload-content_box">
+          <div className="sns-upload-content_box-title_box">
+            <label>제목</label>
+            <Input onChange={onPostTitle} value={PostTitle} />
+          </div>
+
+          <div className="sns-upload-content_box-content_box">
+            <label>내용</label>
+            <Input
+              style={{ width: "100%", height: "100%" }}
+              onChange={onPostContent}
+              value={PostContent}
+            />
+          </div>
+          <Button className="sns-upload-upload_btn" onClick={onSubmit}>
+            등록
+          </Button>
+        </div>
+
+        {/* <Input onChange={onPostViews} value={PostViews} type="number" /> */}
       </Form>
     </div>
   );
-}
+};
 
 export default withRouter(UploadProductPage2);

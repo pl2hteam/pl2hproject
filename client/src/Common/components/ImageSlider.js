@@ -14,7 +14,7 @@ const ImageSlider = (props) => {
   let data = [];
   {props.images.images.map((image, index) => (
     data.push({
-      image: `13.124.13.37:5000/${image}`
+      image: `http://localhost:5000/${image}`
     })
   ))}
   

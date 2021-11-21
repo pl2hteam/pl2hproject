@@ -10,7 +10,19 @@ a:active {
 .shop-main {
   width: 100%;
   display: flex;
+  justify-content: flex-end;
+  /* overflow-y: scroll; */
+  padding-right: 10px;
 }
+/* .shop-main::-webkit-scrollbar {
+  width: 10px;
+}
+.shop-main::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+}
+.shop-main::-webkit-scrollbar-track {
+  background-color: grey;
+} */
 .shop-main * {
   color: white;
 }
@@ -21,12 +33,13 @@ a:active {
   margin-bottom: 10px;
 }
 .shop-main-sidebar {
-  /* margin-left: -15px; */
+  left: 65px;
   width: 150px;
   max-height: 400px;
   display: flex;
   flex-direction: column;
   line-height: 1.2rem;
+  position: fixed;
 }
 
 .shop-main-content {
