@@ -4,7 +4,6 @@ import Main from './Main';
 import Info from './Info';
 import Dev from './Dev';
 
-
 const Intro = ({ match }) => {
   let { type } = match.params;
   type = type ? type : 'main';

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Typography, Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
-import Atmosphere from './Atmosphere';
 
 const { Title } = Typography;
-const { TextArea } = Input;
 
 const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");
   const [PostMood, setPostMood] = useState("");
   const [PostImg, setPostImg] = useState("");
-  const [PostViews, setPostViews] = useState(0);
   const [VideoPath, setVideoPath] = useState([]);
   const [Duration, setDuration] = useState([]);
 
@@ -27,10 +24,6 @@ const UpdatePic = (props) => {
   const updateImages = (newImages) => {
     setPostImg(newImages);
   };
-
-  // const onPostViews = (event) => {
-  //   setPostViews(parseInt(event.currentTarget.value));
-  // };
 
   const updateVideoPath = (newVideoPath) => {
     setVideoPath(newVideoPath);
@@ -47,9 +40,6 @@ const UpdatePic = (props) => {
 
     if (
       !PostTitle
-
-      // !PostImg ||
-
     ) {
       return alert("fill all the fields first!");
     }
@@ -96,7 +86,6 @@ const UpdatePic = (props) => {
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
         <MovieFileUpload refresh={postvideo} />
-
         <br />
         <br />
         <label>타이틀</label>
@@ -105,11 +94,8 @@ const UpdatePic = (props) => {
         <Input onChange={onPostMood} value={PostMood} />
         <br />
         {/* <Atmosphere /> */}
-
-
         <br />
         <br />
-
         <Button onClick={onSubmit}>Submit</Button>
       </Form>
     </div>

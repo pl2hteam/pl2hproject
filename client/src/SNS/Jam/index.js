@@ -5,16 +5,13 @@ import Card from '../Layout/Card';
 import SubMenu from '../Menu/SubMenu';
 import Sidebar from '../Layout/Sidebar';
 import Content from '../Layout/Content';
-import Intro from './Intro';
 import Play from './Play';
 import Favorite from './Favorite';
-import Location from './MapContainer'
 import Write from './Write'
 
 const Profile = () => {
   const match = useRouteMatch();
   const list = [
-
     {
       id: 1,
       title: '👭내 인맥',
@@ -44,11 +41,8 @@ const Profile = () => {
           <Switch>
             <Route exact path={`${match.path}`} component={Play} />
             <Route exact path={`${match.path}/Play`} component={Play} />
-
             <Route path={`${match.path}/favorite`} component={Favorite} />
             <Route path={`${match.path}/Write`} component={Write} />
-
-
           </Switch>
         </Card>
       </Content>
