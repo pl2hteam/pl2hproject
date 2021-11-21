@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Main from './Intro/Main'
-import Feed from './Intro/css/feed.css'
-import ImageSlider from '../../Common/components/SNSImageSlider ';
 import { useSelector } from 'react-redux';
+import './Intro/css/feed.css'
 
-
-import { Typography, Button, message, Input } from "antd";
 const Modal = (props) => {
-  console.log(props, 31313131);
-  const userInfo = useSelector(state => state.user)
-  console.log(userInfo);
+  const userInfo = useSelector(state => state.user);
 
   const {
-
     setOpenModal,
-
   } = props;
 
-  console.log(props)
   return (
     <div className="feed_one">
       <Form>
@@ -43,11 +34,6 @@ const Modal = (props) => {
                 <img class="img-profile pic" src={`http://localhost:5000/${userInfo.userData.image}`} />
                 <span class="userID main-id point-span">{userInfo.userData.name}</span>
               </div>
-              {/* <img
-              class="icon-react icon-more"
-              src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
-              alt="more"
-            /> */}
             </header>
 
             <div class="icons-react">
@@ -79,7 +65,6 @@ const Modal = (props) => {
                 </p>
               </div>
               <div class="description">
-                {/* <p> <Meta description={`111${postData.content}`} /> 🌱</p> */}
               </div>
               <div class="comment-section">
                 <ul class="comments">
@@ -115,20 +100,15 @@ const Modal = (props) => {
               </div>
             </div>
             <div class="comment">
-
-              {/* <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." />
-     <button type="submit" class="submit-comment" disabled>게시</button> */}
             </div>
           </div>
         </article>
-        {/* <Delete modal={props} /> */}
       </Form>
     </div>
 
 
   );
 };
-
 
 const Form = styled.div`
   position: absolute;
@@ -140,7 +120,6 @@ const Form = styled.div`
   color: black;
   z-index: 999;
 `;
-
 
 const Close = styled.div`
   position: absolute;
@@ -157,4 +136,5 @@ const Close = styled.div`
   cursor: pointer;
   z-index: 999;
 `;
+
 export default Modal;

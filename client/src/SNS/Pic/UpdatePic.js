@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Typography, Button, Form, message, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { UploadStyle } from "./style/uploadstyle";
-
-const { Title } = Typography;
-const { TextArea } = Input;
 
 const UpdatePic = (props) => {
   const [PostTitle, setPostTitle] = useState("");

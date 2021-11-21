@@ -1,6 +1,5 @@
-import styled from "styled-components";
 import React, { useEffect, useState } from "react";
-import style from './css/style.css'
+import './css/style.css';
 import Axios from "axios";
 import { withRouter } from "react-router";
 import Modal from "../Modal"
@@ -58,7 +57,6 @@ const Main = (props) => {
     ) {
       return alert("fill all the fields first!");
     }
-
     const variables = {
       content: profilecontent,
     };
@@ -141,10 +139,7 @@ const Main = (props) => {
           <h2>커플이 아닙니다 사진을 못봐요</h2>
         </div>
       ) : (
-        
-        <div class="page">
-       
-       
+        <div class="page">       
 
         <ul class="profile-numbers responsive-profile">
             <li>
@@ -194,18 +189,10 @@ const Main = (props) => {
             </div>
         </div>
         <div class="gallery-pics inner-wrap" >
-     
-
         <div class="pic-wrap"onSubmit={onSubmit} >
-          
-      
           {renderCards}   
-          
-          
-</div>
         </div>
-  
-   
+      </div>
     </div>
       )}
       <br />
