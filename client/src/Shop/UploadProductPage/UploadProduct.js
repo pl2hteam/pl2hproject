@@ -96,7 +96,6 @@ const UploadProductPage = (props) => {
 
     Axios.post("/api/mongo/product/uploadProduct", variables).then(
       (response) => {
-        // console.log("답신은 : ", response);
         if (response.data.success) {
           alert("아이템이 거래소에 등록되었습니다.");
           props.history.push("/shop/main");
@@ -112,7 +111,7 @@ const UploadProductPage = (props) => {
     updateVideoPath,
     updateDuration,
   };
-  console.log(ItemNumber);
+
   return (
     <UploadStyle>
       <div style={{ maxWidth: "700px", margin: "0rem auto" }}>

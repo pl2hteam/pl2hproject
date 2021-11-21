@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../../../schemas/User");
-const { Cart } = require("../../../schemas/Cart");
 
 /////////////////////////////////////////////////////
 /*                                                 */

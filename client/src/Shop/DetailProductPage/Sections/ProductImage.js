@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ImageSlider from "./ImageSlider";
+import './style/ProductImage.css'
 
 const ProductImage = (props) => {
   const [Video, setVideo] = useState([]);
-  console.log(props.detail);
 
   useEffect(() => {
     let videos = [];
@@ -26,7 +26,7 @@ const ProductImage = (props) => {
         <div>
           <ImageSlider detail={props.detail} />
           <video
-            style={{ width: "100%" }}
+            className="videobox"
             src={`http://localhost:5000/${Video} `}
             controls
             auto

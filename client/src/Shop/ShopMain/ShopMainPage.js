@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Col, Card, Row } from "antd";
 import CheckBox from "./Section/CheckBox";
 import { itemNumber } from "./Section/itemDatas";
 import Radiobox from "./Section/RadioBox";
 import { price } from "./Section/priceDatas";
-import SearchFeature from "./Section/SearchFeature";
-import ImageShadow from "react-image-shadow";
 import "react-image-shadow/assets/index.css";
-import "./ShopMainPage.css";
+import "./style/ShopMainPage.css";
 import acorn from "../images/acorn.png";
 
-const { Meta } = Card;
-
 const ShopMainPage = (pdFilter) => {
-  console.log(pdFilter);
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(12);
@@ -29,7 +23,6 @@ const ShopMainPage = (pdFilter) => {
   const getProducts = (body) => {
     Axios.post("/api/mongo/product/getProducts", body).then((response) => {
       if (response.data.success) {
-        console.log(response.data);
         if (body.loadMore) {
           setProducts([...Products, ...response.data.products]);
         } else {
@@ -88,7 +81,6 @@ const ShopMainPage = (pdFilter) => {
       filters: filters,
     };
     getProducts(body);
-    console.log(body);
     setSkip(0);
   };
 
@@ -105,7 +97,6 @@ const ShopMainPage = (pdFilter) => {
     return array;
   };
 
-  // category 는 체크박스랑 라디오 박스를 나누기 위한 것
   const handleFilters = (filters, category) => {
     const newFilters = { ...Filters };
     newFilters[category] = filters;
@@ -113,26 +104,11 @@ const ShopMainPage = (pdFilter) => {
     if (category === "price") {
       let priceValues = handlePrice(filters);
       newFilters[category] = priceValues;
-      console.log(newFilters);
     }
 
     showFilteredResults(newFilters);
     setFilters(newFilters);
   };
-
-  // // 텍스트 검색
-  // const updateSearchTerm = (newSearchTerm) => {
-  //   let body = {
-  //     skip: 0,
-  //     limit: Limit,
-  //     filters: Filters,
-  //     searchTerm: newSearchTerm,
-  //   };
-
-  //   setSkip(0);
-  //   setSearchTerm(newSearchTerm);
-  //   getProducts(body);
-  // };
 
   // default
   useEffect(() => {
@@ -150,7 +126,6 @@ const ShopMainPage = (pdFilter) => {
         <h1 style={{ fontSize: "2rem", color: "white" }}>상점</h1>
       </div>
       <div className="shop-main">
-        {/* 상품, 가격 필터 */}
         <div className="shop-main-sidebar">
           <div>
             <CheckBox
@@ -166,24 +141,11 @@ const ShopMainPage = (pdFilter) => {
           </div>
         </div>
         <div className="shop-main-content">
-          {/* 검색란 */}
-          {/* <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
-        }}
-      >
-        <SearchFeature refreshFunction={updateSearchTerm} />
-      </div> */}
-
-          {/* 등록된 상품이 0개면 "상품없다고 출력  */}
           {Products.length === 0 ? (
             <div className="no_item">
               <h2>등록된 아이템이 없읍니다</h2>
             </div>
           ) : (
-            // 상품 있으면 목록 출력
             <div className="shop-main-content-item_list">{renderCards}</div>
           )}
 

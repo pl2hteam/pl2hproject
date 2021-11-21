@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../../../schemas/User");
-const { Cart } = require("../../../schemas/Cart");
 const { Product } = require("../../../schemas/Product");
 
 /////////////////////////////////////////////////////
@@ -12,7 +11,7 @@ const { Product } = require("../../../schemas/Product");
 
 router.get("/", (req, res) => {
     User.findOneAndUpdate(
-      { _id: req.user._id },
+      { email: req.user.email },
       {
         $pull: { cart: { id: req.query._id } },
       },
