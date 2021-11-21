@@ -88,11 +88,6 @@ if(CoupleCode ==="9999"){return (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/sns/Mind" activeClassName="selected">
-          심리
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/sns/Pic" activeClassName="selected">
           사진첩
         </NavLink>
