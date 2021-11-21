@@ -35,7 +35,7 @@ function ProfileContents() {
   return (
     <Container>
       <ImgWrap>
-        <img src={`13.124.13.37:5000/${userImg}`} alt="profile" />
+        <img src={`http://13.124.13.37:5000/${userImg}`} alt="profile" />
       </ImgWrap>
       <ProfileP>
         {userInfo.userData.message}

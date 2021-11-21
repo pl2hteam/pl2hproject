@@ -195,7 +195,7 @@ const Home = (props) => {
             <ProfileSection >
               <TodayIs />
               <FlexWrapperImage>
-                <img src={`13.124.13.37:5000/${userImg}`} alt="profile" />
+                <img src={`http://13.124.13.37:5000/${userImg}`} alt="profile" />
               </FlexWrapperImage>
 
               <Message><p>{User.message}</p></Message>

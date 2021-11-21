@@ -24,14 +24,14 @@ const Modal = (props) => {
           <div class="main-image_box">
             <img
               class="pic"
-              src={`13.124.13.37:5000/${props.modal}`}
+              src={`http://13.124.13.37:5000/${props.modal}`}
               alt=""
             />
           </div>
           <div className="main-reaction_box">
             <header>
               <div class="profile-of-article">
-                <img class="img-profile pic" src={`13.124.13.37:5000/${userInfo.userData.image}`} />
+                <img class="img-profile pic" src={`http://13.124.13.37:5000/${userInfo.userData.image}`} />
                 <span class="userID main-id point-span">{userInfo.userData.name}</span>
               </div>
             </header>
