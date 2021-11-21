@@ -2,7 +2,7 @@ import Modal from "../Modal";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
-import ImageSlider from "../../../Common/components/SNSImageSlider "
+import ImageSlider from "../../../Common/components/SNSImageSlider ";
 import { withRouter } from "react-router";
 import Comment from "../Comment/Comment";
 
@@ -14,6 +14,7 @@ const Main = (props) => {
   const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
 
+  console.log(props);
   // 상품목록 불러오기
   const getPosts = (body) => {
     Axios.post("/api/mysql/posts/read", body).then((response) => {
@@ -36,9 +37,7 @@ const Main = (props) => {
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
-    if (
-      !profilecontent
-    ) {
+    if (!profilecontent) {
       return alert("fill all the fields first!");
     }
 
@@ -46,17 +45,16 @@ const Main = (props) => {
       content: profilecontent,
     };
 
-    Axios.post("/api/mysql/posts/write", variables)
-      .then((response) => {
-        console.log('props.user 는 : ', response);
-        if (response.data.success) {
-          alert("Product Successfully Uploaded");
-          props.history.push("/sns");
-        } else {
-          console.log(response.data)
-          alert("Failed to upload Product");
-        }
-      });
+    Axios.post("/api/mysql/posts/write", variables).then((response) => {
+      console.log("props.user 는 : ", response);
+      if (response.data.success) {
+        alert("Product Successfully Uploaded");
+        props.history.push("/sns");
+      } else {
+        console.log(response.data);
+        alert("Failed to upload Product");
+      }
+    });
   };
 
   // 더보기 버튼
@@ -67,95 +65,147 @@ const Main = (props) => {
       skip: skip,
       limit: Limit,
       loadMore: true,
-
     };
 
     getPosts(variables);
     setSkip(skip);
-  }; const [openModal, setOpenModal] = useState(false);
+  };
+  const [openModal, setOpenModal] = useState(false);
+  const [Index, setIndex] = useState([]);
 
   const renderCards = Posts.map((postData, index) => {
     if (postData || postData.HashtagId) {
-      console.log(postData);
-      return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
-        setOpenModal(true);
-      }}>
-        <Card hoverable={true}>
-          <article>
-            <header>
-              {/* 사용자 정보 */}
-              <div class="profile-of-article">
-                <img class="img-profile pic" src={`http://localhost:5000/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
-                <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
+      return (
+        <Col
+          lg={3}
+          md={4}
+          xs={8}
+          key={index}
+          onSubmit={onSubmit}
+          onDoubleClick={() => {
+            setIndex(index);
+            setOpenModal(true);
+          }}
+        >
+          <Card hoverable={true}>
+            <article>
+              <header>
+                {/* 사용자 정보 */}
+                <div class="profile-of-article">
+                  <img
+                    class="img-profile pic"
+                    src={`http://localhost:5000/${postData.UserId.image}`}
+                    alt="dlwlrma님의 프로필 사진"
+                  />
+                  <span class="userID main-id point-span">
+                    <Meta description={`${postData.UserId.name}`} />
+                  </span>
+                </div>
+
+                {/* 추가 정보 *** */}
+                <img
+                  class="icon-react icon-more"
+                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
+                  alt="more"
+                />
+              </header>
+              {openModal && (
+                <Modal
+                  modal={postData}
+                  index={Index}
+                  setOpenModal={setOpenModal}
+                  openModal={openModal}
+                />
+              )}
+
+              {/* 이미지 정보 */}
+              <div class="main-image">
+                <ImageSlider images={postData} />
               </div>
 
-              {/* 추가 정보 *** */}
-              <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
-
-            </header>
-            {openModal && (
-              <Modal
-                modal={postData}
-                setOpenModal={setOpenModal}
-                openModal={openModal}
-              />
-            )}
-
-            {/* 이미지 정보 */}
-            <div class="main-image">
-              <ImageSlider images={postData} />
-            </div>
-
-            {/* 좋아요, 댓글 더보기, 공유, 북마크 */}
-            <div class="icons-react">
-              <div class="icons-left">
-                <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트" />
-                <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선" />
-                <img class="icon-react" src="img/dm.png" alt="DM" />
-              </div>
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크" />
-            </div>
-
-            {/* 본문 */}
-            <div class="reaction">
-              {/* 좋아요 개수 표기 */}
-              <div class="liked-people">
-                <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
+              {/* 좋아요, 댓글 더보기, 공유, 북마크 */}
+              <div class="icons-react">
+                <div class="icons-left">
+                  <img
+                    class="icon-react"
+                    src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
+                    alt="하트"
+                  />
+                  <img
+                    class="icon-react"
+                    src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png"
+                    alt="말풍선"
+                  />
+                  <img class="icon-react" src="img/dm.png" alt="DM" />
+                </div>
+                <img
+                  class="icon-react"
+                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png"
+                  alt="북마크"
+                />
               </div>
 
-              {/* 설명 */}
-              <div class="description">
-                <p> <Meta description={`설명 글란 : ${postData.content}`} /> 🌱</p>
-              </div>
+              {/* 본문 */}
+              <div class="reaction">
+                {/* 좋아요 개수 표기 */}
+                <div class="liked-people">
+                  <p>
+                    <p class="point-span">johnnyjsuh</p>님{" "}
+                    <span class="point-span">외 2,412,751명</span>이 좋아합니다
+                  </p>
+                </div>
 
-              {/* 댓글 란 Comment 안에 넣기 */}
-              <div class="comment-section">
-                <ul class="comments">
-                  <li>
-                    <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                    <div>
-                      <img class="comment-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
-                      <div class="comment-like">
-                        <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트" />
-                        <img class="comment-heart-liked" src="img/liked.png" alt="좋아요된하트" />
+                {/* 설명 */}
+                <div class="description">
+                  <p>
+                    {" "}
+                    <Meta description={`설명 글란 : ${postData.content}`} /> 🌱
+                  </p>
+                </div>
+
+                {/* 댓글 란 Comment 안에 넣기 */}
+                <div class="comment-section">
+                  <ul class="comments">
+                    <li>
+                      <span>
+                        <span class="point-span userID">postmalone</span>내가
+                        입으면 더 잘어울릴 것 같아
+                      </span>
+                      <div>
+                        <img
+                          class="comment-more"
+                          src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
+                          alt="more"
+                        />
+                        <div class="comment-like">
+                          <img
+                            class="comment-heart"
+                            src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
+                            alt="하트"
+                          />
+                          <img
+                            class="comment-heart-liked"
+                            src="img/liked.png"
+                            alt="좋아요된하트"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                </ul>
+                    </li>
+                  </ul>
 
-                {/* 몇 분전인지 표기 */}
-                <div class="time-log">
-                  <span>32분 전</span>
+                  {/* 몇 분전인지 표기 */}
+                  <div class="time-log">
+                    <span>32분 전</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="hl"></div>
-            <Comment postData={postData} />
-
-          </article >
-        </Card >
-      </Col >;
+              <div class="hl"></div>
+              <Comment postData={postData} />
+            </article>
+          </Card>
+        </Col>
+      );
     } else {
       return null;
     }
@@ -170,7 +220,7 @@ const Main = (props) => {
 
     getPosts(variables);
   }, []);
-
+  console.log(props);
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
@@ -196,9 +246,7 @@ const Main = (props) => {
           <h2>등록된 상품이 없읍니다</h2>
         </div>
       ) : (
-        <div>
-          {renderCards}
-        </div>
+        <div>{renderCards}</div>
       )}
       <br />
       {PostSize >= Limit && (

@@ -30,6 +30,8 @@
 }
 .main-reaction_box {
   width: 350px;
+  display: flex;
+  flex-direction: column;
 }
 main {
   width: 960px;

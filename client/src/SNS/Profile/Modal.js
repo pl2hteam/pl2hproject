@@ -5,6 +5,7 @@ import Delete from "./Intro/delete";
 
 const Modal = (props) => {
   const { setOpenModal } = props;
+  const Index = props.index;
   return (
     <div className="feed_one">
       <Form>
@@ -20,14 +21,14 @@ const Modal = (props) => {
             <img
               class="pic"
               src="http://img.khan.co.kr/news/2020/10/16/2020101601001687000138341.jpg"
+              // src={`http://localhost:5000/${props.modal.images[{ Index }]}`}
               alt="johnnyjsuh님의 프로필 사진"
             />
             {/* <ImageSlider images={postData} /> */}
           </div>
           <div className="main-reaction_box">
             <header>
-              <div class="profile-of-article">
-              </div>
+              <div class="profile-of-article"></div>
               <img
                 class="icon-react icon-more"
                 src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
@@ -68,8 +69,7 @@ const Modal = (props) => {
                   <span class="point-span">외 2,412,751명</span>이 좋아합니다
                 </p>
               </div>
-              <div class="description">
-              </div>
+              <div class="description"></div>
               <div class="comment-section">
                 <ul class="comments">
                   <li>
@@ -103,11 +103,10 @@ const Modal = (props) => {
                 </div>
               </div>
             </div>
-            <div class="comment">
-            </div>
+            <div class="comment"></div>
+            <Delete modal={props} />
           </div>
         </article>
-        <Delete modal={props} />
       </Form>
     </div>
   );
