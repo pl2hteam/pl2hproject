@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import './Intro/css/feed.css'
 
 const Modal = (props) => {
   const userInfo = useSelector(state => state.user);
+  const [Img, setImg] = useState([]);
 
+  useEffect(() => {
+    setImg(props.modal);
+  }, [])
+  
   const {
     setOpenModal,
   } = props;
@@ -24,7 +29,7 @@ const Modal = (props) => {
           <div class="main-image_box">
             <img
               class="pic"
-              src={`http://13.124.13.37:5000/${props.modal}`}
+              src={`http://13.124.13.37:5000/${Img[props.index]}`}
               alt=""
             />
           </div>

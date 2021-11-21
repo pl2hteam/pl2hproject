@@ -28,7 +28,7 @@ sequelize
     console.error(err);
   });
 
-/* 몽고 DB 연결 */
+/* 몽고 DB 연결 */ //
 const connect = require("./mongo/schemas");
 connect();
 

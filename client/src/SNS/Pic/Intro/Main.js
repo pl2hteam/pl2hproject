@@ -86,30 +86,38 @@ const Main = (props) => {
 
     getPosts(variables);
     setSkip(skip); 
-  };const [openModal, setOpenModal] = useState(false);
- 
-  const renderCards = Posts.map((postData) => {
+  };
+  
+  const [openModal, setOpenModal] = useState(false);
+  const [Index, setIndex] = useState([]);
+
+  const ImgArray = [];
+  const renderCards = Posts.map((postData, index) => {
+    ImgArray.push(postData.images);
+
+    let data;
     return (
       <div class="pic" >
       <div class="opacity-overlay" onDoubleClick={() => {
+        setIndex(index);
         setOpenModal(true);
       }}>
           {openModal && (
               <Modal
-                modal={postData.images[0]}
-                 aaaa={postData}
+                modal={ImgArray}
+                index={Index}
+                aaaa={postData}
  
                 setOpenModal={setOpenModal}
                 openModal={openModal}
-
-
               />
             )}
             <img
               style={{ width: "100%", maxHeight: "500px" }}
               src={`http://13.124.13.37:5000/${postData.images}`}
               alt="productImage"
-              images={postData}/>
+              images={postData}
+            />
       </div>
       
       <div class="icons">
