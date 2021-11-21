@@ -5,17 +5,13 @@ import Content from "../Layout/Content";
 import Cards from "../Layout/Card";
 import { useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
-import MovieFileUpload from './MovieFileUpload';
+import MovieFileUpload from "./MovieFileUpload";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
 import { withRouter } from "react-router-dom";
 
-import {
-  MdMailOutline,
-  MdLocationOn,
-  MdPhoneIphone,
-} from "react-icons/md";
+import { MdMailOutline, MdLocationOn, MdPhoneIphone } from "react-icons/md";
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -97,8 +93,6 @@ const ProfileSection = styled.section`
   }
 `;
 
-
-
 const ChangeCondition = (props) => {
   const userInfo = useSelector((state) => state.user);
 
@@ -136,15 +130,14 @@ const ChangeCondition = (props) => {
       message: ChangeMessage,
     };
 
-    Axios.post("/api/mysql/conditions/update", variables)
-      .then((response) => {
-        if (response.data.success) {
-          alert("정보가 변경되었습니다.");
-          props.history.push("/sns/Main");
-        } else {
-          alert("정보 변경에 실패하였습니다.");
-        }
-      });
+    Axios.post("/api/mysql/conditions/update", variables).then((response) => {
+      if (response.data.success) {
+        alert("정보가 변경되었습니다.");
+        props.history.push("/sns/Main");
+      } else {
+        alert("정보 변경에 실패하였습니다.");
+      }
+    });
   };
 
   const onSubmitUserInfo = () => {
@@ -153,31 +146,30 @@ const ChangeCondition = (props) => {
       image: ChangeMyImage,
       couple_code: ChangeCoupleCode,
       message: ChangeMessage,
-      email: ChangeEmail,
+      // email: ChangeEmail,
       phone: ChangePhone,
       address: ChangeAddress,
     };
 
-    Axios.post("/api/mysql/conditions/update", variables)
-      .then((response) => {
-        if (response.data.success) {
-          alert("정보가 변경되었습니다.");
-          props.history.push("/sns/Main");
-        } else {
-          alert("정보 변경에 실패하였습니다.");
-        }
-      });
+    Axios.post("/api/mysql/conditions/update", variables).then((response) => {
+      if (response.data.success) {
+        alert("정보가 변경되었습니다.");
+        props.history.push("/sns/Main");
+      } else {
+        alert("정보 변경에 실패하였습니다.");
+      }
+    });
   };
 
   let userImg;
   if (props.user.userData) {
-    userImg = props.user.userData.image
+    userImg = props.user.userData.image;
     console.log(props.user.userData.image);
   }
 
   let postvideo = {
     updateImages,
-  }
+  };
 
   return (
     <Layout>
@@ -189,7 +181,6 @@ const ChangeCondition = (props) => {
               <hr />
               <h2>상태메세지</h2>
               <p>{userInfo.userData.message}</p>
-
             </ProfileSection>
           </FlexWrapper>
         </Cards>
@@ -201,35 +192,67 @@ const ChangeCondition = (props) => {
               <MovieFileUpload refresh={postvideo} />
               <p>
                 <label>커플코드</label>
-                <Input onChange={onChangeCoupleCode} value={ChangeCoupleCode} placeholder={userInfo.userData.couple_code} />
+                <Input
+                  onChange={onChangeCoupleCode}
+                  value={ChangeCoupleCode}
+                  placeholder={userInfo.userData.couple_code}
+                />
               </p>
               <p>
                 <label>상태메세지</label>
-                <Input onChange={onChangeMessage} value={ChangeMessage} placeholder={userInfo.userData.message} />
+                <Input
+                  onChange={onChangeMessage}
+                  value={ChangeMessage}
+                  placeholder={userInfo.userData.message}
+                />
               </p>
               <Button onClick={onSubmit}>수정</Button>
             </Form>
             <Form onSubmit={onSubmitUserInfo}>
               <div style={{ width: "75%", margin: "3rem auto" }}>
                 <h2>MY CONDITION</h2>
-                <p>
+                {/* <p>
                   <label>이메일</label>
                   <MdMailOutline />
-                  <Input onChange={onChangeEmail} value={ChangeEmail} placeholder={userInfo.userData.email} />
-                  <Input onChange={onChangeEmail} value={userInfo.userData.email} hidden />
-                </p>
+                  <Input
+                    onChange={onChangeEmail}
+                    value={ChangeEmail}
+                    placeholder={userInfo.userData.email}
+                  />
+                  <Input
+                    onChange={onChangeEmail}
+                    value={userInfo.userData.email}
+                    hidden
+                  />
+                </p> */}
 
                 <p>
                   <label>연락처</label>
                   <MdPhoneIphone />
-                  <Input onChange={onChangePhone} value={ChangePhone} placeholder={userInfo.userData.phone} />
-                  <Input onChange={onChangePhone} value={userInfo.userData.phone} hidden />
+                  <Input
+                    onChange={onChangePhone}
+                    value={ChangePhone}
+                    placeholder={userInfo.userData.phone}
+                  />
+                  <Input
+                    onChange={onChangePhone}
+                    value={userInfo.userData.phone}
+                    hidden
+                  />
                 </p>
                 <p>
                   <label>주소</label>
                   <MdLocationOn />
-                  <Input onChange={onChangeAddress} value={ChangeAddress} placeholder={userInfo.userData.address} />
-                  <Input onChange={onChangeAddress} value={userInfo.userData.address} hidden />
+                  <Input
+                    onChange={onChangeAddress}
+                    value={ChangeAddress}
+                    placeholder={userInfo.userData.address}
+                  />
+                  <Input
+                    onChange={onChangeAddress}
+                    value={userInfo.userData.address}
+                    hidden
+                  />
                 </p>
                 <p>
                   <label>이름</label>
