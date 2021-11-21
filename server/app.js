@@ -8,6 +8,10 @@ const { sequelize } = require("./mysql/models");
 const passportConfig = require("./mysql/passport");
 dotenv.config();
 
+const http=require('http').createServer(app);
+http.listen(5000,function(){
+  console.log(`listening on 5000`);
+})
 /* DB 라우터 */
 const mysqlRouter = require("./mysql/routes");
 const mongoRouter = require("./mongo/routes");
@@ -42,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
 }
-app.set('view engine', 'ejs');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
