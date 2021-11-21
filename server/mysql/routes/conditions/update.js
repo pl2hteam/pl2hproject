@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
     res.status(200).json({ success: true, updateCondition });
   } catch (error) {
     console.error(error);
+    return res.status(400).send(err);
   }
 });
 

@@ -8,7 +8,6 @@ router.post('/', async (req, res, next) => { // POST /post
       couple_code: req.body.couple_code,
     });
 
-    console.log(11);
     return res.status(200).json({ success: true, fullAllUser });
   } catch (err) {
     return res.json({ success: false, err });
