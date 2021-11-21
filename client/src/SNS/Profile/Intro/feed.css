@@ -1,287 +1,284 @@
 /* main */
 main {
-  border-radius: 30px;
-  width: 960px;
-  margin: 0 auto;
-  padding-top: 94px;
-  padding-bottom: 40px;
+    border-radius: 30px;
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 94px;
+    padding-bottom: 40px;
 }
 .main-right {
-  width: 310px;
-  display: inline-block;
-  position: fixed;
-  top: 94px;
+    width: 310px;
+    display: inline-block;
+    position: fixed;
+    top: 94px;
 }
 .feeds {
-  width: 614px;
-  margin-right: 34px;
-  display: inline-block;
+    
+    width: 614px;
+    margin-right: 34px;
+    display: inline-block;
 }
-article,
-.section-story,
-.section-recommend {
-  border-radius: 30px;
-  background-color: #fff;
-  border-radius: 3px;
-  border: 1px solid #dbdbdb;
+article, .section-story, .section-recommend {
+    border-radius: 30px;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #DBDBDB;
 }
 article {
-  border-radius: 30px;
-  margin-bottom: 60px;
+    border-radius: 30px;
+    margin-bottom: 60px;
 }
-.section-story,
-.section-recommend {
-  width: 310px;
-  padding: 14px 16px;
-  overflow-y: hidden;
+.section-story, .section-recommend {
+    width: 310px;
+    padding: 14px 16px;
+    overflow-y: hidden;
 }
 .section-story {
-  height: 212px;
-  margin-bottom: 20px;
-  overflow-y: auto;
+    height: 212px;
+    margin-bottom: 20px;
+    overflow-y: auto;
 }
 .section-recommend {
-  height: 180px;
+    height: 180px;
 }
 /* article */
 header {
-  height: 60px;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .profile-of-article {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 .img-profile {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #fafafa;
-  border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #fafafa;
+    border-radius: 100%;
 }
-/* .main-image img {
+.main-image img {
     width: 612px;
-} */
+}
 .main-id {
-  margin-left: 14px;
+    margin-left: 14px;
 }
 .icon-more {
-  justify-self: end;
+    justify-self: end;
 }
 .icons-react {
-  height: 40px;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    height: 40px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .icon-react {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 }
 .icons-left {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 .icons-left .icon-react {
-  margin-right: 12px;
+    margin-right: 12px;
 }
 /* article text data */
 .reaction {
-  padding: 0 16px;
+    padding: 0 16px;
 }
 .liked-people {
-  display: flex;
-  align-items: center;
-  height: 18px;
-  margin: 2px 0 8px 0;
+    display: flex;
+    align-items: center;
+    height: 18px;
+    margin: 2px 0 8px 0;
 }
 .liked-people img {
-  display: inline-block;
-  margin-right: 4px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #fafafa;
+    display: inline-block;
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #fafafa;
 }
 .liked-people p {
-  display: inline-block;
-  color: #262626;
-  font-size: 14px;
+    display: inline-block;
+    color: #262626;
+    font-size: 14px;
 }
 .description {
-  display: flex;
-  align-items: center;
-  height: 18px;
+    display: flex;
+    align-items: center;
+    height: 18px;
 }
 span.at-tag {
-  color: #00376b;
+    color: #00376B;
 }
 ul.comments {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 ul.comments li {
-  height: 21px;
-  display: flex;
-  justify-content: space-between;
-  color: #262626;
-  font-size: 14px;
+    height: 21px;
+    display: flex;
+    justify-content: space-between;
+    color: #262626;
+    font-size: 14px;
 }
 .comments li div {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 ul.comments li:hover .comment-more {
-  display: inline-block;
+    display: inline-block;
 }
 img.comment-more {
-  box-sizing: content-box;
-  width: 26px;
-  padding: 10px;
-  display: none;
-  opacity: 50%;
-  cursor: pointer;
+    box-sizing: content-box;
+    width: 26px;
+    padding: 10px;
+    display: none;
+    opacity: 50%;
+    cursor: pointer;
 }
 img.comment-heart {
-  width: 12px;
-  height: 12px;
-  display: inline-block;
-  cursor: pointer;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    cursor: pointer;
 }
 img.comment-heart-liked {
-  width: 12px;
-  height: 12px;
-  display: none;
-  cursor: pointer;
+    width: 12px;
+    height: 12px;
+    display: none;
+    cursor: pointer;
 }
 div.time-log {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 div.time-log span {
-  height: 18px;
-  font-size: 12px;
-  color: #8e8e8e;
+    height: 18px;
+    font-size: 12px;
+    color: #8e8e8e;
 }
 .hl {
-  border-top: 1px solid #dbdbdb;
-  width: 612px;
+    border-top: 1px solid #DBDBDB;
+    width: 612px;
 }
 /* comment input */
 .input-comment {
-  font-size: 14px;
-  width: 560px;
-  height: 18px;
-  padding: 28px 16px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #262626;
+    font-size: 14px;
+    width: 560px;
+    height: 18px;
+    padding: 28px 16px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #262626;
 }
 .input-comment:focus {
-  outline: none;
+	outline: none;
 }
 .input-comment::placeholder {
-  color: #8e8e8e;
+    color: #8e8e8e;
 }
 button.submit-comment {
-  color: #0095f6;
-  background-color: #fff;
-  border-style: none;
-  height: 40px;
-  width: 40px;
-  padding: 4px;
-  font-size: 14px;
-  font-weight: 600;
+    color: #0095f6;
+    background-color: #fff;
+    border-style: none;
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    font-size: 14px;
+    font-weight: 600;
 }
 .submit-comment:disabled {
-  color: #b9dffc;
+    color: #B9DFFC;
 }
 button.submit-comment:focus {
-  outline: none;
+    outline: none;
 }
 /* main-right */
 .myProfile {
-  height: 56px;
-  margin-top: 10px;
-  margin-bottom: 25px;
-  padding-left: 12px;
-  display: flex;
-  align-items: center;
+    height: 56px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
 }
 .myProfile img {
-  width: 56px;
-  height: 56px;
+    width: 56px;
+    height: 56px;
 }
 .myProfile div {
-  display: inline-block;
-  margin-left: 14px;
+    display: inline-block;
+    margin-left: 14px;
 }
 .myProfile div span {
-  display: block;
+    display: block;
 }
 .myProfile div span.userID {
-  margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 /* story & recommendation */
 .menu-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
 }
 .sub-title {
-  font-size: 14px;
-  color: #8e8e8e;
-  font-weight: 600;
+    font-size: 14px;
+    color: #8e8e8e;
+    font-weight: 600;
 }
 .find-more {
-  font-size: 12px;
-  font-weight: 600;
-  color: #262626;
+    font-size: 12px;
+    font-weight: 600;
+    color: #262626;
 }
-.story-list li,
-.recommend-list li {
-  display: flex;
-  align-items: flex-start;
+.story-list li, .recommend-list li {
+    display: flex;
+    align-items: flex-start;
 }
 ul.story-list img.story {
-  box-sizing: content-box;
-  border: 2px solid #fff;
+    box-sizing: content-box;
+    border: 2px solid #fff;
 }
 div.gradient-wrap {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  background: radial-gradient(circle at bottom left, #f58529 20%, #c42d91);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background: radial-gradient(circle at bottom left, #F58529 20%, #C42D91);
 }
 ul.story-list .profile-text {
-  margin-top: 3px;
+    margin-top: 3px;
 }
 .profile-text {
-  display: inline-block;
-  margin: 0 0 10px 8px;
+    display: inline-block;
+    margin: 0 0 10px 8px;
 }
 .profile-text span {
-  display: block;
+    display: block;
 }
 .profile-text span.userID {
-  margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 .recommend-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 .btn-follow {
-  padding-top: 7px;
-  color: #0095f6;
-  font-weight: 600;
-  font-size: 12px;
+    padding-top: 7px;
+    color: #0095f6;
+    font-weight: 600;
+    font-size: 12px;
 }
 .recommend-friend-profile {
-  display: flex;
-  align-items: flex-start;
+    display: flex;
+    align-items: flex-start;
 }

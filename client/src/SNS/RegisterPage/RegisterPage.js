@@ -80,7 +80,6 @@ function RegisterPage(props) {
             if (response.payload.success) {
               dispatch(registerMysql(dataToSubmit))
                 .then(response => {
-                  console.log(response);
                   if (response.payload.success) {
                     window.location.replace("/sns");
                   } else {

@@ -22,7 +22,7 @@ const SingleComment = (props) => {
       const userData = { userInfo : user.userData };
       if (user.userData) {
         if (user.userData.gender) {
-          Axios.post('/api/mongo/users/sns/getMongo', userData)
+          Axios.get('/api/mongo/users/sns/getMongo', userData)
             .then(response => {
               if (response.data.success) {
                 setWriter(response.data.user[0]._id);

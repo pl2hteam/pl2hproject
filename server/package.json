@@ -1,7 +1,7 @@
 {
-  "name": "pl2h",
+  "name": "react-boiler-plate",
   "version": "1.0.0",
-  "description": "pl2h",
+  "description": "react boiler plate",
   "main": "./server/app.js",
   "engine": {
     "node": "10.16.0",
@@ -13,7 +13,7 @@
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"yarn start --prefix client\""
   },
-  "author": "pl2h",
+  "author": "John ahn",
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

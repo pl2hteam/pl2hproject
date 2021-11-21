@@ -15,7 +15,7 @@ function FileUpload(props) {
     };
     formData.append("file", files[0]);
     console.log(files);
-
+    
     if (files[0].type == "video/mp4") {
       Axios.post("/api/mysql/posts/write", formData, config).then(
         (response) => {
@@ -29,7 +29,10 @@ function FileUpload(props) {
             };
 
             setVideoPath(response.data.url);
-            props.refresh.updateVideoPath([...VideoPath, response.data.url]);
+            props.refresh.updateVideoPath([
+              ...VideoPath,
+              response.data.url,
+            ]);
 
             Axios.post("/api/mysql/product/thumbnail", variable).then(
               (response) => {
@@ -41,7 +44,10 @@ function FileUpload(props) {
                     response.data.fileDuration,
                   ]);
                   setImages([...Images, response.data.url]);
-                  props.refresh.updateImages([...Images, response.data.url]);
+                  props.refresh.updateImages([
+                    ...Images,
+                    response.data.url,
+                  ]);
                 } else {
                   alert("썸내일 생성에 실패 했습니다.");
                 }
@@ -57,7 +63,10 @@ function FileUpload(props) {
         (response) => {
           if (response.data.success) {
             setImages([...Images, response.data.image]);
-            props.refresh.updateImages([...Images, response.data.image]);
+            props.refresh.updateImages([
+              ...Images,
+              response.data.image,
+            ]);
           } else {
             alert("Failed to save the Image in Server");
           }
@@ -78,31 +87,43 @@ function FileUpload(props) {
   console.log(props);
 
   return (
-    <div
-      className="sns-dropzone_box"
-      style={{ display: "block", justifyContent: "space-between" }}
-    >
-      <div className="sns-dropzone-image_box">
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
+        {({ getRootProps, getInputProps }) => (
+          <div
+            style={{
+              width: "300px",
+              height: "240px",
+              border: "1px solid lightgray",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            {...getRootProps()}
+          >
+            <input {...getInputProps()} />
+            <Icon type="plus" style={{ fontSize: "3rem" }} />
+          </div>
+        )}
+      </Dropzone>
+
+      <div
+        style={{
+          display: "flex",
+          width: "350px",
+          height: "240px",
+          overflowX: "scroll",
+        }}
+      >
         {Images.map((image, index) => (
           <div onClick={() => onDelete(image)}>
             <img
-              className="sns-dropzone-image_box-img"
-              style={{ width: "300px", height: "240px" }}
+              style={{ minWidth: "300px", width: "300px", height: "240px" }}
               src={`http://localhost:5000/${image}`}
               alt={`productImg-${index}`}
             />
           </div>
         ))}
-      </div>
-      <div>
-        <Dropzone onDrop={onDrop} multiple={false} maxSize={800000000}>
-          {({ getRootProps, getInputProps }) => (
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-              <div className="sns-add_photo_btn">사진 추가</div>
-            </div>
-          )}
-        </Dropzone>
       </div>
     </div>
   );

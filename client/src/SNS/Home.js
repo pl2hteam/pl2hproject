@@ -233,7 +233,7 @@ const Home = (props) => {
             <MiniRoom />
           </Mini>
           <ContentSection>
-            <h2>방명록</h2>
+            <h2>한 줄 감성</h2>
             <p>{getCouple()}</p>
             <VisitorWriting />
             <UpdateProfile />
