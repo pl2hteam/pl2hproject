@@ -42,12 +42,6 @@ const Music = styled.div`
 function MusicPlayer() {
   return (
     <Container>
-      <NowPlaying>
-        💿
-        <PlayWrap>
-          <Music>프리스타일-Y</Music>
-        </PlayWrap>
-      </NowPlaying>
       <div>
         <iframe
           width="240"
