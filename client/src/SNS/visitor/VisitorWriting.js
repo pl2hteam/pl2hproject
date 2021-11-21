@@ -10,13 +10,8 @@ import DropdownMinime from "./dropdownMinime";
 import "./VisitorWriting.css"
 import Axios from "axios";
 import { useSelector } from "react-redux";
-<<<<<<< HEAD
 import { Button, Form } from "antd";
 
-=======
-import { Typography, Button, Form, message, Input } from "antd";
-import { withRouter } from "react-router-dom";
->>>>>>> origin/minnnnnn
 const Container = styled.div`
   padding: 15px 15px 0;
   background-color: #efefef;
