@@ -15,16 +15,6 @@ const Profile = () => {
   const list = [
     {
       id: 1,
-      title: '👭내 인맥',
-      url: '/people',
-    },
-    {
-      id: 2,
-      title: '⭐내 즐겨찾기',
-      url: '/favorite',
-    },
-    {
-      id: 3,
       title: '⭐갤러리',
       url: '/Write',
     },

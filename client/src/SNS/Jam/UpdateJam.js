@@ -3,7 +3,8 @@ import { Typography, Button, Form, Input } from "antd";
 import MovieFileUpload from "./Intro/MovieFileUpload";
 import Axios from "axios";
 import { useSelector } from "react-redux";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
+import { Subject } from "./Intro/data";
 
 const { Title } = Typography;
 
@@ -94,8 +95,14 @@ const UpdatePic = (props) => {
         <MovieFileUpload refresh={postvideo} />
         <label>타이틀</label>
         <Input onChange={onPostTitle} value={PostTitle} />
-        <label>무드</label>
-        <Input onChange={onPostMood} value={PostMood} />
+        <label>카테고리</label>
+        <select onChange={onPostMood} value={PostMood}>
+          {Subject.map((item) => (
+            <option key={item.key} value={item.key}>
+              {item.value}
+            </option>
+          ))}
+        </select>
         <label>리뷰</label>
         <Input onChange={onPostReview} value={PostReview} />
         <br />
