@@ -85,7 +85,7 @@ const Main = (props) => {
             <header>
               {/* 사용자 정보 */}
               <div class="profile-of-article">
-                <img class="img-profile pic" src={`http://13.124.13.37:5000/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
+                <img class="img-profile pic" src={`http://13.124.13.37:5000/${postData.UserId.image}`} alt="프로필 사진" />
                 <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
               </div>
 
@@ -111,46 +111,15 @@ const Main = (props) => {
               <div class="icons-left">
                 <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트" />
                 <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선" />
-                <img class="icon-react" src="img/dm.png" alt="DM" />
               </div>
               <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크" />
             </div>
-
-            {/* 본문 */}
-            <div class="reaction">
-              {/* 좋아요 개수 표기 */}
-              <div class="liked-people">
-                <p><p class="point-span">johnnyjsuh</p>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
-              </div>
-
               {/* 설명 */}
               <div class="description">
-                <p> <Meta description={`설명 글란 : ${postData.content}`} /> 🌱</p>
+              <Meta description={`${postData.UserId.name}`} /> : <Meta description={`${postData.content}`} />
               </div>
 
               {/* 댓글 란 Comment 안에 넣기 */}
-              <div class="comment-section">
-                <ul class="comments">
-                  <li>
-                    <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                    <div>
-                      <img class="comment-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more" />
-                      <div class="comment-like">
-                        <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트" />
-                        <img class="comment-heart-liked" src="img/liked.png" alt="좋아요된하트" />
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-
-                {/* 몇 분전인지 표기 */}
-                <div class="time-log">
-                  <span>32분 전</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="hl"></div>
             <Comment postData={postData} />
 
           </article >
