@@ -29,8 +29,8 @@ sequelize
   });
 
 /* 몽고 DB 연결 */
-// const connect = require("./mongo/schemas");
-// connect();
+const connect = require("./mongo/schemas");
+connect();
 
 app.use(morgan("dev"));
 app.use(cors());
@@ -76,7 +76,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
   res.status(err.status || 500);
-  res.render("error");
+  res.status(500).json({ err })
 });
 
 app.listen(app.get("port"), () => {
