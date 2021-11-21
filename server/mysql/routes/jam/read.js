@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { User, Post, Image, Jam } = require("../../models");
+const { User, Image, Jam } = require("../../models");
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log(res);
     const fulljam = await Jam.findAll({
-
       order: [['id', 'DESC']],
     });
 
@@ -27,8 +25,6 @@ router.post('/', async (req, res, next) => {
         }
       }
 
-
-
       jams.push({
         id: fulljam[i].dataValues.id,
         title: fulljam[i].dataValues.title,
@@ -41,7 +37,6 @@ router.post('/', async (req, res, next) => {
         updatedAt: fulljam[i].dataValues.updatedAt,
       })
     }
-
     res.status(201).json({ success: true, jams });
   } catch (error) {
     console.error(error);
@@ -51,9 +46,6 @@ router.post('/', async (req, res, next) => {
 
 router.post('/mood', async (req, res, next) => {
   try {
-    console.log(req.body);
-    console.log(req.body.mood);
-
     let keyWord = req.body.mood
 
     const fulljam = await Jam.findAll({
@@ -66,9 +58,6 @@ router.post('/mood', async (req, res, next) => {
       },
       order: [['id', 'DESC']],
     });
-
-    console.log(fulljam, 34242342);
-    console.log(fulljam.User, 1134242342);
 
     const Images = await Image.findAll({
       include: {
@@ -100,14 +89,8 @@ router.post('/mood', async (req, res, next) => {
       })
     }
 
-
-    console.log(jams);
-
-
-
     res.status(201).json({ success: true, jams });
   } catch (error) {
-    console.error(error);
     next(error);
   }
 });
