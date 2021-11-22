@@ -84,16 +84,15 @@ Member.
 
 ### 사용한 기술
 
-- 웹 화면 구성 : `HTML5` `CSS3` `bootstrap` `JavaScript``Scss``Nunjucks`
+- 웹 화면 구성 : `REACT` 
 - 검색 결과 데이터 요청 및 출력 : `jQuery` `Ajax` `JSON``axios`
 - DB 액션 처리 : `Sequelize`
-- DBMS : `MySQL`
+- DBMS : `MySQL` `MONGO` 
 - 개발 Tool :`PostMan``Visual Studio Code` `Atom`
-- AWS 배포 : `EC2` `RDS`
-- 로그인 Api : `KakaoTalk API`
-- 채팅 Api : `Gitpull`
+- AWS 배포 : `EC2` `RDS` `s3`
+- 로그인 Api : `KakaoTalk API` `AUTH`
 - 프레임워크 : `NodeJs`
-- 결제: `Bootpay`
+- 결제: `PAY TAL`
 - 프로젝트 관리 Tool : `Google Drive` `GitHub`
 - 사용 모듈(v) : ` "axios": "^0.22.0",
                 "bcrypt": "^5.0.1",
@@ -121,10 +120,9 @@ Member.
 - 회원가입 : `Sequelize` `passport``mysql`
 - 회원정보변경 :`Sequelize``mysql`
 - 장바구니 : `Sequelize``mysql`
-- 결제 : `Sequelize` `passport``Bootpay`
+- 결제 : `Sequelize` `passport``PAYTAL`
 - 마이페이지 : `Sequelize``mysql`
 - 게시판 :`Sequelize``mysql`
-- 1:1 채팅 : 관리자 대화 `gitpull(api)`
 - 실시간채팅:`socket.io``rg.rok`
 - 검색 :`Sequelize``mysql`
 - 관리자모드(상품등록 및 삭제) : `Sequelize``mysql`
@@ -450,7 +448,7 @@ form 태그 사용 물품의 가격 이름 브랜드 등
 
 
 ### 프로젝트 기획안 PPT
-[구글 프레젠테이션 파일](https://docs.google.com/presentation/d/1OXVmXrEVzpxmP-WIhmVdoelkYk0yFbY2/edit?usp=sharing&ouid=116791032032435384891&rtpof=true&sd=true)
+[구글 프레젠테이션 파일](https://docs.google.com/presentation/d/13yVkx7W7bpqiPpieAJCAUgyme5Hsj_4gum353ISTyi4/edit#slide=id.p)
 
 # 시연 영상
 [유튜브첫페이지 전반적인 틀,index 영상](https://www.youtube.com/watch?v=FMPbevKqxzo)    
