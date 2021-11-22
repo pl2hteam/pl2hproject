@@ -22,7 +22,7 @@ Member.
 
 한경현:[깃허브](https://github.com/kyunghyunHan)  
 이민주:[깃허브](https://github.com/codecocos)  
-이성민:[깃허브](https://github.com/LeessangMin)
+이성민:[깃허브](https://github.com/LeessangMin)   
 박준혁:[깃허브](https://github.com/berrypjh)  
 
 
