@@ -54,7 +54,7 @@ Member.
 
 [8.시연 영상](#시연-영상)
 
-[9.참여인원](#참여-인원-3명)
+[9.참여인원](#참여-인원-4명)
 
 ***
 
@@ -90,10 +90,10 @@ Member.
 - DBMS : `MySQL` `MONGO` 
 - 개발 Tool :`PostMan``Visual Studio Code`
 - AWS 배포 : `EC2` `RDS` `s3`
-- 로그인 Api : `KakaoTalk API` `AUTH`
+- 로그인 Api :  `AUTH`
 - 프레임워크 : `NodeJs`
 - 결제: `PAY TAL`
-- 프로젝트 관리 Tool : `Google Drive` `GitHub`
+- 프로젝트 관리 Tool : `Google Drive` `GitHub` `notion`
 - 사용 모듈(v) : ` "axios": "^0.22.0",
                 "bcrypt": "^5.0.1",
                 "bootpay-js": "^3.3.3",
@@ -107,7 +107,6 @@ Member.
                 "mysql": "^2.18.1",
                 "mysql2": "^2.3.0",
                 "nodemon": "^2.0.13",
-                "nunjucks": "^3.2.3",
                 "passport": "^0.5.0",
                 "passport-kakao": "^1.0.1",
                 "passport-local": "^1.0.0",
@@ -116,7 +115,7 @@ Member.
                 "socket.io": "^4.2.0"`
 ### 주요 기능
 
-- 로그인 : 일반 로그인, 카카오 로그인 `Sequelize``passport``mysql`
+- 로그인 : 일반 로그인, `Sequelize``passport``mysql`
 - 회원가입 : `Sequelize` `passport``mysql`
 - 회원정보변경 :`Sequelize``mysql`
 - 장바구니 : `Sequelize``mysql`
