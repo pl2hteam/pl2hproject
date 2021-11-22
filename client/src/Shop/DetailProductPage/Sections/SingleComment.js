@@ -30,12 +30,12 @@ const SingleComment = (props) => {
                 alert('Failed')
               }
           })
-        }
-      } else {
+        }else {
         if (user.userData) {
           setWriter(user.userData._id);
         }
       }
+      } 
     }, [user.userData])
     
     const onSubmit = (event) => {
