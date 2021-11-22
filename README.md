@@ -10,7 +10,6 @@
 
 p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
---  
 
 <img width="1439" alt="스크린샷 2021-11-22 오후 1 32 32" src="https://user-images.githubusercontent.com/88940298/142801586-ffa3a4e8-69ae-43c5-aec1-f385d13c2914.png">
 
