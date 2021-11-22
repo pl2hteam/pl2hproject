@@ -88,7 +88,7 @@ Member.
 - 검색 결과 데이터 요청 및 출력 : `jQuery` `Ajax` `JSON``axios`
 - DB 액션 처리 : `Sequelize`
 - DBMS : `MySQL` `MONGO` 
-- 개발 Tool :`PostMan``Visual Studio Code` `Atom`
+- 개발 Tool :`PostMan``Visual Studio Code`
 - AWS 배포 : `EC2` `RDS` `s3`
 - 로그인 Api : `KakaoTalk API` `AUTH`
 - 프레임워크 : `NodeJs`
@@ -123,7 +123,6 @@ Member.
 - 결제 : `Sequelize` `passport``PAYTAL`
 - 마이페이지 : `Sequelize``mysql`
 - 게시판 :`Sequelize``mysql`
-- 실시간채팅:`socket.io``rg.rok`
 - 검색 :`Sequelize``mysql`
 - 관리자모드(상품등록 및 삭제) : `Sequelize``mysql`
 
