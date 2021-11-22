@@ -444,7 +444,8 @@ form 태그 사용 물품의 가격 이름 브랜드 등
 
 
 ### DB구조 (ERD)
-![KakaoTalk_Photo_2021-10-17-15-22-45](https://user-images.githubusercontent.com/88940298/137614327-8508ccda-6572-4a70-af91-d1f9063c4a60.jpeg)
+<img width="954" alt="스크린샷 2021-11-22 오후 3 13 14" src="https://user-images.githubusercontent.com/88940298/142809696-37859260-ce74-4a09-be74-0a603676a464.png">
+
 
 
 ### 프로젝트 기획안 PPT
