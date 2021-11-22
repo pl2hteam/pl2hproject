@@ -43,7 +43,14 @@ function MusicPlayer() {
   return (
     <Container>
       <div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/SWqQQ6Yb-6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe
+          width="240"
+          height="100"
+          src="https://www.youtube.com/embed/_3A-jr1xC9o?loop=1&controls=1&autoplay=1&mute=0&disablekb=1&fs=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+          gyroscope; picture-in-picture;"
+        ></iframe>
       </div>
     </Container>
   );
