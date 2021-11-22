@@ -273,14 +273,13 @@ AWS의 EC2를 활용하여 배포를 하였습니다
 서버(app.js) : [코드](https://github.com/3eteam/3eteamproject/blob/f2a2e1500f375490e0b2090779ab612237ae2039/3e/app.js)
 -> 각 페이지별 라우터 설정, passport 6002번, express 모듈로 넌적스를 http로 연결
 
-### 페이지별 설명(views-html)   
-## main :   
+### 컴포넌트 및 페이지별 설명(React)   
+## index.js :   
 <img width="500" alt="KakaoTalk_20211017_155220801" src="https://user-images.githubusercontent.com/89692626/137615265-9ad9ddb3-b1d6-4db4-bdb6-f2149972f03c.png">
 <img width="500" alt="KakaoTalk_20211017_155218347" src="https://user-images.githubusercontent.com/89692626/137615273-95e3f65a-1164-441f-ac89-3f3542a194f2.png">   
 
-메인페이지입니다 풀스크린방식을 채용했으며 2페이지로 나눠서 제작했습니다   
-1페이지같은경우는 무한슬라이드방식으로 이미지가 우에서 좌로 흘러가는형태로 제작했으며   
-백그라운드 HOLIDAY 세일부분은 백그라운드이미지를 Z-INDEX를 줘서 해상도에따른 변화를 잡아줬습니다   
+메인인덱스  
+ 
 
 <img width="500" alt="KakaoTalk_20211017_155218347" src="https://user-images.githubusercontent.com/89692626/137615345-4e4a92e5-1c7b-4268-b977-5571b5c23497.png">
 
