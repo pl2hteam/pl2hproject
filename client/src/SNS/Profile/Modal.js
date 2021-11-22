@@ -5,6 +5,8 @@ import Delete from "./Intro/delete";
 
 const Modal = (props) => {
   const { setOpenModal } = props;
+  const data = props.modal;
+
   return (
     <div className="feed_one">
       <Form>
@@ -19,9 +21,9 @@ const Modal = (props) => {
           <div class="main-image_box">
             <img
               class="pic"
-              src="http://img.khan.co.kr/news/2020/10/16/2020101601001687000138341.jpg"
-              alt="johnnyjsuh님의 프로필 사진"
-            />
+              src={`http://13.124.13.37:5000/${data[props.index].images}`}
+              alt="프로필 사진"
+            /> 
             {/* <ImageSlider images={postData} /> */}
           </div>
           <div className="main-reaction_box">

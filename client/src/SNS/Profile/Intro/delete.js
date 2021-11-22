@@ -1,15 +1,21 @@
 import Axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 const Delete = (props) => {
+  const [postData, setPostData] = useState([]);
+  let index = (props.modal.index);
+
+  useEffect(() => {
+    setPostData(props.modal.modal);
+  }, []);
+
   const onSubmit = (event) => {
-    console.log(props,9876)
     event.preventDefault();
-  
-    Axios.delete(`/api/mysql/posts/write/delete/${props.modal.modal.id}`)
+    
+    Axios.delete(`/api/mysql/posts/write/delete/${postData[index].id}`)
       .then(response => {
-        if (response.data.success) {  console.log(props,9876)
+        if (response.data.success) {
           window.location.replace('./profile')
         } else {
           alert('댓글을 저장하지 못했습니다.');
