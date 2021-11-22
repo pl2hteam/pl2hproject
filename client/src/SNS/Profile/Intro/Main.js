@@ -59,6 +59,7 @@ const Main = (props) => {
       });
   };
 
+ 
   // 더보기 버튼
   const loadMoreHandler = () => {
     let skip = Skip + Limit;
@@ -72,12 +73,19 @@ const Main = (props) => {
 
     getPosts(variables);
     setSkip(skip);
-  }; const [openModal, setOpenModal] = useState(false);
-
+  }; 
+  
+  const [openModal, setOpenModal] = useState(false);
+  const [Index, setIndex] = useState();
+  
+  const PostArray = [];
   const renderCards = Posts.map((postData, index) => {
+    PostArray.push(postData);
+
     if (postData || postData.HashtagId) {
       console.log(postData);
       return <Col lg={3} md={4} xs={8} key={index} onSubmit={onSubmit} onDoubleClick={() => {
+        setIndex(index);
         setOpenModal(true);
       }}>
         <Card hoverable={true}>
@@ -85,7 +93,7 @@ const Main = (props) => {
             <header>
               {/* 사용자 정보 */}
               <div class="profile-of-article">
-                <img class="img-profile pic" src={`http://13.124.13.37:5000/${postData.UserId.image}`} alt="프로필 사진" />
+                <img class="img-profile pic" src={`http://13.124.13.37/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
                 <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
               </div>
 
@@ -95,7 +103,8 @@ const Main = (props) => {
             </header>
             {openModal && (
               <Modal
-                modal={postData}
+                index={Index}
+                modal={PostArray}
                 setOpenModal={setOpenModal}
                 openModal={openModal}
               />
