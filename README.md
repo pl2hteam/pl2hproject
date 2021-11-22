@@ -79,7 +79,7 @@ Member.
    - 
    
 
-### 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client) []()
+### 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client) [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
 
 
 ### 사용한 기술
