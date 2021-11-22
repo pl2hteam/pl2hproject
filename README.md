@@ -61,22 +61,23 @@ Member.
 
 ### 개요
 
-패션 커뮤니티 활성화를 위한 쇼핑몰 구성
+싸이월드를 커플 싸이월드로 재구성 , 싸이월드 느낌의 sns,상점 
 
 ### 목적
 
->  패션 커뮤니티 활성화를 위한 쇼핑몰 구성
+>  패션 
 > 
 > 1. 커뮤니티 활성화
 > 2. 프로젝트 경험
 > 3. 결제서비스 구현 숙달
+> 4. sns 페이지 구성
 > 
 
 - **기존 서비스와의 차별점**
 
-   - 소켓 I.O 를 활용한 실시간 채팅
-   - 커뮤니티 서비스 제공
-   - 자체 할인율 적용 결제서비스 연동(솔루션)
+   - Mysql 과 Mongo db 분류로 인한 db 분류
+   - 
+   - 
    
 
 ### 전체 소스 코드 [소스](https://github.com/3eteam/3eteamproject)
@@ -238,18 +239,12 @@ Member.
 실시간 사용자들끼리의  채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. socket.io 특성 상 사용자 지정에 대한 이해도 숙지 
 
 # AWS 활용(EC2, RDS)  
-<img width="500" alt="34" src="https://user-images.githubusercontent.com/89692626/137617870-177cb2d9-854b-423a-b04d-3bf45de24ae9.png">     
-<img width="1000" alt="35" src="https://user-images.githubusercontent.com/89692626/137617902-f1bfc9b5-8462-4300-9365-4bd45017b2f3.png">    
-<img width="1000" alt="36" src="https://user-images.githubusercontent.com/89692626/137617905-318f133b-24b3-48ee-800d-3e491d550487.png"> 
-
+이미지
+    
 
 데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
 서버 연결
-<img width="400" alt="41" src="https://user-images.githubusercontent.com/89692626/137617959-d52e400d-d98f-4f6d-a035-948354a394ad.png">
-<img width="400" alt="42" src="https://user-images.githubusercontent.com/89692626/137617960-c55d109a-dad6-4357-9c5f-87e25edac9dd.png">
-<img width="400" alt="43" src="https://user-images.githubusercontent.com/89692626/137617961-14e02f5a-e202-41a7-9035-75bd4fd9eadd.png">
-<img width="400" alt="44" src="https://user-images.githubusercontent.com/89692626/137617962-37868599-b3c1-4225-b012-1d4a30439032.png">
-
+이미지#
 
 데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
 서버 연결
@@ -265,7 +260,7 @@ AWS의 EC2를 활용하여 배포를 하였습니다
 
 
 # 상세 설명
-전체 코드 : [코드](https://github.com/3eteam/3eteamproject)
+전체 코드 : [코드](전체코드)
 
     - 폴더 설명
     views : html(Nunjucks)
@@ -453,5 +448,4 @@ form 태그 사용 물품의 가격 이름 브랜드 등
 
 # 시연 영상
 [유튜브첫페이지 전반적인 틀,index 영상](https://www.youtube.com/watch?v=FMPbevKqxzo)    
-[유튜브시연영상1](https://www.youtube.com/watch?v=tTzy22FIxdk)    
-[유튜브시연영상2](https://www.youtube.c
+
