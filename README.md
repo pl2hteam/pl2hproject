@@ -449,8 +449,8 @@ form 태그 사용 물품의 가격 이름 브랜드 등
 
 
 ### 프로젝트 기획안 PPT
-[구글 프레젠테이션 파일](https://docs.google.com/presentation/d/13yVkx7W7bpqiPpieAJCAUgyme5Hsj_4gum353ISTyi4/edit#slide=id.p)
-[구글 프리젠테이션 파일](https://drive.google.com/drive/folders/1UtdG677MzS8Sev9YKgp--n8C6hgNh3Vg)
+[구글 프레젠테이션 파일](https://docs.google.com/presentation/d/13yVkx7W7bpqiPpieAJCAUgyme5Hsj_4gum353ISTyi4/edit#slide=id.p)   
+[구글 프리젠테이션 파일 기획안 2](https://drive.google.com/drive/folders/1UtdG677MzS8Sev9YKgp--n8C6hgNh3Vg)
 
 # 시연 영상
 [유튜브첫페이지 전반적인 틀,index 영상](https://www.youtube.com/watch?v=FMPbevKqxzo)    
