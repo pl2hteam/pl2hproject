@@ -10,7 +10,8 @@
 
 p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
-![KakaoTalk_Image_2021-11-24-16-39-05](https://user-images.githubusercontent.com/88940298/143195237-e313b47a-dd68-4bf2-acee-740c9dc176a8.gif)
+![KakaoTalk_Image_2021-11-24-16-41-43](https://user-images.githubusercontent.com/88940298/143195627-412b8a3c-a61c-4842-b135-564b50293f44.gif)
+
 
 ---   
 
