@@ -218,16 +218,24 @@ export NODE_OPTIONS=--openssl-legacy-provider
 
 
 
-### React 배포에서의 문제점 파악
+### React Client build중 에러방생
 
 - React nodejs 간 서버사이드 랜더링 처리
 
-[상황] 배포도중 에러발생 
+[상황] 빌드도중 에러 발생
 
 [문제] 
 ```
 FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
 ```
+노드의 기본 메모리 사이즈는 512MB다.
+과도한 메모리 점유로 인하여 js 엔진이 폭발해버린 것이다.
+Java와 마찬가지로 VM에서 Heap메모리 최대한도가 정해져있기 때문입니다. 물론 가장 좋은것은 메모리를 적게 쓰도록 로직을 수정하는 것이지만, 그것이 어려울 경우 ‘—max-old-space-size’ 옵션을 주면 힙메모리 영역 한도를 키울수가 있습니다.
+
+
+
+
+빌드시 자바스크립트  에러발생 
 
 [해결] export 옵션 
 
