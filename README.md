@@ -454,8 +454,59 @@ const [CodeCode, setCodeCode] = useState("");
 SNS 메인페이지 ->상세페이지 이동 랜덤코드 
 
 
+### 방명록
+```
+  const onSubmit = (event) => {
+    // event.preventDefault();  // antd 자체 적용
 
+    if (
+      !ProfileContent
+    ) {
+      return alert("fill all the fields first!");
+    }
 
+    const variables = {
+      content: ProfileContent,
+    };
+
+    console.log(variables);
+
+    Axios.post("/api/mysql/profiles/write", variables)
+      .then((response) => {
+        console.log('props.userInfo 는 : ', response);
+        if (response.data.success) {
+          alert("Product Successfully Uploaded");
+          window.location.replace("/sns/main");
+        } else {
+          console.log(response.data)
+          alert("Failed to upload Product");
+        }
+      });
+  };
+```
+
+```
+<Form onSubmit={onSubmit}>
+      <Container>
+        <Wrap className="VisitMsgBox">
+          <ShowMiniMe className="VisitMsgBox-ImageBox">
+            <img src={mArr[minime]} alt={"미니미"} />
+            <SettingMinime onClick={() => setIsShow(!isShow)}>
+              미니미
+            </SettingMinime>
+            <DropdownMinime
+              isShow={isShow}
+              setIsShow={setIsShow}
+              setMinime={setMinime}
+              mArr={mArr}
+            />
+          </ShowMiniMe>
+          <VisitMsg onChange={onProfileContent} value={ProfileContent} />
+          <Button onClick={onSubmit}>남기기</Button>
+        </Wrap>
+      </Container>
+    </Form>
+```
 
 
 
