@@ -60,23 +60,23 @@ Member.
 
 ### 개요
 
-싸이월드를 커플 싸이월드로 재구성 , 싸이월드 느낌의 sns,상점 
+커플간  SNS 사이트를 싸이월드의 느낌으로 재현하여 커플 SNS 및 커플 용품 SHOP 구현
 
 ### 목적
 
->  커플전용 sns
-> 
-> 1. 커뮤니티 활성화
-> 2. 프로젝트 경험
+> 커플 전용 SNS 및 SHOP 활성화
+> 1. 커플 기능 구현활용 SNS 활성화
+> 2. RDS(Mysql),Atlas(MongoDB) 동시 활용 프로젝트 활용
 > 3. 결제서비스 구현 숙달
 > 4. sns 페이지 구성
-> 
+> 5.배포 서비스 구현 공부 (ec2,s3,nginx)
 
 - **기존 서비스와의 차별점**
 
-   - Mysql 과 Mongo db 분류로 인한 db 분류
-   - 
-   - 
+   - nosql mysql 의 각각의 장점을 부각시키고 단점을 보안
+   - REDUX 활용 AUTH 진행
+   - 커플 연결 서비스 진행 (관계쿼리)
+   -
    
 
 ### 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client) [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
@@ -85,45 +85,102 @@ Member.
 ### 사용한 기술
 
 - 웹 화면 구성 : `REACT` 
-- 검색 결과 데이터 요청 및 출력 : `jQuery` `Ajax` `JSON``axios`
-- DB 액션 처리 : `Sequelize`
-- DBMS : `MySQL` `MONGO` 
-- 개발 Tool :`PostMan``Visual Studio Code`
-- AWS 배포 : `EC2` `RDS` `s3`
-- 로그인 Api :  `AUTH`
-- 프레임워크 : `NodeJs`
-- 결제: `PAY TAL`
+- DB 액션 처리 : `Sequelize` `mongoose`
+- DBMS : `MySQL` `Mongo` 
+- 개발 Tool :`PostMan``Visual Studio Code``github`
+- AWS 배포 : `EC2` `RDS` `s3``Atlas`
+- 로그인 구현 :  `REDUX`
+- 프레임워크 : `NodeJs` `REACT`
+- 결제: `PAY PAL`
 - 프로젝트 관리 Tool : `Google Drive` `GitHub` `notion`
-- 사용 모듈(v) : ` "axios": "^0.22.0",
-                "bcrypt": "^5.0.1",
-                "bootpay-js": "^3.3.3",
-                "cookie-parser": "^1.4.5",
-                "dotenv": "^10.0.0",
-                "express": "^4.17.1",
-                "express-session": "^1.17.2",
-                "moment": "^2.29.1",
-                "morgan": "^1.10.0",
-                "multer": "^1.4.3",
-                "mysql": "^2.18.1",
-                "mysql2": "^2.3.0",
-                "nodemon": "^2.0.13",
-                "passport": "^0.5.0",
-                "passport-kakao": "^1.0.1",
-                "passport-local": "^1.0.0",
-                "sequelize": "^6.6.5",
-                "sequelize-cli": "^6.2.0",
-                "socket.io": "^4.2.0"`
+- 사용 모듈(Client) : `
+- "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@mui/icons-material": "^5.1.0",
+    "@mui/styles": "^5.1.0",
+    "antd": "^3.26.20",
+    "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.20.0",
+    "bootstrap": "^5.1.3",
+    "components": "^0.1.0",
+    "core-js": "^3.6.4",
+    "d3": "^7.1.1",
+    "formik": "^1.5.8",
+    "html-react-parser": "^1.4.0",
+    "postcss-loader": "^6.2.0",
+    "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.6",
+    "react-carousel-minimal": "^1.4.1",
+    "react-copy-to-clipboard": "^5.0.4",
+    "react-dom": "^16.8.6",
+    "react-dropzone": "^11.4.2",
+    "react-elastic-carousel": "^0.11.5",
+    "react-flip-move": "^3.0.4",
+    "react-hook-form": "^7.19.0",
+    "react-icons": "^3.7.0",
+    "react-image-gallery": "^1.2.7",
+    "react-image-shadow": "^1.1.3",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-instagram-zoom-slider": "^1.4.0",
+    "react-material-ui-carousel": "^3.0.4",
+    "react-moment": "^1.1.1",
+    "react-paypal-express-checkout": "^1.0.5",
+    "react-redux": "^7.1.0-rc.1",
+    "react-responsive-carousel": "^3.2.22",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.4.1",
+    "react-show-more-text": "^1.5.0",
+    "react-slick": "^0.28.1",
+    "react-spring": "^9.3.0",
+    "react-swift-slider": "^7.0.1",
+    "react-use-gesture": "^9.1.3",
+    "redux": "^4.0.0",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0",
+    "styled-reset": "^4.3.4",
+    "webpack": "^4.42.0",
+    "yarn": "^1.22.17",
+    "yup": "^0.27.0"
+-  
+-    사용 모듈(Server) : `
+    "async": "^3.2.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.4.20",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.3",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "promise": "^8.1.0",
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0"`
+
 ### 주요 기능
 
-- 로그인 : 일반 로그인, `Sequelize``passport``mysql`
-- 회원가입 : `Sequelize` `passport``mysql`
-- 회원정보변경 :`Sequelize``mysql`
-- 장바구니 : `Sequelize``mysql`
-- 결제 : `Sequelize` `passport``PAYTAL`
-- 마이페이지 : `Sequelize``mysql`
-- 게시판 :`Sequelize``mysql`
-- 검색 :`Sequelize``mysql`
-- 관리자모드(상품등록 및 삭제) : `Sequelize``mysql`
+- 로그인 : 일반 로그인, `Sequelize``passport``mysql` `REDUX` 
+- 회원가입 : `Sequelize` `passport``mysql` `mongo` `mongoose` `REDUX`
+- 회원정보변경 :`Sequelize``mysql``mongo` `mongoose`
+- 장바구니 : `Sequelize``mysql` `mongo` `mongoose`
+- 결제 : `Sequelize` `passport``PAYTAL``mongo` `mongoose`
+- 마이페이지 : `Sequelize``mysql` `RDS`
+- SNS:`Sequelize``mysql``RDS`
+- 놀거리 :`Sequelize``mysql``RDS`
+- 편지:`Sequelize``mysql``RDS`
+- 놀거리 :`Sequelize``mysql``RDS`
+- MUSIC PLAYER :`styled-componets`
+- 관리자모드(상품등록 및 삭제) :`mongo` `mongoose`
+- 물품 필터 (검색): `mongo` `mongoose` 
+- 모달:`Sequelize``mysql``RDS`
 
 
 
@@ -254,19 +311,10 @@ AWS의 EC2를 활용하여 배포를 하였습니다
 전체 코드 : [코드](전체코드)
 
     - 폴더 설명
-    views : html(Nunjucks)
-    video : video files(front 영상)
-    vendor : cdn파일(scss, jQuery 모음)
-    uploads : img파일(게시글 등록, 상품 등록 시 자동생성되어 이미지를url로 mySQL DB에 저장)
-    routes : 페이지별 라우트 생성(CRUD, sequelize)
-    public : front 동적(css, js, img)
-    profileimg : img파일(회원가입 시 자동생성되어 이미지를url로 mySQL DB에 저장)
-    passport : 로그인 관리
-    node_modeules
-    models : DB 테이블 생성(sequelize, 관계도 형성)
-    imgages/icons : favicon파일
-    fonts : 다운받은 폰트 모음
-    config : AWS RDS 연동
+    server : 서버
+    client : view
+    
+   
     
     
 
