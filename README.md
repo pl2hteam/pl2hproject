@@ -323,7 +323,39 @@ AWS의 EC2를 활용하여 배포를 하였습니다
 
 ![KakaoTalk_Image_2021-11-24-17-16-49](https://user-images.githubusercontent.com/88940298/143200371-a2a213f6-67fc-4362-a8a9-adfcb674806e.gif)
 
+```
 
+export default function (ComposedClass, reload, homePage, adminRoute = null) {
+  function AuthenticationCheck(props) {
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      if (homePage) { // SNS PAGE
+        dispatch(auth(true)).then((response) => {
+          if (!response.payload.isAuth) {
+            if (reload) {
+              props.history.push("/sns");
+            }
+          } else {
+            if (adminRoute && !response.payload.isAdmin) {
+              props.history.push("/sns/admin");
+            } else {
+              if (reload === false) {
+                props.history.push("/sns/main");
+              }
+            }
+          }
+        });
+      } else {  // SHOP PAGE
+
+```
+
+```
+{/* SNS */}
+          <Route exact path="/sns/main" component={Auth(Home, true, true)} />
+
+```
 
 ## SNS Main
  
