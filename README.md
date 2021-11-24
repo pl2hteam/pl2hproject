@@ -359,5 +359,6 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 ### 프로젝트 기획안 PPT
 [구글 프레젠테이션 파일](https://docs.google.com/presentation/d/13yVkx7W7bpqiPpieAJCAUgyme5Hsj_4gum353ISTyi4/edit#slide=id.p)   
 [구글 프리젠테이션 파일 기획안 2](https://drive.google.com/file/d/17_Bz_mce2lQwyWdOZ9gFvuxifBwlwVXD/view?usp=sharing)
+![KakaoTalk_Photo_2021-11-24-17-07-22](https://user-images.githubusercontent.com/88940298/143199061-103753d0-a7bd-4d85-b124-e53334e8a4cf.png)
 
 
