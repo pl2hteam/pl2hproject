@@ -84,7 +84,7 @@ Member.
 - DB 액션 처리 : `Sequelize` `mongoose`
 - DBMS : `MySQL` `Mongo` 
 - 개발 Tool :`PostMan``Visual Studio Code``github`
-- AWS 배포 : `EC2` `RDS` `s3``Atlas`
+- AWS 배포 : `EC2` `RDS` `Atlas`
 - 로그인 구현 :  `REDUX`
 - 프레임워크 : `NodeJs` `REACT`
 - 결제: `PAY PAL`
