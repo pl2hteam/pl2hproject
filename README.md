@@ -183,98 +183,38 @@ Member.
 
 # 발생한 이슈 & 해결 방법
 
-### "Nodejs 처리에서의 문제점 파악 ,db및 구조설계 "
+### "React 배포에서의 문제점 파악 ,db및 구조설계 "
 
-- Nunjucks 템플릿 엔진 사용에 미숙으로 인한 에러발생
+- React nodejs간 서버사이드 랜더링 처리
 
-[상황] nunjucks 동적인 처리 미숙으로 인해 템플릿 에러발생
+[상황] 배포도중 에러발생 
 
-[문제] nunjucks 동적인 처리 미숙으로 인해 템플릿 에러발생
+[문제] 
+```
+Error: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:67:19)
+    at Object.createHash (node:crypto:130:10)
+    at module.exports (/Users/user/Programming Documents/WebServer/untitled/node_modules/webpack/lib/util/createHash.js:135:53)
+    at NormalModule._initBuildHash (/Users/user/Programming Documents/WebServer/untitled/node_modules/webpack/lib/NormalModule.js:417:16)
+    at handleParseError (/Users/user/Programming Documents/WebServer/untitled/node_modules/webpack/lib/NormalModule.js:471:10)
+    at /Users/user/Programming Documents/WebServer/untitled/node_modules/webpack/lib/NormalModule.js:503:5
+    at /Users/user/Programming Documents/WebServer/untitled/node_modules/webpack/lib/NormalModule.js:358:12
+    at /Users/user/Programming Documents/WebServer/untitled/node_modules/loader-runner/lib/LoaderRunner.js:373:3
+    at iterateNormalLoaders (/Users/user/Programming Documents/WebServer/untitled/node_modules/loader-runner/lib/LoaderRunner.js:214:10)
+    at iterateNormalLoaders (/Users/user/Programming Documents/WebServer/untitled/node_modules/loader-runner/lib/LoaderRunner.js:221:10)
+/Users/user/Programming Documents/WebServer/untitled/node_modules/react-scripts/scripts/start.js:19
+  throw err;
+  ^
+```
 
-[해결] public파일 생성후 에러 해결
+[해결] export 옵션 
 
-- nunjucks for문 구현 시 화면에 구현 장애
-
-[상황] 장바구니 구현시 nunjucks 활용
-
-[문제] for문 과 mysql 관계 설정 미숙으로 인해 화면에 렌더링이 안댐
-
-[해결] nunjucks 와 관게쿼리 해결 완료 로 인해 문제해결
-
-- 라우트 get,post,CRUD 메서드 연결 구현 이해부족
-
-[상황] 게시물,장바구니,상품등록,회원가입 구현에 있어서 에러발생
-
-[문제] 게시물,장바구니,상품등록등 등 관계쿼리 사용부분에 있어서 CRUD에 대한 이해부족으로 인해 장애발생
-
-[해결] 추가적인 학습과 관계쿼리 추가로 이해하면서 보안하여 장애 해결
-
-- Git 브랜치 활용 미숙
-
-[상황] 코드 병합
-
-[문제] 각자 코드 작성 한것에 대한 코드 병합시 에러발생 (코드 병합시 코드 삭제댐)
-
-[해결] 분업화 및 소통활성화 후에 코드 병합시 순차적으로 병합 
-
-- Nunjucks css,js코드먹통
-
-[상황] 코드 가 스크립트,링크로 경로를지정해줘도 코드가먹지않는현상
-
-[문제] 동적인파일이먹는곳은 메인,레이아웃등 헤더, 코드가 연결이되는데 그외에 인크루드방식으로 사용하는 html은 코드가 먹통이되는현상이생김
-
-[해결] 인크루드방식코드는 html파일자체에 css,js를 작성했음
-
-      - 코드먹통으로인한 SASS사용
-
-      [상황] 링크,스크립트경로지정이안되어 SCSS 컴파일한 CSS 동적인요소언어들이 먹지않는현상
-
-      [문제] 어떻게든 스크립트형식이나 링크를 해결할려고했으나 구글링을해도 넌적스에대한 관련대체방안들이 너무적어서 참고할요소가 없어서 SCSS를 포기해야되는지 고민
-
-      [해결] SCSS파일을 CSS로 컴파일후 겹치는 CSS요소가있는지 각파일마다 확인후 자체적으로 따로 HTML파일안에 스타일을 지정해줌으로써 해결
+-
+```
+export NODE_OPTIONS=--openssl-legacy-provider
+```
 
 
-- 두 테이블간의 관계 핸들링 미숙
-
-[상황] 게시글을 작성한 유저의 nick 값을 작성자 란에 넣지 못함
-
-[문제] 해당 페이지로 데이터를 보냄과 nunjucks 문으로 그 값을 불러오는데 있어 미숙
-
-[해결] 라우터에서 정보를 get할 때 User model에서 nick을 attributes에 추가해주고 nunjucks 문에서는 board의 User 모델을 불러옴
-
-- 조회수 ++ 선언과 할당에 대한 이슈
-
-[상황] 특정 게시물을 눌렀을 때 조회수(viewcount column)값을 올리지 못함
-
-[문제] 렌더링/선언과 할당에 대한 이해 부족
-
-[해결] 해당 게시물이 렌더링 되기 전에 선택된 그 글의 viewcount에 1을 더한값을 할당해 보여줌  
-
-### "NodeJs ,Socket.IO 를 통해 실시간 통신을 구현"
-
-- 실시간 채팅 구현
-
-[상황] 사용자들끼리 실시간 쇼핑관련 소통을하기위한 채팅
-
-[문제] socket.io서버 를 코드에 추가할 떄 오류 발생
-
-[해결] 서버의 순서도를 재배치 함으로써 문제 해결
-
-- socket.id와 idx
-
-[상황] 특정 사용자에게 메세지를 보내려면 해당 사용자의 socket.id를 알아야 함
-
-[문제] socket.id는 브라우저를 킬 때마다 새롭게 생성됨, 고유한 key가 되지 못함
-
-[해결] 해당 회원을 식별할 수 있는 idx 값을 활용:  idx값을 속성이름으로 추가, 그 속성의 값은 소켓의 ID값으로 할당함
-
-- connected
-
-[상황] 'ooo님이 채팅방에 입장/퇴장 하셨습니다' 기능을 추가해야함
-
-[문제] 시간 부족으로 인해 미완성
-
-[해결]  나중에 보안 할 예정
 
 **NodeJs socket.io 깨달은 점 **
 
@@ -507,6 +447,7 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
       </Container>
     </Form>
 ```
+
 
 
 
