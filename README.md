@@ -343,6 +343,7 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 
 
  
+<img width="1440" alt="스크린샷 2021-11-24 오후 3 06 14" src="https://user-images.githubusercontent.com/88940298/143198522-a0167210-516b-46b9-9b6d-d50e5d5c60d2.png">
 
 
 
