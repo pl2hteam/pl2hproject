@@ -52,10 +52,6 @@ Member.
  
  - 프로젝트 설명 PPT
 
-[8.시연 영상](#시연-영상)
-
-[9.참여인원](#참여-인원-4명)
-
 ***
 
 ### 개요
@@ -486,6 +482,4 @@ form 태그 사용 물품의 가격 이름 브랜드 등
 [구글 프레젠테이션 파일](https://docs.google.com/presentation/d/13yVkx7W7bpqiPpieAJCAUgyme5Hsj_4gum353ISTyi4/edit#slide=id.p)   
 [구글 프리젠테이션 파일 기획안 2](https://drive.google.com/file/d/17_Bz_mce2lQwyWdOZ9gFvuxifBwlwVXD/view?usp=sharing)
 
-# 시연 영상
-[유튜브첫페이지 전반적인 틀,index 영상](https://www.youtube.com/watch?v=FMPbevKqxzo)    
 
