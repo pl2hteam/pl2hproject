@@ -321,6 +321,7 @@ AWS의 EC2를 활용하여 배포를 하였습니다
 
 ## Login 
 
+![KakaoTalk_Image_2021-11-24-17-16-49](https://user-images.githubusercontent.com/88940298/143200371-a2a213f6-67fc-4362-a8a9-adfcb674806e.gif)
 
 
 
