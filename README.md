@@ -216,6 +216,22 @@ export NODE_OPTIONS=--openssl-legacy-provider
 
 
 
+### React 배포에서의 문제점 파악
+
+- React nodejs 간 서버사이드 랜더링 처리
+
+[상황] 배포도중 에러발생 
+
+[문제] 
+```
+FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
+```
+
+[해결] export 옵션 
+
+- 로컬에서 빌드 후 git pull후 실행
+
+
 **NodeJs socket.io 깨달은 점 **
 
 실시간 사용자들끼리의  채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. socket.io 특성 상 사용자 지정에 대한 이해도 숙지 
@@ -293,8 +309,7 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 
 ```
 {/* SNS */}
-          <Route exact path="/sns/main" component={Auth(Home, true, true)} />
-
+ <Route exact path="/sns/main" component={Auth(Home, true, true)} />
 ```
 
 ## SNS Main
