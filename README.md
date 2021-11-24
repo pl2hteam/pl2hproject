@@ -326,6 +326,8 @@ AWS의 EC2를 활용하여 배포를 하였습니다
  
 ![KakaoTalk_Photo_2021-11-24-16-10-06](https://user-images.githubusercontent.com/88940298/143191842-e032063e-9b70-4eeb-8b9e-3138f84352d8.gif)
 
+SNS 메인페이지 ->상세페이지 이동 랜덤코드 
+
 메인인덱스  
  
 
