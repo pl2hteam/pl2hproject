@@ -279,7 +279,7 @@ useEffect 를 사용하여 유저정보를 state담아 문제
 
 ### "React 배포에서의 문제점 파악 ,db및 구조설계 "
 
-- React nodejs간 서버사이드 랜더링 처리
+React nodejs간 서버사이드 랜더링 처리
 
 [상황] 배포도중 에러발생 
 
