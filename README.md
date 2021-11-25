@@ -21,13 +21,13 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 ![화면 캡처 2021-11-25 194708](https://user-images.githubusercontent.com/88940298/143427874-c9a2c28d-789d-4af2-ab4e-0aece9a16349.png)
 
 한경현(kyunghyun Han):[깃허브](https://github.com/kyunghyunHan)SNS Frontend     
-이민주(Minju Lee):[깃허브](https://github.com/codecocos)SNS Backend      
+이민주(Minjoo Lee):[깃허브](https://github.com/codecocos)SNS Backend      
 이성민(ssangMin Lee):[깃허브](https://github.com/LeessangMin)Shop Frontend   
 박준혁(jun hyuk Park):[깃허브](https://github.com/berrypjh)Shop Backend  
 
-기간 2021-11-05 ~ 2021-11-22
+기간 :  2021-11-05 ~ 2021-11-22
 
-1주차 
+**1주차** 
 >-1일차 : 서로의 프로젝트 아이디어 공유 및 정리
 >
 >-2일차 : 아이디어 세부사항 및 db관계쿼리 정리
@@ -37,8 +37,10 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 프로젝트 파트별 진행
 
-2주차 : 프로젝트 파트별 진행, 중간 에러확인, 파트별 진행률을 확인하면서 앞으로의 진행일정 조율.
-3주차 : 프로젝트 파트별 마무리 및 배포진행
+**2주차** 
+-프로젝트 파트별 진행, 중간 에러확인, 파트별 진행률을 확인하면서 앞으로의 진행일정 조율.
+**3주차**
+-프로젝트 파트별 마무리 및 배포진행
 
 배포 후 
 3주간의 결과물 및 좋았던 점, 개선해야 할 점 등을 공유하며 회고합니다 각자 맡은 파트별로 설명하며  그 외에도 서비스의 가치나 방향성에 대한 의견을 주고 받으며 서로의 생각을 확인
