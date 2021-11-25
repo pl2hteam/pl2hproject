@@ -209,8 +209,6 @@ Error: error:0308010C:digital envelope routines::unsupported
 react 배포 중 에러발생. 이는 nodejs 버전이 높아서 생기는 문제다.
 
 [해결] export 옵션 
-
--
 ```
 export NODE_OPTIONS=--openssl-legacy-provider 
 ```
