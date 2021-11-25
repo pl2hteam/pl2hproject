@@ -208,7 +208,25 @@ gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 
+### "env파일의 중요성 "
+[상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
+[문제] 
+<img width="693" alt="KakaoTalk_20211125_124522181" src="https://user-images.githubusercontent.com/88940298/143390995-430a4520-9e35-4f19-9698-ffc1ec7dce0c.png">
+
+
+[해결] 
+
+```
+{Products.length === 0 ? (
+            <div className="no_item">
+              <h2>등록된 아이템이 없읍니다</h2>
+            </div>
+          ) : (
+            <div className="shop-main-content-item_list">{renderCards}</div>
+          )}
+```
+상품이 없을 경우를 추가했다
 
 ### "React 재 렌더링 후 에러 "
  React nodejs 간 서버사이드 랜더링 처리
@@ -665,6 +683,9 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 
 ![KakaoTalk_20211125_143734592](https://user-images.githubusercontent.com/88940298/143385698-181dc013-a133-451f-a803-83a7a4145fec.gif)
 
+ ### SNS글 삭제
+ 
+ ![KakaoTalk_20211125_150810995](https://user-images.githubusercontent.com/88940298/143390883-4f0ef9ae-ddf2-43c6-a614-e5149427e8c3.gif)
 
 
 ### 모달창 구현
