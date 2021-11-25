@@ -690,7 +690,7 @@ router.post('/mood', async (req, res, next) => {
 
 
 ### DB구조 (ERD)
-<img width="954" alt="스크린샷 2021-11-22 오후 3 13 14" src="https://user-images.githubusercontent.com/88940298/142809696-37859260-ce74-4a09-be74-0a603676a464.png">
+![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
 
 
 
