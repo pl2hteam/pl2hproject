@@ -548,6 +548,38 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 ```
 
 
+커플인 경우 커플코드를 입력받아서, 같은 커플코드를 가진 경우 커플로 매칭하고 sns 메인 화면에 커플을 상징하는 이미지와 커플들의 이름을 띄워줍니다.
+```
+  const getCouple = () => {
+    Axios.post("/api/mysql/couples/read")
+      .then((response) => {
+        const arr = response.data.allUser;
+
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].couple_code === CoupleCode) {
+            if (arr[i].name !== userInfo.userData.name && userInfo.userData.couple_code !== "9999") {
+              setCC1(userInfo.userData.name)
+              setCC2(arr[i].name)
+              break;
+            }
+          } else {
+          }
+        }
+      });
+  }
+
+  const couplelove = () => {
+    if (CoupleCode === "9999" && CoupleCode === "9999") {
+      return <LinkTitle><p>빛이나는 솔로</p></LinkTitle>
+    } else if (CoupleCode !== "9999" && CoupleCode !== "9999") {
+      return <div className="couple">
+        <img src={img} />
+        <p>{CC1}♥️{CC2}</p>
+      </div>
+    }
+  }
+```
+
 ### 모달창 구현
 
 ![모달](https://user-images.githubusercontent.com/88940298/143366287-7566dfb7-de38-487c-9856-9bf42bf5c9cb.gif)
