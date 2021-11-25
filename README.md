@@ -202,10 +202,7 @@ Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여�
 [문제] 
 
 GitHub사용할 때 Git branch 전환 시에 
-gitignore에 올라가 있는 env파일과 mdev.js가 없어 DB접속 불가
-
-![KakaoTalk_20211125_153121946](https://user-images.githubusercontent.com/88923210/143391481-39021edb-5a53-4ac1-9270-ac45633ccac6.png)
-
+gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 [해결] 
 
@@ -246,17 +243,18 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 [해결] 
 ```
   const userInfo = useSelector(state => state.user);
-
-  const [CoupleCode, setCoupleCode] = useState({});
-
+  const [User, setUser] = useState({});
+  
   useEffect(() => {
+    if (userInfo) {
       if (userInfo.userData) {
+        setUser(userInfo.userData);
         if (userInfo.userData.couple_code) {
           setCoupleCode(userInfo.userData.couple_code);
         }
       }
-  }, [userInfo])
-
+    }
+  }, [userInfo.userData]);
 ```
 
 useEffect 를 사용하여 유저정보를 state담아 문제 
@@ -361,7 +359,9 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 
 $ sudo apt-get install screen 후 screen 실행 후 npm run dev 실행
 
-screen사용하여 
+screen -ls 서버 확인
+
+kill [screen 번호] 스크린 종료
 
 
 
