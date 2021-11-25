@@ -403,6 +403,16 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 
 - sudo su 입력하여 관리모드로 변경
 
+- sudo apt update 하여 업데이트
+
+- sudo apt install git 하여 깃 다운로드
+
+- curl -o-https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash 하여 nvm설치
+
+- .~/.nvm/nvm.sh 하여 NVM활성화
+
+- nvm install node nvm을 이용하여 Node.js를 설치 
+
 - git clone 및 git pull 하여 깃의 전체 코드 및 새로운 버전 최신화
 
 - server 폴더에서   concurrently 를 사용한  npm run dev 실행하여 server client 동시실행
