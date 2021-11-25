@@ -578,7 +578,8 @@ const Modal = (props) => {
 ### MusicPlayer 구현
 ![KakaoTalk_Photo_2021-11-24-17-07-22](https://user-images.githubusercontent.com/88940298/143199061-103753d0-a7bd-4d85-b124-e53334e8a4cf.png)
 
-유튜브 iframe 링크로 뮤직플레이어 구현
+disablekb 를 1로 설정하여 플레이어가 키보드 컨트롤에 응답하지 않게 했고,
+autoplay 를 1로 설정하여 자동 재생되게 하였습니다
 
 ```
 <iframe
