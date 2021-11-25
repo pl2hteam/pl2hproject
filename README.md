@@ -341,13 +341,39 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 
 useSelector를 사용하여 redux의 store에 저장된 user정보를 끌고온 후, useState를 사용하여 끌고 온 유저 정보를 변경합니다.
 ```
-const onSubmitUserInfo = () => {
+  //useSelector를 사용하여 리덕스의 유저정보를 활용
+  const userInfo = useSelector((state) => state.user);
+
+  //useState 를 사용하여 값 변경
+  const [ChangeMyImage, setChangeMyImage] = useState("");
+  const [ChangeCoupleCode, setChangeCoupleCode] = useState("");
+  const [ChangeMessage, setChangeMessage] = useState("");
+  const [ChangePhone, setChangePhone] = useState("");
+  const [ChangeAddress, setChangeAddress] = useState("");
+
+  const updateImages = (newImages) => {
+    setChangeMyImage(newImages);
+  };
+  const onChangeCoupleCode = (event) => {
+    setChangeCoupleCode(event.currentTarget.value);
+  };
+  const onChangeMessage = (event) => {
+    setChangeMessage(event.currentTarget.value);
+  };
+  const onChangePhone = (event) => {
+    setChangePhone(event.currentTarget.value);
+  };
+  const onChangeAddress = (event) => {
+    setChangeAddress(event.currentTarget.value);
+  };
+
+
+  const onSubmitUserInfo = () => {
     const variables = {
       id: userInfo.userData.id,
       image: ChangeMyImage,
       couple_code: ChangeCoupleCode,
       message: ChangeMessage,
-      // email: ChangeEmail,
       phone: ChangePhone,
       address: ChangeAddress,
     };
@@ -360,6 +386,16 @@ const onSubmitUserInfo = () => {
         alert("정보 변경에 실패하였습니다.");
       }
     });
+  };
+
+  let userImg;
+  if (props.user.userData) {
+    userImg = props.user.userData.image;
+  }
+
+  let postImage = {
+    updateImages,
+  };
 ```
 
 
