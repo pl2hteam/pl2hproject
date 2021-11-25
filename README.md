@@ -340,7 +340,27 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 ![KakaoTalk_Photo_2021-11-24-16-10-06](https://user-images.githubusercontent.com/88940298/143191842-e032063e-9b70-4eeb-8b9e-3138f84352d8.gif)
 
 
+```
+const onSubmitUserInfo = () => {
+    const variables = {
+      id: userInfo.userData.id,
+      image: ChangeMyImage,
+      couple_code: ChangeCoupleCode,
+      message: ChangeMessage,
+      // email: ChangeEmail,
+      phone: ChangePhone,
+      address: ChangeAddress,
+    };
 
+    Axios.post("/api/mysql/conditions/update", variables).then((response) => {
+      if (response.data.success) {
+        alert("정보가 변경되었습니다.");
+        props.history.push("/sns/Main");
+      } else {
+        alert("정보 변경에 실패하였습니다.");
+      }
+    });
+```
 ```
 const [CodeCode, setCodeCode] = useState("");
   const [Length, setLength] = useState("8");
