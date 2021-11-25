@@ -163,20 +163,20 @@ Member.
 
 ### 주요 기능
 
-- 로그인 : 일반 로그인, `Sequelize passport mysql REDUX` 
-- 회원가입 : `Sequelize` `passport``mysql` `mongo` `mongoose` `REDUX`
-- 회원정보변경 :`Sequelize``mysql``mongo` `mongoose`
-- 장바구니 : `Sequelize``mysql` `mongo` `mongoose`
-- 결제 : `Sequelize` `passport``PAYTAL``mongo` `mongoose`
-- 마이페이지 : `Sequelize``mysql` `RDS`
-- SNS:`Sequelize``mysql``RDS`
-- 놀거리 :`Sequelize``mysql``RDS`
-- 편지:`Sequelize``mysql``RDS`
-- 놀거리 :`Sequelize``mysql``RDS`
+- 로그인 : 일반 로그인, `Sequelize` `passport` `mysql` `REDUX` 
+- 회원가입 : `Sequelize` `passport` `mysql` `mongo` `mongoose` `REDUX`
+- 회원정보변경 :`Sequelize` `mysql` `mongo` `mongoose`
+- 장바구니 : `Sequelize` `mysql` `mongo` `mongoose`
+- 결제 : `Sequelize` `passport` `PAYTAL` `mongo` `mongoose`
+- 마이페이지 : `Sequelize` `mysql` `RDS`
+- SNS:`Sequelize` `mysql` `RDS`
+- 놀거리 :`Sequelize` `mysql` `RDS`
+- 편지:`Sequelize` `mysql` `RDS`
+- 놀거리 :`Sequelize` `mysql` `RDS`
 - MUSIC PLAYER :`styled-componets`
 - 관리자모드(상품등록 및 삭제) :`mongo` `mongoose`
 - 물품 필터 (검색): `mongo` `mongoose` 
-- 모달:`Sequelize``mysql``RDS`
+- 모달:`Sequelize` `mysql` `RDS`
 
 
 
