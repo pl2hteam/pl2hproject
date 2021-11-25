@@ -219,10 +219,22 @@ TypeError: Cannot read property 'name' of undefined react error
 
 
 [해결] 
+```
+  const userInfo = useSelector(state => state.user);
 
+  const [CoupleCode, setCoupleCode] = useState({});
 
+  useEffect(() => {
+      if (userInfo.userData) {
+        if (userInfo.userData.couple_code) {
+          setCoupleCode(userInfo.userData.couple_code);
+        }
+      }
+  }, [userInfo])
 
+```
 
+useEffect 를 사용하여 유저정보를 state담아 문제 
 
 
 
