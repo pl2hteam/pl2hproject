@@ -202,7 +202,10 @@ Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여�
 [문제] 
 
 GitHub사용할 때 Git branch 전환 시에 
-gitignore에 올라가 있는 env파일이 없어 DB접속 불가
+gitignore에 올라가 있는 env파일과 mdev.js가 없어 DB접속 불가
+
+![KakaoTalk_20211125_153121946](https://user-images.githubusercontent.com/88923210/143391481-39021edb-5a53-4ac1-9270-ac45633ccac6.png)
+
 
 [해결] 
 
