@@ -1068,8 +1068,22 @@ export function addToCart(_id) {
 
 장바구니에 담으면 물품정보를 디스패치 액션을 통해 User DB에 저장한다
 ```
+```
+export function getHistory(data) {
+  let request = axios
+      .get(`${MONGO_USER_SERVER}/payment/getHistory`, data)
+      .then((response) => response.data);
 
-     
+  return {
+    type: AUTH_USER,
+    payload: request,
+  };
+}
+
+```
+결제되면 물품에 대한 구매이력 DB에 저장
+
+
 ### 댓글,대댓글
  
 
