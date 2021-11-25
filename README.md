@@ -1,7 +1,10 @@
 ![143427874-c9a2c28d-789d-4af2-ab4e-0aece9a16349-removebg-preview](https://user-images.githubusercontent.com/88923210/143464419-fc7cb9e8-bb30-40b1-ba0d-c5d776866ada.png)
 
-# ♥️👬👨‍❤️‍💋‍👨'PL2H World!' 
-- 싸이월드 감성을 담은 커플 SHOP 과 SNS에 오신 것을 환영합니다!
+# 👨‍❤️‍💋‍👨'Play & Love to Happy in PL2H World!' 
+- 사랑하는 연인과의 행복을 PL2H World에서 마음껏 즐겨보세요!
+- 싸이월드 감성이 여러분의 추억을 더욱 아름답게 해 줄 것입니다.
+- 연인을 위한 선물을 구매하고 싶으신가요? 저희가 오픈한 상점으로 구경오세요!
+- 앗! 솔로시라구요? 괜찮습니다~ 저희 상점은 누구에게나 열려있답니다~
 
 
 ##
