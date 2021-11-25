@@ -215,9 +215,11 @@ gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 
-...
-...
-...
+
+
+
+
+
 
 ### "property "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
@@ -974,6 +976,11 @@ const LetterWrite = (props) => {
 
  ### 물품등록
  ![KakaoTalk_20211125_143342490](https://user-images.githubusercontent.com/88940298/143385790-686b59a4-33ec-4ef0-807d-808743f4c24d.gif)
+
+
+
+물품등록 페이지에서 기입한 내용과 사진,영상에 대한 정보가 DB에 들어간다
+
 
 ```
 
