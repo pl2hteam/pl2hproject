@@ -276,6 +276,10 @@ server 폴더에서   concurrently 를 사용한  npm run dev 실행하여 serve
 AWS의 RDS 및 Altars 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고
 AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행 
 
+$ sudo apt-get install screen 후 screen 실행 후 npm run dev 실행
+
+screen사용하여 
+
 
 
 
