@@ -195,6 +195,8 @@ SNS(MySqlDB)로 로그인 하여도 커플상점(MongoDB)를 이용할 수 있�
 
 Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여함.
 
+![KakaoTalk_20211125_153528603](https://user-images.githubusercontent.com/88923210/143391865-bbbea126-f3dc-4533-8b98-a201d6c3ea77.png)
+
 
 ### "env파일의 중요성 "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
