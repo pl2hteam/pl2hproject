@@ -800,6 +800,12 @@ router.post('/mood', async (req, res, next) => {
 
 ```
 
+
+## SHOP Main
+
+
+
+
 ### DB구조 (ERD)
 ![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
 
