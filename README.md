@@ -184,18 +184,17 @@ Member.
 # 발생한 이슈 & 해결 방법
 
 
-TypeError: Cannot read property 'name' of undefined react error
 
-### "React 재 렌더링 후 에러 "
- React nodejs 간 서버사이드 랜더링 처리
-
-[상황] 빌드도중 에러 발생
+[상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 [문제] 
 
-![KakaoTalk_20211125_124755818](https://user-images.githubusercontent.com/88940298/143384657-f3d7efd4-bba7-44b6-8931-498ab0cdb109.png)
+GitHub사용할 때 Git branch 전환 시에 
+gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 [해결] 
+
+env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 
 
 
