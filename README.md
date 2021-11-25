@@ -699,10 +699,74 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 
 ![KakaoTalk_20211125_143734592](https://user-images.githubusercontent.com/88940298/143385698-181dc013-a133-451f-a803-83a7a4145fec.gif)
 
+
+useState를 이용하여 게시글을 DB에 저장하였습니다.
+
+
+```
+  const [profilecontent, setPostTitle] = useState("");
+
+  const onSubmit = (event) => {
+    if (!profilecontent) {
+      return alert("fill all the fields first!");
+    }
+    const variables = {
+      content: profilecontent,
+    };
+
+    Axios.post("/api/mysql/posts/write", variables)
+      .then((response) => {
+        console.log('props.user 는 : ', response);
+        if (response.data.success) {
+          alert("Post Successfully Uploaded");
+          props.history.push("/sns");
+        } else {
+          console.log(response.data)
+          alert("Failed to upload Post");
+        }
+      });
+  };
+```
+
+
+
+
  ### SNS글 삭제
+ 
+ 
+ Props를 사용하여 modal을 구현하였습니다.
+modal 창에서 게시글을 삭제할 수 있도록 하였습니다
  
  ![KakaoTalk_20211125_150810995](https://user-images.githubusercontent.com/88940298/143390883-4f0ef9ae-ddf2-43c6-a614-e5149427e8c3.gif)
 
+```
+const Delete = (props) => {
+  const [postData, setPostData] = useState([]);
+  let index = (props.modal.index);
+
+  useEffect(() => {
+    setPostData(props.modal.modal);
+  }, []);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    
+    Axios.delete(`/api/mysql/posts/write/delete/${postData[index].id}`)
+      .then(response => {
+        if (response.data.success) {
+          window.location.replace('./profile')
+        } else {
+          alert('댓글을 저장하지 못했습니다.');
+        }
+      })
+  }
+  return (
+      <form style={{ display:'flex' }} onSubmit={onSubmit}>
+        <button style={{ width: '20%', height: '37px' }} onClick={onSubmit}  >삭제</button>
+      </form>
+  )
+};
+```
 
 ### 모달창 구현
 - SNS Modal  
