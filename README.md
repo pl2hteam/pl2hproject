@@ -652,6 +652,14 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
   }
 ```
 
+
+
+ ### SNS글 
+
+![KakaoTalk_20211125_143734592](https://user-images.githubusercontent.com/88940298/143385698-181dc013-a133-451f-a803-83a7a4145fec.gif)
+
+
+
 ### 모달창 구현
 - SNS Modal  
 ![KakaoTalk_20211125_111701228](https://user-images.githubusercontent.com/88940298/143374992-5bdcd998-cf3c-4dab-9598-8f2b96dbbddd.gif)
@@ -913,8 +921,28 @@ const LetterWrite = (props) => {
 ```
 
 
+
+
+
+
+
+
+
 ## SHOP Main
 
+ ### 물품등록
+ ![KakaoTalk_20211125_143342490](https://user-images.githubusercontent.com/88940298/143385790-686b59a4-33ec-4ef0-807d-808743f4c24d.gif)
+
+ 
+  ###  카테고리 분류
+  
+  
+    ### 장바구니
+    
+     ### 결제
+     
+     ### 댓글,대댓글
+     
 
 
 
