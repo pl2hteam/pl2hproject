@@ -395,9 +395,9 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 
 # ✨상세 설명
 전체 코드 : [코드](https://github.com/pl2hteam/pl2hproject)
-
-    - 폴더 설명
-    server : 서버
+    
+    - 폴더 설명 (client 와 server 폴더 나누어서 폴더 진행)
+        server : 서버 폴더 설정
       - config : config 파일 : rds연결 주소
       - mongo : mongo db 라우터 및 모델
           -configmongo : 몽고 연결 주소
@@ -409,7 +409,11 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
           - models : myslq model
           - passport : mysql 로그인 관련
           - routes : mysql 라우터
-    client (view): - public : css 이미지 등
+    client (view): 클라이언트 폴더 설정 
+             - public : css 이미지 등
+               - resources 
+                 - img 
+                 - result-image 
              - src : 소스모음
                - Common 
                   - Setting 
@@ -418,6 +422,9 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
                   - components : 컴포넌트 
                   - hoc : react -hook 
                   - img : 이미지 모음
+                     - log  : 유저 댓글 관련 img
+                     - minime : minime 관련 캐릭터
+                     - room : 방설정 이미지 
                   - miniroom : home.js 에 미니룸 관련 js
                - SNS 
                   - Jam : 놀거리 관련 
