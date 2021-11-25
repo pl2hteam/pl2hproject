@@ -363,7 +363,7 @@ const onSubmitUserInfo = () => {
 ```
 
 
-
+useSelector를 사용하여 redux의 store에 저장된 user정보를 끌고온 후, useState를 사용하여 끌고 온 유저 정보를 변경합니다.
 
 
 ```
