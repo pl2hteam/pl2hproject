@@ -140,7 +140,7 @@ Member.
     "yup": "^0.27.0"  
 -  
 -    사용 모듈(Server) :`
-    "async": "^3.2.2",    
+-   "async": "^3.2.2",    
     "bcrypt": "^5.0.1",    
     "body-parser": "^1.18.3",    
     "cookie-parser": "^1.4.5",    
