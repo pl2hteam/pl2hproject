@@ -186,6 +186,20 @@ Member.
 
 TypeError: Cannot read property 'name' of undefined react error
 
+### "React 재 렌더링 후 에러 "
+ React nodejs 간 서버사이드 랜더링 처리
+
+[상황] 빌드도중 에러 발생
+
+[문제] 
+```
+TypeError: Cannot read property 'name' of undefined react error
+```
+
+
+
+[해결] 
+
 
 
 ### "React 재 렌더링 후 에러 "
