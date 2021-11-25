@@ -336,6 +336,13 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 ```
 
 ## SNS Main
+ ### 방명록
+ 
+ ![KakaoTalk_20211125_120706686](https://user-images.githubusercontent.com/88940298/143373040-255ef82d-11b5-463e-a2fb-5f0acfeb7442.gif)
+
+ 
+  ### 프로필 정보 변경
+ 
  
 ![KakaoTalk_Photo_2021-11-24-16-10-06](https://user-images.githubusercontent.com/88940298/143191842-e032063e-9b70-4eeb-8b9e-3138f84352d8.gif)
 
