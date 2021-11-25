@@ -82,7 +82,7 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
    -
    
 
-### 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client)  or [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
+### 👬 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client)  or [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
 
 
 ### 사용한 기술
