@@ -589,8 +589,9 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 
 ### 모달창 구현
 -SNS Modal-
-![모달](https:![KakaoTalk_20211125_122815439](https://user-images.githubusercontent.com/88940298/143374775-e42b1956-689d-4f73-a67a-7fcf9d799259.gif)
--  Modal-
+![KakaoTalk_20211125_122815439](https://user-images.githubusercontent.com/88940298/143374909-e3bcc232-f911-4aa6-80ed-1c83671ed49f.gif)
+
+-  사진첩 Modal-
 //user-images.githubusercontent.com/88940298/143366287-7566dfb7-de38-487c-9856-9bf42bf5c9cb.gif)
 
 
