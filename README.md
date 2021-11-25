@@ -967,7 +967,40 @@ const LetterWrite = (props) => {
  
   ###  카테고리 분류
   ![KakaoTalk_20211125_144533948](https://user-images.githubusercontent.com/88940298/143392173-e7d607e1-29a8-4ee1-ac15-017620719354.gif)
+```
+  const [Checked, setChecked] = useState([]);
 
+  const handleToggle = (value) => {
+    const currentIndex = Checked.indexOf(value);
+
+    const newChecked = [...Checked];
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+    props.handleFilters(newChecked);
+  };
+
+  const renderCheckboxLists = () =>
+    props.list &&
+    props.list.map((value, index) => {
+      return (
+        <React.Fragment key={index}>
+          <div>
+            <Checkbox
+              onChange={() => handleToggle(value._id)}
+              checked={Checked.indexOf(value._id) === -1 ? false : true}
+            />
+            <span>{value.name}</span>
+          </div>
+        </React.Fragment>
+      );
+    });
+
+```
   
     ### 장바구니 결제
 ![KakaoTalk_20211125_150642966](https://user-images.githubusercontent.com/88940298/143392134-38560967-d8a4-4abb-a1a1-6ddf5d614cf2.gif)
