@@ -398,9 +398,6 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 ```
 
 ## SNS Main
- ### 방명록
- 
- ![KakaoTalk_20211125_120706686](https://user-images.githubusercontent.com/88940298/143373040-255ef82d-11b5-463e-a2fb-5f0acfeb7442.gif)
 
  
   ### 프로필 정보 변경
@@ -566,6 +563,12 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 
 
 ### 방명록
+ ![KakaoTalk_20211125_120706686](https://user-images.githubusercontent.com/88940298/143373040-255ef82d-11b5-463e-a2fb-5f0acfeb7442.gif)
+ 
+ 
+ sns 홈 화면에는 방문자가 글을 남길 수 있는 방명록 기능을 두어 싸이월드의 감성을 높였습니다. useState를 사용하여 미니미를 선택할 수 있습니다.
+ 
+ 
 ```
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
