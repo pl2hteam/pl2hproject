@@ -27,7 +27,7 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 한경현(kyunghyun Han):[깃허브](https://github.com/kyunghyunHan)SNS Frontend     
 이민주(Minjoo Lee):[깃허브](https://github.com/codecocos)SNS Backend      
-이성민(ssangMin Lee):[깃허브](https://github.com/LeessangMin)Shop Frontend   
+이상민(ssangMin Lee):[깃허브](https://github.com/LeessangMin)Shop Frontend   
 박준혁(jun hyuk Park):[깃허브](https://github.com/berrypjh)Shop Backend  
 
 **기간** :  2021-11-05 ~ 2021-11-22
