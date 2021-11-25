@@ -399,7 +399,7 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
           - models : myslq model
           - passport : mysql 로그인 관련
           - routes : mysql 라우터
-    client : - public : css 이미지 등
+    client (view): - public : css 이미지 등
              - src : 소스모음
                - Common 
                   - Setting 
@@ -439,7 +439,6 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 ### 페이지별  설명(React)   
 
 ## Login 
-
 ![KakaoTalk_Image_2021-11-24-17-16-49](https://user-images.githubusercontent.com/88940298/143200371-a2a213f6-67fc-4362-a8a9-adfcb674806e.gif)
 
 ```
