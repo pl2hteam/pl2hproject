@@ -87,6 +87,9 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ### 사용한 기술
 
+![KakaoTalk_20211125_174239334](https://user-images.githubusercontent.com/88940298/143418197-78a868f7-529d-4e7e-abd3-db9a3aad1461.png)
+
+
 - 웹 화면 구성 : `REACT` 
 - DB 액션 처리 : `Sequelize` `mongoose`
 - DBMS : `MySQL` `Mongo` 
