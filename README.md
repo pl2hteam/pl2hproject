@@ -181,7 +181,7 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 
 
-# 발생한 이슈 & 해결 방법
+# 🔥발생한 이슈 & 해결 방법
 
 
 ### "Auth로 2가지 DB(MongoDB와 MySqlDB) 모두 사용할 수 있는 방법을 고민"
@@ -306,6 +306,7 @@ export NODE_OPTIONS=--openssl-legacy-provider
 사용하여 문제해결
 
 또는 pakage json 에서 
+
 ```
 // 변경 전
 "start": "react-scripts start"
@@ -348,7 +349,7 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 
 
 
-# 배포 활용(EC2, RDS,MONGGO) 
+# 💯배포 활용(EC2, RDS,MONGGO) 
 
 
  
@@ -368,10 +369,11 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 
 - server 폴더에서   concurrently 를 사용한  npm run dev 실행하여 server client 동시실행
 
-- AWS의 RDS 및 Altars 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고
-AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행 
+- AWS의 RDS 및 Altars 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고, AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행 
 
 - $ sudo apt-get install screen 후 screen 실행 후 npm run dev 실행
+
+- 스크린 종료 -
 
 - screen -ls 서버 확인
 
@@ -383,7 +385,7 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 
 
 
-# 상세 설명
+# ✨상세 설명
 전체 코드 : [코드](https://github.com/pl2hteam/pl2hproject)
 
     - 폴더 설명
@@ -436,7 +438,7 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 서버(app.js) : [코드](https://github.com/pl2hteam/pl2hproject/blob/431cba07b5add6380c3c976e3593882c22ae3805/server/app.js)
 -> 각 페이지별 라우터 설정, passport 5000번사용
 
-### 페이지별  설명(React)   
+### 페이지별  설명 (React)   
 
 ## Login 
 
