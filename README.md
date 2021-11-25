@@ -206,14 +206,24 @@ Error: error:0308010C:digital envelope routines::unsupported
   throw err;
   ^
 ```
+react 배포 중 에러발생. 이는 nodejs 버전이 높아서 생기는 문제다.
 
 [해결] export 옵션 
 
 -
 ```
-export NODE_OPTIONS=--openssl-legacy-provider
+export NODE_OPTIONS=--openssl-legacy-provider 
 ```
+사용하여 문제해결
 
+또는 pakage json 에서 
+```
+// 변경 전
+"start": "react-scripts start"
+
+// 변경 후
+"start": "react-scripts --openssl-legacy-provider start"
+```
 
 
 ### React Client build중 에러방생
