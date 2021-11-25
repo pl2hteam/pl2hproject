@@ -487,8 +487,26 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 ```
 
 
-
-
+### 모달창 구현
+```
+ onSubmit={onSubmit} onDoubleClick={() => {
+        setIndex(index);
+        setOpenModal(true);
+```
+``` 
+<Modal
+                index={Index}
+                modal={PostArray}
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+              />
+              
+```
+```
+const Modal = (props) => {
+  const { setOpenModal } = props;
+  const data = props.modal
+```
 
 
 
