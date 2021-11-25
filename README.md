@@ -439,6 +439,13 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 ### 페이지별  설명(React)   
 
 ## Login 
+
+mongo db mysql db 분류하여 따로 로그인 가능 ->
+mongo db: shop
+mysql db: sns
+
+
+
 ![KakaoTalk_Image_2021-11-24-17-16-49](https://user-images.githubusercontent.com/88940298/143200371-a2a213f6-67fc-4362-a8a9-adfcb674806e.gif)
 
 ```
