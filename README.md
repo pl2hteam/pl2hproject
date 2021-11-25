@@ -578,9 +578,20 @@ const Modal = (props) => {
 ### MusicPlayer 구현
 ![KakaoTalk_Photo_2021-11-24-17-07-22](https://user-images.githubusercontent.com/88940298/143199061-103753d0-a7bd-4d85-b124-e53334e8a4cf.png)
 
+유튜브 iframe 링크로 뮤직플레이어 구현
 
 ```
+<iframe
+          width="240"
+          height="100"
+          src="https://www.youtube.com/embed/_3A-jr1xC9o?loop=1&controls=1&autoplay=1&mute=0&disablekb=1&fs=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+          gyroscope; picture-in-picture;"
+        ></iframe>
+
 ```
+
 
 
 
