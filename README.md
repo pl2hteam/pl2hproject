@@ -267,6 +267,12 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
 서버 연결
 
+sudo su 입력하여 관리모드로 변경
+
+git clone 및 git pull 하여 깃의 전체 코드 및 새로운 버전 최신화
+
+server 폴더에서   concurrently 를 사용한  npm run dev 실행하여 server client 동시실행
+
 AWS의 RDS 및 Altars 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고
 AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행 
 
