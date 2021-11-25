@@ -183,6 +183,34 @@ Member.
 
 # 발생한 이슈 & 해결 방법
 
+
+TypeError: Cannot read property 'name' of undefined react error
+
+
+
+### "React 재 렌더링 후 에러 "
+ React nodejs 간 서버사이드 랜더링 처리
+
+[상황] 빌드도중 에러 발생
+
+[문제] 
+```
+TypeError: Cannot read property 'name' of undefined react error
+```
+<img width="1440" alt="KakaoTalk_20211125_124522181" src="https://user-images.githubusercontent.com/88940298/143376436-0486de01-2233-4ebf-9a0e-e2e5b3dacac7.png">
+
+
+[해결] 
+
+
+
+
+
+
+
+
+
+
 ### "React 배포에서의 문제점 파악 ,db및 구조설계 "
 
 - React nodejs간 서버사이드 랜더링 처리
