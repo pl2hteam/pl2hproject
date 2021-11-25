@@ -217,12 +217,8 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 
 [문제] 
 
+![KakaoTalk_20211125_124542194](https://user-images.githubusercontent.com/88940298/143390699-22493ae8-1850-44a4-88ed-9ecf51093222.png)
 
-<img width="693" alt="KakaoTalk_20211125_124522181" src="https://user-images.githubusercontent.com/88940298/143382491-c14f7ec6-c4c2-486a-afa2-11244ba4af73.png">
-
-```
-TypeError: Cannot read property 'name' of undefined react error
-```
 
 
 
