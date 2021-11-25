@@ -497,7 +497,7 @@ passport 5000번사용
 ### 📖페이지별  설명 (React)   
 
 
-## Login 
+## Login & Logout 
 
 mongo db mysql db 분류하여 따로 로그인 가능 -> auth 사용하여 로그인 및 회원가입후 유지기능 
 mongo db: shop
@@ -538,6 +538,22 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 ```
 {/* SNS */}
  <Route exact path="/sns/main" component={Auth(Home, true, true)} />
+```
+
+로그아웃 하기 버튼 누르게 되면 /API/mysql/users/logout으로 데이터 전송
+destroy 사 유저 로그인 정보 삭제
+
+```
+const express = require("express");
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.send('ok');
+});
+
+module.exports = router;
 ```
 
 ## SNS Main
