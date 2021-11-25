@@ -204,11 +204,13 @@ Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여�
 GitHub사용할 때 Git branch 전환 시에 
 gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
+![KakaoTalk_20211125_153121946](https://user-images.githubusercontent.com/88923210/143392535-7d0b32c1-0d26-448c-8a4d-250c18c8e8b8.png)
+
 [해결] 
 
 env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 
-### "env파일의 중요성 "
+### "property "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 [문제] 
