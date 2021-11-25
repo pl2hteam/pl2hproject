@@ -163,7 +163,7 @@ Member.
 
 ### 주요 기능
 
-- 로그인 : 일반 로그인, `Sequelize``passport``mysql` `REDUX` 
+- 로그인 : 일반 로그인, `Sequelize passport mysql REDUX` 
 - 회원가입 : `Sequelize` `passport``mysql` `mongo` `mongoose` `REDUX`
 - 회원정보변경 :`Sequelize``mysql``mongo` `mongoose`
 - 장바구니 : `Sequelize``mysql` `mongo` `mongoose`
