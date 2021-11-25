@@ -15,7 +15,7 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ---   
 
-Member. 
+👨‍👩‍👦‍👦Member. 
 
 
 
@@ -161,7 +161,7 @@ Member.
     "sequelize": "^6.9.0",    
     "sequelize-cli": "^6.3.0"` 
 
-### 주요 기능
+### 🌱주요 기능
 
 - 로그인 : 일반 로그인, `Sequelize` `passport` `mysql` `REDUX` 
 - 회원가입 : `Sequelize` `passport` `mysql` `mongo` `mongoose` `REDUX`
@@ -183,7 +183,9 @@ Member.
 
 # 발생한 이슈 & 해결 방법
 
+
 ### "Auth로 2가지 DB(MongoDB와 MySqlDB) 모두 사용할 수 있는 방법을 고민"
+
 [상황] 2 가지(MongoDB와 MySqlDB) DB를 동시에 사용하기 때문에,  2 가지 DB를 충돌없이 사용할 수 있는 방안
 
 [문제] 
@@ -200,6 +202,8 @@ Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여�
 
 
 ### "env파일의 중요성 "
+
+
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 [문제] 
@@ -220,6 +224,8 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 
 
 ### "property "
+
+
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
 [문제]   
@@ -239,17 +245,14 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 ```
 상품이 없을 경우를 추가했다
 
-### "React 재 렌더링 후 에러 "
- React nodejs 간 서버사이드 랜더링 처리
+
+### "React 빌드 중 에러 발생 "
 
 [상황] 빌드도중 에러 발생
 
 [문제] 
 
 ![KakaoTalk_20211125_124542194](https://user-images.githubusercontent.com/88940298/143390699-22493ae8-1850-44a4-88ed-9ecf51093222.png)
-
-
-
 
 [해결] 
 ```
@@ -272,12 +275,7 @@ useEffect 를 사용하여 유저정보를 state담아 문제
 
 
 
-
-
-
 ### "React 배포에서의 문제점 파악 ,db및 구조설계 "
-
-React nodejs간 서버사이드 랜더링 처리
 
 [상황] 배포도중 에러발생 
 
@@ -298,6 +296,7 @@ Error: error:0308010C:digital envelope routines::unsupported
   throw err;
   ^
 ```
+
 react 배포 중 에러발생. 이는 nodejs 버전이 높아서 생기는 문제다.
 
 [해결] export 옵션 
@@ -318,16 +317,12 @@ export NODE_OPTIONS=--openssl-legacy-provider
 
 ### React Client build중 에러발생
 
-React nodejs 간 서버사이드 랜더링 처리
-
 [상황] 빌드도중 에러 발생
 
 [문제] 
 ```
 FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
 ```
-
-
 
 빌드시 자바스크립트  에러발생 
 
@@ -339,10 +334,16 @@ Java와 마찬가지로 VM에서 Heap메모리 최대한도가 정해져있기 �
 로컬에서 빌드 후 git pull후 실행
 
 
+
+
+
+
 ## NodeJs 와 REACT 빌드 및 배포시  깨달은 점 
 
 빌드시 메모리 관련 에러 발생 및 알 수 없는 에러가 발생햇었다. 배포시 배포 관련 숙달이 부족하였고, 빌드하는데서 에러가 발생하여 애를 먹엇다 . 좀 더 숙달하여 이러한 에러가 발생하지 않도록 하며
 NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
+
+
 
 
 
@@ -356,23 +357,25 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 
     
 
-데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
+
+
+- 데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
 서버 연결
 
-sudo su 입력하여 관리모드로 변경
+- sudo su 입력하여 관리모드로 변경
 
-git clone 및 git pull 하여 깃의 전체 코드 및 새로운 버전 최신화
+- git clone 및 git pull 하여 깃의 전체 코드 및 새로운 버전 최신화
 
-server 폴더에서   concurrently 를 사용한  npm run dev 실행하여 server client 동시실행
+- server 폴더에서   concurrently 를 사용한  npm run dev 실행하여 server client 동시실행
 
-AWS의 RDS 및 Altars 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고
+- AWS의 RDS 및 Altars 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고
 AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행 
 
-$ sudo apt-get install screen 후 screen 실행 후 npm run dev 실행
+- $ sudo apt-get install screen 후 screen 실행 후 npm run dev 실행
 
-screen -ls 서버 확인
+- screen -ls 서버 확인
 
-kill [screen 번호] 스크린 종료
+- kill [screen 번호] 스크린 종료
 
 
 
@@ -385,14 +388,53 @@ kill [screen 번호] 스크린 종료
 
     - 폴더 설명
     server : 서버
-    client : view
+      - config : config 파일 : rds연결 주소
+      - mongo : mongo db 라우터 및 모델
+          -configmongo : 몽고 연결 주소
+          - middleware : 몽고 auth
+          - routes : 몽고 라우터 
+          - schmas : 몽고 스키마 
+      - mysql : mysql db 라우터 및 모델
+          - middleware : mysql auth
+          - models : myslq model
+          - passport : mysql 로그인 관련
+          - routes : mysql 라우터
+    client : - public : css 이미지 등
+             - src : 소스모음
+               - Common 
+                  - Setting 
+                  - _actions : auth redux 관련
+                  - _reducers  :react reducer
+                  - components : 컴포넌트 
+                  - hoc : react -hook 
+                  - img : 이미지 모음
+                  - miniroom : home.js 에 미니룸 관련 js
+               - SNS 
+                  - Jam : 놀거리 관련 
+                  - Latter: 편지기능 관련 폴더
+                  - Layout : 전체 레이아웃 관룐
+                  - Login : 로그인 관련
+                  - Main : SNS 로그인 관련
+                  - Menu : 메인 메뉴관련
+                  - MyPage : 상태변경 관련 페이지
+                  - Pic : 사진첩
+                  - Profile : SNS 관련폴더
+                  - RegisterPage : 회원가입 관련 폴더
+                  - rightSideBox: 우측 사이드 뮤직플레이어 관련
+                  
+               - SHOP 
+                  - CartPage : 장바구니 관련
+                  - DatilProductPage  : 물품 디테일페이지 관련
+                  - HistoryPage  : 
+                  - LoginMainPage : 로그인페이지 관련
+                  - MainForm : SHOP전체 레이아웃 및 뮤직플레이어 관련
+                  - ShopMain : Shop 메인관련
+                  - UploadProductPage : 이미지 및 동여상 업로드 관련
+                  - images : 이미지 모음
     
    
-    
-    
-
 서버(app.js) : [코드](https://github.com/pl2hteam/pl2hproject/blob/431cba07b5add6380c3c976e3593882c22ae3805/server/app.js)
--> 각 페이지별 라우터 설정, passport 5000번
+-> 각 페이지별 라우터 설정, passport 5000번사용
 
 ### 페이지별  설명(React)   
 
