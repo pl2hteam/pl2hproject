@@ -277,7 +277,7 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 
 
 # 상세 설명
-전체 코드 : [코드](전체코드)
+전체 코드 : [코드](https://github.com/pl2hteam/pl2hproject)
 
     - 폴더 설명
     server : 서버
