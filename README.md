@@ -316,9 +316,9 @@ export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
 
-### React Client build중 에러방생
+### React Client build중 에러발생
 
-- React nodejs 간 서버사이드 랜더링 처리
+React nodejs 간 서버사이드 랜더링 처리
 
 [상황] 빌드도중 에러 발생
 
