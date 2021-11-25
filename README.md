@@ -776,7 +776,7 @@ useState를 이용하여 게시글을 DB에 저장하였습니다.
 
  ### SNS글 삭제
  
- 모달내에서  
+ 모달 내부에서  DELETE사용  SERVER로 정보를 가게하여 삭제할수있게 기능 추가
  ![KakaoTalk_20211125_150810995](https://user-images.githubusercontent.com/88940298/143390883-4f0ef9ae-ddf2-43c6-a614-e5149427e8c3.gif)
 
 ```
