@@ -588,10 +588,8 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 ```
 
 ### 모달창 구현
--SNS Modal
+- SNS Modal
 ![KakaoTalk_20211125_111701228](https://user-images.githubusercontent.com/88940298/143374992-5bdcd998-cf3c-4dab-9598-8f2b96dbbddd.gif)
--
-
 
 -  사진첩 Modal-
 
