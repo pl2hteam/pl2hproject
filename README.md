@@ -336,7 +336,7 @@ FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memo
 과도한 메모리 점유로 인하여 js 엔진이 폭발해버린 것이다.
 Java와 마찬가지로 VM에서 Heap메모리 최대한도가 정해져있기 때문이며. 물론 가장 좋은것은 메모리를 적게 쓰도록 로직을 수정하는 것이지만, 그것이 어려울 경우 ‘—max-old-space-size’ 옵션을 주면 힙메모리 영역 한도를 키울수가 있다
 
-- 로컬에서 빌드 후 git pull후 실행
+로컬에서 빌드 후 git pull후 실행
 
 
 ## NodeJs 와 REACT 빌드 및 배포시  깨달은 점 
