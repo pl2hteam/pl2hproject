@@ -192,11 +192,8 @@ TypeError: Cannot read property 'name' of undefined react error
 [상황] 빌드도중 에러 발생
 
 [문제] 
-```
-TypeError: Cannot read property 'name' of undefined react error
-```
 
-
+![KakaoTalk_20211125_124755818](https://user-images.githubusercontent.com/88940298/143384657-f3d7efd4-bba7-44b6-8931-498ab0cdb109.png)
 
 [해결] 
 
