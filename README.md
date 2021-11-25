@@ -1117,7 +1117,7 @@ export function getHistory(data) {
 ### 댓글,대댓글
  
 
-![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143392026-8e22da2c-beb3-4233-9249-0a9984b27942.gif)
+![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143392026-8e22da2c-beb3-4233-9249-0a9984b27942.gif)  
 댓글을 작성하면 작성자, 게시글, 댓글내용이 DB에 저장이되고 답글을 달면 댓글정보도 추가로 DB에 저장된다.  
 
 댓글은 Comment.js 에서 State 에 저장되고 refreshFunction 로 지정된 props 로 최상위 부모인 DetailProductPage.js 에 Comment State 에 저장된다.   
