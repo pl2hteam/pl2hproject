@@ -1041,6 +1041,157 @@ export { itemNumber };
 ![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143392026-8e22da2c-beb3-4233-9249-0a9984b27942.gif)
 
 
+```
+  const user = useSelector((state) => state.user);
+  const [Comment, setComment] = useState("");
+  const [Writer, setWriter] = useState("");
+
+  const handleChange = (event) => {
+    setComment(event.currentTarget.value);
+  };
+
+  useEffect(() => {
+    const userData = { userInfo : user.userData };
+    if (user.userData) {
+      if (user.userData.gender) {
+        axios.get('/api/mongo/users/sns/getMongo', userData)
+          .then(response => {
+            if (response.data.success) {
+              console.log(response);
+              setWriter(response.data.user[0]._id);
+            } else {
+              alert('Failed')
+            }
+        })
+      } else {
+        if (user.userData) {
+          setWriter(user.userData._id);
+        }
+      }
+    } 
+  }, [user.userData])
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+   
+    const variables = {
+      content: Comment,
+      writer: Writer,
+      postId: props.postId,
+    };
+
+    axios.post("/api/mongo/product/saveComment", variables).then((response) => {
+      if (response.data.success) {
+        setComment("");
+        props.refreshFunction(response.data.result);
+      } else {
+        alert("Failed to save Comment");
+      }
+    });
+  };
+
+  return (
+    <div className="postPage-comment">
+      <p className="comment-text">댓글</p>
+      <hr />
+      {props.commentLists &&
+        props.commentLists.map(
+          (comment, index) =>
+            !comment.responseTo && (
+              <React.Fragment>
+                <SingleComment
+                  comment={comment}
+                  postId={props.postId}
+                  refreshFunction={props.refreshFunction}
+                />
+                <ReplyComment
+                  CommentLists={props.commentLists}
+                  postId={props.postId}
+                  parentCommentId={comment._id}
+                  refreshFunction={props.refreshFunction}
+                />
+              </React.Fragment>
+            )
+        )}
+```
+```
+    const user = useSelector(state => state.user);
+    const [CommentValue, setCommentValue] = useState("")
+    const [Writer, setWriter] = useState("");
+// 생략
+    const onSubmit = (event) => {
+      event.preventDefault();
+
+      const variables = {
+        writer: Writer,
+        postId: props.postId,
+        responseTo: props.comment._id,
+        content: CommentValue
+      }
+
+      Axios.post('/api/mongo/product/saveComment', variables)
+        .then(response => {
+            if (response.data.success) {
+                setCommentValue("")
+                setOpenReply(!OpenReply)
+                props.refreshFunction(response.data.result)
+            } else {
+                alert('Failed to save Comment')
+            }
+        })
+    }
+
+    const actions = [
+        <span onClick={openReply} key="comment-basic-reply-to">답글 달기</span>
+    ]
+    
+    if (props.comment) {
+      return (
+          <div>
+              <Comment
+                  actions={actions}
+                  author={props.comment.writer.name}
+                  avatar={
+                      <Avatar
+                          src={props.comment.writer.image}
+                          alt="image"
+                      />
+                  }
+                  content={
+                      <p>
+                          {props.comment.content}
+                      </p>
+                  }
+              />
+```
+```
+    const [ChildCommentNumber, setChildCommentNumber] = useState(0)
+    const [OpenReplyComments, setOpenReplyComments] = useState(false)
+
+    useEffect(() => {
+        let commentNumber = 0;
+        props.CommentLists.map((comment) => {
+            if (comment.responseTo === props.parentCommentId) {
+                commentNumber++
+            }
+        })
+        setChildCommentNumber(commentNumber)
+    }, [props.CommentLists, props.parentCommentId])
+
+
+    let renderReplyComment = (parentCommentId) =>
+        props.CommentLists.map((comment, index) => (
+            <React.Fragment>
+                {comment.responseTo === parentCommentId &&
+                    <div style={{ width: '80%', marginLeft: '40px' }}>
+                        <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} />
+                        <ReplyComment CommentLists={props.CommentLists} parentCommentId={comment._id} postId={props.postId} refreshFunction={props.refreshFunction} />
+                    </div>
+                }
+            </React.Fragment>
+        ))
+```
+
 ### DB구조 (ERD)
 ![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
 
