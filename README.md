@@ -1026,13 +1026,16 @@ export { itemNumber };
 
 카테고리 분류 추가
 ```
-  
-    ### 장바구니 결제
+체크박스와 라디오박스를 선택하면
+물품목록과 가격대목록의 _id 값을 찾아서
+해당되는 물품들 새로 출력  
+
+### 장바구니 결제
 ![KakaoTalk_20211125_150642966](https://user-images.githubusercontent.com/88940298/143392134-38560967-d8a4-4abb-a1a1-6ddf5d614cf2.gif)
 
 
      
-     ### 댓글,대댓글
+### 댓글,대댓글
  
 
 ![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143392026-8e22da2c-beb3-4233-9249-0a9984b27942.gif)
