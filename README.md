@@ -588,8 +588,10 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 ```
 
 ### 모달창 구현
-
-![모달](https://user-images.githubusercontent.com/88940298/143366287-7566dfb7-de38-487c-9856-9bf42bf5c9cb.gif)
+-SNS Modal-
+![모달](https:![KakaoTalk_20211125_122815439](https://user-images.githubusercontent.com/88940298/143374775-e42b1956-689d-4f73-a67a-7fcf9d799259.gif)
+-  Modal-
+//user-images.githubusercontent.com/88940298/143366287-7566dfb7-de38-487c-9856-9bf42bf5c9cb.gif)
 
 
 onsubmit 을 통해 클릭시 모달창 렌더링
