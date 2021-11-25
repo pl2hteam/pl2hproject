@@ -197,9 +197,7 @@ Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여�
 
 ![KakaoTalk_20211125_153528603](https://user-images.githubusercontent.com/88923210/143395201-9da11fc9-96a8-4dcc-a0ba-da667f3eaf1d.png)
 
-...
-...
-...
+
 
 ### "env파일의 중요성 "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
@@ -438,7 +436,7 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 ## SNS Main
 
  
-  ### 프로필 정보 변경
+### 프로필 정보 변경
  
  
 ![KakaoTalk_Photo_2021-11-24-16-10-06](https://user-images.githubusercontent.com/88940298/143191842-e032063e-9b70-4eeb-8b9e-3138f84352d8.gif)
