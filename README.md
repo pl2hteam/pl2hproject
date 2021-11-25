@@ -87,14 +87,14 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ### 개요
 
-네이버 커플페이지와 최근 싸이월드 출시소식관련 하여 싸이월드 감성과 커플페이지를 접목시키고 그밖에 커플용품판매를 통한 서비스를 구성해보았습니다
+최근 싸이월드 출시소식관련 하여, 싸이월드 감성과 네이버 커플페이지를 접목시키고, 더불어 SNS를 이용하는 커플들을 대상으로 아이템들을 판매하는 상점를 통한 복합서비스를 구상해보았습니다.
 
-커플용품 과 sns를 DB를 분류하여 더욱더 많은 공부가 될 수 있게 하였고
+커플상점과 SNS에서 사용하는 DB를 MongoDB와 MySql로 분류하여 더욱더 많은 공부가 될 수 있게 하였고,
 
 네이버 커플페이지 [관련자료](https://blog.naver.com/PostList.naver?blogId=sum-lab&categoryNo=51&parentCategoryNo=51&skinType=&skinId=&from=menu&userSelectMenu=true)  
 싸이월드 [관련자료](https://newsis.com/view/?id=NISX20211123_0001661075&cID=13001&pID=13000)
 
-이러한 계기로 감성과 기능을 잡으려고 노력했습니다
+위의 자료들을 바탕으로 감성과 기능이 함께하는 서비스를 제공하고자 노력했습니다.
 
 ### 목적
 
@@ -110,7 +110,6 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
    - nosql mysql 의 각각의 장점을 부각시키고 단점을 보안
    - REDUX 활용 AUTH 진행
    - 커플 연결 서비스 진행 (관계쿼리)
-   -
    
 
 ### 👬 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client)  or [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
@@ -338,7 +337,7 @@ auth 와 musicplyer간 충돌로 인한 음악 재생 및 로그인 에러발생
   }, [userInfo.userData]);
 ```
 
-useEffect 를 사용하여 유저정보를 state담아 문제 
+useEffect 를 사용하여 유저정보를 state담아 문제를 
 
 
 
