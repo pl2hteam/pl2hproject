@@ -438,7 +438,10 @@ useSelector를 사용하여 redux의 store에 저장된 user정보를 끌고온 
 ```
 
 
-
+랜덤코드 설명
+Math.random() 와 fromCharCode() 를 이용해
+랜덤한 숫자에 해당하는 아스키코드를 찾아
+알파벳 소문자, 대문자, 숫자를 한자씩 for문으로 지정한 길이만큼 만들어낸다
 
 
 ```
