@@ -183,6 +183,18 @@ Member.
 
 # 발생한 이슈 & 해결 방법
 
+### "Auth로 2가지 DB(MongoDB와 MySqlDB) 모두 사용할 수 있는 방법을 고민"
+[상황] 2 가지(MongoDB와 MySqlDB) DB를 동시에 사용하기 때문에,  2 가지 DB를 충돌없이 사용할 수 있는 방안
+
+[문제] 
+
+SNS(MySqlDB)로 로그인 하여도 커플상점(MongoDB)를 이용할 수 있도록 하여야 함.
+일부 공통된 DB가 필요한 상황이 발생하여, 2 가지 DB의 충돌없이 사용할 수 있도록 고민.
+
+[해결] 
+
+Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여함.
+
 
 ### "env파일의 중요성 "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
@@ -934,17 +946,14 @@ const LetterWrite = (props) => {
 
  
   ###  카테고리 분류
-  ![KakaoTalk_20211125_144533948](https://user-images.githubusercontent.com/88940298/143389398-c0edfd58-33cd-4d90-9f8b-60f2ecda0f37.gif)
-
   
-    ### 장바구니.결제
+  
+    ### 장바구니
     
-![결제](https://user-images.githubusercontent.com/88940298/143389305-16a65021-5a45-4b1c-9411-470c85a304e8.gif)
-
+     ### 결제
      
      ### 댓글,대댓글
      
-![대댓ㄱ글](https://user-images.githubusercontent.com/88940298/143389377-f2e855c5-a2cc-4e2b-8803-c8ce4cb645dc.gif)
 
 
 
