@@ -726,6 +726,7 @@ router.post('/mood', async (req, res, next) => {
 
 
 ### 연인에게 커플편지 남기기 구현
+![KakaoTalk_20211125_123246471](https://user-images.githubusercontent.com/88940298/143375358-e937181e-7314-4c1e-98b1-b5e3604bcf93.gif)
 
 
 ![KakaoTalk_20211125_115238778](https://user-images.githubusercontent.com/88940298/143371849-fc4a8f48-f329-44b3-8f57-0b6e2317043d.gif)
