@@ -1397,6 +1397,10 @@ export function getHistory(data) {
 ![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
 
 
+각 관계에 맞게 관계쿼리 생성 
+image의 경우 sns 및 사진첩 에서 동시에 사용하기 때문에 관계를 엮어 사용
+
+
 
 ### 프로젝트 기획안 PPT
 [구글 프레젠테이션 파일](https://docs.google.com/presentation/d/13yVkx7W7bpqiPpieAJCAUgyme5Hsj_4gum353ISTyi4/edit#slide=id.p)   
