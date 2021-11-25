@@ -255,7 +255,7 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 
 
 
-# DB 활용(EC2, RDS,MONGGO) 
+# 배포 활용(EC2, RDS,MONGGO) 
 
 
  
