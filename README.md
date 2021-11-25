@@ -140,7 +140,7 @@ Member.
     "yup": "^0.27.0"  
 -  
 -    사용 모듈(Server) :
--     `
+-     ```
     "async": "^3.2.2",  
     "bcrypt": "^5.0.1",  
     "body-parser": "^1.18.3",  
@@ -161,7 +161,7 @@ Member.
     "promise": "^8.1.0",  
     "sequelize": "^6.9.0",  
     "sequelize-cli": "^6.3.0"
-    `  
+    ```  
 
 ### 주요 기능
 
