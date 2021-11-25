@@ -975,6 +975,36 @@ const LetterWrite = (props) => {
  ### 물품등록
  ![KakaoTalk_20211125_143342490](https://user-images.githubusercontent.com/88940298/143385790-686b59a4-33ec-4ef0-807d-808743f4c24d.gif)
 
+```
+
+물품등록
+
+    Axios.post("/api/mongo/product/uploadProduct", variables).then(
+      (response) => {
+        if (response.data.success) {
+          alert("아이템이 거래소에 등록되었습니다.");
+          props.history.push("/shop/main");
+        } else {
+          alert("아이템 등록이 실패하였습니다");
+        }
+      }
+    );
+
+
+
+router.post("/", (req, res) => {
+  console.log(req.body);
+  const product = new Product(req.body);
+
+  product.save((err, doc) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).json({ success: true });
+  });
+});
+```
+
+
+
  
   ###  카테고리 분류
   ![KakaoTalk_20211125_144533948](https://user-images.githubusercontent.com/88940298/143392173-e7d607e1-29a8-4ee1-ac15-017620719354.gif)
