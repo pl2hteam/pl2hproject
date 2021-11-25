@@ -195,7 +195,7 @@ SNS(MySqlDB)로 로그인 하여도 커플상점(MongoDB)를 이용할 수 있�
 
 Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여함.
 
-![KakaoTalk_20211125_153121946](https://user-images.githubusercontent.com/88923210/143395107-f297880d-85e8-4e1e-863d-2a3348fc61bd.png)
+![KakaoTalk_20211125_153528603](https://user-images.githubusercontent.com/88923210/143395201-9da11fc9-96a8-4dcc-a0ba-da667f3eaf1d.png)
 
 ...
 ...
