@@ -296,7 +296,7 @@ AWS의 EC2를 활용하여 배포를 진행 server client 동시 실행
 서버(app.js) : [코드](https://github.com/pl2hteam/pl2hproject/blob/431cba07b5add6380c3c976e3593882c22ae3805/server/app.js)
 -> 각 페이지별 라우터 설정, passport 5000번
 
-### 페이지별 설명(React)   
+### 페이지별  설명(React)   
 
 ## Login 
 
