@@ -598,19 +598,87 @@ autoplay 를 1로 설정하여 자동 재생되게 하였습니다
 
 ![KakaoTalk_20211125_114457353](https://user-images.githubusercontent.com/88940298/143371036-745d1095-2d6a-4307-99f4-37f0d54275c9.gif)
 
-disablekb 를 1로 설정하여 플레이어가 키보드 컨트롤에 응답하지 않게 했고,
-autoplay 를 1로 설정하여 자동 재생되게 하였습니다
+선택된 카데고리 값을 e.currentTarget.innerText를 이용하여 back으로 전달 합니다. back에서는 일치하는 값을 찾아서 front로 보내고, front는 전달 받은 data를 map함수를 이용하여 화면에 출력하였습니다.
 
 ```
-<iframe
-          width="240"
-          height="100"
-          src="https://www.youtube.com/embed/_3A-jr1xC9o?loop=1&controls=1&autoplay=1&mute=0&disablekb=1&fs=0"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-          gyroscope; picture-in-picture;"
-        ></iframe>
+export default () => {
+    const [posts, setPosts] = useState([]);
+    const [mood, setMood] = useState('');
+    const moods = ['영화', '공연', '축제', '여행', '맛집', '기타'];
 
+    const onMoodChange = (e) => {
+
+        setMood(e.currentTarget.innerText);
+        setPosts([]);
+
+
+        const variables = {
+            mood: e.currentTarget.innerText,
+        }
+
+        //back으로 선택된 카데고리 값을 전달합니다.
+        Axios.post("/api/mysql/jams/read/mood", variables)
+            .then((response) => {
+                if (response.data.success) {
+                    setPosts(response.data.jams);
+
+                } else {
+                    alert("읽어드리는 데 실패하였습니다.");
+                }
+            });
+    };
+
+
+    return (
+        <MarginContainer>
+            <HeaderContainer>
+                <Title>🎪🎉🎏</Title>
+                <MoodList>
+                    {moods.map((moodText) => (
+                        <Mood
+                            key={moodText}
+                            onClick={onMoodChange}
+                            // 선택된 카테고리가 활성화 됩니다.
+                            active={moodText === mood ? true : false}
+                        >
+                            {moodText}
+                        </Mood>
+                    ))}
+                </MoodList>
+            </HeaderContainer>
+            <Container>
+                {posts.map((post) => (
+                    <Picture
+                        //컴포넌트로 props를 전달합니다.
+                        id={post.id}
+                        key={post.id}
+                        imageUrl={post.images[0]}
+                        mood={post.mood}
+                        review={post.review}
+                        title={post.title}
+                    />
+                ))}
+            </Container>
+        </MarginContainer>
+    );
+};
+
+```
+```
+router.post('/mood', async (req, res, next) => {
+  try {
+    let keyWord = req.body.mood
+
+    const fulljam = await Jam.findAll({
+      include: {
+        model: User,
+        attribute: ["id", "name"],
+      },
+      where: {
+        mood: keyWord,
+      },
+      order: [['id', 'DESC']],
+    });
 ```
 
 
