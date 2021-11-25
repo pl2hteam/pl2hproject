@@ -23,7 +23,30 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 한경현(kyunghyun Han):[깃허브](https://github.com/kyunghyunHan)SNS Frontend     
 이민주(Minju Lee):[깃허브](https://github.com/codecocos)SNS Backend      
 이성민(ssangMin Lee):[깃허브](https://github.com/LeessangMin)Shop Frontend   
-박준혁(jun hyuk Park):[깃허브](https://github.com/berrypjh)Shop Backend   
+박준혁(jun hyuk Park):[깃허브](https://github.com/berrypjh)Shop Backend  
+
+기간 3주
+
+1주차 
+-1일차 : 프로젝트 아이디어 공유 및 정리
+-2일차 : 아이디어 세부사항 및 db관계쿼리 정리
+-3일차 부처 프로젝트 진행
+- 프로젝트 파트별 진행
+
+2주차 : 프로젝트 파트별 진행
+3주차 : 프로젝트 파트별 마무리 및 배포진행
+
+배포 후 
+3주간의 결과물 및 좋았던 점, 개선해야 할 점 등을 공유하며 회고합니다 각자 맡은 파트별로 설명하며  그 외에도 서비스의 가치나 방향성에 대한 의견을 주고 받으며 서로의 생각을 확인합니다.
+매일 오프라인 및 온라인 게더타운으로 진행 
+각 팀별 진행 상황을 공유하고, 개발 중 예상치 못한 이슈 또는 서로 다른 팀의 지원이 필요한 부분은 없는지 등을 확인
+
+
+
+![KakaoTalk_20211125_195813474](https://user-images.githubusercontent.com/88940298/143429808-f5a10b4d-f7c0-4945-953a-e2b069671d21.png)
+
+
+
 
 # 목차
 [1.개요](#개요)
