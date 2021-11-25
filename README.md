@@ -339,7 +339,7 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
  
 ![KakaoTalk_Photo_2021-11-24-16-10-06](https://user-images.githubusercontent.com/88940298/143191842-e032063e-9b70-4eeb-8b9e-3138f84352d8.gif)
 
-
+useSelector를 사용하여 redux의 store에 저장된 user정보를 끌고온 후, useState를 사용하여 끌고 온 유저 정보를 변경합니다.
 ```
 const onSubmitUserInfo = () => {
     const variables = {
@@ -363,7 +363,7 @@ const onSubmitUserInfo = () => {
 ```
 
 
-useSelector를 사용하여 redux의 store에 저장된 user정보를 끌고온 후, useState를 사용하여 끌고 온 유저 정보를 변경합니다.
+
 
 
 ```
