@@ -594,6 +594,24 @@ autoplay 를 1로 설정하여 자동 재생되게 하였습니다
 ```
 
 
+### 커플 여행지 카테코리 구현
+
+![KakaoTalk_20211125_114457353](https://user-images.githubusercontent.com/88940298/143371036-745d1095-2d6a-4307-99f4-37f0d54275c9.gif)
+
+disablekb 를 1로 설정하여 플레이어가 키보드 컨트롤에 응답하지 않게 했고,
+autoplay 를 1로 설정하여 자동 재생되게 하였습니다
+
+```
+<iframe
+          width="240"
+          height="100"
+          src="https://www.youtube.com/embed/_3A-jr1xC9o?loop=1&controls=1&autoplay=1&mute=0&disablekb=1&fs=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+          gyroscope; picture-in-picture;"
+        ></iframe>
+
+```
 
 
 
