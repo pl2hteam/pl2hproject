@@ -1345,7 +1345,7 @@ export function getHistory(data) {
         ))
 ```
 
-### DB구조 (ERD)
+### DB구조 
 ![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
 
 
