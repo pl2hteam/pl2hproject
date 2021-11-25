@@ -588,12 +588,14 @@ SNS 메인페이지 ->상세페이지 이동 랜덤코드
 ```
 
 ### 모달창 구현
--SNS Modal-
-![KakaoTalk_20211125_122815439](https://user-images.githubusercontent.com/88940298/143374909-e3bcc232-f911-4aa6-80ed-1c83671ed49f.gif)
+-SNS Modal
+![KakaoTalk_20211125_111701228](https://user-images.githubusercontent.com/88940298/143374992-5bdcd998-cf3c-4dab-9598-8f2b96dbbddd.gif)
+-
+
 
 -  사진첩 Modal-
-//user-images.githubusercontent.com/88940298/143366287-7566dfb7-de38-487c-9856-9bf42bf5c9cb.gif)
 
+![KakaoTalk_20211125_122815439](https://user-images.githubusercontent.com/88940298/143374909-e3bcc232-f911-4aa6-80ed-1c83671ed49f.gif)
 
 onsubmit 을 통해 클릭시 모달창 렌더링
 modal 에 props를 전달 하여 데이터 및 이미지 렌더링
