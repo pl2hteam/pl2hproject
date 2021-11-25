@@ -966,10 +966,12 @@ const LetterWrite = (props) => {
 
  
   ###  카테고리 분류
-  
+  ![KakaoTalk_20211125_144533948](https://user-images.githubusercontent.com/88940298/143392173-e7d607e1-29a8-4ee1-ac15-017620719354.gif)
+
   
     ### 장바구니 결제
-   ![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143391913-b231ae1a-8ea1-47d4-97ce-8152165e73f2.gif)
+![KakaoTalk_20211125_150642966](https://user-images.githubusercontent.com/88940298/143392134-38560967-d8a4-4abb-a1a1-6ddf5d614cf2.gif)
+
 
      
      ### 댓글,대댓글
