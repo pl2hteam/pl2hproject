@@ -55,7 +55,7 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 커플용품 과 sns를 DB를 분류하여 더욱더 많은 공부가 될 수 있게 하였고
 
-네이버 커플페이지 [관련자료](https://blog.naver.com/PostList.naver?blogId=sum-lab&categoryNo=51&parentCategoryNo=51&skinType=&skinId=&from=menu&userSelectMenu=true)
+네이버 커플페이지 [관련자료](https://blog.naver.com/PostList.naver?blogId=sum-lab&categoryNo=51&parentCategoryNo=51&skinType=&skinId=&from=menu&userSelectMenu=true)  
 싸이월드 [관련자료](https://newsis.com/view/?id=NISX20211123_0001661075&cID=13001&pID=13000)
 
 이러한 계기로 감성과 기능을 잡으려고 노력했습니다
