@@ -1041,7 +1041,33 @@ export { itemNumber };
 
 ### 장바구니 결제
 ![KakaoTalk_20211125_150642966](https://user-images.githubusercontent.com/88940298/143392134-38560967-d8a4-4abb-a1a1-6ddf5d614cf2.gif)
+```
+  const addToCarthandler = () => {
+    props.addToCart(props.detail._id);
+  };
 
+
+  const dispatch = useDispatch();
+  const addToCartHandler = (pd_id) => {
+    dispatch(addToCart(pd_id));
+    alert("장바구니에 담겼습니다.");
+  };
+
+export function addToCart(_id) {
+  const request = axios
+    .get(`${MONGO_USER_SERVER}/addToCart?productId=${_id}`)
+    .then((response) => response.data);
+
+  return {
+    type: ADD_TO_CART_USER,
+    payload: request,
+  };
+}
+
+
+
+장바구니에 담으면 물품정보를 디스패치 액션을 통해 User DB에 저장한다
+```
 
      
 ### 댓글,대댓글
