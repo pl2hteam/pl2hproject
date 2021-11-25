@@ -2,7 +2,7 @@
 
 
 ## ♥️👬👨‍❤️‍💋‍👨Pl2h('PL2H World') - 커플 sns 및 shop
-## 프로젝트 기 :2021-11-05 ~ 2021-11-22
+## 프로젝트 3기 :2021-11-05 ~ 2021-11-22
 
 ## 👜👢🧢[**서비스로 이동**](http://13.124.13.37:3000/)
 
@@ -15,14 +15,14 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ---   
 
-👨‍👩‍👦‍👦Member. 
+👨‍👩‍👦‍👦Member.  Pl2h의 팀원들입니다
 
 
 
-한경현:[깃허브](https://github.com/kyunghyunHan)  
-이민주:[깃허브](https://github.com/codecocos)  
-이성민:[깃허브](https://github.com/LeessangMin)   
-박준혁:[깃허브](https://github.com/berrypjh)  
+한경현:[깃허브](https://github.com/kyunghyunHan) 
+이민주:[깃허브](https://github.com/codecocos)    
+이성민:[깃허브](https://github.com/LeessangMin) 
+박준혁:[깃허브](https://github.com/berrypjh) 
 
 
 
@@ -56,7 +56,14 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ### 개요
 
-커플간  SNS 사이트를 싸이월드의 느낌으로 재현하여 커플 SNS 및 커플 용품 SHOP 구현
+네이버 커플페이지와 최근 싸이월드 출시소식관련 하여 싸이월드 감성과 커플페이지를 접목시키고 그밖에 커플용품판매를 통한 서비스를 구성해보았습니다
+
+커플용품 과 sns를 DB를 분류하여 더욱더 많은 공부가 될 수 있게 하였고
+
+네이버 커플페이지 [관련자료](https://blog.naver.com/PostList.naver?blogId=sum-lab&categoryNo=51&parentCategoryNo=51&skinType=&skinId=&from=menu&userSelectMenu=true)
+싸이월드 [관련자료](https://newsis.com/view/?id=NISX20211123_0001661075&cID=13001&pID=13000)
+
+이러한 계기로 감성과 기능을 잡으려고 노력했습니다
 
 ### 목적
 
