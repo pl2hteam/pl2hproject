@@ -1001,6 +1001,29 @@ const LetterWrite = (props) => {
     });
 
 ```
+```
+const itemNumber = [
+  {
+    _id: 1,
+    name: "의류",
+  },
+  {
+    _id: 2,
+    name: "신발",
+  },
+// .......중략
+  {
+    _id: 12,
+    name: "기타",
+  },
+];
+
+export { itemNumber };
+
+
+
+카테고리 분류 추가
+```
   
     ### 장바구니 결제
 ![KakaoTalk_20211125_150642966](https://user-images.githubusercontent.com/88940298/143392134-38560967-d8a4-4abb-a1a1-6ddf5d614cf2.gif)
