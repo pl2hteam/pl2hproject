@@ -973,9 +973,9 @@ const LetterWrite = (props) => {
 
      
      ### 댓글,대댓글
-     ![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143391864-ee161593-371a-494f-919c-8bb5f28c224b.gif)
+ 
 
-
+![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143392026-8e22da2c-beb3-4233-9249-0a9984b27942.gif)
 
 
 ### DB구조 (ERD)
