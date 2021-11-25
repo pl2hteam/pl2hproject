@@ -934,14 +934,17 @@ const LetterWrite = (props) => {
 
  
   ###  카테고리 분류
+  ![KakaoTalk_20211125_144533948](https://user-images.githubusercontent.com/88940298/143389398-c0edfd58-33cd-4d90-9f8b-60f2ecda0f37.gif)
+
   
-  
-    ### 장바구니
+    ### 장바구니.결제
     
-     ### 결제
+![결제](https://user-images.githubusercontent.com/88940298/143389305-16a65021-5a45-4b1c-9411-470c85a304e8.gif)
+
      
      ### 댓글,대댓글
      
+![대댓ㄱ글](https://user-images.githubusercontent.com/88940298/143389377-f2e855c5-a2cc-4e2b-8803-c8ce4cb645dc.gif)
 
 
 
