@@ -222,8 +222,8 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 ### "property "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
 
-[문제] 
-<img width="693" alt="KakaoTalk_20211125_124522181" src="https://user-images.githubusercontent.com/88940298/143390995-430a4520-9e35-4f19-9698-ffc1ec7dce0c.png">
+[문제]   
+<img width="693" alt="KakaoTalk_20211125_124522181" src="https://user-images.githubusercontent.com/88940298/143390995-430a4520-9e35-4f19-9698-ffc1ec7dce0c.png">  
 
 
 [해결] 
