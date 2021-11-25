@@ -247,6 +247,9 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 상품이 없을 경우를 추가했다
 
 
+
+
+
 ### "React 렌더링중 에러발생 "
 
 [상황] React 렌더링중 에러발생 
@@ -273,6 +276,7 @@ env파일의 존재를 인지하고 env파일을 추가하여 DB접속 성공.
 ```
 
 useEffect 를 사용하여 유저정보를 state담아 문제 
+
 
 
 
@@ -317,6 +321,8 @@ export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
 
+
+
 ### React Client build중 에러발생
 
 [상황] 빌드도중 에러 발생
@@ -344,6 +350,7 @@ Java와 마찬가지로 VM에서 Heap메모리 최대한도가 정해져있기 �
 
 빌드시 메모리 관련 에러 발생 및 알 수 없는 에러가 발생햇었다. 배포시 배포 관련 숙달이 부족하였고, 빌드하는데서 에러가 발생하여 애를 먹엇다 . 좀 더 숙달하여 이러한 에러가 발생하지 않도록 하며 , 또한 베포시 node js 버전 문제로 인하여 에러가 발생햇엇다
 NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
+
 
 
 
@@ -439,7 +446,9 @@ NGINX 서버로 하는 법을 숙달하여 시도를 해보면 좋을 것 같다
 서버(app.js) : [코드](https://github.com/pl2hteam/pl2hproject/blob/431cba07b5add6380c3c976e3593882c22ae3805/server/app.js)
 -> 각 페이지별 라우터 설정, passport 5000번사용
 
+
 ### 페이지별  설명 (React)   
+
 
 ## Login 
 
