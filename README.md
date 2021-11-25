@@ -195,8 +195,6 @@ SNS(MySqlDB)로 로그인 하여도 커플상점(MongoDB)를 이용할 수 있�
 
 Auth.js에서 if문을 사용하여 MySql와 Monggo 이용에 조건을 부여함.
 
-![KakaoTalk_20211125_153528603](https://user-images.githubusercontent.com/88923210/143391865-bbbea126-f3dc-4533-8b98-a201d6c3ea77.png)
-
 
 ### "env파일의 중요성 "
 [상황] gitignore에 올라가 있는 env파일이 없어 DB접속 불가
@@ -970,12 +968,13 @@ const LetterWrite = (props) => {
   ###  카테고리 분류
   
   
-    ### 장바구니
-    
-     ### 결제
+    ### 장바구니 결제
+   ![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143391913-b231ae1a-8ea1-47d4-97ce-8152165e73f2.gif)
+
      
      ### 댓글,대댓글
-     
+     ![KakaoTalk_20211125_145627253](https://user-images.githubusercontent.com/88940298/143391864-ee161593-371a-494f-919c-8bb5f28c224b.gif)
+
 
 
 
