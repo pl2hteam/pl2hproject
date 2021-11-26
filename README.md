@@ -1528,6 +1528,9 @@ export function getHistory(data) {
             </React.Fragment>
         ))
 ```
+### 리덕스
+![리덕스 플로우 전체도](https://user-images.githubusercontent.com/90792916/143544265-c31437e7-4c40-4c8f-bf2a-61e803142ff7.png)
+
 
 ### DB구조 
 ![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
