@@ -257,6 +257,36 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 # 🔥발생한 이슈 & 해결 방법
 
+### "CORS 정책에 의한 에러"
+
+[상황]  
+![콜스 에러](https://user-images.githubusercontent.com/90792916/143545407-1d5a53ca-7a6b-442d-94d9-72ea41138cdf.png)  
+
+[문제] 
+
+서버는 포트가 5000 번이고,
+
+클라이언트는 포트가 3000 번으로 다른데 서로 주고 받으려고 하면,
+
+CORS 정책에 의해 막혀버린다.
+
+[해결] 
+
+npm i http-proxy-middleware 모듈을 설치하고
+```
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = function(app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://localhost:5000',  //  노드 서버가 5000 번이므로 target 도 같게한다.
+      changeOrigin: true,
+    })
+  );
+};
+```
+프록시 서버를 이용하여 에러를 해결했다.
 
 ### "Auth로 2가지 DB(MongoDB와 MySqlDB) 모두 사용할 수 있는 방법을 고민"
 
@@ -1528,6 +1558,21 @@ export function getHistory(data) {
             </React.Fragment>
         ))
 ```
+### 리덕스
+![리덕스 플로우 전체도](https://user-images.githubusercontent.com/90792916/143544265-c31437e7-4c40-4c8f-bf2a-61e803142ff7.png)
+React랑 React+Redux의 결정적 차이
+ React는 React 컴포넌트 자신이 개별적으로 상태관리를 한다.
+ React+Redux는 상태관리를 하는 전용 장소(store)에서 상태를 관리하고, React 컴포넌트는 그걸 보여주기만 하는 용도로 쓰인다.
+
+Store
+ 상태는 기본적으로 전부 여기서 집중관리 됩니다. 커다란 JSON의 결정체정도의 이미지입니다.
+
+Action 및 Action Creator
+ Store 및 Store에 존재하는 State는 아주 신성한 것이라고 할 수 있습니다. React 컴포넌트같은 하등한 것이 직접 접근하려고 하면 안 되는 것이죠. 직접 접근하기 위해 Action이라는 의식을 거쳐야 합니다. 이벤트 드리븐과 같은 개념입니다.
+
+Reducer
+ 앞에 ‘Store의 문지기’라고 쓴 적이 있습니다만, 그 개념과 비슷한 역할을 하는 것이 Reducer입니다.
+ 함수형 프로그래밍에서 Reducer라는 용어는 합성곱을 의미합니다만, Redux에 한해서는 아래와 같이 이전 상태와 Action을 합쳐, 새로운 state를 만드는 조작을 말합니다.
 
 ### DB구조 
 ![KakaoTalk_20211125_114838306](https://user-images.githubusercontent.com/88940298/143371203-28d2aa41-7894-442c-a505-594b6f10506c.png)
