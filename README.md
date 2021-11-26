@@ -286,7 +286,7 @@ module.exports = function(app) {
   );
 };
 ```
-로 해결했다.
+프록시 서버를 이용하여 에러를 해결했다.
 
 ### "Auth로 2가지 DB(MongoDB와 MySqlDB) 모두 사용할 수 있는 방법을 고민"
 
