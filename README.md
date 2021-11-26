@@ -259,7 +259,8 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ### "Auth로 2가지 DB(MongoDB와 MySqlDB) 모두 사용할 수 있는 방법을 고민"
 
-[상황] ![콜스 에러](https://user-images.githubusercontent.com/90792916/143545407-1d5a53ca-7a6b-442d-94d9-72ea41138cdf.png)  
+[상황]
+![콜스 에러](https://user-images.githubusercontent.com/90792916/143545407-1d5a53ca-7a6b-442d-94d9-72ea41138cdf.png)  
 
 [문제] 
 
