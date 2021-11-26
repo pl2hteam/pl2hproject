@@ -85,7 +85,7 @@ const You = (props) => {
             <header>
               {/* 사용자 정보 */}
               <div class="profile-of-article">
-                <img class="img-profile pic" src={`http://13.124.13.37:5000/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
+                <img class="img-profile pic" src={`http://3.34.51.7:5000/${postData.UserId.image}`} alt="dlwlrma님의 프로필 사진" />
                 <span class="userID main-id point-span"><Meta description={`${postData.UserId.name}`} /></span>
               </div>
 

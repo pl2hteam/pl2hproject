@@ -114,7 +114,7 @@ const Main = (props) => {
             )}
             <img
               style={{ width: "100%", maxHeight: "500px" }}
-              src={`http://13.124.13.37:5000/${postData.images}`}
+              src={`http://3.34.51.7:5000/${postData.images}`}
               alt="productImage"
               images={postData}
             />
