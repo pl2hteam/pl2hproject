@@ -95,6 +95,8 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 최근 싸이월드 출시소식관련 하여, 싸이월드 감성과 네이버 커플페이지를 접목시키고, 더불어 SNS를 이용하는 커플들을 대상으로 아이템들을 판매하는 상점를 통한 복합서비스를 구상해보았습니다.
 
 커플상점과 SNS에서 사용하는 DB를 MongoDB와 MySql로 분류하여 더욱더 많은 공부가 될 수 있게 하였고,
+  
+  관련자료  
 
 네이버 커플페이지 [관련자료](https://blog.naver.com/PostList.naver?blogId=sum-lab&categoryNo=51&parentCategoryNo=51&skinType=&skinId=&from=menu&userSelectMenu=true)  
 싸이월드 [관련자료](https://newsis.com/view/?id=NISX20211123_0001661075&cID=13001&pID=13000)
