@@ -231,23 +231,27 @@ p.s. 현재 서버를 닫은 관계로 실행이 되지 않습니다
 
 ### 🔎  깃 브런치 활용
 
+코드 병합시 오류를 최소화 하기위해 깃브런치 
+
 ```
 ✔ main - 개발 완료하고 최종 코드 올리는 브랜치
 
 
-✔ develop - 각자 담당한 페이지 뷰 브랜치를 합쳐서 테스트 진행하는 브랜치
+✔ SNS  sns 파트 깃브런치
 
-   - home (홈  view)
 
-   - createActivity (새 활동 추가 view)
-
-   - step-card (활동 돌아보기 view)
-
-   - activity-one (개별 활동 보기 view)
+   - diaryhyun (sns 파트 프론트 브런치)
    
-   - my-page (마이페이지 view)
+   - diarymin (sns 파트 깃 브런치)
    
-   - responsive (반응형 확인용 브랜치)
+✔ SHOP  shop 파트 깃브런치
+
+
+   - ssangmin (shop 파트 프론트 브런치)
+   
+   - parkjh (shop 파트 깃 브런치)
+
+  
 
 ```
 
