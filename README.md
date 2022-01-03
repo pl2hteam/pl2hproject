@@ -604,7 +604,7 @@ mysql db: sns
 
 ![KakaoTalk_Image_2021-11-24-17-16-49](https://user-images.githubusercontent.com/88940298/143200371-a2a213f6-67fc-4362-a8a9-adfcb674806e.gif)
 
-```
+```js
 
 export default function (ComposedClass, reload, homePage, adminRoute = null) {
   function AuthenticationCheck(props) {
@@ -640,7 +640,7 @@ export default function (ComposedClass, reload, homePage, adminRoute = null) {
 로그아웃 하기 버튼 누르게 되면 /API/mysql/users/logout으로 데이터 전송
 destroy 사 유저 로그인 정보 삭제
 
-```
+```js
 const express = require("express");
 const router = express.Router();
 
@@ -662,7 +662,7 @@ module.exports = router;
 ![KakaoTalk_Photo_2021-11-24-16-10-06](https://user-images.githubusercontent.com/88940298/143191842-e032063e-9b70-4eeb-8b9e-3138f84352d8.gif)
 
 useSelector를 사용하여 redux의 store에 저장된 user정보를 끌고온 후, useState를 사용하여 끌고 온 유저 정보를 변경합니다.
-```
+```js
   //useSelector를 사용하여 리덕스의 유저정보를 활용
   const userInfo = useSelector((state) => state.user);
 
@@ -727,7 +727,7 @@ Math.random() 와 fromCharCode() 를 이용해
 알파벳 소문자, 대문자, 숫자를 한자씩 for문으로 지정한 길이만큼 만들어낸다
 
 
-```
+```js
 const [CodeCode, setCodeCode] = useState("");
   const [Length, setLength] = useState("8");
   const [LowerCheck, setLowerCheck] = useState(true);
@@ -822,7 +822,7 @@ const [CodeCode, setCodeCode] = useState("");
  sns 홈 화면에는 방문자가 글을 남길 수 있는 방명록 기능을 두어 싸이월드의 감성을 높였습니다. useState를 사용하여 미니미를 선택할 수 있습니다.
  
  
-```
+```js
   const onSubmit = (event) => {
     // event.preventDefault();  // antd 자체 적용
 
@@ -852,7 +852,7 @@ const [CodeCode, setCodeCode] = useState("");
   };
 ```
 
-```
+```js
 <Form onSubmit={onSubmit}>
       <Container>
         <Wrap className="VisitMsgBox">
@@ -877,7 +877,7 @@ const [CodeCode, setCodeCode] = useState("");
 
 ### 커플 코드
 커플인 경우 커플코드를 입력받아서, 같은 커플코드를 가진 경우 커플로 매칭하고 sns 메인 화면에 커플을 상징하는 이미지와 커플들의 이름을 띄워줍니다.
-```
+```js
   const getCouple = () => {
     Axios.post("/api/mysql/couples/read")
       .then((response) => {
@@ -918,7 +918,7 @@ const [CodeCode, setCodeCode] = useState("");
 useState를 이용하여 게시글을 DB에 저장하였습니다.
 
 
-```
+```js
   const [profilecontent, setPostTitle] = useState("");
 
   const onSubmit = (event) => {
@@ -951,7 +951,7 @@ useState를 이용하여 게시글을 DB에 저장하였습니다.
  모달 내부에서  DELETE사용  SERVER로 정보를 가게하여 삭제할수있게 기능 추가
  ![KakaoTalk_20211125_150810995](https://user-images.githubusercontent.com/88940298/143390883-4f0ef9ae-ddf2-43c6-a614-e5149427e8c3.gif)
 
-```
+```js
 const Delete = (props) => {
   const [postData, setPostData] = useState([]);
   let index = (props.modal.index);
@@ -990,12 +990,12 @@ const Delete = (props) => {
 
 onsubmit 을 통해 클릭시 모달창 렌더링
 modal 에 props를 전달 하여 데이터 및 이미지 렌더링
-```
+```js
  onSubmit={onSubmit} onDoubleClick={() => {
         setIndex(index);
         setOpenModal(true);
 ```
-``` 
+``` js
 <Modal
                 index={Index}
                 modal={PostArray}
@@ -1016,7 +1016,7 @@ const Modal = (props) => {
 disablekb 를 1로 설정하여 플레이어가 키보드 컨트롤에 응답하지 않게 했고,
 autoplay 를 1로 설정하여 자동 재생되게 하였습니다
 
-```
+```js
 <iframe
           width="240"
           height="100"
@@ -1035,7 +1035,7 @@ autoplay 를 1로 설정하여 자동 재생되게 하였습니다
 
 선택된 카데고리 값을 e.currentTarget.innerText를 이용하여 back으로 전달 합니다. back에서는 일치하는 값을 찾아서 front로 보내고, front는 전달 받은 data를 map함수를 이용하여 화면에 출력하였습니다.
 
-```
+```js
 export default () => {
     const [posts, setPosts] = useState([]);
     const [mood, setMood] = useState('');
@@ -1099,7 +1099,7 @@ export default () => {
 };
 
 ```
-```
+```js
 router.post('/mood', async (req, res, next) => {
   try {
     let keyWord = req.body.mood
@@ -1126,7 +1126,7 @@ router.post('/mood', async (req, res, next) => {
 
 useSelector와 useState를 사용하여 연인에게 편지를 보낼 수 있는 기능입니다.
 
-```
+```js
 const LetterWrite = (props) => {
   const userInfo = useSelector(state => state.user);
 
@@ -1258,7 +1258,7 @@ const LetterWrite = (props) => {
 물품등록 페이지에서 기입한 내용과 사진,영상에 대한 정보가 DB에 들어간다
 
 
-```
+```js
 
 물품등록
 
@@ -1291,7 +1291,7 @@ router.post("/", (req, res) => {
  
   ###  카테고리 분류
   ![KakaoTalk_20211125_144533948](https://user-images.githubusercontent.com/88940298/143392173-e7d607e1-29a8-4ee1-ac15-017620719354.gif)
-```
+```js
   const [Checked, setChecked] = useState([]);
 
   const handleToggle = (value) => {
@@ -1325,7 +1325,7 @@ router.post("/", (req, res) => {
     });
 
 ```
-```
+```js
 const itemNumber = [
   {
     _id: 1,
@@ -1354,7 +1354,7 @@ export { itemNumber };
 
 ### 장바구니 결제
 ![KakaoTalk_20211125_150642966](https://user-images.githubusercontent.com/88940298/143392134-38560967-d8a4-4abb-a1a1-6ddf5d614cf2.gif)
-```
+```js
   const addToCarthandler = () => {
     props.addToCart(props.detail._id);
   };
@@ -1381,7 +1381,7 @@ export function addToCart(_id) {
 
 장바구니에 담으면 물품정보를 디스패치 액션을 통해 User DB에 저장한다
 ```
-```
+```js
 export function getHistory(data) {
   let request = axios
       .get(`${MONGO_USER_SERVER}/payment/getHistory`, data)
@@ -1408,7 +1408,7 @@ export function getHistory(data) {
 또한 Comment.js 에서는 SingleComment.js 의 props 를 이용해서 첫번째 댓글이 정해지며, ReplyComment.js 의 props 를 이용해서 첫댓글의 댓글을 불러온다.  
 위의 과정을 반복하여 무한한 대댓글을 달 수 있다.  
 
-```
+```js
   const user = useSelector((state) => state.user);
   const [Comment, setComment] = useState("");
   const [Writer, setWriter] = useState("");
@@ -1481,7 +1481,7 @@ export function getHistory(data) {
             )
         )}
 ```
-```
+```js
     const user = useSelector(state => state.user);
     const [CommentValue, setCommentValue] = useState("")
     const [Writer, setWriter] = useState("");
@@ -1531,7 +1531,7 @@ export function getHistory(data) {
                   }
               />
 ```
-```
+```js
     const [ChildCommentNumber, setChildCommentNumber] = useState(0)
     const [OpenReplyComments, setOpenReplyComments] = useState(false)
 
